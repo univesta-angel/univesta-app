@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/rails/activeresource.git
+  remote: https://github.com/rails/activeresource.git
   revision: 271c42aa938e7577c3b1eff04c967eaaff76034f
   specs:
     activeresource (5.0.0)
