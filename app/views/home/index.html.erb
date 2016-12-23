@@ -9,10 +9,6 @@
   </script>
 <% end %>
 
-<%= form_tag(products_path, :method => "get", id: "search-form") do %>
-<%= text_field_tag :search, params[:search], placeholder: "Search Products" %>
-<%= submit_tag "Search" %>
-<% end %>
 
 <h2>Products</h2>
 
