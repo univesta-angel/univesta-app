@@ -18,8 +18,4 @@
   <% end %>
 </ul>
 
-
-<% form_tag products_path, :method => 'get' do %>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
-<% end %>
+<%= text_field "person", "name", "size" => 20 %>
