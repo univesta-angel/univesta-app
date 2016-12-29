@@ -14,7 +14,6 @@
 
 <ul>
   <% @products.each do |product| %>
-  <%= form_for(import) do |f| %>
     <p>
       <b><%= product.title %><br></b>
       ID: <%= product.id %><br>
@@ -24,6 +23,5 @@
       <%= submit_tag "Import" %>
     </p>
     <br><br>
-    <% end %>
   <% end %>
 </ul>
