@@ -14,6 +14,13 @@
 
 <ul>
   <% @products.each do |product| %>
-    <li><%= link_to product.title, "https://#{@shop_session.url}/admin/products/#{product.id}", target: "_top" %></li>
+    <p>
+      <b><%= product.title %><br></b>
+      ID: <%= product.id %><br>
+      Vendor: <%= product.vendor %><br>
+      Created at: <%= product.created_at %><br>
+    </p>
+    <li><%= link_to 'Show description', home_show_path(product) %></li>
+    <br><br>
   <% end %>
 </ul>
