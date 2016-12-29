@@ -16,11 +16,11 @@
   <% @products.each do |product| %>
     <%= form_for(import) do |f| %>
       <p>
-        <b><%= f.product.title %><br></b>
-        ID: <%= f.product.id %><br>
-        Vendor: <%= f.product.vendor %><br>
-        Description: <%= f.product.body_html %><br>
-        Created at: <%= f.product.created_at %><br>
+        <b><%= product.title %><br></b>
+        ID: <%= product.id %><br>
+        Vendor: <%= product.vendor %><br>
+        Description: <%= product.body_html %><br>
+        Created at: <%= product.created_at %><br>
         <%= submit_tag "Import" %>
       </p>
     <br><br>
