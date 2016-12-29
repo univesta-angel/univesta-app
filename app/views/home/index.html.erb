@@ -14,15 +14,15 @@
 
 <ul>
   <% @products.each do |product| %>
-    <%= form_for(import) do |f| %>
-      <p>
-        <b><%= product.title %><br></b>
-        ID: <%= product.id %><br>
-        Vendor: <%= product.vendor %><br>
-        Description: <%= product.body_html %><br>
-        Created at: <%= product.created_at %><br>
-        <%= submit_tag "Import" %>
-      </p>
+  <%= form_for(import) do |f| %>
+    <p>
+      <b><%= product.title %><br></b>
+      ID: <%= product.id %><br>
+      Vendor: <%= product.vendor %><br>
+      Description: <%= product.body_html %><br>
+      Created at: <%= product.created_at %><br>
+      <%= submit_tag "Import" %>
+    </p>
     <br><br>
     <% end %>
   <% end %>
