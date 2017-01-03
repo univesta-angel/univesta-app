@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Sampletables</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sampletables.each do |sampletable| %>
+      <tr>
+        <td><%= sampletable.name %></td>
+        <td><%= sampletable.age %></td>
+        <td><%= link_to 'Show', sampletable %></td>
+        <td><%= link_to 'Edit', edit_sampletable_path(sampletable) %></td>
+        <td><%= link_to 'Destroy', sampletable, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sampletable', new_sampletable_path %>

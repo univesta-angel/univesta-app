@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @sampletable.name %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @sampletable.age %>
+</p>
+
+<%= link_to 'Edit', edit_sampletable_path(@sampletable) %> |
+<%= link_to 'Back', sampletables_path %>

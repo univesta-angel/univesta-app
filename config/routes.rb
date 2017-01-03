@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :sampletablezzzzs
+  resources :sampletables
   resources :imports
   root :to => 'home#index'
   mount ShopifyApp::Engine, at: '/'

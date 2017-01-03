@@ -1,0 +1,1 @@
+json.array! @sampletables, partial: 'sampletables/sampletable', as: :sampletable

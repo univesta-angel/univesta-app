@@ -1,0 +1,27 @@
+<%= form_for(sampletable) do |f| %>
+  <% if sampletable.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sampletable.errors.count, "error") %> prohibited this sampletable from being saved:</h2>
+
+      <ul>
+      <% sampletable.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :age %>
+    <%= f.number_field :age %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
