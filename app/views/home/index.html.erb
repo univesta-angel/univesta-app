@@ -28,6 +28,6 @@
 </ul>
 <br>
 
-<%= form_tag 'https://#{@shop_session.url}/admin/products.json', method: :put do %>
+<%= form_tag create_path, method: :put do %>
 <%= submit_tag "Add This Product" %>
 <% end %>
