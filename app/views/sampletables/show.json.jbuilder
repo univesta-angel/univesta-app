@@ -1,1 +1,0 @@
-json.partial! "sampletables/sampletable", sampletable: @sampletable

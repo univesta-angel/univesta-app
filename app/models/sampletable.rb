@@ -1,2 +1,0 @@
-class Sampletable < ApplicationRecord
-end

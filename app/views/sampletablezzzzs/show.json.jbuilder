@@ -1,1 +1,0 @@
-json.partial! "sampletablezzzzs/sampletablezzzz", sampletablezzzz: @sampletablezzzz

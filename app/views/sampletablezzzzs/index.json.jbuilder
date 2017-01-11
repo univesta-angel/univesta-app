@@ -1,1 +1,0 @@
-json.array! @sampletablezzzzs, partial: 'sampletablezzzzs/sampletablezzzz', as: :sampletablezzzz

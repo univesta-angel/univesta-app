@@ -1,10 +1,10 @@
-<%= form_for(sampletablezzzz) do |f| %>
-  <% if sampletablezzzz.errors.any? %>
+<%= form_for(zombie) do |f| %>
+  <% if zombie.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(sampletablezzzz.errors.count, "error") %> prohibited this sampletablezzzz from being saved:</h2>
+      <h2><%= pluralize(zombie.errors.count, "error") %> prohibited this zombie from being saved:</h2>
 
       <ul>
-      <% sampletablezzzz.errors.full_messages.each do |message| %>
+      <% zombie.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -19,11 +19,6 @@
   <div class="field">
     <%= f.label :age %>
     <%= f.number_field :age %>
-  </div>
-
-  <div class="field">
-    <%= f.label :id %>
-    <%= f.text_field :id %>
   </div>
 
   <div class="actions">
