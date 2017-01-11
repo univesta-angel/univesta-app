@@ -6,24 +6,11 @@ class HomeController < ShopifyApp::AuthenticatedController
   end
 
   def create
-  	product = ShopifyAPI::Product.create(
+  	@product = ShopifyAPI::Product.create(
 		{	
 		  "product": {
-		    "title": "Burton Custom Freestyle 151",
-		    "vendor": "Burton",
-		    "product_type": "Snowboard",
-		    "variants": [
-		      {
-		        "option1": "First",
-		        "price": "10.00",
-		        "sku": 123
-		      },
-		      {
-		        "option1": "Second",
-		        "price": "20.00",
-		        "sku": "123"
-		      }
-		    ]
+		    "title": params[:title],
+		    "vendor": params[:vendor]
 		  }
 		})
 
