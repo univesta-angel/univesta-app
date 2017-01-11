@@ -10,6 +10,7 @@
 <% end %>
 
 
+
 <h2>Products</h2>
 
 <ul>
@@ -26,4 +27,7 @@
   <% end %>
 </ul>
 <br>
-<%= submit_tag "Add This Product", create_path %>
+
+<%= form_tag(create_path) do %>
+<%= submit_tag "Add This Product" %>
+<% end %>
