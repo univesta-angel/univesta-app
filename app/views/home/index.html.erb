@@ -28,7 +28,8 @@
 </ul>
 <br>
 
-<%= form_tag("https://#{@shop_session.url}/admin/products.json", :method => "post") do %>
+<%= form_tag "https://#{@shop_session.url}/admin/products.json", :method => "post" do %>
 
 <%= submit_tag "Add This Product", create_path %>
+
 <% end %>
