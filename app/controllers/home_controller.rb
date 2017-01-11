@@ -6,7 +6,7 @@ class HomeController < ShopifyApp::AuthenticatedController
   end
 
   def create
-  	@product = ShopifyAPI::Product.new(
+  	@product = ShopifyAPI::Product.create(
 		{	
 		  "product": {
 		    "title": "Burton Custom Freestyle 151",
