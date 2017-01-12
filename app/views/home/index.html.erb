@@ -11,9 +11,19 @@
 
 <h2>Imports: </h2>
 
-<% form_tag shopify_app_path, :method => 'get' do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
-<% end %>
+<ul>
+  <% @products.each do |product| %>
+    <div>
+      <p>
+        <b><%= product.title %><br></b>
+        ID: <%= product.id %><br>
+        Vendor: <%= product.vendor %><br>
+        Description: <%= product.body_html %><br>
+        Created at: <%= product.created_at %><br>
+        <%= link_to "Edit" %><br>
+        <%= link_to "Remove" %>
+      </p>
+    </div>
+  <% end %>
+</ul>
+<br>
