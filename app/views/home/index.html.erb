@@ -11,6 +11,13 @@
 
 <h2>Imports: </h2>
 
+<% form_tag shopify_app_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
 <ul>
   <% @products.each do |product| %>
     <p>
