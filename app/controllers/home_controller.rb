@@ -1,4 +1,6 @@
 class HomeController < ShopifyApp::AuthenticatedController
+  wrap_parameters format: [:json]
+  
   def index
 
     #@products = ShopifyAPI::Product.find(:all, params: { limit: 10 })
@@ -11,7 +13,9 @@ class HomeController < ShopifyApp::AuthenticatedController
 		{	
 		  "product": {
 		    "title": params[:title],
-		    "vendor": params[:vendor]
+		    "vendor": params[:vendor],
+            "product_type": "Dress",
+            "tags": "Import"
 		  }
 		})
 
