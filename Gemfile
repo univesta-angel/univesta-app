@@ -7,6 +7,10 @@ git_source(:github) do |repo_name|
 end
 
 gem 'ruby-hmac'
+gem 'rack-cors', require: 'rack/cors'
+gem 'jsonapi-resources'
+gem 'delayed_job_active_record'
+gem 'httparty'
 
 gem 'shopify_app'
 gem 'activeresource', github: 'rails/activeresource'
