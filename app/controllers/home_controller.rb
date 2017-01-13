@@ -12,8 +12,8 @@ class HomeController < ShopifyApp::AuthenticatedController
   	@product = ShopifyAPI::Product.create(
 		{	
 		  "product": {
-		    "title": params[:p_title],
-		    "vendor": params[:p_vendor],
+		    "title": "New Dress",
+		    "vendor": "ABC Shop",
             "product_type": "Dress",
             "tags": "Import"
 		  }
