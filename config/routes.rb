@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :zombies
+  resources :products
   root :to => 'home#index'
   match 'create' => 'home#create', via: :post
   mount ShopifyApp::Engine, at: '/'
