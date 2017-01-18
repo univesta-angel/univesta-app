@@ -33,7 +33,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully pushed to store.' }
+        format.html { redirect_to @product, notice: 'Product was successfully imported.' }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
@@ -54,7 +54,8 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.json { render json: 201 }
+        format.html { redirect_to @product, notice: 'Product was successfully pushed to store.' }
+        format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
