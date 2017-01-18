@@ -43,14 +43,26 @@ class ProductsController < ApplicationController
   end
 
   def push
+    url = "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin/products.json"
+    uri = URI.parse(url)
+    http = Net::HTTP.new(uri.host, uri.port)
+    myHash = JSON.parse(json)
+    resp = Net::HTTP.post_form(uri, myHash)
+    puts(resp.body)
+
     @product = Product.find(product_params)
-    new_product = ShopifyAPI::Product.new
-    new_product.title = @product.title
-    new_product.body_html = @product.body_html
-    new_product.product_type = @product.product_type
-    new_product.vendor = @product.vendor
-    new_product.tags = @product.tags
-    new_product.save
+    new_product = '{  
+        "product": {
+          "title": aaa,
+          "body_html": bbb,
+          "vendor": ccc,
+          "product_type": ddd
+        }
+      }'
+    request = Net::HTTP::Post.new(uri.request_uri, 
+          'Content-Type' => 'application/json')
+    request.body = new_product
+    resp = http.request(request)
 
     #@product = ShopifyAPI::Product.create(product_params)
 
