@@ -45,16 +45,10 @@ class ProductsController < ApplicationController
 
   def push
 
-    @product = Product.find(product_params)
-    new_product = ShopifyAPI::Product.new({
-      "product": {
-      "title": "Burton Custom Freestyle 151",
-      "body_html": "<strong>Good snowboard!<\/strong>",
-      "vendor": "Burton",
-      "product_type": "Snowboard"}
-    })
+    #@product = Product.find(product_params)
+    new_product = ShopifyAPI::Product.new
+    new_product.title = 'Sample Product'
     new_product.save
-
 
     #@product = ShopifyAPI::Product.create(product_params)
 
