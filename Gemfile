@@ -6,6 +6,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+
+
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise_token_auth', github: 'lynndylanhurley/devise_token_auth'
 gem 'ruby-hmac'
@@ -13,6 +15,8 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'jsonapi-resources'
 gem 'delayed_job_active_record'
 gem 'httparty'
+
+gem 'shopify_api'
 
 gem 'shopify_app'
 gem 'activeresource', github: 'rails/activeresource'
