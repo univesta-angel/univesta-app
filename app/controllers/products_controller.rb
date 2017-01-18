@@ -5,7 +5,6 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    ShopifyAPI::Base.activate_session(session[:shopify])
     @products = Product.all
 
   end
