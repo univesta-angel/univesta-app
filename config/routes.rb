@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :products
+  resources :products 
   root :to => 'products#index'
   match 'create' => 'products#create', via: :post
   post 'push' => 'products#push', as: :push

@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-
+  #wrap_parameters format: [:json]
   # GET /products
   # GET /products.json
   def index
@@ -44,11 +44,11 @@ class ProductsController < ApplicationController
 
   def push
     #@product = ShopifyAPI::Product.new(product_params)
-    new_product = ShopifyAPI::Product.new
-    new_product.title = "Burton Custom Freestlye 151"
-    new_product.product_type = "Snowboard"
-    new_product.vendor = "Burton"
-    new_product.save
+    new_product = ShopifyAPI::Product.new(:title => params[:title],
+                                          :body_html => params[:body_html],
+                                          :product_type => params[:product_type],
+                                          :tags => params[:tags],
+                                          :vendor => params[:vendor])
 
     #@product = ShopifyAPI::Product.create(product_params)
 
