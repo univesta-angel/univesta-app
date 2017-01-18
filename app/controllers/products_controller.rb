@@ -6,7 +6,6 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
-
   end
 
   # GET /products/1
@@ -47,12 +46,13 @@ class ProductsController < ApplicationController
   def push
 
     @product = Product.find(product_params)
-    new_product = ShopifyAPI::Product.new(
-    :title => @product.title
-    :body_html => @product.body_html
-    :product_type => @product.product_type
-    :vendor => @product.vendor
-    :tags => @product.tags)
+    new_product = ShopifyAPI::Product.new({
+      "product": {
+      "title": "Burton Custom Freestyle 151",
+      "body_html": "<strong>Good snowboard!<\/strong>",
+      "vendor": "Burton",
+      "product_type": "Snowboard"}
+    })
     new_product.save
 
 
