@@ -43,7 +43,12 @@ class ProductsController < ApplicationController
   end
 
   def push
-    @product = ShopifyAPI::Product.new(product_params)
+    #@product = ShopifyAPI::Product.new(product_params)
+    new_product = ShopifyAPI::Product.new
+    new_product.title = "Burton Custom Freestlye 151"
+    new_product.product_type = "Snowboard"
+    new_product.vendor = "Burton"
+    new_product.save
 
     #@product = ShopifyAPI::Product.create(product_params)
 
