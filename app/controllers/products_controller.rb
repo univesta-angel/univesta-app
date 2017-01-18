@@ -25,11 +25,11 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.create(title: params[:title],
-                          body_html: params[:body_html],
-                          images: params[:images],
-                          product_type: params[:product_type],
-                          tags: params[:tags],
-                          vendor: params[:vendor])
+                              body_html: params[:body_html],
+                              images: params[:images],
+                              product_type: params[:product_type],
+                              tags: params[:tags],
+                              vendor: params[:vendor])
 
     respond_to do |format|
       if @product.save
@@ -50,12 +50,11 @@ class ProductsController < ApplicationController
                               tags: params[:tags],
                               vendor: params[:vendor])
 
-    @product = ShopifyAPI::Product.create(product_params)
+    #@product = ShopifyAPI::Product.create(product_params)
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
+        format.json { render json: 201 }
       else
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
