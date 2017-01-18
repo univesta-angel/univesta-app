@@ -42,6 +42,27 @@ class ProductsController < ApplicationController
     end
   end
 
+  def push
+    @product = ShopifyAPI::Product.create(title: params[:title],
+                              body_html: params[:body_html],
+                              images: params[:images],
+                              product_type: params[:product_type],
+                              tags: params[:tags],
+                              vendor: params[:vendor])
+
+    @product = ShopifyAPI::Product.create(product_params)
+
+    respond_to do |format|
+      if @product.save
+        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        format.json { render :show, status: :created, location: @product }
+      else
+        format.html { render :new }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
