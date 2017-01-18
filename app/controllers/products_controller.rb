@@ -49,9 +49,10 @@ class ProductsController < ApplicationController
     #@product = Product.find(product_params)
     products = Product.all
     products.each do |p|
-    new_product = ShopifyAPI::Product.create(title: "Sample Product", vendor: "ABC Vendor", body_html: "This is a description.")
-    #@product = ShopifyAPI::Product.create(product_params)
+      new_product = ShopifyAPI::Product.create(title: "Sample Product", vendor: "ABC Vendor", body_html: "This is a description.")
+      #@product = ShopifyAPI::Product.create(product_params)
     end
+
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully pushed to store.' }
