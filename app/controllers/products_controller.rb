@@ -48,23 +48,13 @@ class ProductsController < ApplicationController
 
     #@product = Product.find(product_params)
     #@product = ShopifyAPI::Product.create(product_params)
-    #new_product = ShopifyAPI::Product.new
-    #new_product.title = "Test Product"
-    #new_product.product_type = "Sample"
-    #new_product.vendor = "Sample"
-    #new_product.body_html = "Sample"
-    #new_product.save
+    new_product = ShopifyAPI::Product.new
+    new_product.title = "Test Product"
+    new_product.product_type = "Sample"
+    new_product.vendor = "Sample"
+    new_product.body_html = "Sample"
+    new_product.save
     #new_product = ShopifyAPI::Product.create({ :body_html => "Test description", :title => "Test Product" })
-    new_product = ShopifyAPI::Product.create(
-      {
-        "product": {
-          "title": "Burton Custom Freestyle 151",
-          "body_html": "<strong>Good snowboard!<\/strong>",
-          "vendor": "Burton",
-          "product_type": "Snowboard"
-        }
-      }
-    )
 
     respond_to do |format|
       if @product.save
