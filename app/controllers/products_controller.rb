@@ -5,7 +5,9 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
+    ShopifyAPI::Base.activate_session(session[:shopify])
     @products = Product.all
+
   end
 
   # GET /products/1
@@ -44,14 +46,16 @@ class ProductsController < ApplicationController
   end
 
   def push
+
     @product = Product.find(product_params)
-    new_product = ShopifyAPI::Product.new
-    new_product.title = @product.title
-    new_product.body_html = @product.body_html
-    new_product.product_type = @product.product_type
-    new_product.vendor = @product.vendor
-    new_product.tags = @product.tags
+    new_product = ShopifyAPI::Product.new(
+    :title => @product.title
+    :body_html => @product.body_html
+    :product_type => @product.product_type
+    :vendor => @product.vendor
+    :tags => @product.tags)
     new_product.save
+
 
     #@product = ShopifyAPI::Product.create(product_params)
 
