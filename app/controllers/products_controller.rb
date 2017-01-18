@@ -43,12 +43,7 @@ class ProductsController < ApplicationController
   end
 
   def push
-    @product = ShopifyAPI::Product.new(title: params[:title],
-                              body_html: params[:body_html],
-                              images: params[:images],
-                              product_type: params[:product_type],
-                              tags: params[:tags],
-                              vendor: params[:vendor])
+    @product = ShopifyAPI::Product.new(product_params)
 
     #@product = ShopifyAPI::Product.create(product_params)
 
