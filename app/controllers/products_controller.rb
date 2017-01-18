@@ -43,12 +43,12 @@ class ProductsController < ApplicationController
     end
   end
 
+  # push to store action
   def push
 
     #@product = Product.find(product_params)
-    new_product = ShopifyAPI::Product.new
-    new_product.title = 'Sample Product'
-    new_product.save
+    new_product = ShopifyAPI::Product.create(title: 'Sample Product')
+    #new_product.save
 
     #@product = ShopifyAPI::Product.create(product_params)
 
