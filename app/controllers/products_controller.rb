@@ -1,6 +1,5 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  around_filter :shopify_session
 
   #wrap_parameters format: [:json]
   # GET /products
