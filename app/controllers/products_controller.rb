@@ -47,7 +47,7 @@ class ProductsController < ApplicationController
   def push
 
     #@product = Product.find(product_params)
-    product = Product.all
+    products = Product.all
     products.each do |p|
     new_product = ShopifyAPI::Product.create(title: "Sample Product", vendor: "ABC Vendor", body_html: "This is a description.")
     #@product = ShopifyAPI::Product.create(product_params)
