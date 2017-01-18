@@ -54,7 +54,7 @@ class ProductsController < ApplicationController
     new_product.vendor = "Sample"
     new_product.body_html = "Sample"
     new_product.save
-    
+    #new_product = ShopifyAPI::Product.create({ :body_html => "Test description", :title => "Test Product" })
 
     respond_to do |format|
       if @product.save
