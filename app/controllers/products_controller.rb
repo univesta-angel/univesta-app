@@ -52,7 +52,7 @@ class ProductsController < ApplicationController
     ShopifyAPI::Base.activate_session(session)
     #@product = Product.find(product_params)
     #@product = ShopifyAPI::Product.create(product_params)
-    new_product = ShopifyAPI::Product.create("title": "Sample Product")
+    ShopifyAPI::Product.create("title": "Sample Product")
     #new_product = ShopifyAPI::Product.create({ :body_html => "Test description", :title => "Test Product" })
 
     respond_to do |format|
