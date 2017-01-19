@@ -47,9 +47,8 @@ class ProductsController < ApplicationController
   def push
     shop_url = "https://4d60f4fb9986af453d74b9bee9369fd1:000a1b69647c053726bbdd82b103a83d@gels-store.myshopify.com/admin/"
     ShopifyAPI::Base.site = shop_url
-    token = params[:access_token]
+    token = session.request_token(params[:access_token])
     session = ShopifyAPI::Session.new("gels-store.myshopify.com", token)
-    session.valid?
     ShopifyAPI::Base.activate_session(session)
     #@product = Product.find(product_params)
     #@product = ShopifyAPI::Product.create(product_params)

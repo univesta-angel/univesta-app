@@ -15,7 +15,6 @@ gem 'delayed_job_active_record'
 gem 'httparty'
 
 gem 'shopify_api'
-
 gem 'shopify_app'
 gem 'activeresource', github: 'rails/activeresource'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
