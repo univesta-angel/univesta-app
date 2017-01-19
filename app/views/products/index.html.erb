@@ -9,43 +9,28 @@
 
     alert('asdargar4g');
 
-$(document).ready(function() {
-
-  $('.btn.btn-small').click(function(){
-      
-      var x;
-
-      if (window.confirm("defaultText") == true) {
-          x = "You pressed OK!";
-
-          data = {
+function callAjax() {
+    data = {
             title: "Test Product",
             body_html: "Sample",
             product_type: "Sample",
             tags: "import",
             vendor: "Sample"
           };
-
-      $.ajax({
-          type: "POST",
-          url: "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin/products.json",
-          dataType: "json",
-          data: data,
-          success: function() {
-            alert('Success!!!');
-          },
-          error: function(data) {
-            alert('ew error. check logs.');
-          }
-      })
-        
+    $.ajax({
+        type: "POST",
+        //url: "https://shopifyapp-sample.herokuapp.com/create.json",
+        url: "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin/products.json",
+        dataType: "json",
+        //contentType: "application/json",
+        data: data,
+        success: function() {
+         //   setTimeout(callAjax, my_delay);
+            alert("SUCCESS!");
     }
-
-    alert(x);
-
   });
+}
 
-});
   </script>
 <% end %>
 <p id="notice"><%= notice %></p>
@@ -79,7 +64,7 @@ $(document).ready(function() {
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= button_to "Push to Store", {class: 'btn btn-small'} %>
+        <td><%= button_to "Push to Store", {class: 'btn btn-small'}, "javascript:pushToStore()" %>
       </tr>
     <% end %>
   </tbody>
