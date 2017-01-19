@@ -21,12 +21,14 @@
         if (window.confirm("defaultText") == true) {
             x = "You pressed OK!";
 
-          data = {
-            title: "Test Product",
-            body_html: "Sample",
-            product_type: "Sample",
-            tags: "import",
-            vendor: "Sample"
+          data = {  
+            "product": {
+              "title": "Test Product",
+              "body_html": "sample",
+              "vendor": "sample",
+              "product_type": "sample",
+              "tags": "Import",
+            }
           };
 
           $.ajax({
