@@ -45,9 +45,6 @@ class ProductsController < ApplicationController
 
   # push to store action
   def push
-    session = ShopifyAPI::Session.new("https://gels-store.myshopify.com", 'f8db93e03dfc3b9d3cef89f29ffcdfce-1484785404')
-    ShopifyAPI::Base.activate_session(session)
-    shop = ShopifyAPI::Shop.current
     #@product = Product.find(product_params)
     #@product = ShopifyAPI::Product.create(product_params)
     new_product = ShopifyAPI::Product.new
