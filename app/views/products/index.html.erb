@@ -6,9 +6,12 @@
         icon: "<%= asset_path('favicon.ico') %>"
       });
     });
+    alert('aaa');
   </script>
 <% end %>
 <p id="notice"><%= notice %></p>
+
+<body>
 
 <h1>Products</h1>
 
@@ -46,3 +49,9 @@
 <br>
 
 <%= link_to 'New Product', new_product_path %>
+
+<%= javascript_tag defer: 'defer' do -%>
+  alert('All is good')
+<% end -%>
+
+</body>
