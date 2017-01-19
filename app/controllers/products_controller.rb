@@ -45,19 +45,17 @@ class ProductsController < ApplicationController
 
   # push to store action
   def push
-    shop_url = "https://#{API_KEY}:#{PASSWORD}@SHOP_NAME.myshopify.com/admin/products.json"
-    ShopifyAPI::Base.site = shop_url
-
+    session = ShopifyAPI::Session.new("https://gels-store.myshopify.com", 'f8db93e03dfc3b9d3cef89f29ffcdfce-1484785404')
+    ShopifyAPI::Base.activate_session(session)
+    shop = ShopifyAPI::Shop.current
     #@product = Product.find(product_params)
     #@product = ShopifyAPI::Product.create(product_params)
-    product = ShopifyAPI::Product.new(
-      :title => 'title',
-      :product_type => 'product_type',
-      :body_html => 'body_html',
-      :vendor => 'vendor',
-      :price => "123.45"
-    )
-    product.save
+    new_product = ShopifyAPI::Product.new
+    new_product.title = "Test Product"
+    new_product.product_type = "Sample"
+    new_product.vendor = "Sample"
+    new_product.body_html = "Sample"
+    new_product.save
     #new_product = ShopifyAPI::Product.create({ :body_html => "Test description", :title => "Test Product" })
 
     respond_to do |format|
