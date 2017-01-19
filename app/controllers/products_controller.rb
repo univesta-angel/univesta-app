@@ -45,14 +45,16 @@ class ProductsController < ApplicationController
 
   # push to store action
   def push
+    shop_url = "https://4d60f4fb9986af453d74b9bee9369fd1:000a1b69647c053726bbdd82b103a83d@gels-store.myshopify.com/admin"
+    ShopifyAPI::Base.site = shop_url
+    ShopifyAPI::Session.setup({:api_key => "345caeafea49d80e0f40194dd9a721c5", :secret => "43f67e64209c57cb6ba9116a9a79be9d"})
+    session = ShopifyAPI::Session.new("gels-store.myshopify.com")
+    scope = ["write_products"]
+    permission_url = session.create_permission_url(scope, "https://shopifyapp-sample.herokuapp.com/auth/shopify/callback")
+    ShopifyAPI::Base.activate_session(session)
     #@product = Product.find(product_params)
     #@product = ShopifyAPI::Product.create(product_params)
-    new_product = ShopifyAPI::Product.new
-    new_product.title = "Test Product"
-    new_product.product_type = "Sample"
-    new_product.vendor = "Sample"
-    new_product.body_html = "Sample"
-    new_product.save
+    new_product = ShopifyAPI::Product.create("title": "Sample Product")
     #new_product = ShopifyAPI::Product.create({ :body_html => "Test description", :title => "Test Product" })
 
     respond_to do |format|
