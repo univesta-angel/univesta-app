@@ -45,6 +45,8 @@ class ProductsController < ApplicationController
 
   # push to store action
   def push
+    shop_url = "https://#{API_KEY}:#{PASSWORD}@SHOP_NAME.myshopify.com/admin/products.json"
+    ShopifyAPI::Base.site = shop_url
 
     #@product = Product.find(product_params)
     #@product = ShopifyAPI::Product.create(product_params)
