@@ -8,17 +8,16 @@
       });
     });
 
-    $(document).ready(function() {
-      $( ".btn.btn-small" ).click(function(event){
-        alert('abc');
-      });
-    }
   </script>
 
 <% end %>
 <head>
   <script type="text/javascript">
-
+     $(document).ready(function() {
+      $( ".btn.btn-small" ).click(function(){
+        alert('abc');
+      });
+    }
   </script>
 </head>
 <p id="notice"><%= notice %></p>
