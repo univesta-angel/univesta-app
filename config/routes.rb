@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :products 
-  root :to => 'products#index'
+  root :to => 'home#index'
   match 'create' => 'products#create', via: :post
   post 'push' => 'products#push', as: :push
   #post 'products#push'
