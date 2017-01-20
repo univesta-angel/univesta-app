@@ -33,7 +33,8 @@
       $.ajax({
         type: "POST",
         //url: "https://gels-store.myshopify.com/admin/products.json",
-        url: "https://#{@shop_session.url}/admin/products.json",
+        //url: "https://#{@shop_session.url}/admin/products.json",
+        url: "https://#{KEY}:#{PASS}@gels-store.myshopify.com/admin" ,
         //url: "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin/products.json",
         dataType: "json",
         //headers:{ contentType: "application/json" },
