@@ -23,11 +23,10 @@
 
       data = {
         "product": {
-          "title": "Test Product 3",
-          "body_html": "Sample",
-          "product_type": "Sample",
-          "tags": "import",
-          "vendor": "Sample"
+          "title": "Burton Custom Freestyle 151",
+          "body_html": "<strong>Good snowboard!<\/strong>",
+          "vendor": "Burton",
+          "product_type": "Snowboard"
         }
       };
 
@@ -44,6 +43,7 @@
         },
         error: function(data) {
           alert('ew error. check logs.');
+          console.log(data);
         }
       });
 
