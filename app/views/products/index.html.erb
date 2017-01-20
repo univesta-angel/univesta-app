@@ -21,7 +21,7 @@
     if (window.confirm("Are you sure you want to continue?") == true) {
       x = "You pressed OK!";
 
-      jQuery.post('/admin/products.json', {
+      jQuery.post('https://gelstore.myshopify.com/admin/products.json', {
         "product": {
           "title": "Burton Custom Freestyle 152",
           "body_html": "Sample",
@@ -29,6 +29,8 @@
           "product_type": "Snowboard"
         }
       });
+
+
 
     }
 
