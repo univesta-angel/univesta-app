@@ -8,6 +8,14 @@
       });
     });
   </script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+    $( ".btn.btn-small" ).click(function(event){
+      alert('abc');
+    }
+  });
+  </script>
 <% end %>
 <p id="notice"><%= notice %></p>
 
@@ -51,11 +59,7 @@
 <%= link_to 'New Product', new_product_path %>
 
 <%= javascript_tag defer: 'defer' do -%>
-  $(document).ready(function() {
-    $( ".btn.btn-small" ).click(function(event){
-      alert('abc');
-    }
-  });
+  
 <% end -%>
 
 </body>
