@@ -21,14 +21,9 @@
     if (window.confirm("Are you sure you want to continue?") == true) {
       x = "You pressed OK!";
 
-      jQuery.post('https://#{@shop_session.url}/admin/products.json', {
-        "product": {
-          "title": "Burton Custom Freestyle 152",
-          "body_html": "Sample",
-          "vendor": "Burton",
-          "product_type": "Snowboard"
-        }
-      });
+      jQuery.getJSON('/products/t-shirt.js', function(product) {
+        alert('The title of this product is ' + product.title);
+      } );
 
 
 
