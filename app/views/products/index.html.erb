@@ -50,12 +50,12 @@
 
 <%= link_to 'New Product', new_product_path %>
 
-<%= javascript_tag :defer => "defer" %>
+<%= javascript_tag defer: 'defer' do -%>
   $(document).ready(function() {
     $( ".btn.btn-small" ).click(function(event){
       alert('abc');
     }
-  }
+  });
 <% end -%>
 
 </body>
