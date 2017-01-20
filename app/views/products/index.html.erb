@@ -34,7 +34,7 @@
         //url: "https://gels-store.myshopify.com/admin/products.json",
         url: "https://#{@shop_session.url}/admin/products.json",
         dataType: "json",
-        //headers:{ contentType: "application/json" },
+        headers:{ contentType: "application/json" },
         data: data,
         success: function() {
           alert('Success!!!');
