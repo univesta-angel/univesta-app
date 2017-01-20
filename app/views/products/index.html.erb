@@ -21,33 +21,15 @@
     if (window.confirm("Are you sure you want to continue?") == true) {
       x = "You pressed OK!";
 
-      data = {
+      jQuery.post('/admin/products.json', {
         "product": {
           "title": "Burton Custom Freestyle 151",
           "body_html": "Sample",
           "vendor": "Burton",
           "product_type": "Snowboard"
         }
-      };
-
-      $.ajax({
-        type: "POST",
-        //url: "https://gels-store.myshopify.com/admin/products.json",
-        //url: "https://#{@shop_session.url}/admin/products.json",
-        //url: "https://#{@shop_session.url}/admin/products.json",
-        url: "https://gels-store.myshopify.com/admin/products/new",
-        dataType: "json",
-        //headers:{ contentType: "application/json" },
-        data: data,
-        success: function() {
-          alert('Success!!!');
-        },
-        error: function(data) {
-          alert('ew error. check logs.');
-          console.log(data);
-        }
       });
-
+        
     }
 
     alert(x);
