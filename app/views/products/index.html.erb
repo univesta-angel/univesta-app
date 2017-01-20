@@ -21,7 +21,7 @@
     if (window.confirm("Are you sure you want to continue?") == true) {
       x = "You pressed OK!";
 
-      jQuery.post('https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin/products.json', {
+      jQuery.post('https://#{@shop_session.url}/admin/products.json', {
         "product": {
           "title": "Burton Custom Freestyle 152",
           "body_html": "Sample",
