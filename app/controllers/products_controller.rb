@@ -49,7 +49,11 @@ class ProductsController < ApplicationController
     ShopifyAPI::Base.site = shop_url
     #@product = Product.find(product_params)
     #@product = ShopifyAPI::Product.create(product_params)
-    new_product = ShopifyAPI::Product.create(title: "Sample Product", body_html: "Sample", product_type: "Sample", tags: "Sample", vendor: "Sample")
+    new_product = ShopifyAPI::Product.new
+    new_product.title = "Burton Custom Freestlye 151"
+    new_product.product_type = "Snowboard"
+    new_product.vendor = "Burton"
+    new_product.save
     #new_product = ShopifyAPI::Product.create({ :body_html => "Test description", :title => "Test Product" })
 
     respond_to do |format|
