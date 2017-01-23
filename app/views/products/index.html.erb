@@ -36,11 +36,13 @@
   <tbody>
     <% @products.each do |product| %>
      <div class="container">
+     <div class="input-group">
       <tr>
       <td>
         <%= image_tag(product.images, :alt => "picture") %>
         <%= text_field_tag :_title, product.title, {class: 'input-xxlarge'} %></td>
       </tr>
+      </div>
      </div>
     <% end %>
   </tbody>
