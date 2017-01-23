@@ -51,11 +51,17 @@ class ProductsController < ApplicationController
     #@product = Product.find(product_params)
     #@product = ShopifyAPI::Product.create(product_params)
 
+    images = []
+    image = {}
+    image["src"] = params[:_img]
+
+    images << image
+
     new_product = ShopifyAPI::Product.new
     new_product.title = params[:_title]
     new_product.body_html = params[:_body]
     new_product.product_type = params[:_type]
-    new_product.images = params[:_img]
+    new_product.images = images
     new_product.vendor = params[:_vendor]
     new_product.save
 
