@@ -34,16 +34,16 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td><%= product.title %></td>
-        <td><%= product.body_html %></td>
-        <td><%= product.images %></td>
-        <td><%= product.product_type %></td>
-        <td><%= product.tags %></td>
-        <td><%= product.vendor %></td>
+        <td><%= product.title :title %></td>
+        <td><%= product.body_html :body_html %></td>
+        <td><%= product.images :images %></td>
+        <td><%= product.product_type :product_type %></td>
+        <td><%= product.tags :tags %></td>
+        <td><%= product.vendor :vendor %></td>
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= button_to "Push to Store", push_path(:pt => product.title, :pbh => product.body_html, :ppt => product.product_type, :pv => product.vendor), {class: 'btn btn-small'} %>
+        <td><%= button_to "Push to Store", push_path(:title, :body_html, :product_type, :tags, :vendor), {class: 'btn btn-small'} %>
       </tr>
     <% end %>
   </tbody>
