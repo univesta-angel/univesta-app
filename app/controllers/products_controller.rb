@@ -30,7 +30,8 @@ class ProductsController < ApplicationController
                               body_html: params[:body_html],
                               product_type: params[:product_type],
                               images: params[:images],
-                              vendor: params[:vendor])
+                              vendor: params[:vendor],
+                              price: params[:price])
 
     respond_to do |format|
       if @product.save
