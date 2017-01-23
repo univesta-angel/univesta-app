@@ -57,7 +57,12 @@ class ProductsController < ApplicationController
 
     images << image
 
-    variant = ShopifyAPI::Variant.new(:price => "70.00", :option1 => "Red")
+    variant = ShopifyAPI::Variant.new(
+      :option1              => "Large",
+      :price                => 12.95,
+      :inventory_management => 'shopify',
+      :inventory_quantity   => 10
+    )
 
     new_product = ShopifyAPI::Product.new
     new_product.title = params[:_title]
