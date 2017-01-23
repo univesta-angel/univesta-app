@@ -64,12 +64,12 @@ class ProductsController < ApplicationController
     new_product.product_type = params[:_type]
     new_product.vendor = params[:_vendor]
     new_product.images = images
-    new_product.variants = ShopifyAPI::Variant.new(
+    new_product.variants = [ShopifyAPI::Variant.new(
       :option1              => "Large",
       :price                => 12.95,
       :inventory_management => 'shopify',
       :inventory_quantity   => 10
-    )
+    )]
     new_product.save
 
     #new_product = ShopifyAPI::Product.create({ :body_html => "Test description", :title => "Test Product" })
