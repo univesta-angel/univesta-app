@@ -45,13 +45,12 @@ class ProductsController < ApplicationController
     shop = ShopifyAPI::Shop.current
     #@product = Product.find(product_params)
     #@product = ShopifyAPI::Product.create(product_params)
-    product = ShopifyAPI::Product.create(title: "Test product 103")
+    product = ShopifyAPI::Product.create(title: "Test product 104")
     #new_product = ShopifyAPI::Product.create({ :body_html => "Test description", :title => "Test Product" })
-
+    expires_in(60.seconds, public: true)
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully pushed to store.' }
-        format.json { render :show, status: :created, location: @product }
+        format.json { render json: 201 }
       else
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
