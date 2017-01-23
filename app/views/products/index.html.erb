@@ -32,7 +32,7 @@
 
         jQuery.ajax({
           dataType: "json",
-          url: '/cart.js',
+          url: 'https://gels-store.myshopify.com/admin/products.json',
           cache: false,
           data: data,
           success: function (textStatus) {
@@ -41,6 +41,7 @@
           error: function(data) {
             // $('.failure').fadeIn(300).delay(1500).fadeOut(400);
             alert('ew error. check logs.');
+            console.logs(data);
           }
         });  
     }
