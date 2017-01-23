@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_filter :set_content_type
+  after_filter :set_content_type
 
   #wrap_parameters format: [:json]
   # GET /products
@@ -60,8 +60,8 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.json { render json: 201 }
         redirect_to :back, notice: "Product was pushed to the store."
+        format.json { render json: 201 }
       else
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
