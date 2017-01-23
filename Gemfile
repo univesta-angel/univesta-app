@@ -14,6 +14,9 @@ gem 'jsonapi-resources'
 gem 'delayed_job_active_record'
 gem 'httparty'
 
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
+
 gem 'shopify_api'
 gem 'shopify_app'
 gem 'activeresource', github: 'rails/activeresource'
