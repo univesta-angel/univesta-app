@@ -56,7 +56,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.json { render nothing: true }
+        format.json {render inline: "location.reload();" }
       else
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
