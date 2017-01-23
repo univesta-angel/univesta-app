@@ -30,17 +30,16 @@
           }
         };
 
-        jQuery.ajax({
+        $.ajax({
           type: "POST",
           dataType: "json",
-          url: "ttps://gels-store.myshopify.com/admin/products.json",
+          url: "/admin/products.json",
           cache: false,
           data: data,
           success: function (textStatus) {
             alert('success!');
           },
           error: function(data) {
-            // $('.failure').fadeIn(300).delay(1500).fadeOut(400);
             alert('ew error. check logs.');
             console.log(data);
           }
