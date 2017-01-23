@@ -58,6 +58,7 @@ class ProductsController < ApplicationController
     images << image
 
     variant = ShopifyAPI::Variant.new(
+      :option1 => 'test'
       :price                => 69.99,
       :inventory_management => 'shopify',
       :inventory_quantity   => 69, 
