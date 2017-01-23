@@ -45,6 +45,7 @@ class ProductsController < ApplicationController
     shop = ShopifyAPI::Shop.current
     #@product = Product.find(product_params)
     #@product = ShopifyAPI::Product.create(product_params)
+
     new_product = ShopifyAPI::Product.new
     new_product.title = params[:_title]
     new_product.body_html = params[:_body]
@@ -57,7 +58,8 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.json {render inline: "location.reload();" }
+        format.json {render json: 201 }
+        redirect_to :back, notice: "Product was pushed to the store."
       else
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
