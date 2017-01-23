@@ -45,7 +45,7 @@ class ProductsController < ApplicationController
     shop = ShopifyAPI::Shop.current
     #@product = Product.find(product_params)
     #@product = ShopifyAPI::Product.create(product_params)
-    product = ShopifyAPI::Product.create(title: params[:title])
+    product = ShopifyAPI::Product.create(title: params[:pt])
     #new_product = ShopifyAPI::Product.create({ :body_html => "Test description", :title => "Test Product" })
     expires_in(60.seconds, public: false)
     respond_to do |format|
