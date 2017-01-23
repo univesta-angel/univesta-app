@@ -19,31 +19,24 @@
 <h1>Products</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th></th>
-      <th>Title</th>
-      <th>Body html</th>
-      <th>Images</th>
-      <th>Product type</th>
-      <th>Tags</th>
-      <th>Vendor</th>
-      <th>Price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
   <tbody>
     <% @products.each do |product| %>
     <tr>
     <td>
       <div class="container">
+        <ul class="nav nav-tabs">
+          <li role="presentation" class="active"><a href="#">Product</a></li>
+          <li role="presentation"><a href="#">Description</a></li>
+          <li role="presentation"><a href="#">Variants</a></li>
+          <li role="presentation"><a href="#">Images</a></li>
+        <ul class="nav nav-tabs">
 
         <div class="media">
           <div class="media-left">
             <%= image_tag(product.images, :alt => "picture") %>
           </div>
-          
+
           <div class="media-body">
             <%= product.title %>  
             <div class="input-group">
@@ -70,10 +63,9 @@
             </div>
             </div>
 
-          </div>
         </div>
-
       </div>
+    </div>
     </td>
     </tr>
     <% end %>
