@@ -38,20 +38,20 @@
     <tr>
     <td>
       <div class="container">
-      <div class="input-group">
 
         <div class="media">
           <div class="media-left">
             <%= image_tag(product.images, :alt => "picture") %>
           </div>
           <div class="media-body">
-            <%= product.title %>
-            <span class="input-group-addon">Change Name</span>
-            <%= text_field_tag :_title, product.title, {class: 'form-control'} %>
+            <%= product.title %>  
+            <div class="input-group">
+              <span class="input-group-addon">Change Name</span>
+              <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+            </div>
           </div>
         </div>
 
-      </div>
       </div>
     </td>
     </tr>
