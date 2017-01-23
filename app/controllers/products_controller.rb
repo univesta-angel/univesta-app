@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  after_filter :set_content_type
+  wrap_parameters format: [:json]
 
   #wrap_parameters format: [:json]
   # GET /products
@@ -54,6 +54,7 @@ class ProductsController < ApplicationController
     #new_product.images = "aHR0cHM6Ly9hZTAxLmFsaWNkbi5jb20va2YvSFRCMUJQTm1QWFhYWFhjZWFYWFhxNnhYRlhYWHkvR2FtaXNzLVMtNVhMLUVsZWdhbnQtV29tZW4tUGx1cy1zaXplLURyZXNzLVN1bW1lci1TbGVldmVsZXNzLUZsb3JhbC1QcmludC1DYXN1YWwtUGFydHktU2hlYXRoLUJvZHljb24uanBnXzIyMHgyMjAuanBn"
     new_product.vendor = params[:_vendor]
     new_product.save
+
     #new_product = ShopifyAPI::Product.create({ :body_html => "Test description", :title => "Test Product" })
     
     expires_in(60.seconds, public: false)
@@ -91,10 +92,6 @@ class ProductsController < ApplicationController
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
     end
-  end
-
-  def set_content_type
-    self.content_type = "application/json"
   end
 
   private
