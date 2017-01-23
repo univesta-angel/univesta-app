@@ -50,7 +50,7 @@ class ProductsController < ApplicationController
     new_product.title = params[:_title]
     new_product.body_html = params[:_body]
     new_product.product_type = params[:_type]
-    new_product.images = params[:_img]
+    new_product.images = "aHR0cHM6Ly9hZTAxLmFsaWNkbi5jb20va2YvSFRCMUJQTm1QWFhYWFhjZWFYWFhxNnhYRlhYWHkvR2FtaXNzLVMtNVhMLUVsZWdhbnQtV29tZW4tUGx1cy1zaXplLURyZXNzLVN1bW1lci1TbGVldmVsZXNzLUZsb3JhbC1QcmludC1DYXN1YWwtUGFydHktU2hlYXRoLUJvZHljb24uanBnXzIyMHgyMjAuanBn"
     new_product.vendor = params[:_vendor]
     new_product.save
     #new_product = ShopifyAPI::Product.create({ :body_html => "Test description", :title => "Test Product" })
