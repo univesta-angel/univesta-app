@@ -36,9 +36,11 @@
           </div>
 
           <div class="media-body">
-            <%= button_to "Push to Store", push_path(:_title => product.title, :_body => product.body_html, :_type => product.product_type, :_vendor => product.vendor, :_img => product.images, :_price => product.price), {class: 'btn btn-default pull-right'} %>
-            <%= product.title %>  
-            <%= product.price %>  
+            <div class="container-flex flex-right">
+              <%= button_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%= button_to "Push to Store", push_path(:_title => product.title, :_body => product.body_html, :_type => product.product_type, :_vendor => product.vendor, :_img => product.images, :_price => product.price), {class: 'btn btn-default pull-right'} %>
+            </div>
+            <%= product.title %>
             <div class="input-group">
               <span class="input-group-addon">Change Name:</span>
               <input type="text" class="form-control" aria-describedby="basic-addon1">
