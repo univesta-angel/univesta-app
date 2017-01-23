@@ -11,51 +11,7 @@
   </script>
 
 <% end %>
-<head>
-  <script type="text/javascript">
-  $(document).ready(function() {
 
-    $( ".btn.btn-small" ).click(function(){
-        
-      var x;
-      if (window.confirm("Are you sure you want to continue?") == true) {
-        x = "You pressed OK!";
-
-      data = {
-        "product": {
-          "title": 'Test Product 2',
-          "body_html": "Sample",
-          "product_type": "Sample",
-          "tags": "import",
-          "vendor": "Sample"
-        }
-      };
-
-      $.ajax({
-        type: "POST",
-        url: "/admin/products.json",
-        dataType: "json",
-        //headers:{ contentType: "application/json" },
-        data: data,
-        success: function() {
-          alert('Success!!!');
-        },
-        error: function(data) {
-          alert('ew error. check logs.');
-          console.log(data);
-        }
-      });
-
-    }
-
-    alert(x);
-    return false;
-
-    });
-  });
-  </script>
-
-</head>
 <p id="notice"><%= notice %></p>
 
 <body>
@@ -87,7 +43,7 @@
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= button_tag "Push to Store", {class: 'btn btn-small'} %>
+        <td><%= button_tag "Push to Store", push_path, {class: 'btn btn-small'} %>
       </tr>
     <% end %>
   </tbody>
