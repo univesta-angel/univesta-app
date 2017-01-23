@@ -57,7 +57,6 @@ class ProductsController < ApplicationController
 
     images << image
 
-
     new_product = ShopifyAPI::Product.new
     new_product.title = params[:_title]
     new_product.body_html = params[:_body]
