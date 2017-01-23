@@ -37,20 +37,21 @@
     <% @products.each do |product| %>
     <tr>
     <td>
-     <div class="container">
-     <div class="input-group">
+      <div class="container">
+      <div class="input-group">
 
-      <div class="media">
-        <div class="media-left">
-          <%= image_tag(product.images, :alt => "picture") %>
+        <div class="media">
+          <div class="media-left">
+            <%= image_tag(product.images, :alt => "picture") %>
+          </div>
+          <div class="media-body">
+            <%= product.title %>
+            <%= text_field_tag :_title, product.title, {class: 'input-xxlarge'} %>
+          </div>
         </div>
-        <div class="media-body">
-          <%= text_field_tag :_title, product.title, {class: 'input-xxlarge'} %>
-        </div>
+
       </div>
-
-    </div>
-    </div>
+      </div>
     </td>
     </tr>
     <% end %>
