@@ -17,16 +17,32 @@
 
     $( ".btn.btn-small" ).click(function(){
         
-    var x;
-    if (window.confirm("Are you sure you want to continue?") == true) {
-      x = "You pressed OK!";
+      var x;
+      if (window.confirm("Are you sure you want to continue?") == true) {
+        x = "You pressed OK!";
 
-      jQuery.getJSON('/products/t-shirt.js', function(product) {
-        alert('The title of this product is ' + product.title);
-      } );
+        data = {
+          "product":{
+            "title": "Test Product 101",
+            "body_html": "Sample",
+            "vendor": "Sample",
+            "product_type": "Sample"
+          }
+        };
 
-
-
+        jQuery.ajax({
+          dataType: "json",
+          url: '/cart.js',
+          cache: false,
+          data: data,
+          success: function (textStatus) {
+            alert('success!');
+          },
+          error: function(data) {
+            // $('.failure').fadeIn(300).delay(1500).fadeOut(400);
+            alert('ew error. check logs.');
+          }
+        });  
     }
 
     alert(x);
