@@ -22,18 +22,17 @@
         x = "You pressed OK!";
 
         data = {
-          "product":{
-            "title": "Test Product 101",
-            "body_html": "Sample",
-            "vendor": "Sample",
-            "product_type": "Sample"
+          "product": {
+            "title": "test-product",
+            "body_html": "sample",
+            "vendor": "sample"
           }
         };
 
         $.ajax({
           type: "POST",
           dataType: "json",
-          url: "/admin/products.json",
+          url: "/products.json",
           cache: false,
           data: data,
           success: function (textStatus) {
