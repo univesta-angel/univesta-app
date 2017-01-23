@@ -48,6 +48,9 @@ class ProductsController < ApplicationController
     shop_url = "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin"
     ShopifyAPI::Base.site = shop_url
     shop = ShopifyAPI::Shop.current
+    #@product = Product.find(product_params)
+    #@product = ShopifyAPI::Product.create(product_params)
+
     images = []
     image = {}
     image["src"] = params[:_img]
@@ -55,10 +58,9 @@ class ProductsController < ApplicationController
     images << image
 
     variant = ShopifyAPI::Variant.new(
-      :option1              => "test"
-      :price                => "70.99",
-      :inventory_management => "shopify",
-      :inventory_quantity   => 50, 
+      :price                => 69.99,
+      :inventory_management => 'shopify',
+      :inventory_quantity   => 69, 
       :sku => "MS_TEST"
     )
 
