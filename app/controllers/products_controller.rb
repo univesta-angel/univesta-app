@@ -5,8 +5,6 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    shop_url = "https://#{@shop_session.url}/admin/"
-    ShopifyAPI::Base.site = shop_url
     @products = Product.all
   end
 
@@ -42,6 +40,8 @@ class ProductsController < ApplicationController
 
   # push to store action
   def push
+    shop_url = "https://4d60f4fb9986af453d74b9bee9369fd1:000a1b69647c053726bbdd82b103a83d@gels-store.myshopify.com/admin"
+    ShopifyAPI::Base.site = shop_url
     #@product = Product.find(product_params)
     #@product = ShopifyAPI::Product.create(product_params)
     new_product = ShopifyAPI::Product.new

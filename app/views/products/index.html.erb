@@ -32,7 +32,7 @@
         $.ajax({
           type: "POST",
           dataType: "json",
-          url: "/products.json",
+          url: "https://#{@shop_session.url}/admin/products.json",
           cache: false,
           data: data,
           success: function (textStatus) {
