@@ -46,7 +46,8 @@
           </div>
           <div class="media-body">
             <%= product.title %>
-            <%= text_field_tag :_title, product.title, {class: 'input-xxlarge'} %>
+            <span class="input-group-addon">Change Name</span>
+            <%= text_field_tag :_title, product.title, {class: 'form-control'} %>
           </div>
         </div>
 
