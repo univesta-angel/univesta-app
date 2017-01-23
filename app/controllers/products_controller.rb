@@ -54,6 +54,7 @@ class ProductsController < ApplicationController
 
     #new_product = ShopifyAPI::Product.create({ :body_html => "Test description", :title => "Test Product" })
     expires_in(60.seconds, public: false)
+    
     respond_to do |format|
       if @product.save
         format.json { render json: 201 }
