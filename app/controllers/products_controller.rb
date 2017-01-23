@@ -45,7 +45,7 @@ class ProductsController < ApplicationController
     shop = ShopifyAPI::Shop.current
     #@product = Product.find(product_params)
     #@product = ShopifyAPI::Product.create(product_params)
-    product = Product.find([product_params])
+    product = Product.find(product_params)
     new_product = ShopifyAPI::Product.new
     new_product.title = product.title
     new_product.body_html = product.body_html
