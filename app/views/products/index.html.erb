@@ -23,33 +23,37 @@
     <tr>
     <td>
       <div class="container">
-        <ul class="nav nav-tabs">
-          <li role="presentation" class="active"><a href="#item">Products</a></li>
-          <li role="presentation"><a href="#">Variants</a></li>
-          <li role="presentation"><a href="#">Images</a></li>
-        </ul>
-
+        <div class="row">
+          <div class="col-lg-8">
+            <ul class="nav nav-tabs">
+              <li role="presentation" class="active"><a href="#item">Products</a></li>
+              <li role="presentation"><a href="#">Variants</a></li>
+              <li role="presentation"><a href="#">Images</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-8">
+            <div class="pull-right">
+              <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%= button_to "Push to Store", push_path(:_title => product.title, :_body => product.body_html, :_type => product.product_type, :_vendor => product.vendor, :_img => product.images, :_price => product.price), {class: 'btn btn-default pull-right'} %>
+            </div>
+          </div>
+        </div>
 
         <div class="media" id="item">
           <div class="media-left">
             <%= image_tag(product.images, :alt => "picture") %>
           </div>
-
           <div class="media-body">
-            <div>
-              <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
-              <%= button_to "Push to Store", push_path(:_title => product.title, :_body => product.body_html, :_type => product.product_type, :_vendor => product.vendor, :_img => product.images, :_price => product.price), {class: 'btn btn-default pull-right'} %>
-            </div>
             <div>
               <%= product.title %>
             </div>
             <div class="input-group">
               <span class="input-group-addon">Change Name:</span>
-              <input type="text" class="form-control" aria-describedby="basic-addon1">
+              <input type="text" class="form-control" aria-describedby="basic-addon1"><%= product.title %>
             </div>
             <div class="input-group input-group-sm">
               <span class="input-group-addon" id="sizing-addon3">Collections:</span>
-              <input type="text" class="form-control" placeholder="<%= product.title %>" aria-describedby="sizing-addon3">
+              <input type="text" class="form-control" placeholder="Choose Collections" aria-describedby="sizing-addon3">
             </div>
 
             <div class="row">
