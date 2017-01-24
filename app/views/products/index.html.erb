@@ -32,58 +32,81 @@
 
   <tbody>
     <% @products.each do |product| %>
-    <tr>
-    <td>
       <div class="container">
-      <div class="col-md-12">
-        <div class="row">
-          <div class="col-lg-8 col-sm-7">
-            <ul class="nav nav-tabs">
-              <li role="presentation" class="active"><a href="#item">Products</a></li>
-              <li role="presentation"><a href="#">Variants</a></li>
-              <li role="presentation"><a href="#">Images</a></li>
-            </ul>
-          </div>
-          <div class="col-lg-4 col-sm-5 align-right">
-            <div class="container-flex flex-right"><%= button_to "Push to Store", push_path(:_title => product.title, :_body => product.body_html, :_type => product.product_type, :_vendor => product.vendor, :_img => product.images, :_price => product.price), {class: 'btn btn-default margin-right'} %>
-            </div>
-          </div>
-        </div>
 
-        <div class="media" id="item">
-          <div class="media-left">
-            <%= image_tag(product.images, :alt => "picture") %>
-          </div>
-          <div class="media-body">
-            <div>
-              <%= product.title %>
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-lg-8 col-sm-7">
+              <ul class="nav nav-tabs">
+                <li role="presentation" class="active"><a href="#item">Products</a></li>
+                <li role="presentation"><a href="#variants">Variants</a></li>
+                <li role="presentation"><a href="#">Images</a></li>
+              </ul>
             </div>
-            <div class="input-group">
-              <span class="input-group-addon">Change Name:</span>
-              <input type="text" class="form-control" aria-describedby="basic-addon1" maxlength="255" value="<%= product.title %>">
-            </div>
-            <div class="input-group input-group-sm">
-              <span class="input-group-addon" id="sizing-addon3">Collections:</span>
-              <%= text_field_tag :_collections, "", class: 'form-control', placeholder: "Choose Collections" %>
-            </div>
-
-            <div class="row">
-              <div class="col-lg-6">
-                <div class="input-group input-group-sm">
-                  <span class="input-group-addon" id="sizing-addon3">Type:</span>
-                  <%= text_field_tag :_type, "", class: 'form-control', placeholder: "Choose Type" %>
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="input-group input-group-sm">
-                  <span class="input-group-addon" id="sizing-addon3">Tags:</span>
-                  <%= text_field_tag :_tags, "", class: 'form-control', placeholder: "Insert Tags Here" %>
-                </div>
+            <div class="col-lg-4 col-sm-5 align-right">
+              <div class="container-flex flex-right"><%= button_to "Push to Store", push_path(:_title => product.title, :_body => product.body_html, :_type => product.product_type, :_vendor => product.vendor, :_img => product.images, :_price => product.price), {class: 'btn btn-default margin-right'} %>
               </div>
             </div>
+          </div>
+
+          <div class="media" id="item">
+            <div class="media-left">
+              <%= image_tag(product.images, :alt => "picture") %>
+            </div>
+            <div class="media-body">
+              <div>
+                <b><%= product.title %></b>
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon">Change Name:</span>
+                <input type="text" class="form-control" aria-describedby="basic-addon1" maxlength="255" value="<%= product.title %>">
+              </div>
+              <div class="input-group input-group-sm">
+                <span class="input-group-addon" id="sizing-addon3">Collections:</span>
+                <%= text_field_tag :_collections, "", class: 'form-control', placeholder: "Choose Collections" %>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="input-group input-group-sm">
+                    <span class="input-group-addon" id="sizing-addon3">Type:</span>
+                    <%= text_field_tag :_type, "", class: 'form-control', placeholder: "Choose Type" %>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="input-group input-group-sm">
+                    <span class="input-group-addon" id="sizing-addon3">Tags:</span>
+                    <%= text_field_tag :_tags, "", class: 'form-control', placeholder: "Insert Tags Here" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="media" id="variants">
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>SKU</th>
+                  <th>Color</th>
+                  <th>Size</th>
+                  <th>Cost</th>
+                  <th>Price</th>
+                  <th>Compared At Price</th>
+                  <th>Inventory</th>
+                </tr>
+              </thead>
+              <tbody>
+                <div class="media-left">
+                  <%= image_tag(product.images, :alt => "img") %>
+                </div>
+              </tbody>
+            </table>
+          </div>
 
         </div>
-      </div>
+
       </div>
     </div>
     </td>
