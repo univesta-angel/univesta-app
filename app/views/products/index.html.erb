@@ -32,7 +32,7 @@
               <li role="presentation"><a href="#">Images</a></li>
             </ul>
           </div>
-          <div class="col-lg-4 col-sm-5 align-right">
+          <div class="col-lg-4 col-sm-5 align-right" style="margin-top:15px">
             <div class="container-flex flex-right">
               <div>
                 <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
@@ -85,11 +85,6 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Product', new_product_path %>
-
 
 </body>
 
