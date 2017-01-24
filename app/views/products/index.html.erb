@@ -41,8 +41,7 @@
             </ul>
           </div>
           <div class="col-lg-4 col-sm-5 align-right">
-            <div class="container-flex flex-right">
-              <%= button_to 'Remove', product, method: :delete, data: { confirm: 'Are you sure?' } %><%= button_to "Push to Store", push_path(:_title => product.title, :_body => product.body_html, :_type => product.product_type, :_vendor => product.vendor, :_img => product.images, :_price => product.price), {class: 'btn btn-default margin-right'} %>
+            <div class="container-flex flex-right"><%= button_to "Push to Store", push_path(:_title => product.title, :_body => product.body_html, :_type => product.product_type, :_vendor => product.vendor, :_img => product.images, :_price => product.price), {class: 'btn btn-default margin-right'} %>
               
             </div>
           </div>
@@ -62,14 +61,14 @@
             </div>
             <div class="input-group input-group-sm">
               <span class="input-group-addon" id="sizing-addon3">Collections:</span>
-              <%= text_field_tag :_tags, "", class: 'form-control', placeholder: "Choose Collections" %>
+              <%= text_field_tag :_collections, "", class: 'form-control', placeholder: "Choose Collections" %>
             </div>
 
             <div class="row">
               <div class="col-lg-6">
                 <div class="input-group input-group-sm">
                   <span class="input-group-addon" id="sizing-addon3">Type:</span>
-                  <%= text_field_tag :_tags, "", class: 'form-control', placeholder: "Choose Type" %>
+                  <%= text_field_tag :_type, "", class: 'form-control', placeholder: "Choose Type" %>
                 </div>
               </div>
               <div class="col-lg-6">
