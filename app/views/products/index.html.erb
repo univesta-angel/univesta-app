@@ -33,10 +33,12 @@
             </ul>
           </div>
           <div class="col-lg-4 col-sm-5 align-right">
-            <div class="container-flex flex-right">          
-              <div class="pull-right">
+            <div class="container-flex flex-right">
+              <div>
                 <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
-                <%= button_to "Push to Store", push_path(:_title => product.title, :_body => product.body_html, :_type => product.product_type, :_vendor => product.vendor, :_img => product.images, :_price => product.price), {class: 'btn btn-default margin-right'} %>
+              </div>
+              <div>
+              <%= button_to "Push to Store", push_path(:_title => product.title, :_body => product.body_html, :_type => product.product_type, :_vendor => product.vendor, :_img => product.images, :_price => product.price), {class: 'btn btn-default margin-right'} %>
               </div>
             </div>
           </div>
@@ -52,7 +54,7 @@
             </div>
             <div class="input-group">
               <span class="input-group-addon">Change Name:</span>
-              <input type="text" class="form-control" aria-describedby="basic-addon1"><%= product.title %>
+              <input type="text" class="form-control" aria-describedby="basic-addon1">
             </div>
             <div class="input-group input-group-sm">
               <span class="input-group-addon" id="sizing-addon3">Collections:</span>
