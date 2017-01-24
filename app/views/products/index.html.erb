@@ -42,9 +42,9 @@
             <div class="col-lg-8 col-sm-7">
 
               <ul class="nav nav-tabs">
-                <li role="presentation" class="active"><a href="#item">Products</a></li>
-                <li role="presentation"><a href="#variants">Variants</a></li>
-                <li role="presentation"><a href="#">Images</a></li>
+                <li class="active"><a href="#item">Products</a></li>
+                <li><a href="#variants">Variants</a></li>
+                <li><a href="#">Images</a></li>
               </ul>
             </div>
             <div class="col-lg-4 col-sm-5 align-right">
@@ -56,7 +56,8 @@
 
           <div class="panel-body">
           <div class="tab-content">
-          <div class="tab-pane fade in active" id="tab1default">
+
+          <div class="tab-pane fade in active" id="item">
           <div class="media" id="item">
             <div class="media-left">
               <%= image_tag(product.images, :alt => "picture") %>
@@ -92,7 +93,7 @@
           </div>
           </div>
 
-          <div class="tab-pane fade" id="tab2default">
+          <div class="tab-pane fade" id="variants">
             <table>
               <thead>
                 <tr>
@@ -121,7 +122,6 @@
         </div>
 
       </div>
-    </div>
     </td>
     </tr>
     <% end %>
