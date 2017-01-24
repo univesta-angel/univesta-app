@@ -41,7 +41,7 @@
               <ul class="nav nav-tabs">
                 <li class="active"><a href="#item" data-toggle="tab">Products</a></li>
                 <li><a href="#variants" data-toggle="tab">Variants</a></li>
-                <li><a href="#" data-toggle="tab">Images</a></li>
+                <li><a href="#images" data-toggle="tab">Images</a></li>
               </ul>
             </div>
             <div class="col-lg-4 col-sm-5 align-right">
@@ -92,6 +92,30 @@
 
           <div class="tab-pane fade" id="variants">
           <div class="media" id="variants">
+            <table class="table table-condensed table-bordered table-striped volumes">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>SKU</th>
+                  <th>Color</th>
+                  <th>Size</th>
+                  <th>Cost</th>
+                  <th>Price</th>
+                  <th>Compared At Price</th>
+                  <th>Inventory</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><%= image_tag(product.images, :alt => "img") %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          </div>
+
+          <div class="tab-pane fade" id="images">
+          <div class="media" id="images">
             <table class="table table-condensed table-bordered table-striped volumes">
               <thead>
                 <tr>
