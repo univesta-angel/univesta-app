@@ -17,6 +17,8 @@ gem 'httparty'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 
+gem 'activemerchant'
+
 gem 'shopify_api'
 gem 'shopify_app'
 gem 'activeresource', github: 'rails/activeresource'
