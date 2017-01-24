@@ -14,7 +14,7 @@
   
 <head>
   <style type="text/css">
-    .input-group.input-group-sm, .input-group-addon{
+    .input-group.input-group-sm, .input-group-addon, .title{
       margin-top: 15px;
     }
   </style>
@@ -47,11 +47,11 @@
         </div>
 
         <div class="media" id="item">
-          <div class="media-left">
+          <div class="title">
             <%= image_tag(product.images, :alt => "picture", vspace: 30) %>
           </div>
           <div class="media-body">
-            <div>
+            <div style="margin-top:15px">
               <%= product.title %>
             </div>
             <div class="input-group">
