@@ -41,7 +41,9 @@
             </ul>
           </div>
           <div class="col-lg-5 col-sm-6 align-right">
-            <div class="container-flex flex-right"><%= button_to "Push to Store", push_path(:_title => product.title, :_body => product.body_html, :_type => product.product_type, :_vendor => product.vendor, :_img => product.images, :_price => product.price), {class: 'btn btn-default margin-right'} %>
+            <div class="container-flex flex-right">
+              <%= button_to "Push to Store", push_path(:_title => product.title, :_body => product.body_html, :_type => product.product_type, :_vendor => product.vendor, :_img => product.images, :_price => product.price), {class: 'btn btn-default margin-right'} %>
+              <%= button_to "Remove Product", class: 'btn btn-default margin-right' %>
             </div>
           </div>
         </div>
