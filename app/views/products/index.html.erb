@@ -11,10 +11,10 @@
 <% end %>
 
 <p id="notice"><%= notice %></p>
-
+  
 <head>
   <style type="text/css">
-    .form-control, span {
+    .input-group.input-group-sm{
       margin-top: 15px;
     }
   </style>
@@ -75,7 +75,7 @@
               <div class="col-lg-6">
                 <div class="input-group input-group-sm">
                   <span class="input-group-addon" id="sizing-addon3">Tags:</span>
-                  <input type="text" class="form-control" placeholder="Insert Tags" aria-describedby="sizing-addon3">
+                  <%= text_field_tag :_tags, {class: 'form-control', aria-describedby: 'sizing-addon3'} %>
                 </div>
               </div>
             </div>
