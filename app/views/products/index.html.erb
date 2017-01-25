@@ -19,23 +19,16 @@
 <h1>Products</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th></th>
-      <th><%= hidden_field_tag :_title, product.title %></th>
-      <th><%= hidden_field_tag :_body, product.body_html %></th>
-      <th><%= hidden_field_tag :_type, product.product_type %></th>
-      <th><%= hidden_field_tag :_vendor, product.vendor %></th>
-      <th><%= hidden_field_tag :_img, product.images %></th>
-      <th><%= hidden_field_tag :_price, product.price %></th>
-      <th>Price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
   <tbody>
     <% @products.each do |product| %>
       <tr><td>
+        <%= hidden_field_tag :_title, product.title %>
+        <%= hidden_field_tag :_body, product.body_html %>
+        <%= hidden_field_tag :_type, product.product_type %>
+        <%= hidden_field_tag :_vendor, product.vendor %>
+        <%= hidden_field_tag :_img, product.images %>
+        <%= hidden_field_tag :price, product.price %>
+
         <div class="col-md-6">
           <div class="panel with-nav-tabs panel-default">
             <div class="panel-heading">
