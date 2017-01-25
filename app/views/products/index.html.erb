@@ -21,8 +21,8 @@
       margin-top: 20px;
       margin-bottom: 20px;
     }
-    .v-img{
-      align-content: center;
+    .product-title{
+      margin-bottom: 20px;
     }
   </style>
 </head>
@@ -56,8 +56,8 @@
                 </ul>
               </div>
               <div class="col-lg-1 col-sm-3 align-right">
-                <div class="container-flex pull-right">
-                <%= button_to "Push to Store", push_path(:_title => product.title, :_body => product.body_html, :_type => product.product_type, :_vendor => product.vendor, :_img => product.images, :_price => product.price), {class: 'btn btn-default margin-right'} %>
+                <div class="container-flex flex-right">
+                <%= button_to "Push to Store", push_path(:_title => product.title, :_body => product.body_html, :_type => product.product_type, :_vendor => product.vendor, :_img => product.images, :_price => product.price), {class: 'btn btn-default pull-right'} %>
                 </div>
               </div>
             </div>
@@ -73,7 +73,7 @@
                           <%= image_tag(product.images, :alt => "picture") %>
                         </div>
                         <div class="media-body">
-                          <div>
+                          <div class="product-title">
                             <b><%= product.title %></b>
                           </div>
                             <div class="input-group">
@@ -120,9 +120,10 @@
                       </thead>
 
                         <tbody>
-                        <tr>
-                          <td><div class = "v-img"><%= image_tag(product.images, :alt => "img") %></div></td>
-                        </tr>
+                          <tr>
+                            <td><div class = "v-img"><%= image_tag(product.images, :alt => "img") %></div></td>
+                            <td>
+                          </tr>
                         </tbody>
                       </table>
                     </div>
