@@ -30,8 +30,24 @@
 
 <h1>Products</h1>
 
-  <% @products.each do |product| %>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Body html</th>
+      <th>Images</th>
+      <th>Product type</th>
+      <th>Tags</th>
+      <th>Vendor</th>
+      <th>Price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
+  <tbody>
+  <% @products.each do |product| %>
+  <tr>
     <div class="row">
       <div class="col-md-8">
         <div class="panel with-nav-tabs panel-default">
@@ -106,8 +122,11 @@
         </div>
       </div>
     </div>
-
+  </tr>
   <% end %>
+  
+  </tbody>
+</table>
 
 </body>
 
