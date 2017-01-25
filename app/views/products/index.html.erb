@@ -35,7 +35,7 @@
 
   <tbody>
     <% @products.each do |product| %>
-      <tr>
+      <tr><td>
         <%= hidden_field_tag :_title, product.title %>
         <%= hidden_field_tag :_body, product.body_html %>
         <%= hidden_field_tag :_type, product.product_type %>
@@ -61,7 +61,7 @@
               </div>
             </div>
           </div>
-          
+
             <div class="panel-body">
                 <div class="tab-content">
 
@@ -115,7 +115,7 @@
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td><%= button_to "Push to Store", push_path(:_title => product.title, :_body => product.body_html, :_type => product.product_type, :_vendor => product.vendor, :_img => product.images, :_price => product.price, :_tags => product.tags), {class: 'btn btn-small'} %>
-      </tr>
+      </td></tr>
     <% end %>
   </tbody>
 </table>
