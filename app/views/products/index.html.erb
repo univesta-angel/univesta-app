@@ -39,10 +39,11 @@
 <table>
   <tbody>
 
-    <% @products.each do |product| %>
+  <% @products.each do |product| %>
     <%= form_tag(push_path, method: 'post') do %>
-    <%= hidden_field_tag :_price, product.price %>
-    <%= hidden_field_tag :_img, product.images %>
+
+      <%= hidden_field_tag :_price, product.price %>
+      <%= hidden_field_tag :_img, product.images %>
       <tr><td>
         <div class="col-md-9">
           <div class="panel with-nav-tabs panel-default">
@@ -137,7 +138,7 @@
                             <td><%= text_field_tag :_sku, "", class: 'form-control', size: 10 %></td>
                             <td><%= text_field_tag :_color, "", class: 'form-control', size: 10 %></td>
                             <td><%= product.price %></td>
-                            <td><%= text_field_tag :_price, "", class: 'form-control', size: 10 %></td>
+                            <td><%= text_field_tag :_prc, "", class: 'form-control', size: 10 %></td>
                             <td><%= text_field_tag :_compAtPrice, "", class: 'form-control', size: 10 %></td>
                             <td><%= label_tag "null" %></td>
                           </tr>
@@ -151,7 +152,7 @@
               </div>
 
               <div class="panel-footer">
-                <div><%= submit_tag 'Push Product' %></div>
+                <div><%= submit_tag 'Push Product', class: "btn btn-default pull-right" %></div>
               </div>
 
             </div>
@@ -160,7 +161,7 @@
         </td></tr>
         <% @angel+=1 %>
       <% end %>
-      <% end %>
+    <% end %>
 
 
 
