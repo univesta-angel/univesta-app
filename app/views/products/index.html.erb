@@ -41,6 +41,7 @@
 
     <% @products.each do |product| %>
     <%= form_tag(push_path, method: 'post') do %>
+    <%= hidden_tag :_price, product.price %>
       <tr><td>
         <div class="col-md-9">
           <div class="panel with-nav-tabs panel-default">
