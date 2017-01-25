@@ -83,6 +83,8 @@ class ProductsController < ApplicationController
     
     expires_in(60.seconds, public: false)
 
+    
+    redirect_back(fallback_location: root_path)
 
     respond_to do |format|
       if @product.save
