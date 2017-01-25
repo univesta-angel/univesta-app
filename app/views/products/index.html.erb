@@ -31,19 +31,14 @@
 
 <body>
 
-<h1>Products</h1>
+<div>
+  <h2>Import List</h2>
+</div>
 
 <table>
   <tbody>
     <% @products.each do |product| %>
       <tr><td>
-        <%= hidden_field_tag :_title, product.title %>
-        <%= hidden_field_tag :_body, product.body_html %>
-        <%= hidden_field_tag :_type, product.product_type %>
-        <%= hidden_field_tag :_vendor, product.vendor %>
-        <%= hidden_field_tag :_img, product.images %>
-        <%= hidden_field_tag :price, product.price %>
-
         <div class="col-md-7">
           <div class="panel with-nav-tabs panel-default">
             <div class="panel-heading">
@@ -87,15 +82,15 @@
 
                             <div class="row">
                               <div class="col-lg-6">
-                              <div class="input-group input-group-sm">
-                              <span class="input-group-addon" id="sizing-addon3">Type:</span>
-                              <%= text_field_tag :_type, "", class: 'form-control', placeholder: "Choose Type" %>
-                              </div>
+                                <div class="input-group input-group-sm">
+                                  <span class="input-group-addon" id="sizing-addon3">Type:</span>
+                                  <%= text_field_tag :_type, "", class: 'form-control', placeholder: "Choose Type" %>
+                                </div>
                               </div>
                               <div class="col-lg-6">
                                 <div class="input-group input-group-sm">
-                                <span class="input-group-addon" id="sizing-addon3">Tags:</span>
-                                <%= text_field_tag :_tags, "", class: 'form-control', placeholder: "Insert Tags Here" %>
+                                  <span class="input-group-addon" id="sizing-addon3">Tags:</span>
+                                  <%= text_field_tag :_tags, "", class: 'form-control', placeholder: "Insert Tags Here" %>
                                 </div>
                               </div>
                           </div>
