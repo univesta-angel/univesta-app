@@ -55,9 +55,20 @@
               <div class="col-lg-2 col-sm-3 align-right">
                 <div class="container-flex flex-right">
                   <div class="margin-small-right">
-                    <%= button_to "Remove Product", product, method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Action <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                      </ul>
+                    </div>
                   </div>
-                  <%= button_to "Push to Store", push_path(:_title => params[:prodt], :_body => product.body_html, :_type => product.product_type, :_vendor => product.vendor, :_img => product.images, :_price => product.price), {class: 'btn btn-default margin-right'} %>
+                  <%= button_to "Push to Store", push_path(:prodt, :_body => product.body_html, :_type => product.product_type, :_vendor => product.vendor, :_img => product.images, :_price => product.price), {class: 'btn btn-default margin-right'} %>
                 </div>
               </div>
             </div>
