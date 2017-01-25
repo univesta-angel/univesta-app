@@ -21,7 +21,7 @@
   <% @products.each do |product| %>
 
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-6">
         <div class="panel with-nav-tabs panel-default">
           <div class="panel-heading">
             <ul class="nav nav-tabs">
@@ -36,9 +36,6 @@
                 </ul>
               </li>
             </ul>
-            <div class="container-flex flex-right">
-            <%= button_to "Push to Store", push_path(:_title => product.title, :_body => product.body_html, :_type => product.product_type, :_vendor => product.vendor, :_img => product.images, :_price => product.price), {class: 'btn btn-default margin-right'} %>
-            </div>
           </div>
             <div class="panel-body">
               <div class="tab-content">
@@ -78,7 +75,7 @@
                 </div>
               </div>
             </div>
-
+            
               <div class="tab-pane fade" id="tab2default">Default 2</div>
               <div class="tab-pane fade" id="tab3default">Default 3</div>
             </div>
