@@ -70,7 +70,7 @@ class ProductsController < ApplicationController
       :option1              => "Large",
       :price                => params[:_price],
       #:barcode              => "1234_barcode",
-      :sku                  => params[:_sku]
+      :sku                  => params[:_sku],
       #:taxable              => true,
       #:weight               => 100,
       #:weight_unit          => "kg"
