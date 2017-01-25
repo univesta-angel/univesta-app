@@ -35,6 +35,7 @@
   <h2>Import List</h2>
 </div>
 
+<%= form_tag push_path do %>
 <table>
   <tbody>
     <% @products.each do |product| %>
@@ -52,7 +53,7 @@
               </div>
               <div class="col-lg-1 col-sm-3 align-right">
                 <div class="container-flex flex-right">
-                <%= button_to "Push to Store", push_path(:_title => params[:prod_t], :_body => product.body_html, :_type => product.product_type, :_vendor => product.vendor, :_img => product.images, :_price => product.price), {class: 'btn btn-default pull-right'} %>
+                
                 </div>
               </div>
             </div>
@@ -73,7 +74,7 @@
                           </div>
                             <div class="input-group">
                               <span class="input-group-addon">Change Name:</span>
-                              <%= text_field_tag :prod_t, product.title, maxlength: 255, class: 'form-control' %>
+                              <%= text_field_tag :_title, product.title, maxlength: 255, class: 'form-control' %>
                             </div>
                             <div class="input-group input-group-sm">
                               <span class="input-group-addon" id="sizing-addon3">Collections:</span>
@@ -93,6 +94,10 @@
                                   <%= text_field_tag :_tags, "", class: 'form-control', placeholder: "Insert Tags Here" %>
                                 </div>
                               </div>
+                          </div>
+
+                          <div>
+                            
                           </div>
                         </div>
                       </div>
@@ -117,7 +122,13 @@
                         <tbody>
                           <tr>
                             <td><div class = "v-img"><%= image_tag(product.images, :alt => "img") %></div></td>
-                            <td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><%= product.price %></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                         </tbody>
                       </table>
@@ -127,13 +138,17 @@
                     <div class="tab-pane fade" id="tab3default">Default 3</div>
                 </div>
               </div>
+
+              <div class="panel-footer">
+                <%= submit_tag "Push to Store", "Push to Store", {class: 'btn btn-default pull-right'} %>
+              </div>
             </div>
           </div>
         </td></tr>
       <% end %>
     </tbody>
   </table>
-
+<% end %>
 </body>
 
 </html>
