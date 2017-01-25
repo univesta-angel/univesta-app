@@ -12,6 +12,18 @@
 
 <% end %>
 
+<head>
+  <style type="text/css">
+    .input-group.input-group-sm, .input-group-addon{
+      margin-top: 15px;
+    }
+    .container{
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
 <p id="notice"><%= notice %></p>
 
 <body>
@@ -29,18 +41,18 @@
         <%= hidden_field_tag :_img, product.images %>
         <%= hidden_field_tag :price, product.price %>
 
-        <div class="col-md-6">
+        <div class="col-md-7">
           <div class="panel with-nav-tabs panel-default">
             <div class="panel-heading">
               <div class="row">
-              <div class="col-lg-8 col-sm-7">
+              <div class="col-lg-6 col-sm-6">
                 <ul class="nav nav-tabs">
                   <li class="active"><a href="#tab1default" data-toggle="tab">Product</a></li>
                   <li><a href="#tab2default" data-toggle="tab">Variants</a></li>
                   <li><a href="#tab3default" data-toggle="tab">Images</a></li>
                 </ul>
               </div>
-              <div class="col-lg-4 col-sm-5 align-right">
+              <div class="col-lg-1 col-sm-3 align-right">
                 <div class="container-flex flex-right">
                 <%= button_to "Push to Store", push_path(:_title => product.title, :_body => product.body_html, :_type => product.product_type, :_vendor => product.vendor, :_img => product.images, :_price => product.price), {class: 'btn btn-default margin-right'} %>
                 </div>
@@ -89,7 +101,29 @@
                     </div>
 
                     <!--VARIANTS TAB-->
-                    <div class="tab-pane fade" id="tab2default">Default 2</div>
+                    <div class="tab-pane fade" id="tab2default">
+                      <table class="table table-condensed table-bordered table-striped volumes">
+                      <thead>
+                        <tr>
+                          <th></th>
+                          <th>SKU</th>
+                          <th>Color</th>
+                          <th>Size</th>
+                          <th>Cost</th>
+                          <th>Price</th>
+                          <th>Compared At Price</th>
+                          <th>Inventory</th>
+                        </tr>
+                      </thead>
+
+                        <tbody>
+                        <tr>
+                          <td><%= image_tag(product.images, :alt => "img") %></td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
                     <!--IMAGES TAB-->
                     <div class="tab-pane fade" id="tab3default">Default 3</div>
                 </div>
