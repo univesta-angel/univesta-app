@@ -21,11 +21,11 @@
   <% @products.each do |product| %>
 
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-10">
         <div class="panel with-nav-tabs panel-default">
           <div class="panel-heading">
             <div class="row">
-              <div class="col-lg-8 col-sm-7">
+              <div class="col-lg-7 col-sm-6">
                 <ul class="nav nav-tabs">
                   <li class="active"><a href="#tab1default" data-toggle="tab">Default 1</a></li>
                   <li><a href="#tab2default" data-toggle="tab">Default 2</a></li>
@@ -39,7 +39,7 @@
                   </li>
                 </ul>
               </div>
-              <div class="col-lg-4 col-sm-5 align-right">
+              <div class="col-lg-3 col-sm-4 align-right">
                 <div class="container-flex flex-right">
                 <%= button_to "Push to Store", push_path(:_title => product.title, :_body => product.body_html, :_type => product.product_type, :_vendor => product.vendor, :_img => product.images, :_price => product.price), {class: 'btn btn-default margin-right'} %>
                 </div>
