@@ -60,7 +60,7 @@ class ProductsController < ApplicationController
     images << image
 
     new_product = ShopifyAPI::Product.new
-    new_product.title = params[:prodt]
+    new_product.title = params[:_title]
     new_product.body_html = params[:_body]
     new_product.product_type = params[:_type]
     new_product.vendor = params[:_vendor]
@@ -85,8 +85,8 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        #redirect_to :back, notice: "Product was pushed to the store."
-        #format.json { render json: 201 }
+        redirect_to root_path, notice: "Product was pushed to the store."
+        format.json { render json: 201 }
       else
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
