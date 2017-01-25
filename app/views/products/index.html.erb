@@ -25,6 +25,13 @@
       margin-bottom: 20px;
     }
   </style>
+  <script type="text/javascript">
+    $('#myTab a').click(function (e) {
+      e.preventDefault()
+      $(this).tab('show')
+    })
+  </script>
+  </head>
 </head>
 
 <p id="notice"><%= notice %></p>
@@ -104,33 +111,7 @@
 
                     <!--VARIANTS TAB-->
                     <div class="tab-pane fade" id="tab2default">
-                      <table class="table table-condensed table-bordered table-striped volumes">
-                      <thead>
-                        <tr>
-                          <th>Image</th>
-                          <th>SKU</th>
-                          <th>Color</th>
-                          <th>Size</th>
-                          <th>Cost</th>
-                          <th>Price</th>
-                          <th>Compared At Price</th>
-                          <th>Inventory</th>
-                        </tr>
-                      </thead>
-
-                        <tbody>
-                          <tr>
-                            <td><div class = "v-img"><%= image_tag(product.images, :alt => "img") %></div></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><%= product.price %></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-                        </tbody>
-                      </table>
+                      <%= render partial: "variant_view" %>
                     </div>
 
                     <!--IMAGES TAB-->
