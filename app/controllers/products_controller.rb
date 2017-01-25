@@ -85,7 +85,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        redirect_to root_path, notice: "Product was pushed to the store."
+        redirect_back(fallback_location: root_path)
         format.json { render json: 201 }
       else
         format.html { render :new }
