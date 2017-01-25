@@ -45,6 +45,7 @@
       <%= hidden_field_tag :_price, product.price %>
       <%= hidden_field_tag :_img, product.images %>
       <tr><td>
+      <div class="container-fluid">
         <div class="col-md-9">
           <div class="panel with-nav-tabs panel-default">
             <div class="panel-heading">
@@ -152,12 +153,12 @@
               </div>
 
               <div class="panel-footer">
-                <div><%= submit_tag 'Push Product', class: "btn btn-default pull-right" %></div>
+                <div class="col-sm-4"><%= submit_tag 'Push Product', class: "btn btn-default pull-right" %></div>
               </div>
 
             </div>
           </div>
-
+        </div>
         </td></tr>
         <% @angel+=1 %>
       <% end %>
