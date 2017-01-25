@@ -12,18 +12,6 @@
 
 <% end %>
 
-<head>
-  <style type="text/css">
-    .input-group.input-group-sm, .input-group-addon{
-      margin-top: 15px;
-    }
-    .container{
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
-  </style>
-</head>
-
 <p id="notice"><%= notice %></p>
 
 <body>
@@ -31,89 +19,44 @@
 <h1>Products</h1>
 
 <table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Body html</th>
+      <th>Images</th>
+      <th>Product type</th>
+      <th>Tags</th>
+      <th>Vendor</th>
+      <th>Price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
   <tbody>
-  <% @products.each do |product| %>
-  <tr>
-    <div class="row">
-      <div class="col-md-8">
-        <div class="panel with-nav-tabs panel-default">
-          <div class="panel-heading">
-            <div class="row">
-              <div class="col-lg-7">
-                <ul class="nav nav-tabs">
-                  <li class="active"><a href="#tab1default" data-toggle="tab">Default 1</a></li>
-                  <li><a href="#tab2default" data-toggle="tab">Default 2</a></li>
-                  <li><a href="#tab3default" data-toggle="tab">Default 3</a></li>
-                  <li class="dropdown">
-                    <a href="#" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="#tab4default" data-toggle="tab">Default 4</a></li>
-                      <li><a href="#tab5default" data-toggle="tab">Default 5</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-              <div class="col-lg-1 align-right">
-                <div class="container-flex flex-right">
-                <%= button_to "Push to Store", push_path(:_title => product.title, :_body => product.body_html, :_type => product.product_type, :_vendor => product.vendor, :_img => product.images, :_price => product.price), {class: 'btn btn-default margin-right'} %>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel-body">
-            <div class="tab-content">
-
-            <div class="tab-pane fade in active" id="tab1default">
-              <div class="media" id="item">
-                <div class="media-left">
-                  <%= image_tag(product.images, :alt => "picture") %>
-                </div>
-                <div class="media-body">
-                  <div>
-                    <b><%= product.title %></b>
-                  </div>
-                  <div class="input-group">
-                    <span class="input-group-addon">Change Name:</span>
-                    <input type="text" class="form-control" aria-describedby="basic-addon1" maxlength="255" value="<%= product.title %>">
-                  </div>
-                  <div class="input-group input-group-sm">
-                    <span class="input-group-addon" id="sizing-addon3">Collections:</span>
-                    <%= text_field_tag :_collections, "", class: 'form-control', placeholder: "Choose Collections" %>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <div class="input-group input-group-sm">
-                      <span class="input-group-addon" id="sizing-addon3">Type:</span>
-                      <%= text_field_tag :_type, "", class: 'form-control', placeholder: "Choose Type" %>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="input-group input-group-sm">
-                      <span class="input-group-addon" id="sizing-addon3">Tags:</span>
-                      <%= text_field_tag :_tags, "", class: 'form-control', placeholder: "Insert Tags Here" %>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="tab-pane fade" id="tab2default">Default 2</div>
-          <div class="tab-pane fade" id="tab3default">Default 3</div>
-
-          </div>
-        </div>
-        </div>
-      </div>
-    </div>
-  </tr>
-  <% end %>
-
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= image_tag(product.images, :alt => "picture") %></td>
+        <td><%= product.title %></td>
+        <td><%= product.body_html %></td>
+        <td><%= product.images %></td>
+        <td><%= product.product_type %></td>
+        <td><%= product.tags %></td>
+        <td><%= product.vendor %></td>
+        <td><%= product.price %></td>
+        <td><%= link_to 'Show', product %></td>
+        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to "Push to Store", push_path(:_title => product.title, :_body => product.body_html, :_type => product.product_type, :_vendor => product.vendor, :_img => product.images), {class: 'btn btn-small'} %>
+      </tr>
+    <% end %>
   </tbody>
 </table>
+
+<br>
+
+<%= link_to 'New Product', new_product_path %>
+
 
 </body>
 
