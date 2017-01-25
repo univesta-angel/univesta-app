@@ -12,6 +12,18 @@
 
 <% end %>
 
+<head>
+  <style type="text/css">
+    .input-group.input-group-sm, .input-group-addon{
+      margin-top: 15px;
+    }
+    .container{
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
 <p id="notice"><%= notice %></p>
 
 <body>
@@ -25,7 +37,7 @@
         <div class="panel with-nav-tabs panel-default">
           <div class="panel-heading">
             <div class="row">
-              <div class="col-lg-6 col-sm-5">
+              <div class="col-lg-7">
                 <ul class="nav nav-tabs">
                   <li class="active"><a href="#tab1default" data-toggle="tab">Default 1</a></li>
                   <li><a href="#tab2default" data-toggle="tab">Default 2</a></li>
@@ -39,7 +51,7 @@
                   </li>
                 </ul>
               </div>
-              <div class="col-lg-2 col-sm-3 align-right">
+              <div class="col-lg-1 align-right">
                 <div class="container-flex flex-right">
                 <%= button_to "Push to Store", push_path(:_title => product.title, :_body => product.body_html, :_type => product.product_type, :_vendor => product.vendor, :_img => product.images, :_price => product.price), {class: 'btn btn-default margin-right'} %>
                 </div>
