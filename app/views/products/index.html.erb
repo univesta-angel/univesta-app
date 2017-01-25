@@ -60,7 +60,7 @@
                         Action <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
+                        <li><%= link_to 'Remove', product, method: :delete, data: { confirm: 'Are you sure?' } %></li>
                         <li><a href="#">Another action</a></li>
                         <li><a href="#">Something else here</a></li>
                         <li role="separator" class="divider"></li>
@@ -68,7 +68,7 @@
                       </ul>
                     </div>
                   </div>
-                  <%= button_to "Push to Store", push_path(:_title => :prodt, :_body => product.body_html, :_type => product.product_type, :_vendor => product.vendor, :_img => product.images, :_price => product.price), {class: 'btn btn-default margin-right'} %>
+                  <%= button_to "Push to Store", push_path(:_title => :prodt, :_body => product.body_html, :_type => product.product_type, :_vendor => product.vendor, :_img => product.images, :_price => product.price), remote: true, {class: 'btn btn-default margin-right'} %>
                 </div>
               </div>
             </div>
