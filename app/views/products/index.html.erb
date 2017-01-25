@@ -32,11 +32,14 @@
 <body>
 
 <div>
-  <h2>Import List</h2>
+  <h2>Import List<%= @angel %></h2>
+  <h2>Import List<% @angel+=1 %></h2>
+  <h2>Import List<%= @angel %></h2>
 </div>
 
 <table>
   <tbody>
+
     <% @products.each do |product| %>
       <tr><td>
         <div class="col-md-9">
@@ -45,9 +48,9 @@
               <div class="row">
               <div class="col-lg-6 col-sm-6">
                 <ul class="nav nav-tabs">
-                  <li role="presentation" class="active"><a href="#tab1default" data-toggle="tab">Product</a></li>
-                  <li role="presentation"><a href="#tab2default" data-toggle="tab">Variants</a></li>
-                  <li role="presentation"><a href="#tab3default" data-toggle="tab">Images</a></li>
+                  <li role="presentation" class="active"><a href="#tab1default<%= @angel %>" data-toggle="tab">Product</a></li>
+                  <li role="presentation"><a href="#tab2default<%= @angel %>" data-toggle="tab">Variants</a></li>
+                  <li role="presentation"><a href="#tab3default<%= @angel %>" data-toggle="tab">Images</a></li>
                 </ul>
               </div>
               <div class="col-lg-2 col-sm-3 align-right">
@@ -65,7 +68,7 @@
                 <div class="tab-content">
 
                     <!--PRODUCTS TAB-->
-                    <div class="tab-pane fade in active" id="tab1default">
+                    <div class="tab-pane fade in active" id="tab1default<%= @angel %>">
                       <div class="media" id="item">
                         <div class="media-left">
                           <%= image_tag(product.images, :alt => "picture") %>
@@ -103,7 +106,7 @@
                     </div>
 
                     <!--VARIANTS TAB-->
-                    <div class="tab-pane fade" id="tab2default">
+                    <div class="tab-pane fade" id="tab2default<%= @angel %>">
                       <table class="table table-condensed table-bordered table-striped volumes">
                       <thead>
                         <tr>
@@ -134,13 +137,18 @@
                     </div>
 
                     <!--IMAGES TAB-->
-                    <div class="tab-pane fade" id="tab3default">Default 3</div>
+                    <div class="tab-pane fade" id="tab3default<%= @angel %>">Default 3</div>
                 </div>
               </div>
             </div>
           </div>
         </td></tr>
+        <% @angel+=1 %>
       <% end %>
+
+
+
+
     </tbody>
   </table>
 

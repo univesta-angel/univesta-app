@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
+    @angel = 1;
   end
 
   # GET /products/1
@@ -128,5 +129,5 @@ class ProductsController < ApplicationController
       params.require(:product).permit(:title, :body_html, :images, :product_type, :tags, :vendor)
     end
 
-    
+
 end
