@@ -46,7 +46,7 @@
               <div class="col-lg-6 col-sm-6">
                 <ul class="nav nav-tabs">
                   <li role="presentation" class="active"><a href="#tab1default" data-toggle="tab">Product</a></li>
-                  <li role="presentation"><a href="/variant_view.html.erb" data-toggle="tab">Variants</a></li>
+                  <li class="<%= 'active' if current_page?(tabs_variants_path) %>"><%= link_to "Variants", tabs_variants_path %></li>
                   <li role="presentation"><a href="#tab3default" data-toggle="tab">Images</a></li>
                 </ul>
               </div>
@@ -103,8 +103,7 @@
                     </div>
 
                     <!--VARIANTS TAB-->
-                    <div class="tab-pane fade" id="tab2default">
-                    </div>
+                    
 
                     <!--IMAGES TAB-->
                     <div class="tab-pane fade" id="tab3default">Default 3</div>
