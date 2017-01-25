@@ -21,6 +21,9 @@
       margin-top: 20px;
       margin-bottom: 20px;
     }
+    .v-img{
+      align-content: center;
+    }
   </style>
 </head>
 
@@ -53,7 +56,7 @@
                 </ul>
               </div>
               <div class="col-lg-1 col-sm-3 align-right">
-                <div class="container-flex flex-right">
+                <div class="container-flex pull-right">
                 <%= button_to "Push to Store", push_path(:_title => product.title, :_body => product.body_html, :_type => product.product_type, :_vendor => product.vendor, :_img => product.images, :_price => product.price), {class: 'btn btn-default margin-right'} %>
                 </div>
               </div>
@@ -66,9 +69,9 @@
                     <!--PRODUCTS TAB-->
                     <div class="tab-pane fade in active" id="tab1default">
                       <div class="media" id="item">
-                      <div class="media-left">
-                      <%= image_tag(product.images, :alt => "picture") %>
-                      </div>
+                        <div class="media-left">
+                          <%= image_tag(product.images, :alt => "picture") %>
+                        </div>
                         <div class="media-body">
                           <div>
                             <b><%= product.title %></b>
@@ -105,7 +108,7 @@
                       <table class="table table-condensed table-bordered table-striped volumes">
                       <thead>
                         <tr>
-                          <th></th>
+                          <th>Image</th>
                           <th>SKU</th>
                           <th>Color</th>
                           <th>Size</th>
@@ -118,7 +121,7 @@
 
                         <tbody>
                         <tr>
-                          <td><%= image_tag(product.images, :alt => "img") %></td>
+                          <td><div class = "v-img"><%= image_tag(product.images, :alt => "img") %></div></td>
                         </tr>
                         </tbody>
                       </table>
@@ -127,18 +130,13 @@
                     <!--IMAGES TAB-->
                     <div class="tab-pane fade" id="tab3default">Default 3</div>
                 </div>
+              </div>
             </div>
           </div>
-        </div>
-      </td></tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Product', new_product_path %>
-
+        </td></tr>
+      <% end %>
+    </tbody>
+  </table>
 
 </body>
 
