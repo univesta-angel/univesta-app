@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'tabs/variants'
-
-  get 'tabs/images'
 
   resources :products 
   root :to => 'products#index'
