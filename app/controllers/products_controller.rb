@@ -27,7 +27,7 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.create(title: params[:title],
+    @product = Product.create(title: params[:prodt],
                               body_html: params[:body_html],
                               product_type: params[:product_type],
                               images: params[:images],
