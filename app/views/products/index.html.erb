@@ -68,7 +68,7 @@
                       </ul>
                     </div>
                   </div>
-                  <%= button_to "Push to Store", push_path(:_title => product.title, :_body => product.body_html, :_type => product.product_type, :_vendor => product.vendor, :_img => product.images, :_price => product.price), {class: 'btn btn-default margin-right'} %>
+                  <%= button_to "Push to Store", push_path(:_title => params[:_title_change], :_body => product.body_html, :_type => product.product_type, :_vendor => product.vendor, :_img => product.images, :_price => product.price), {class: 'btn btn-default margin-right'} %>
                 </div>
               </div>
             </div>
@@ -89,7 +89,7 @@
                           </div>
                             <div class="input-group">
                               <span class="input-group-addon">Change Name:</span>
-                              <%= text_field_tag :prodt, product.title, maxlength: 255, class: 'form-control' %>
+                              <%= text_field_tag :_title_change, product.title, maxlength: 255, class: 'form-control' %>
                             </div>
                             <div class="input-group input-group-sm">
                               <span class="input-group-addon" id="sizing-addon3">Collections:</span>
