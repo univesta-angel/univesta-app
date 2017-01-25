@@ -69,13 +69,14 @@
                       <div class="input-group input-group-sm">
                         <span class="input-group-addon" id="sizing-addon3">Tags:</span>
                         <%= text_field_tag :_tags, "", class: 'form-control', placeholder: "Insert Tags Here" %>
+                        <%= button_to 'Remove', product, method: :delete, data: { confirm: 'Are you sure?' } %>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            
+
               <div class="tab-pane fade" id="tab2default">Default 2</div>
               <div class="tab-pane fade" id="tab3default">Default 3</div>
             </div>
