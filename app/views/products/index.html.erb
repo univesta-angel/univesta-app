@@ -68,7 +68,7 @@
                       </ul>
                     </div>
                   </div>
-                  <%= button_to "Push to Store", push_path(:prodt, :_body => product.body_html, :_type => product.product_type, :_vendor => product.vendor, :_img => product.images, :_price => product.price, :type), {class: 'btn btn-default margin-right'} %>
+                  <%= button_to "Push to Store", push_path(:prodt, :_body => product.body_html, :_type => product.product_type, :_vendor => product.vendor, :_img => product.images, :_price => product.price), {class: 'btn btn-default margin-right'} %>
                 </div>
               </div>
             </div>
@@ -100,7 +100,7 @@
                               <div class="col-lg-6">
                                 <div class="input-group input-group-sm">
                                   <span class="input-group-addon" id="sizing-addon3">Type:</span>
-                                  <%= text_field_tag :type, "", class: 'form-control', placeholder: "Choose Type" %>
+                                  <%= text_field_tag :_type, "", class: 'form-control', placeholder: "Choose Type" %>
                                 </div>
                               </div>
                               <div class="col-lg-6">

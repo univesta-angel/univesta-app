@@ -62,7 +62,7 @@ class ProductsController < ApplicationController
     new_product = ShopifyAPI::Product.new
     new_product.title = params[:prodt]
     new_product.body_html = params[:_body]
-    new_product.product_type = params[:type]
+    new_product.product_type = params[:_type]
     new_product.vendor = params[:_vendor]
     new_product.images = images
     new_product.tags = params[:_tags]
