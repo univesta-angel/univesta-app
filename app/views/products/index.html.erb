@@ -40,7 +40,7 @@
   <tbody>
 
     <% @products.each do |product| %>
-    <%= form_tag(push_path) %>
+    <%= form_tag(push_path, method: 'post') do %>
       <tr><td>
         <div class="col-md-9">
           <div class="panel with-nav-tabs panel-default">
