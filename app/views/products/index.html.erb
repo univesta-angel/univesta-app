@@ -112,7 +112,6 @@
                           <th>Image</th>
                           <th>SKU</th>
                           <th>Color</th>
-                          <th>Size</th>
                           <th>Cost</th>
                           <th>Price</th>
                           <th>Compared At Price</th>
@@ -123,13 +122,12 @@
                         <tbody>
                           <tr>
                             <td><div class = "v-img"><%= image_tag(product.images, :alt => "img") %></div></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td><%= text_field_tag :_sku, "", class: 'form-control', size: 10 %></td>
+                            <td><%= text_field_tag :_color, "", class: 'form-control', size: 10 %></td>
                             <td><%= product.price %></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td><%= text_field_tag :_price, "", class: 'form-control', size: 10 %></td></td>
+                            <td><%= text_field_tag :_compAtPrice, "", class: 'form-control', size: 10 %></td></td>
+                            <td><%= label_tag "null" %></td>
                           </tr>
                         </tbody>
                       </table>
