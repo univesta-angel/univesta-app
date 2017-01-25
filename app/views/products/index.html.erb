@@ -46,7 +46,7 @@
               <div class="col-lg-6 col-sm-6">
                 <ul class="nav nav-tabs">
                   <li role="presentation" class="active"><a href="#tab1default" data-toggle="tab">Product</a></li>
-                  <li class="<%= 'active' if current_page?(tabs_variants_path) %>"><%= link_to "Variants", tabs_variants_path %></li>
+                  <li class="<%= 'active' if current_page?(tabs_variants_path) %>"><%= link_to "Variants", tabs_variants_path, :data => {:toggle=>"tab"} %></li>
                   <li role="presentation"><a href="#tab3default" data-toggle="tab">Images</a></li>
                 </ul>
               </div>
