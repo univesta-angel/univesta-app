@@ -70,7 +70,7 @@ class ProductsController < ApplicationController
       :option1              => "Large",
       :price                => params[:_price],
       #:barcode              => "1234_barcode",
-      #:sku                  => "SAMPLESKU1234"
+      :sku                  => params[:_sku]
       #:taxable              => true,
       #:weight               => 100,
       #:weight_unit          => "kg"
@@ -83,7 +83,7 @@ class ProductsController < ApplicationController
     
     expires_in(60.seconds, public: false)
 
-    
+
     redirect_back(fallback_location: root_path)
 
     respond_to do |format|
