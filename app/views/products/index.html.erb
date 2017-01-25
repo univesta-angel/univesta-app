@@ -26,9 +26,9 @@
     }
   </style>
   <script type="text/javascript">
-    $('#myTab a').click(function (e) {
+    $('#tab2default').click(function (e) {
       e.preventDefault()
-      $(this).tab('show')
+      $(this).tab('<%= j (render 'variant_view') %>')
     })
   </script>
   </head>
