@@ -64,7 +64,6 @@ class ProductsController < ApplicationController
     new_product.product_type = params[:_type]
     new_product.vendor = params[:_vendor]
     new_product.images = images
-    new_product.images = params[:_tags]
     new_product.variants = [ShopifyAPI::Variant.new(
       :option1              => "Large",
       :price                => params[:_price],
