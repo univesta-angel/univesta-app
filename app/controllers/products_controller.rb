@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
-    @projects = Project.search(params[:search])
+    @products = Project.search(params[:search])
     @angel = 1;
   end
 
