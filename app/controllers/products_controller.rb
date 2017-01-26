@@ -61,6 +61,12 @@ class ProductsController < ApplicationController
 
     images << image
 
+    options = []
+    option = {}
+    option["option1"] = "Color"
+    option["option2"] = "Size"
+    options << option
+
     new_product = ShopifyAPI::Product.new
     new_product.title = params[:_title]
     new_product.body_html = params[:_body]
@@ -68,13 +74,10 @@ class ProductsController < ApplicationController
     new_product.vendor = params[:_vendor]
     new_product.images = images
     new_product.tags = params[:_tags]
-    new_product.options = [ShopifyAPI::Option.new(
-      :name     => "Color",
-      :name     => "Size"
-    )]
+    new_product.options = options
     new_product.variants = [ShopifyAPI::Variant.new(
-      :option1              => "Red",
-      :option2              => "Medium",
+      :option1              => "Medium",
+      :option2              => "Red",
       :price                => params[:_price],
       :compare_at_price     => "10.00",
       #:barcode              => "1234_barcode",
