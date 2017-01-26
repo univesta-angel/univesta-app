@@ -31,15 +31,19 @@
 
 <body>
 
-<div class="row">
-  <div class="col-lg-9">
-    <div class="input-group">
-        <%= form_tag(products_path, method: :get) do %>
-          <p>
-            <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search for Products" %>
-            <span class="input-group-btn"><%= submit_tag "Search", name: nil, class: "btn btn-secondary" %></span>
-          </p>
-        <% end %>
+<div class="col-md-9">
+  <div class="panel">
+    <div class="row">
+      <div class="col-lg-7">
+        <div class="input-group">
+            <%= form_tag(products_path, method: :get) do %>
+              <p>
+                <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search for Products" %>
+                <span class="input-group-btn"><%= submit_tag "Search", name: nil, class: "btn btn-secondary" %></span>
+              </p>
+            <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
