@@ -64,6 +64,7 @@ class ProductsController < ApplicationController
     options = []
     option = {}
     option["name"] = "Color"
+    options << option
     option["name"] = "Size"
     options << option
 
