@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root :to => 'products#index'
   match 'create' => 'products#create', via: :post
   post 'push' => 'products#push', as: :push
+  #delete :to => 'products#destroy'
+
   #post 'products#push'
   mount ShopifyApp::Engine, at: '/'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

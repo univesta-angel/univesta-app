@@ -63,7 +63,8 @@ class ProductsController < ApplicationController
 
     options = []
     option = {}
-    option["name"] = "Color"
+    option["name"][1]= "Color"
+    option["name"][2]= "Size"
     options << option
 
     new_product = ShopifyAPI::Product.new
@@ -76,7 +77,7 @@ class ProductsController < ApplicationController
     new_product.options = options
     new_product.variants = [ShopifyAPI::Variant.new(
       :option1              => "Red",
-      #:option2              => "Medium",
+      :option2              => "Medium",
       :price                => params[:_price],
       :compare_at_price     => "10.00",
       #:barcode              => "1234_barcode",
@@ -124,8 +125,7 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to(products_url) }
     end
   end
 
