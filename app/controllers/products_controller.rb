@@ -63,8 +63,6 @@ class ProductsController < ApplicationController
 
     options = []
     option = {}
-    option["name"] = "Size"
-    options << option
     option["name"] = "Color"
     options << option
 
@@ -77,8 +75,8 @@ class ProductsController < ApplicationController
     new_product.tags = params[:_tags]
     new_product.options = options
     new_product.variants = [ShopifyAPI::Variant.new(
-      :option1              => "Medium",
-      :option2              => "Red",
+      :option1              => "Red",
+      #:option2              => "Medium",
       :price                => params[:_price],
       :compare_at_price     => "10.00",
       #:barcode              => "1234_barcode",
