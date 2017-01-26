@@ -30,6 +30,13 @@
       margin-bottom: 20px;
     }
   </style>
+
+  <script type="text/javascript">
+    $('#check_all').on("click", function(){
+      var cbxs = $('input[type="checkbox"]');
+      cbxs.prop("checked", !cbxs.prop("checked"));
+    });
+  </script>
 </head>
 
 <p id="notice"><%= notice %></p>
@@ -69,7 +76,7 @@
           <div class="col-xs-6 space-top">
             <div class="container-flex" style="height:35px">
               <div class="margin-right">
-                <%= check_box_tag :cb_all %>
+                <%= check_box_tag :cb_all, { class: "selectAll"} %>
                 <span class="space-small-left"><strong>Select All Products</strong></span>
               </div>
               <div style="width: 200px; display: none;">
@@ -82,7 +89,7 @@
             </div>
           </div>
           <div class="col-xs-6 space-top align-right">
-            <%= link_to "Remove All Products", class: "btn btn-default margin-small-right" %>
+            <%= link_to "Remove All Products", { class: "btn btn-default margin-small-right" } %>
             <%= button_tag "Push All Products to Shop", class: "btn btn-success btn-icon-left" %>
           </div>
         </div>
