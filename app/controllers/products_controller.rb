@@ -64,6 +64,7 @@ class ProductsController < ApplicationController
     options = []
     option = {}
     option["name"] = "Color"
+    option["name"] = "Size"
     options << option
 
     new_product = ShopifyAPI::Product.new
