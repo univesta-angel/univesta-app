@@ -32,8 +32,12 @@
 <body>
 
 <div>
-  <h2>Import List</h2>
-
+  <% form_tag projects_path, :method => 'get' do %>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :name => nil %>
+    </p>
+  <% end %>
 </div>
 
 <table>
@@ -58,7 +62,7 @@
               <div class="col-lg-2 col-sm-2 align-right">
                 <div class="container-flex flex-right">
                   <div class="margin-small-right">
-                    <div class="btn-group">
+                    <div class="btn-group" text="right">
                       <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Action <span class="caret"></span>
                       </button>
@@ -150,7 +154,7 @@
               </div>
 
               <div class="panel-footer">
-                <div class="text-right"><%= submit_tag 'Push Product', class: "btn btn-default " %></div>
+                <div class="text-right"><%= submit_tag 'Push to Store', class: "btn btn-default " %></div>
               </div>
 
             </div>
