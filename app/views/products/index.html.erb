@@ -87,11 +87,11 @@
                         </div>
                         <div class="media-body">
                           <div class="product-title">
-                            <b><%= hidden_field_tag :ptitle, product.title %><%= :ptitle %></b>
+                            <b><%= product.title %></b>
                           </div>
                             <div class="input-group">
                               <span class="input-group-addon">Change Name:</span>
-                              <%= text_field_tag :_title, :ptitle, maxlength: 255, class: 'form-control' %>
+                              <%= text_field_tag :_title, product.title, maxlength: 255, class: 'form-control' %>
                             </div>
                             <div class="input-group input-group-sm">
                               <span class="input-group-addon" id="sizing-addon3">Collections:</span>
