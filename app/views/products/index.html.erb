@@ -181,6 +181,7 @@
                             <th>Image</th>
                             <th>SKU</th>
                             <th>Color</th>
+                            <thead>Size</thead>
                             <th>Cost</th>
                             <th>Price</th>
                             <th>Compared At Price</th>
@@ -192,6 +193,7 @@
                               <td><div class = "v-img"><%= image_tag(product.images, :alt => "img") %></div></td>
                               <td><%= text_field_tag :_sku, "", class: 'form-control', size: 10 %></td>
                               <td><%= text_field_tag :_color, "", class: 'form-control', size: 10 %></td>
+                              <td><%= text_field_tag :_size, "", class: 'form-control', size: 10 %></td>
                               <td><%= hidden_field_tag :_price, product.price %><%= product.price %></td>
                               <td><%= text_field_tag :_prc, "", class: 'form-control', size: 10 %></td>
                               <td><%= text_field_tag :_compAtPrice, "", class: 'form-control', size: 10 %></td>
