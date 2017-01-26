@@ -32,16 +32,20 @@
   </style>
 
   <script type="text/javascript">
-    $('.selectAll').click(function() {
-       if (this.checked) {
-           $('.checkbox').each(function() {
-               this.checked = true;                        
-           });
-       } else {
-          $('.checkbox').each(function() {
-               this.checked = false;                        
-           });
-       } 
+    $(document).ready(function(){
+       $('.selectAll').on("click", function() {
+        // grouping all the checkbox using the classname
+        var checkboxes = $(".checkbox");
+        // check whether checkboxs are selected.
+        if(checkboxes.prop("checked")){
+            // if they are selected,unchecking all the checkbox
+            checkboxes.prop("checked",false);
+        }
+        else {
+            // if they are not selected, checking all the checkbox
+            checkboxes.prop("checked",true);
+        }
+
     });
   </script>
 </head>
