@@ -35,7 +35,7 @@
     $(document).ready(function(){
        $('.selectAll').on("click", function() {
         // grouping all the checkbox using the classname
-        var checkboxes = $(".checkbox");
+        var checkboxes = $(".check-box");
         // check whether checkboxs are selected.
         if(checkboxes.prop("checked")){
             // if they are selected,unchecking all the checkbox
@@ -124,7 +124,7 @@
                 <div class="row">
                 <div class="col-lg-6 col-sm-6">
                   <ul class="nav nav-tabs">
-                    <li slot="select"><span class="for-checkbox"><%= check_box_tag "product_ids[]", product.id, { class: "checkbox"} %></span></li>
+                    <li slot="select"><span class="for-checkbox"><%= check_box_tag "product_ids[]", product.id, { class: "check-box"} %></span></li>
                     <li role="presentation" class="active"><a href="#tab1default<%= @angel %>" data-toggle="tab">Product</a></li>
                     <li role="presentation"><a href="#tab2default<%= @angel %>" data-toggle="tab">Variants</a></li>
                     <li role="presentation"><a href="#tab3default<%= @angel %>" data-toggle="tab">Images</a></li>
