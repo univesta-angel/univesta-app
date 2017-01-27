@@ -9,18 +9,18 @@
   </script>
 <% end %>
 
-<h2>Imports: </h2>
+<h2>Pushed Product</h2>
 
 <ul>
-  <% @products.each do |product| %>
+  <% @myproducts.each do |myproducts| %>
     <div>
       <p>
-        <b><%= product.title %><br></b>
-        ID: <%= product.id %><br>
-        Vendor: <%= product.vendor %><br>
-        Description: <%= product.body_html %><br>
-        Handle: <%= product.handle %><br>
-        Created at: <%= product.created_at %><br>
+        <b><%= myproducts.title %><br></b>
+        ID: <%= myproducts.id %><br>
+        Vendor: <%= myproducts.vendor %><br>
+        Description: <%= myproducts.body_html %><br>
+        Handle: <%= myproducts.handle %><br>
+        Created at: <%= myproducts.created_at %><br>
         <%= link_to "Edit" %><br>
         <%= link_to "Remove" %>
       </p>
