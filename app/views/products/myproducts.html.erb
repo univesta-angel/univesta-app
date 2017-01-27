@@ -1,30 +1,36 @@
-<% content_for :javascript do %>
-  <script type="text/javascript">
-    ShopifyApp.ready(function(){
-      ShopifyApp.Bar.initialize({
-        title: "Home",
-        icon: "<%= asset_path('favicon.ico') %>"
+<html>
+  <% content_for :javascript do %>
+    <script type="text/javascript">
+      ShopifyApp.ready(function(){
+        ShopifyApp.Bar.initialize({
+          title: "Home",
+          icon: "<%= asset_path('favicon.ico') %>"
+        });
       });
-    });
-  </script>
-<% end %>
-
-<h2>Pushed Product</h2>
-
-<ul>
-  <% @myproducts.each do |myproducts| %>
-    <div>
-      <p>
-        <b><%= myproducts.title %><br></b>
-        ID: <%= myproducts.id %><br>
-        Vendor: <%= myproducts.vendor %><br>
-        Description: <%= myproducts.body_html %><br>
-        Handle: <%= myproducts.handle %><br>
-        Created at: <%= myproducts.created_at %><br>
-        <%= link_to "Edit" %><br>
-        <%= link_to "Remove" %>
-      </p>
-    </div>
+    </script>
   <% end %>
-</ul>
-<br>
+
+  <body>
+
+    <h2>Pushed Product</h2>
+
+    <ul>
+      <% @products.each do |myproducts| %>
+        <div>
+          <p>
+            <b><%= myproducts.title %><br></b>
+            ID: <%= myproducts.id %><br>
+            Vendor: <%= myproducts.vendor %><br>
+            Description: <%= myproducts.body_html %><br>
+            Handle: <%= myproducts.handle %><br>
+            Created at: <%= myproducts.created_at %><br>
+            <%= link_to "Edit" %><br>
+            <%= link_to "Remove" %>
+          </p>
+        </div>
+      <% end %>
+    </ul>
+    <br>
+
+  </body>
+</html>

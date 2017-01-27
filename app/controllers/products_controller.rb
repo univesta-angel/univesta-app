@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
 
   def myproducts
     #@products = Product.all
-    @myproducts = ShopifyAPI::Product.find(:all)
+    @products = ShopifyAPI::Product.find(:all)
   end
 
   # GET /products/1
