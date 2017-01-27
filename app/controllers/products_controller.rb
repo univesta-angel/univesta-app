@@ -12,6 +12,11 @@ class ProductsController < ApplicationController
     @angel = 1;
   end
 
+  def myproducts
+    @products = ShopifyAPI::Product.find(:all, params: { limit: 10 })
+    
+  end
+
   # GET /products/1
   # GET /products/1.json
   def show
