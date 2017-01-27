@@ -1,0 +1,30 @@
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    ShopifyApp.ready(function(){
+      ShopifyApp.Bar.initialize({
+        title: "Home",
+        icon: "<%= asset_path('favicon.ico') %>"
+      });
+    });
+  </script>
+<% end %>
+
+<h2>Imports: </h2>
+
+<ul>
+  <% @products.each do |product| %>
+    <div>
+      <p>
+        <b><%= product.title %><br></b>
+        ID: <%= product.id %><br>
+        Vendor: <%= product.vendor %><br>
+        Description: <%= product.body_html %><br>
+        Handle: <%= product.handle %><br>
+        Created at: <%= product.created_at %><br>
+        <%= link_to "Edit" %><br>
+        <%= link_to "Remove" %>
+      </p>
+    </div>
+  <% end %>
+</ul>
+<br>

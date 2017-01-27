@@ -12,6 +12,11 @@ class ProductsController < ApplicationController
     @angel = 1;
   end
 
+  def myproducts
+    #@products = Product.all
+    @myproducts = ShopifyAPI::Product.find(:all)
+  end
+
   # GET /products/1
   # GET /products/1.json
   def show
