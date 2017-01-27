@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root :to => 'products#index'
   match 'create' => 'products#create', via: :post
   post 'push' => 'products#push', as: :push
-  get '/myproducts' :to => 'home#index'
+  get '/myproducts' => 'home#index'
 
   #post 'products#push'
   mount ShopifyApp::Engine, at: '/'
