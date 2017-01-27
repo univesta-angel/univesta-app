@@ -1,0 +1,52 @@
+<html>
+
+  <body>
+    <div class="container main-content">
+
+      <div class="container-fluid">
+        <div class="col-md-12">
+          <div class="panel">
+            <div class="panel-body align-center">
+              <div class="row">
+                <div class="col-lg-7">
+                  <div class="input-group">
+                    <%= form_tag(products_path, method: :get) do %>
+                      <div class="col-xs-8">
+                        <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search for Products" %></div>
+                      <div class="col-xs-2 align-right">
+                        <%= submit_tag "Search", name: nil, class: "btn btn-secondary" %></div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <h2>Pushed Product</h2>
+
+      <ul>
+        <% @myproducts.each do |myproducts| %>
+          <div>
+            <p>
+              <b><%= myproducts.title %><br></b>
+              ID: <%= myproducts.id %><br>
+              Vendor: <%= myproducts.vendor %><br>
+              Description: <%= myproducts.body_html %><br>
+              Handle: <%= myproducts.handle %><br>
+              Created at: <%= myproducts.created_at %><br>
+              <%= link_to "Edit" %><br>
+              <%= link_to "Remove" %>
+            </p>
+          </div>
+        <% end %>
+      </ul>
+      <br>
+
+    </div>
+
+  </body>
+
+</html>
