@@ -64,11 +64,11 @@
   <!--SELECT ALL PRODUCTS W/ ACTION-->
 
   <div class="container-fluid">
-
         <div class="row">
         <div class="col-md-12">
           
-        <div class="col-md-1"></div>
+        <div class="col-md-1">
+        </div>
         <div class="col-md-7">
                 <%= check_box_tag :cb_all, { class: "selectAll"} %>
                 <strong>Select All Products</strong></span>
@@ -77,12 +77,15 @@
 
           <div class="col-md-4">
             <%= button_tag "Remove All Products",  class: "btn btn-danger margin-small-right"  %>
+            <div class="input-group">
+            <span class="input-group-addon">+</span>
             <%= button_tag "Push All Products to Shop", class: "btn btn-success btn-icon-left" %>
+            </div>
           </div>
           </div>
         </div>
   </div>
-  <br/>
+    <br/>
 
 
   <!--DISPLAY EACH PRODUCT-->
