@@ -11,6 +11,12 @@
   </script>
   
 <% end %>
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" href="bootstrap.css">
+  <link rel="stylesheet" href="bootstrap-grid.css">
+  <link rel="stylesheet" href="bootstrap-grid.min.css">
+  <link rel="stylesheet" href="bootstrap-reboot.css">
+  <link rel="stylesheet" href="bootstrap-reboot.min.css">
 
 <head>
   <style type="text/css">
@@ -37,8 +43,14 @@
 
 <body>
 
-<div class="container main-content">
 
+<<<<<<< HEAD
+=======
+<div class="container main-content">
+<iframe src="http://www.shunvmall.com/data/out/179/46894845-picture.jpg">
+    <p>Placeholder text; only shows up if the page DOESN'T render!</p>
+</iframe>
+>>>>>>> d11b35563b799eb84d8b7b19c1849085dfcf1416
 <div><h3>Import List</h3></div>
 
   <!--SEARCH PANEL-->
@@ -97,6 +109,7 @@
   <!--DISPLAY EACH PRODUCT-->
   <table>
     <tbody>
+
 
     <% @products.each do |product| %>
       <%= form_tag(push_path, method: 'post') do %>
@@ -250,6 +263,9 @@
       </tbody>
     </table>
 </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>
