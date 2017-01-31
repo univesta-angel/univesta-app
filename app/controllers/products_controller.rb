@@ -97,7 +97,7 @@ class ProductsController < ApplicationController
     redirect_back(fallback_location: root_path)
 
     respond_to do |format|
-      if @product.save
+      if @new_product.save
         redirect_back(fallback_location: root_path)
       else
         redirect_back(fallback_location: root_path)
