@@ -67,15 +67,13 @@
     <div class="col-md-12"  align="center">
       <div class="panel">
         <div class="row">
-          <div class="col-xs-6 space-top">
-            <div class="container-flex" style="height:35px">
+
               <div class="col-md-8">
                 <%= check_box_tag :cb_all, { class: "selectAll"} %>
                 <span class="space-small-left"><strong>Select All Products</strong></span>
               </div>
-            </div>
-          </div>
-          <div class="col-md-4 space-top align-right">
+
+          <div class="col-md-4">
             <%= button_tag "Remove All Products",  class: "btn btn-danger margin-small-right"  %>
             <%= button_tag "Push All Products to Shop", class: "btn btn-success btn-icon-left" %>
           </div>
