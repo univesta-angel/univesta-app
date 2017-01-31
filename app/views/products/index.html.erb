@@ -11,12 +11,6 @@
   </script>
   
 <% end %>
-  <link rel="stylesheet" href="bootstrap.min.css">
-  <link rel="stylesheet" href="bootstrap.css">
-  <link rel="stylesheet" href="bootstrap-grid.css">
-  <link rel="stylesheet" href="bootstrap-grid.min.css">
-  <link rel="stylesheet" href="bootstrap-reboot.css">
-  <link rel="stylesheet" href="bootstrap-reboot.min.css">
 
 <head>
   <style type="text/css">
@@ -147,7 +141,7 @@
                       <!--PRODUCTS TAB-->
                       <div class="tab-pane fade in active" id="tab1default<%= @angel %>">
                         <div class="media" id="item">
-                          <div class="media-left">
+                          <div class="media-left img-thumbnail">
                             <%= image_tag(product.images, :alt => "picture") %><%= hidden_field_tag :_img, product.images %>
                           </div>
                           <div class="media-body">
