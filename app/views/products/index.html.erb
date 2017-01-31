@@ -73,16 +73,9 @@
                 <%= check_box_tag :cb_all, { class: "selectAll"} %>
                 <span class="space-small-left"><strong>Select All Products</strong></span>
               </div>
-              <div style="width: 200px; display: none;">
-                <select class="form-control">
-                  <option value="0">Bulk Actions (0 selected)</option>
-                  <option value="remove">Remove from Import List</option>
-                  <option value="push">Push Products to Shop</option>
-                </select>
-              </div>
             </div>
           </div>
-          <div class="col-xs-6 space-top align-right">
+          <div class="col-md-4 space-top align-right">
             <%= button_tag "Remove All Products",  class: "btn btn-danger margin-small-right"  %>
             <%= button_tag "Push All Products to Shop", class: "btn btn-success btn-icon-left" %>
           </div>
