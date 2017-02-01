@@ -98,7 +98,7 @@
             <div class="panel with-nav-tabs panel-default">
               <div class="panel-heading">
                 <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-6">
                   <ul class="nav nav-pills nav-justified">
 
                     <li slot="select"><span class="for-checkbox"><%= check_box_tag "product_ids[]", product.id %></span></li>
@@ -226,26 +226,7 @@
 
                   </div>
                 </div>
-                                <div class="col-md-4">
-                  <div class="container-flex flex-left">
-                    <div class="margin-small-right">
-                        <div class="btn-group">
-                          <button type="button" class="btn btn-warning">Action</button>
-                          <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="caret"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
-                          </button>
-                          <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                          </ul>
-                        </div>
-                    </div>
-                  </div>
-                </div>
+
                 <div class="panel-footer">
                   <div class="text-right"><%= submit_tag 'Push to Store', class: "btn btn-success " %></div>
                 </div>
