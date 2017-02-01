@@ -270,12 +270,22 @@
   <input type="text" class="form-control" placeholder="Search for Products">
   </div>
   <div class="col-md-1">
-  <button type="submit" class="btn btn-default">Submit</button>
+  <button type="submit" class="btn btn-info">Submit</button>
   </div>
   </div>  
 
 </div>
+<div class="col-lg-12">
 
+                  <ul class="nav nav-pills nav-justified">
+
+                    <li slot="select"><span class="for-checkbox"><%= check_box_tag "product_ids[]", product.id %></span></li>
+                    <li role="presentation" class="active"><a href="#tab1default<%= @angel %>" data-toggle="tab">Product</a></li>
+                    <li role="presentation"><a href="#tab2default<%= @angel %>" data-toggle="tab">Variants</a></li>
+                    <li role="presentation"><a href="#tab3default<%= @angel %>" data-toggle="tab">Images</a></li>
+                  </ul>
+
+</div>
 <!--MINE-->
 
 
