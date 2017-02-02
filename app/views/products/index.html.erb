@@ -306,7 +306,7 @@
                 <li><a href="#">Separated link</a></li>
               </ul>
       </div>
-        <button type="submit" class="btn btn-success" style="margin-left: 10px;">Search</button>
+        <button type="submit" class="btn btn-success" style="margin-left: 10px;">PUSH</button>
       </form>
 
   </div>
@@ -318,25 +318,44 @@
           <button type="submit" class="btn btn-success" style="width: 210px; height: 35px; margin-left: -100px;">Push All Products to Shop</button>
         </div>
 
-<!--nav--> 
+
+<% @products.each do |product| %>
+      <%= form_tag(push_path, method: 'post') do %>
+      
+      <%= hidden_field_tag :_title, product.images %>
+      <%= hidden_field_tag :_body, product.images %>
+      <%= hidden_field_tag :_type, product.images %>
+      <%= hidden_field_tag :_vendor, product.images %>
+      <%= hidden_field_tag :_img, product.images %>
+
+<!--nav-->
+
 <img style="height: 360px; width: 1000px; margin-left: 130px; margin-top: 20px;" src="https://s23.postimg.org/70ol5adm3/lols.png">   
 <ul class="nav nav-pills" style="margin-top: -20px; margin-left: 120px;">
-  <li class="active"><a href="#home" data-toggle="tab" aria-expanded="true" style="margin-top: -319px; margin-left: 60px; font-family: Impact, Charcoal, sans-serif;">Product</a></li>
-  <li class=""><a href="#profile" data-toggle="tab" aria-expanded="false" style="margin-top: -319px; margin-left: 140px; font-family: Impact, Charcoal, sans-serif;">Description</a></li>
-   <li class=""><a href="#profile" data-toggle="tab" aria-expanded="false" style="margin-top: -319px; margin-left: 245px; font-family: Impact, Charcoal, sans-serif;">Variants</a></li>
-    <li class=""><a href="#profile" data-toggle="tab" aria-expanded="false" style="margin-top: -319px; margin-left: 332px; font-family: Impact, Charcoal, sans-serif;">Images</a></li>
+  <li class="active"><a href="#home<%= @angel %>" data-toggle="tab" aria-expanded="true" style="margin-top: -319px; margin-left: 60px; font-family: Impact, Charcoal, sans-serif;">Product</a></li>
+  <li class=""><a href="#profile<%= @angel %>" data-toggle="tab" aria-expanded="false" style="margin-top: -319px; margin-left: 140px; font-family: Impact, Charcoal, sans-serif;">Description</a></li>
+   <li class=""><a href="#profile<%= @angel %>" data-toggle="tab" aria-expanded="false" style="margin-top: -319px; margin-left: 245px; font-family: Impact, Charcoal, sans-serif;">Variants</a></li>
+    <li class=""><a href="#profile<%= @angel %>" data-toggle="tab" aria-expanded="false" style="margin-top: -319px; margin-left: 332px; font-family: Impact, Charcoal, sans-serif;">Images</a></li>
 
 </ul>
+<!--push button-->
+<div class="text-right"><%= submit_tag 'Push to Store', class: "btn btn-success " %></div>
+
   <div class="panel-body" style=" margin-top: -250px; width: 800px; margin-left: 250px; color: #000;">
 <div id="myTabContent" class="tab-content">
-  <div class="tab-pane fade active in" id="home">
+  <div class="tab-pane fade active in" id="home<%= @angel %>">
     <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
   </div>
-  <div class="tab-pane fade" id="profile">
+  <div class="tab-pane fade" id="profile<%= @angel %>">
     <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
   </div>
   </div>
 </div>
+
+
+    <% @angel+=1 %>
+  <% end %>
+<% end %>
 <!--end navs-->
 </div>
 
