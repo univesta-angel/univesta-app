@@ -66,6 +66,36 @@ class ProductsController < ApplicationController
     option["name"] = "Color"
     options << option
 
+    variant = ShopifyAPI::Variant.new(
+      :option1              => "Red",
+      #:option2              => "Medium",    
+      :price                => params[:_price],   #get value from script (?)
+      :compare_at_price     => "10.00",
+      #:barcode              => "1234_barcode",
+      :sku                  => params[:_sku],
+      #:taxable              => true,
+      #:weight               => 100,
+      #:weight_unit          => "kg"
+      :inventory_management => 'shopify',
+      :inventory_quantity   => 10,                #get value from script (?)
+    )
+    variants << variant
+
+    variant = ShopifyAPI::Variant.new(
+      :option1              => "Blue",
+      #:option2              => "Medium",    
+      :price                => params[:_price],   #get value from script (?)
+      :compare_at_price     => "10.00",
+      #:barcode              => "1234_barcode",
+      :sku                  => params[:_sku],
+      #:taxable              => true,
+      #:weight               => 100,
+      #:weight_unit          => "kg"
+      :inventory_management => 'shopify',
+      :inventory_quantity   => 10,                #get value from script (?)
+    )
+    variants << variant
+
     new_product = ShopifyAPI::Product.new
     new_product.title = params[:_title]
     new_product.body_html = params[:_body]
@@ -74,19 +104,7 @@ class ProductsController < ApplicationController
     new_product.images = images
     new_product.tags = params[:_tags]
     new_product.options = options
-    new_product.variants = [ShopifyAPI::Variant.new(
-      :option1              => "Red",
-      #:option2              => "Medium",
-      :price                => params[:_price],
-      :compare_at_price     => "10.00",
-      #:barcode              => "1234_barcode",
-      :sku                  => params[:_sku],
-      #:taxable              => true,
-      #:weight               => 100,
-      #:weight_unit          => "kg"
-      :inventory_management => 'shopify',
-      :inventory_quantity   => 10,
-    )]
+    new_product.variants = variants
     new_product.save
 
     #new_product = ShopifyAPI::Product.create({ :body_html => "Test description", :title => "Test Product" })
