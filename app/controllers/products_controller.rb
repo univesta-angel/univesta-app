@@ -71,39 +71,29 @@ class ProductsController < ApplicationController
     options << option
     option1 = ShopifyAPI::Option.new(:name => "Size")
     options << option1
-
+    color = ['Red', 'Blue', 'Yellow']
+    size = ['S' , 'M' , 'L']
     
 
     variants = []
-    variant = ShopifyAPI::Variant.new(
-      :option1              => "Red",
-      :option2              => "Medium",    
-      :price                => params[:_price],   #get value from script (?)
-      :compare_at_price     => "10.00",
-      #:barcode              => "1234_barcode",
-      :sku                  => params[:_sku],
-      #:taxable              => true,
-      #:weight               => 100,
-      #:weight_unit          => "kg"
-      :inventory_management => 'shopify',
-      :inventory_quantity   => 10,                #get value from script (?)
-    )
-    variants << variant
-
-    variant2 = ShopifyAPI::Variant.new(
-      :option1              => "Blue",
-      :option2              => "Medium",    
-      :price                => params[:_price],   #get value from script (?)
-      :compare_at_price     => "10.00",
-      #:barcode              => "1234_barcode",
-      :sku                  => params[:_sku],
-      #:taxable              => true,
-      #:weight               => 100,
-      #:weight_unit          => "kg"
-      :inventory_management => 'shopify',
-      :inventory_quantity   => 10,                #get value from script (?)
-    )
-    variants << variant2
+    color.each do |row1|
+      size.each do |row2| 
+        color+size = ShopifyAPI::Variant.new(
+          :option1              => color,
+          :option2              => size,    
+          :price                => params[:_price],   #get value from script (?)
+          :compare_at_price     => "10.00",
+          #:barcode              => "1234_barcode",
+          :sku                  => params[:_sku],
+          #:taxable              => true,
+          #:weight               => 100,
+          #:weight_unit          => "kg"
+          :inventory_management => 'shopify',
+          :inventory_quantity   => 10,                #get value from script (?)
+        )
+        variants << color+size
+      end    
+   end
 
     new_product = ShopifyAPI::Product.new
     new_product.title = params[:_title]
