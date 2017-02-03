@@ -62,14 +62,15 @@ class ProductsController < ApplicationController
     images << image
 
     options = []
-    option = {}
-    option["name"] = "Color"
-    options << option
+    option1 = "Color"
+    options << option1
+    option2 = "Size"
+    options << option2
 
     variants = []
     variant = ShopifyAPI::Variant.new(
       :option1              => "Red",
-      #:option2              => "Medium",    
+      :option2              => "Medium",    
       :price                => params[:_price],   #get value from script (?)
       :compare_at_price     => "10.00",
       #:barcode              => "1234_barcode",
@@ -84,7 +85,7 @@ class ProductsController < ApplicationController
 
     variant2 = ShopifyAPI::Variant.new(
       :option1              => "Blue",
-      #:option2              => "Medium",    
+      :option2              => "Medium",    
       :price                => params[:_price],   #get value from script (?)
       :compare_at_price     => "10.00",
       #:barcode              => "1234_barcode",
