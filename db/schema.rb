@@ -10,22 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170202055822) do
+ActiveRecord::Schema.define(version: 20170203021407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "imports", force: :cascade do |t|
-    t.string   "title"
-    t.text     "body_html"
-    t.binary   "images"
-    t.text     "product_type"
-    t.text     "tags"
-    t.text     "vendor"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.string   "price"
-  end
 
   create_table "products", force: :cascade do |t|
     t.string   "title"
@@ -34,20 +22,15 @@ ActiveRecord::Schema.define(version: 20170202055822) do
     t.text     "product_type"
     t.text     "tags"
     t.text     "vendor"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.string   "price"
-    t.string   "colors",                      array: true
-    t.string   "sizes",                       array: true
-    t.binary   "variant_images",              array: true
+    t.string   "colors",                        array: true
+    t.string   "sizes",                         array: true
+    t.binary   "variant_images",                array: true
+    t.string   "compare_at_price"
   end
 
-  create_table "sampletablezzzzs", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "age"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "shops", force: :cascade do |t|
     t.string   "shopify_domain", null: false
@@ -57,11 +40,5 @@ ActiveRecord::Schema.define(version: 20170202055822) do
     t.index ["shopify_domain"], name: "index_shops_on_shopify_domain", unique: true, using: :btree
   end
 
-  create_table "zombies", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "age"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
 end

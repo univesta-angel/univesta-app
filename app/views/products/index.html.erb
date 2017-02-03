@@ -105,11 +105,6 @@
 
 <% @products.each do |product| %>
       <%= form_tag(push_path, method: 'post') do %>
-      <%= hidden_field_tag :_title, product.title %>
-      <%= hidden_field_tag :_body, product.body_html %>
-      <%= hidden_field_tag :_type, product.product_type %>
-      <%= hidden_field_tag :_vendor, product.vendor %>
-      <%= hidden_field_tag :_img, product.images %>
 
 <!--nav-->
 
