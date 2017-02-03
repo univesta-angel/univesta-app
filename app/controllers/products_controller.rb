@@ -78,9 +78,9 @@ class ProductsController < ApplicationController
     variants = []
     color.each do |row1|
       size.each do |row2| 
-        color+size = ShopifyAPI::Variant.new(
-          :option1              => color,
-          :option2              => size,    
+        row1+row2 = ShopifyAPI::Variant.new(
+          :option1              => row1,
+          :option2              => row2,    
           :price                => params[:_price],   #get value from script (?)
           :compare_at_price     => "10.00",
           #:barcode              => "1234_barcode",
@@ -91,7 +91,7 @@ class ProductsController < ApplicationController
           :inventory_management => 'shopify',
           :inventory_quantity   => 10,                #get value from script (?)
         )
-        variants << color+size
+        variants << row1+row2
       end    
    end
 
