@@ -85,9 +85,9 @@ class ProductsController < ApplicationController
     prices = params[:_prices].split
 
     variants = []
-    color.each do |row1|
-      size.each do |row2|
-        prices.each do |row|
+    prices.each do |row|
+      color.each do |row1|
+        size.each do |row2|
           zzz = ShopifyAPI::Variant.new(
             :option1              => row1,
             :option2              => row2,    
