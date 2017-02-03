@@ -85,6 +85,7 @@ class ProductsController < ApplicationController
     #prices = params[:_prices].split
 
     variants = []
+    #prices.each do |row|
       color.each do |row1|
         size.each do |row2|
           zzz = ShopifyAPI::Variant.new(
@@ -99,6 +100,7 @@ class ProductsController < ApplicationController
           variants << zzz
         end
       end
+    #end
 
     new_product = ShopifyAPI::Product.new
     new_product.title = params[:_title]
@@ -116,10 +118,10 @@ class ProductsController < ApplicationController
     expires_in(60.seconds, public: false)
 
 
-    redirect_back(fallback_location: root_path)
+    #redirect_back(fallback_location: root_path)
 
     respond_to do |format|
-      if @new_product.save
+      if new_product.save
         format.html { redirect_to root_path, notice: 'Product was successfully pushed' }
       else
         format.html { redirect_to root_path, notice: 'Product was successfully pushed' }
