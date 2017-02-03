@@ -60,6 +60,15 @@ class ProductsController < ApplicationController
     image["src"] = params[:_img]
     images << image
 
+    options = []
+    option = {}
+    option = ShopifyAPI::Option.new(:name => "Color")
+    options << option
+    option1 = ShopifyAPI::Option.new(:name => "Size")
+    options << option1
+
+    
+
     variants = []
     variant = ShopifyAPI::Variant.new(
       :option1              => "Red",
@@ -98,7 +107,7 @@ class ProductsController < ApplicationController
     new_product.vendor = params[:_vendor]
     new_product.images = images
     new_product.tags = params[:_tags]
-    new_product.options = ShopifyAPI::Option.new(:name => "Color", :name => "Size")
+    new_product.options = options
     new_product.variants = variants
     new_product.save
 
