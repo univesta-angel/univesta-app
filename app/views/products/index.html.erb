@@ -342,9 +342,45 @@
 
   <div class="panel-body" style=" margin-top: -250px; width: 800px; margin-left: 250px; color: #000;">
 <div id="myTabContent" class="tab-content">
+
+  <!--PRODUCTS TAB-->
   <div class="tab-pane fade active in" id="home<%= @angel %>">
-    <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui. <%= product.title %> </p>
+    <div class="media" id="item">
+      <div class="media-left">
+        <%= image_tag(product.images, :alt => "picture") %><%= hidden_field_tag :_img, product.images %>
+      </div>
+      <div class="media-body">
+        <div class="product-title">
+          <b><%= product.title %></b>
+        </div>
+          <div class="input-group">
+            <span class="input-group-addon">Change Name:</span>
+            <%= text_field_tag :_title, product.title, maxlength: 255, class: 'form-control' %>
+          </div>
+          <div class="input-group input-group-sm">
+            <span class="input-group-addon" id="sizing-addon3">Collections:</span>
+            <%= text_field_tag :_collections, "", class: 'form-control', placeholder: "Choose Collections" %>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="input-group input-group-sm">
+                <span class="input-group-addon" id="sizing-addon3">Type:</span>
+                <%= text_field_tag :_type, "", class: 'form-control', placeholder: "Choose Type" %>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="input-group input-group-sm">
+                <span class="input-group-addon" id="sizing-addon3">Tags:</span>
+                <%= text_field_tag :_tags, "", class: 'form-control', placeholder: "Insert Tags Here" %>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
   </div>
+  <!--END OF PRODUCTS TAB-->
+
   <div class="tab-pane fade" id="profile<%= @angel %>">
     <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
   </div>
