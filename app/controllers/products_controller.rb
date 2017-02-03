@@ -71,7 +71,7 @@ class ProductsController < ApplicationController
     options << option
     option1 = ShopifyAPI::Option.new(:name => "Size")
     options << option1
-    color = params[:_colors]
+    color = params[:_colors].split
     size = ['S' , 'M' , 'L']
     
 
