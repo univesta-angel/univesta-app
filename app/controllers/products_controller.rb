@@ -65,7 +65,6 @@ class ProductsController < ApplicationController
     image["src"] = params[:_img]
     images << image
 
-    prices = params[:_prices].split
     options = []
     #option = {}
     option = ShopifyAPI::Option.new(:name => "Color")
@@ -74,6 +73,7 @@ class ProductsController < ApplicationController
     options << option1
     color = params[:_colors].split
     size = params[:_sizes].split
+    prices = params[:_prices].split
     if color.size==0
       color=['-']
     end
@@ -81,9 +81,9 @@ class ProductsController < ApplicationController
       size=['-']
     end
     variants = []
-    prices.each do |row|
-      color.each do |row1|
-        size.each do |row2| 
+    color.each do |row1|
+      size.each do |row2|
+        prices.each do |row| 
           zzz = ShopifyAPI::Variant.new(
             :option1              => row1,
             :option2              => row2,    
