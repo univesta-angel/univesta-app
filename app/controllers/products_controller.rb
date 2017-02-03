@@ -65,86 +65,38 @@ class ProductsController < ApplicationController
     image["src"] = params[:_img]
     images << image
 
+    options = []
+    #option = {}
+    option = ShopifyAPI::Option.new(:name => "Color")
+    options << option
+    option1 = ShopifyAPI::Option.new(:name => "Size")
+    options << option1
+    color = params[:_colors].split
+    size = params[:_sizes].split
     
+
+
     
+    variants = []
+    color.each do |row1|
+      size.each do |row2| 
+        zzz = ShopifyAPI::Variant.new(
+          :option1              => row1,
+          :option2              => row2,    
+          :price                => params[:_price],   #get value from script (?)
+          :compare_at_price     => "10.00",
+          #:barcode              => "1234_barcode",
+          :sku                  => params[:_sku],
+          #:taxable              => true,
+          #:weight               => 100,
+          #:weight_unit          => "kg"
+          :inventory_management => 'shopify',
+          :inventory_quantity   => 10,                #get value from script (?)
+        )
+        variants << zzz
+      end    
+   end
 
-
-    if colors.size==1 and sizes.size==1
-      options = []
-      #option = {}
-      option = ShopifyAPI::Option.new(:name => "Color")
-      options << option
-      option1 = ShopifyAPI::Option.new(:name => "Size")
-      options << option1
-      colors = params[:_colors].split
-      sizes = params[:_sizes].split
-        variants = []
-        colors.each do |row1|
-          sizes.each do |row2| 
-            zzz = ShopifyAPI::Variant.new(
-              :option1              => row1,
-              :option2              => row2,    
-              :price                => params[:_price],   #get value from script (?)
-              :compare_at_price     => "10.00",
-              #:barcode              => "1234_barcode",
-              :sku                  => params[:_sku],
-              #:taxable              => true,
-              #:weight               => 100,
-              #:weight_unit          => "kg"
-              :inventory_management => 'shopify',
-              :inventory_quantity   => 10,                #get value from script (?)
-            )
-            variants << zzz
-          end    
-       end
-    elsif colors.size==1 
-      options = []
-      #option = {}
-      option = ShopifyAPI::Option.new(:name => "Color")
-      options << option
-      colors = params[:_colors].split
-
-      variants = []
-        colors.each do |row1|
-            zzz = ShopifyAPI::Variant.new(
-              :option1              => row1,
-              
-              :price                => params[:_price],   #get value from script (?)
-              :compare_at_price     => "10.00",
-              #:barcode              => "1234_barcode",
-              :sku                  => params[:_sku],
-              #:taxable              => true,
-              #:weight               => 100,
-              #:weight_unit          => "kg"
-              :inventory_management => 'shopify',
-              :inventory_quantity   => 10,                #get value from script (?)
-            )
-            variants << zzz
-          end
-      elsif sizes.size==1 
-         options = []
-          #option = {}
-          option1 = ShopifyAPI::Option.new(:name => "Size")
-          options << option1
-          sizes = params[:_sizes].split
-      variants = []
-        sizes.each do |row1|
-            zzz = ShopifyAPI::Variant.new(
-              :option2              => row1,
-              
-              :price                => params[:_price],   #get value from script (?)
-              :compare_at_price     => "10.00",
-              #:barcode              => "1234_barcode",
-              :sku                  => params[:_sku],
-              #:taxable              => true,
-              #:weight               => 100,
-              #:weight_unit          => "kg"
-              :inventory_management => 'shopify',
-              :inventory_quantity   => 10,                #get value from script (?)
-            )
-            variants << zzz
-          end    
-    end
     new_product = ShopifyAPI::Product.new
     new_product.title = params[:_title]
     new_product.body_html = params[:_body]
