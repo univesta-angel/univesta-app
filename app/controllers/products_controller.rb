@@ -62,10 +62,11 @@ class ProductsController < ApplicationController
     images << image
 
     options = []
-    option1 = "Color"
-    options << option1
-    option2 = "Size"
-    options << option2
+    option = {}
+    option["name"] = "Color"
+    options << option
+    option["name"] = "Size"
+    options << option
 
     variants = []
     variant = ShopifyAPI::Variant.new(
