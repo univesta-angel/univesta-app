@@ -61,7 +61,7 @@ class ProductsController < ApplicationController
     images << image
 
     options = []
-    option = {}
+    #option = {}
     option = ShopifyAPI::Option.new(:name => "Color")
     options << option
     option1 = ShopifyAPI::Option.new(:name => "Size")
