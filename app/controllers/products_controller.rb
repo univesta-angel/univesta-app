@@ -34,7 +34,7 @@ class ProductsController < ApplicationController
                               product_type: params[:product_type],
                               images: params[:images],
                               vendor: params[:vendor],
-                              tags: params[:tags],
+                              tags: params[:tags]
                               price: params[:price],
                               compare_at_price: params[:compare_at_price],
                               colors: params[:colors],
@@ -72,10 +72,7 @@ class ProductsController < ApplicationController
     option1 = ShopifyAPI::Option.new(:name => "Size")
     options << option1
 
-    colors = params[:colors]
-      colors.each do |t|
-        @color = t
-      end
+    
 
     variants = []
     variant = ShopifyAPI::Variant.new(
@@ -128,9 +125,9 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @new_product.save
-        format.html { redirect_back(fallback_location: root_path) }
+        redirect_back(fallback_location: root_path)
       else
-        format.html { redirect_back(fallback_location: root_path) }
+        redirect_back(fallback_location: root_path)
       end
     end
   end
