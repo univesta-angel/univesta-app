@@ -112,19 +112,15 @@ class ProductsController < ApplicationController
     new_product.options = options
     new_product.variants = variants
     new_product.save
-
-    #new_product = ShopifyAPI::Product.create({ :body_html => "Test description", :title => "Test Product" })
     
     expires_in(60.seconds, public: false)
-
-
-    #redirect_back(fallback_location: root_path)
 
     respond_to do |format|
       if new_product.save
         format.html { redirect_to root_path, notice: 'Product was successfully pushed.' }
       else
-        format.html { redirect_to root_path, notice: 'Product could not be pushed to store. Please contact the admin.' }
+        format.html { redirect_to root_path, notice: 'Oops. Something went wrong.' }
+        format.json { render json: new_product.errors, status: :unprocessable_entity }
       end
     end
   end
