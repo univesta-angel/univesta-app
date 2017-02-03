@@ -82,16 +82,16 @@ class ProductsController < ApplicationController
       size=['-']
     end
 
-    #prices = params[:_prices].split
+    prices = params[:_prices].split
 
     variants = []
-    #prices.each do |row|
+    prices.each do |row|
       color.each do |row1|
         size.each do |row2|
           zzz = ShopifyAPI::Variant.new(
             :option1              => row1,
             :option2              => row2,    
-            :price                => "11.00",   #get value from script (?)
+            :price                => row,   #get value from script (?)
             :compare_at_price     => params[:_compare_at_price],
             :sku                  => params[:_sku],
             :inventory_management => 'shopify',
@@ -100,7 +100,7 @@ class ProductsController < ApplicationController
           variants << zzz
         end
       end
-    #end
+    end
 
     new_product = ShopifyAPI::Product.new
     new_product.title = params[:_title]
@@ -122,9 +122,9 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if new_product.save
-        format.html { redirect_to root_path, notice: 'Product was successfully pushed' }
+        format.html { redirect_to root_path, notice: 'Product was successfully pushed.' }
       else
-        format.html { redirect_to root_path, notice: 'Product was successfully pushed' }
+        format.html { redirect_to root_path, notice: 'Product could not be pushed to store. Please contact the admin.' }
       end
     end
   end
