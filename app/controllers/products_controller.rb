@@ -73,10 +73,12 @@ class ProductsController < ApplicationController
     options << option1
     color = params[:_colors].split
     size = params[:_sizes].split
-    
-
-
-    
+    if color.size==0
+      color=['']
+    end
+    if size.size==0
+      size=['']
+    end
     variants = []
     color.each do |row1|
       size.each do |row2| 
