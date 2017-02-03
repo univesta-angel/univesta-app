@@ -82,7 +82,7 @@ class ProductsController < ApplicationController
     )
     variants << variant
 
-    variant = ShopifyAPI::Variant.new(
+    variant2 = ShopifyAPI::Variant.new(
       :option1              => "Blue",
       #:option2              => "Medium",    
       :price                => params[:_price],   #get value from script (?)
@@ -95,7 +95,7 @@ class ProductsController < ApplicationController
       :inventory_management => 'shopify',
       :inventory_quantity   => 10,                #get value from script (?)
     )
-    variants << variant
+    variants << variant2
 
     new_product = ShopifyAPI::Product.new
     new_product.title = params[:_title]
