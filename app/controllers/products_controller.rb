@@ -63,7 +63,7 @@ class ProductsController < ApplicationController
     variants = []
     variant = ShopifyAPI::Variant.new(
       :option1              => "Red",
-      #:option2              => "Medium",    
+      :option2              => "Medium",    
       :price                => params[:_price],   #get value from script (?)
       :compare_at_price     => "10.00",
       #:barcode              => "1234_barcode",
@@ -78,7 +78,7 @@ class ProductsController < ApplicationController
 
     variant2 = ShopifyAPI::Variant.new(
       :option1              => "Blue",
-      #:option2              => "Medium",    
+      :option2              => "Medium",    
       :price                => params[:_price],   #get value from script (?)
       :compare_at_price     => "10.00",
       #:barcode              => "1234_barcode",
@@ -98,7 +98,7 @@ class ProductsController < ApplicationController
     new_product.vendor = params[:_vendor]
     new_product.images = images
     new_product.tags = params[:_tags]
-    new_product.options = ShopifyAPI::Option.new(:name => "Color")
+    new_product.options = ShopifyAPI::Option.new(:name => "Color", :name => "Size")
     new_product.variants = variants
     new_product.save
 
