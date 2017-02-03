@@ -37,223 +37,7 @@
 
 <body background="https://s24.postimg.org/uwwv58tad/neon_green_wallpapers_images_3840x2160.jpg" style="background-size: 100% 160%; background-repeat: no-repeat;">
 
-<!--<div class="container main-content">
-
-<div><h3>Import List</h3></div>-->
-
-  <!--SEARCH PANEL-->
-  <!--
-  <div class="container-fluid">
-    <div class="col-md-12">
-      <div class="panel">
-        <div class="panel-body align-center">
-          <div class="row">
-            <div class="col-lg-7">
-              <div class="input-group">
-                <%= form_tag(products_path, method: :get) do %>
-                  <div class="col-xs-8">
-                    <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search for Products" %></div>
-                  <div class="col-xs-1 align-right">
-                    <%= submit_tag "Search", name: nil, class: "btn btn-info" %></div>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-<div class="row">
-<div class="col-md-12">
-  <div class="col-md-8">
-                <%= check_box_tag :cb_all, { class: "selectAll"} %>
-                <strong>Select All Products</strong></span>
-  </div>
-  <div class="col-md-2">
-
-            <%= button_tag "Remove All Products",  class: "btn btn-danger margin-small-right"  %>
-            
-  </div>
-  <div class="col-md-1">
-              <%= button_tag "Push All Products to Shop", class: "btn btn-success btn-icon-left" %>
-  </div>
-</div>
-</div>
-  <br/>
-
-
-
-  <table>
-    <tbody>
-
-
-    <% @products.each do |product| %>
-      <%= form_tag(push_path, method: 'post') do %>
-
-        <tr><td>
-        <div class="container-fluid">
-          <div class="col-md-12">
-            <div class="panel with-nav-tabs panel-default">
-              <div class="panel-heading">
-                <div class="row">
-                <div class="col-md-4">
-                  <ul class="nav nav-pills nav-justified">
-
-                    <li slot="select"><span class="for-checkbox"><%= check_box_tag "product_ids[]", product.id %></span></li>
-                    <li role="presentation" class="active"><a href="#tab1default<%= @angel %>" data-toggle="tab">Product</a></li>
-                    <li role="presentation"><a href="#tab2default<%= @angel %>" data-toggle="tab">Variants</a></li>
-                    <li role="presentation"><a href="#tab3default<%= @angel %>" data-toggle="tab">Images</a></li>
-                  </ul>
-                </div>
-                <div class="col-xs-6"></div>
-                                <div class="col-md-2">
-                  <div class="container-flex flex-left">
-                    <div class="margin-small-right">
-                        <div class="btn-group">
-                          <button type="button" class="btn btn-warning">Action</button>
-                          <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="caret"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
-                          </button>
-                          <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                          </ul>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-                      </div>
-              </div>
-            </div>
-
-              <div class="panel-body">
-                  <div class="tab-content">
-
- 
-                      <div class="tab-pane fade in active" id="tab1default<%= @angel %>">
-                        <div class="media" id="item">
-                          <div class="media-left">
-
-                            <%= image_tag(product.images, :alt => "picture") %><%= hidden_field_tag :_img, product.images %>
-                          </div>
-                          <div class="media-body">
-                            <div class="product-title">
-                              <b><%= product.title %></b>
-                            </div>
-                              <div class="input-group">
-                                <span class="input-group-addon">Change Name:</span>
-                                <%= text_field_tag :_title, product.title, maxlength: 255, class: 'form-control' %>
-                              </div>
-                              <div class="input-group input-group-sm">
-                                <span class="input-group-addon" id="sizing-addon3">Collections:</span>
-                                <%= text_field_tag :_collections, "", class: 'form-control', placeholder: "Choose Collections" %>
-                              </div>
-
-                              <div class="row">
-                                <div class="col-lg-6">
-                                  <div class="input-group input-group-sm">
-                                    <span class="input-group-addon" id="sizing-addon3">Type:</span>
-                                    <%= text_field_tag :_type, "", class: 'form-control', placeholder: "Choose Type" %>
-                                  </div>
-                                </div>
-                                <div class="col-lg-6">
-                                  <div class="input-group input-group-sm">
-                                    <span class="input-group-addon" id="sizing-addon3">Tags:</span>
-                                    <%= text_field_tag :_tags, "", class: 'form-control', placeholder: "Insert Tags Here" %>
-                                  </div>
-                                </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-
-                      <div class="tab-pane fade" id="tab2default<%= @angel %>">
-                        <table class="table table-condensed table-bordered table-striped volumes">
-                        <thead>
-                          <tr>
-                            <th>Image</th>
-                            <th>SKU</th>
-                            <th>Color</th>
-                            <th>Size</th>
-                            <th>Cost</th>
-                            <th>Price</th>
-                            <th>Compared At Price</th>
-                            <th>Inventory</th>
-                          </tr>
-                        </thead>
-                          <tbody>
-                            <tr>
-                              <td><div class = "v-img"><%= image_tag(product.images, :alt => "img") %></div></td>
-                              <td><%= text_field_tag :_sku, "", class: 'form-control', size: 10 %></td>
-                              <td><%= text_field_tag :_color, "", class: 'form-control', size: 10 %></td>
-                              <td><%= text_field_tag :_size, "", class: 'form-control', size: 10 %></td>
-                              <td><%= hidden_field_tag :_price, product.price %><%= product.price %></td>
-                              <td><%= text_field_tag :_prc, "", class: 'form-control', size: 10 %></td>
-                              <td><%= text_field_tag :_compAtPrice, "", class: 'form-control', size: 10 %></td>
-                              <td><%= label_tag "null" %></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-
-
-                      <div class="tab-pane fade" id="tab3default<%= @angel %>">
-                        <div>
-                          <div class="row space-bottom">
-                              <div class="image-select">
-                                <div class="product-img">
-                                  <div class="product-img-action">
-                                    <%= image_tag(product.images, :alt => "img") %>
-                                    <div class="icon-selected-box align-center">
-                                      <svg class="icon-selected">
-                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-selected"></use>
-                                      </svg>
-                                    </div>
-                                  </div>
-                                </div>
-
-                              </div>
-                          </div>
-                        </div>
-                      </div>
-
-
-                  </div>
-                </div>
-
-                <div class="panel-footer">
-                  <div class="text-right"><%= submit_tag 'Push to Store', class: "btn btn-success " %></div>
-                </div>
-
-              </div>
-
-          </div>
-          </td></tr>
-          <% @angel+=1 %>
-        <% end %>
-      <% end %>
-
-
-
-
-      </tbody>
-    </table>
-</div>
-
--->
-<!--hehe
-
--->
-
-   <nav class="navbar navbar-default navbar-fixed-top" style="height: 20px;">
+<nav class="navbar navbar-default navbar-fixed-top" style="height: 20px;">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -331,7 +115,7 @@
 
 <img style="height: 360px; width: 1000px; margin-left: 130px; margin-top: 20px;" src="https://s23.postimg.org/70ol5adm3/lols.png">   
 <ul class="nav nav-pills" style="margin-top: -20px; margin-left: 120px;">
-  <li slot="select"><span class="for-checkbox"><%= check_box_tag "product_ids[]", product.id %></span></li>
+  <li slot="select"><span class="for-checkbox" style="margin-top: -319px; margin-left: 60px; font-family: Impact, Charcoal, sans-serif;"><%= check_box_tag "product_ids[]", product.id %></span></li>
   <li class="active"><a href="#products<%= @angel %>" data-toggle="tab" aria-expanded="true" style="margin-top: -319px; margin-left: 60px; font-family: Impact, Charcoal, sans-serif;">Product</a></li>
   <li class=""><a href="#description<%= @angel %>" data-toggle="tab" aria-expanded="false" style="margin-top: -319px; margin-left: 140px; font-family: Impact, Charcoal, sans-serif;">Description</a></li>
    <li class=""><a href="#variants<%= @angel %>" data-toggle="tab" aria-expanded="false" style="margin-top: -319px; margin-left: 245px; font-family: Impact, Charcoal, sans-serif;">Variants</a></li>
@@ -345,7 +129,7 @@
   <div class="tab-pane fade active in" id="products<%= @angel %>">
     <div class="media" id="item">
       <div class="media-left">
-        <%= image_tag(product.images, :alt => "picture") %><%= hidden_field_tag :_img, product.images %>
+        <!--insert image here-->
       </div>
       <div class="media-body">
         <div class="product-title">
@@ -402,7 +186,7 @@
       </thead>
         <tbody>
           <tr>
-            <td><div class = "v-img"><%= image_tag(product.images, :alt => "img") %></div></td>
+            <td><div class = "v-img"><!--insert image here--></div></td>
             <td><%= text_field_tag :_sku, "", class: 'form-control', size: 10 %></td>
             <td><%= text_field_tag :_color, "", class: 'form-control', size: 10 %></td>
             <td><%= text_field_tag :_size, "", class: 'form-control', size: 10 %></td>
@@ -423,7 +207,7 @@
         <div class="image-select">
           <div class="product-img">
             <div class="product-img-action">
-              <%= image_tag(product.images, :alt => "img") %>
+            <!--insert image here-->
               <div class="icon-selected-box align-center">
                 <svg class="icon-selected">
                   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-selected"></use>
