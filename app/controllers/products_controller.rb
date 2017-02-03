@@ -118,7 +118,7 @@ class ProductsController < ApplicationController
       variants = []
         sizes.each do |row1|
             zzz = ShopifyAPI::Variant.new(
-              :option1              => row1,
+              :option2              => row1,
               
               :price                => params[:_price],   #get value from script (?)
               :compare_at_price     => "10.00",
