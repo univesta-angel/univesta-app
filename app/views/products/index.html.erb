@@ -219,7 +219,10 @@
 
     <!--PUSH BUTTON-->
     <div class="panel-footer">
-      <%= link_to "Remove All Products", product, method: :delete, data: { confirm: 'Are you sure?' } %><div class="text-right"><%= submit_tag 'Push to Store', class: "btn btn-success " %></div>
+      <div class = "row">
+        <div class="text-right"><%= link_to "Remove Product", product, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+        <div class="text-right"><%= submit_tag 'Push to Store', class: "btn btn-success " %></div>
+      </div>
     </div>
 
 
