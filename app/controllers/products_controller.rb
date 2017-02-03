@@ -72,7 +72,10 @@ class ProductsController < ApplicationController
     option1 = ShopifyAPI::Option.new(:name => "Size")
     options << option1
 
-    
+    colors = params[:colors]
+      colors.each do |t|
+        @color = t
+      end
 
     variants = []
     variant = ShopifyAPI::Variant.new(
