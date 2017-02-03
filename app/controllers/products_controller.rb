@@ -34,7 +34,12 @@ class ProductsController < ApplicationController
                               product_type: params[:product_type],
                               images: params[:images],
                               vendor: params[:vendor],
-                              price: params[:price])
+                              tags: params[:tags],
+                              price: params[:price],
+                              compare_at_price: params[:compare_at_price],
+                              colors: params[:colors],
+                              sizes: params[:sizes],
+                              variant_images: params[:variant_images])
 
     respond_to do |format|
       if @product.save
