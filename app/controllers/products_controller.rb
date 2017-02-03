@@ -71,7 +71,7 @@ class ProductsController < ApplicationController
     options << option
     option1 = ShopifyAPI::Option.new(:name => "Size")
     options << option1
-    color = ['Red', 'Blue', 'Yellow']
+    color = params[:_colors]
     size = ['S' , 'M' , 'L']
     
 
