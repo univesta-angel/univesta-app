@@ -106,6 +106,7 @@
 <% @products.each do |product| %>
       <%= form_tag(push_path, method: 'post') do %>
       <%= hidden_field_tag :_colors, product.colors %>
+      <%= hidden_field_tag :_sizes, product.sizes %>
 
 <!--nav-->
 
