@@ -57,8 +57,6 @@ class ProductsController < ApplicationController
     shop_url = "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin"
     ShopifyAPI::Base.site = shop_url
     shop = ShopifyAPI::Shop.current
-    #@product = Product.find(product_params)
-    #@product = ShopifyAPI::Product.create(product_params)
 
     images = []
     image = {}
@@ -82,22 +80,22 @@ class ProductsController < ApplicationController
     if size.size==0
       size=['-']
     end
+    
     i = 0;
     variants = []
     color.each do |row1|
       size.each do |row2|
-       
-          zzz = ShopifyAPI::Variant.new( 
-            :price                => prices[i],
-            :option1              => row1,
-            :option2              => row2,   
-            :compare_at_price     => params[:_compare_at_price],
-            :sku                  => params[:_sku],
-            :inventory_management => 'shopify',
-            :inventory_quantity   => 10,
-          )
-          variants << zzz
-          i = i+1;
+        zzz = ShopifyAPI::Variant.new( 
+          :price                => prices[i],
+          :option1              => row1,
+          :option2              => row2,   
+          :compare_at_price     => params[:_compare_at_price],
+          :sku                  => params[:_sku],
+          :inventory_management => 'shopify',
+          :inventory_quantity   => 10,
+        )
+        variants << zzz
+        i = i+1;
       end
     end
 
