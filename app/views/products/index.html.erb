@@ -129,7 +129,7 @@
   <div class="tab-pane fade active in" id="products<%= @angel %>">
     <div class="media" id="item">
       <div class="media-left">
-        <!--insert image here-->
+        <%= image_tag(product.images, :alt => "picture") %><%= hidden_field_tag :_img, product.images %>
       </div>
       <div class="media-body">
         <div class="product-title">
@@ -186,7 +186,7 @@
       </thead>
         <tbody>
           <tr>
-            <td><div class = "v-img"><!--insert image here--></div></td>
+            <td><div class = "v-img"><%= image_tag(product.images, :alt => "img") %></div></td>
             <td><%= text_field_tag :_sku, "", class: 'form-control', size: 10 %></td>
             <td><%= text_field_tag :_color, "", class: 'form-control', size: 10 %></td>
             <td><%= text_field_tag :_size, "", class: 'form-control', size: 10 %></td>
@@ -207,7 +207,7 @@
         <div class="image-select">
           <div class="product-img">
             <div class="product-img-action">
-            <!--insert image here-->
+                <%= image_tag(product.images, :alt => "img") %>
               <div class="icon-selected-box align-center">
                 <svg class="icon-selected">
                   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-selected"></use>
