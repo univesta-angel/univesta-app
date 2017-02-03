@@ -66,6 +66,7 @@ class ProductsController < ApplicationController
     option["name"] = "Color"
     options << option
 
+    variants = []
     variant = ShopifyAPI::Variant.new(
       :option1              => "Red",
       #:option2              => "Medium",    
