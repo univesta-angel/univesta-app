@@ -65,6 +65,7 @@ class ProductsController < ApplicationController
     image["src"] = params[:_img]
     images << image
 
+    prices = params[:_prices].split
     options = []
     #option = {}
     option = ShopifyAPI::Option.new(:name => "Color")
@@ -74,30 +75,28 @@ class ProductsController < ApplicationController
     color = params[:_colors].split
     size = params[:_sizes].split
     if color.size==0
-      color=['']
+      color=['-']
     end
     if size.size==0
-      size=['']
+      size=['-']
     end
     variants = []
-    color.each do |row1|
-      size.each do |row2| 
-        zzz = ShopifyAPI::Variant.new(
-          :option1              => row1,
-          :option2              => row2,    
-          :price                => params[:_price],   #get value from script (?)
-          :compare_at_price     => "10.00",
-          #:barcode              => "1234_barcode",
-          :sku                  => params[:_sku],
-          #:taxable              => true,
-          #:weight               => 100,
-          #:weight_unit          => "kg"
-          :inventory_management => 'shopify',
-          :inventory_quantity   => 10,                #get value from script (?)
-        )
-        variants << zzz
-      end    
-   end
+    prices.each do |row|
+      color.each do |row1|
+        size.each do |row2| 
+          zzz = ShopifyAPI::Variant.new(
+            :option1              => row1,
+            :option2              => row2,    
+            :price                => row,   #get value from script (?)
+            :compare_at_price     => params[:_compare_at_price],
+            :sku                  => params[:_sku],
+            :inventory_management => 'shopify',
+            :inventory_quantity   => 10,                #get value from script (?)
+          )
+          variants << zzz
+        end    
+      end
+    end
 
     new_product = ShopifyAPI::Product.new
     new_product.title = params[:_title]
