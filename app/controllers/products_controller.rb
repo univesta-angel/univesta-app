@@ -74,6 +74,7 @@ class ProductsController < ApplicationController
 
     color = params[:_colors].split
     size = params[:_sizes].split
+    prices = params[:_prices].split
 
     if color.size==0
       color=['-']
@@ -82,7 +83,6 @@ class ProductsController < ApplicationController
       size=['-']
     end
 
-    prices = params[:_prices].split
 
     variants = []
     color.each do |row1|
