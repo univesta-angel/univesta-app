@@ -84,7 +84,6 @@ class ProductsController < ApplicationController
     end
     
     i = 0;
-    x = 0;
     variants = []
     color.each do |row1|
       size.each do |row2|
@@ -98,7 +97,6 @@ class ProductsController < ApplicationController
           :inventory_quantity   => qty[x],
         )
         variants << zzz
-        x = x+1;
         i = i+1;
       end
     end
