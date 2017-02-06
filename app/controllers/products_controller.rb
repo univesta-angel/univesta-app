@@ -86,10 +86,12 @@ class ProductsController < ApplicationController
     i = 0;
     variants = []
     color.each do |row1|
+      str = row1.gsub! /\s+/, '_'
       size.each do |row2|
+
         zzz = ShopifyAPI::Variant.new( 
           :price                => prices[i],
-          :option1              => row1.parameterize('_'),
+          :option1              => str, 
           :option2              => row2,   
           :compare_at_price     => params[:_compare_at_price],
           :sku                  => params[:_sku],
