@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170203022627) do
+ActiveRecord::Schema.define(version: 20170206005859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,13 +34,14 @@ ActiveRecord::Schema.define(version: 20170203022627) do
     t.text     "product_type"
     t.text     "tags"
     t.text     "vendor"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.string   "price"
-    t.string   "colors",                        array: true
-    t.string   "sizes",                         array: true
-    t.binary   "variant_images",                array: true
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "price",            default: [],              array: true
+    t.string   "colors",                                     array: true
+    t.string   "sizes",                                      array: true
+    t.binary   "variant_images",                             array: true
     t.string   "compare_at_price"
+    t.integer  "avail_qty",                                  array: true
   end
 
   create_table "sampletablezzzzs", force: :cascade do |t|
