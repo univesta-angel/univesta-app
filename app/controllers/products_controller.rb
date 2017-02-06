@@ -83,7 +83,7 @@ class ProductsController < ApplicationController
       size=['-']
     end
     
-    i = 1;
+    i = 0;
     variants = []
     color.each do |row1|
       size.each do |row2|
@@ -94,7 +94,7 @@ class ProductsController < ApplicationController
           :compare_at_price     => params[:_compare_at_price],
           :sku                  => params[:_sku],
           :inventory_management => 'shopify',
-          :inventory_quantity   => qty[i],
+          :inventory_quantity   => "10",
         )
         variants << zzz
         i = i+1;
