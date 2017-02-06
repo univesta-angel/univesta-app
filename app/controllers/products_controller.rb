@@ -74,7 +74,7 @@ class ProductsController < ApplicationController
     color = params[:_colors].split
     size = params[:_sizes].split
     prices = params[:_prices].split
-    availQty = params[:_availQty].split
+    @availQty = params[:_availQty].split
 
     if color.size==0
       color=['-']
