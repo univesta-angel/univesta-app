@@ -59,10 +59,7 @@ class ProductsController < ApplicationController
     ShopifyAPI::Base.site = shop_url
     shop = ShopifyAPI::Shop.current
 
-    images = []
-    image = {}
-    image["src"] = params[:_img]
-    images << image
+   
 
     options = []
     #option = {}
@@ -75,6 +72,17 @@ class ProductsController < ApplicationController
     size = params[:_sizes].split
     prices = params[:_prices].split
     qty = params[:_avail_qty].split
+    variant_img = params[:_variant_images].split
+
+    images = []
+    image = {}
+    image["src"] = params[:_img]
+    images << image
+    variant_img.each do |imagez|
+      image["src"] = imagez
+      images << image
+    end
+    
 
     if color.size==0
       color=['-']
