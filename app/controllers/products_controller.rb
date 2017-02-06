@@ -39,6 +39,7 @@ class ProductsController < ApplicationController
                               compare_at_price: params[:compare_at_price],
                               colors: params[:colors],
                               sizes: params[:sizes],
+                              avail_qty: params[:avail_qty],
                               variant_images: params[:variant_images])
 
     respond_to do |format|
@@ -73,6 +74,7 @@ class ProductsController < ApplicationController
     color = params[:_colors].split
     size = params[:_sizes].split
     prices = params[:_prices].split
+    qty = params[:_avail_qty].split
 
     if color.size==0
       color=['-']
@@ -92,7 +94,7 @@ class ProductsController < ApplicationController
           :compare_at_price     => params[:_compare_at_price],
           :sku                  => params[:_sku],
           :inventory_management => 'shopify',
-          :inventory_quantity   => 10,
+          :inventory_quantity   => "10",
         )
         variants << zzz
         i = i+1;
