@@ -79,7 +79,7 @@ class ProductsController < ApplicationController
     image = {}
     
     variant_img.each do |imagez|
-      #image["src"] = imagez
+      image["src"] = imagez
       images << imagez
     end
     
