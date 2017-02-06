@@ -74,15 +74,14 @@ class ProductsController < ApplicationController
     qty = params[:_avail_qty].split
     variant_img = params[:_variant_images].split
 
-
     images = []
     image = {}
-    
-    variant_img.each do |imagez|
-      image["src"] = imagez
-      images << image
-    end
-    
+    image["src"] = "https://ae01.alicdn.com/kf/HTB1kO5DOXXXXXb8aXXXq6xXFXXXb/Fashion-Long-Sleeve-Off-Shoulder-Slash-Neck-Sexy-Club-Women-Dress-Slim-Bodycon-Knitted-Sweater-Knee.jpg_50x50.jpg"
+    images << image 
+    image["src"] = "https://ae01.alicdn.com/kf/HTB1HQDMNVXXXXbiXVXXq6xXFXXXt/Muslim-women-Long-sleeve-Dubai-Dress-maxi-abaya-jalabiya-islamic-women-dress-clothing-robe-kaftan-Moroccan.jpg_50x50.jpg"
+    images << image 
+    image["src"] = "https://ae01.alicdn.com/kf/HTB11AsbNVXXXXbgXXXXq6xXFXXXh/Muslim-women-Long-sleeve-Dubai-Dress-maxi-abaya-jalabiya-islamic-women-dress-clothing-robe-kaftan-Moroccan.jpg_50x50.jpg"
+    images << image 
     image["src"] = params[:_img]
     images << image
     
@@ -106,7 +105,8 @@ class ProductsController < ApplicationController
           :compare_at_price     => params[:_compare_at_price],
           :sku                  => params[:_sku],
           :inventory_management => 'shopify',
-          :inventory_quantity   => qty[i]
+          :inventory_quantity   => qty[i],
+
         )
         variants << zzz
         i = i+1;
@@ -128,6 +128,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if new_product.save
+        format.json { render json: 201 }
         format.html { redirect_to root_path, notice: 'Product was successfully pushed.' }
       else
         format.html { redirect_to root_path, notice: 'Oops. Something went wrong.' }
