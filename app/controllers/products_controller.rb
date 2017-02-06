@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
     #@products = Product.all
 
     @products = Product.search(params[:search])
-    @angel = 1;
+    @angel = 0;
   end
 
   # GET /products/1
