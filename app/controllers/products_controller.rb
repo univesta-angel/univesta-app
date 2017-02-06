@@ -76,12 +76,15 @@ class ProductsController < ApplicationController
 
     images = []
     image = {}
-    image["src"] = "https://ae01.alicdn.com/kf/HTB1kO5DOXXXXXb8aXXXq6xXFXXXb/Fashion-Long-Sleeve-Off-Shoulder-Slash-Neck-Sexy-Club-Women-Dress-Slim-Bodycon-Knitted-Sweater-Knee.jpg_50x50.jpg"
-    images << image 
-    image["src"] = "https://ae01.alicdn.com/kf/HTB1HQDMNVXXXXbiXVXXq6xXFXXXt/Muslim-women-Long-sleeve-Dubai-Dress-maxi-abaya-jalabiya-islamic-women-dress-clothing-robe-kaftan-Moroccan.jpg_50x50.jpg"
-    images << image 
-    image["src"] = "https://ae01.alicdn.com/kf/HTB11AsbNVXXXXbgXXXXq6xXFXXXh/Muslim-women-Long-sleeve-Dubai-Dress-maxi-abaya-jalabiya-islamic-women-dress-clothing-robe-kaftan-Moroccan.jpg_50x50.jpg"
-    images << image 
+    image1 = {}
+    image2 = {}
+    image3 = {}
+    image1["src"] = "https://ae01.alicdn.com/kf/HTB1kO5DOXXXXXb8aXXXq6xXFXXXb/Fashion-Long-Sleeve-Off-Shoulder-Slash-Neck-Sexy-Club-Women-Dress-Slim-Bodycon-Knitted-Sweater-Knee.jpg_50x50.jpg"
+    images << image1 
+    image2["src"] = "https://ae01.alicdn.com/kf/HTB1HQDMNVXXXXbiXVXXq6xXFXXXt/Muslim-women-Long-sleeve-Dubai-Dress-maxi-abaya-jalabiya-islamic-women-dress-clothing-robe-kaftan-Moroccan.jpg_50x50.jpg"
+    images << image2
+    image3["src"] = "https://ae01.alicdn.com/kf/HTB11AsbNVXXXXbgXXXXq6xXFXXXh/Muslim-women-Long-sleeve-Dubai-Dress-maxi-abaya-jalabiya-islamic-women-dress-clothing-robe-kaftan-Moroccan.jpg_50x50.jpg"
+    images << image3 
     image["src"] = params[:_img]
     images << image
     
