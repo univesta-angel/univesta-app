@@ -71,7 +71,7 @@ class ProductsController < ApplicationController
     option1 = ShopifyAPI::Option.new(:name => "Size")
     options << option1
 
-    color = params[:_colors]
+    color = params[:_colors].split
     size = params[:_sizes].split
     prices = params[:_prices].split
     qty = params[:_avail_qty].split
@@ -85,14 +85,14 @@ class ProductsController < ApplicationController
     
     i = 0;
     variants = []
-    #color.each do |row1|
+    color.each do |row1|
       #str = row1.gsub! /\s+/, '_'
-      #size.each do |row2|
+      size.each do |row2|
 
         zzz = ShopifyAPI::Variant.new( 
           :price                => prices[i],
-          :option1              => color.size, 
-          :option2              => size.size,   
+          :option1              => row1, 
+          :option2              => row2,   
           :compare_at_price     => params[:_compare_at_price],
           :sku                  => params[:_sku],
           :inventory_management => 'shopify',
@@ -100,8 +100,8 @@ class ProductsController < ApplicationController
         )
         variants << zzz
         i = i+1;
-      #end
-    #end
+      end
+    end
 
     new_product = ShopifyAPI::Product.new
     new_product.title = params[:_title]
