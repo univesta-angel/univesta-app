@@ -80,7 +80,7 @@ class ProductsController < ApplicationController
     
     variant_img.each do |imagez|
       image["src"] = imagez
-      images << imagez
+      images << image
     end
     
     image["src"] = params[:_img]
