@@ -76,14 +76,14 @@ class ProductsController < ApplicationController
 
     images = []
     image = {}
-    image["src"] = params[:_img]
-    images << image
+   
     variant_img.each do |imagez|
       image["src"] = imagez
       images << image
     end
+    image["src"] = params[:_img]
+    images << image
     
-
     if color.size==0
       color=['-']
     end
