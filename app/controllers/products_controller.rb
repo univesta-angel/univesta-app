@@ -85,7 +85,7 @@ class ProductsController < ApplicationController
     
     i = 0;
     variants = []
-    color.each do |row1|
+    #color.each do |row1|
       size.each do |row2|
         zzz = ShopifyAPI::Variant.new( 
           :price                => prices[i],
@@ -94,12 +94,12 @@ class ProductsController < ApplicationController
           :compare_at_price     => params[:_compare_at_price],
           :sku                  => params[:_sku],
           :inventory_management => 'shopify',
-          :inventory_quantity   => 0
+          :inventory_quantity   => qty[i]
         )
         variants << zzz
         i = i+1;
       end
-    end
+    #end
 
     new_product = ShopifyAPI::Product.new
     new_product.title = params[:_title]
