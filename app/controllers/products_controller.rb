@@ -74,13 +74,13 @@ class ProductsController < ApplicationController
     qty = params[:_avail_qty].split
     variant_img = params[:_variant_images].split
 
-    ppp = 0;
+
     images = []
     image = {}
     
     variant_img.each do |imagez|
-      image["src"] = variant_img[ppp++]
-      images << image
+      #image["src"] = imagez
+      images << imagez
     end
     
     image["src"] = params[:_img]
