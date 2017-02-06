@@ -39,7 +39,7 @@ class ProductsController < ApplicationController
                               compare_at_price: params[:compare_at_price],
                               colors: params[:colors],
                               sizes: params[:sizes],
-                              sizes: params[:availQty],
+                              avail_qty: params[:availQty],
                               variant_images: params[:variant_images])
 
     respond_to do |format|
