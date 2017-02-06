@@ -196,7 +196,7 @@
             <td></td>
             <td><%= text_field_tag :_prc, "", class: 'form-control', size: 10 %></td>
             <td><%= text_field_tag :_compAtPrice, "", class: 'form-control', size: 10 %></td>
-            <td><%= label_tag :_availQty, product.avail_qty %></td>
+            <td><%= label_tag product.avail_qty %><%= hidden_field_tag  :_availQty, product.avail_qty %></td>
           </tr>
         </tbody>
       </table>
