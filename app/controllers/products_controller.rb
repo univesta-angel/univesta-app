@@ -83,7 +83,7 @@ class ProductsController < ApplicationController
       size=['-']
     end
     
-    i = 0;
+    i = 1;
     variants = []
     color.each do |row1|
       size.each do |row2|
