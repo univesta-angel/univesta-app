@@ -88,7 +88,7 @@ class ProductsController < ApplicationController
     color.each do |row1|
       size.each do |row2|
         zzz = ShopifyAPI::Variant.new( 
-          :price                => "10.00",
+          :price                => prices[i],
           :option1              => row1,
           :option2              => row2,   
           :compare_at_price     => params[:_compare_at_price],
