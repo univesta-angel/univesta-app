@@ -57,78 +57,24 @@ class ProductsController < ApplicationController
   def push
     require "net/http"
     require "uri"
-    shop_url = "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin"
-    ShopifyAPI::Base.site = shop_url
-    shop = ShopifyAPI::Shop.current
+    #shop_url = "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc 392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin"
 
-   
+    data = {
+      "product": {
+        "title": "Burton Custom Freestyle 151",
+        "body_html": "<strong>Good snowboard!<\/strong>",
+        "vendor": "Burton",
+        "product_type": "Snowboard"
+      }
+    }
 
-    options = []
-    #option = {}
-    option = ShopifyAPI::Option.new(:name => "Color")
-    options << option
-    option1 = ShopifyAPI::Option.new(:name => "Size")
-    options << option1
-
-    color = params[:_colors].split
-    size = params[:_sizes].split
-    prices = params[:_prices].split
-    qty = params[:_avail_qty].split
-    variant_img = params[:_variant_images].split
-
-    images = []
-    image = {}
-    image["src"] = params[:_img]
-    images << image
-    
-    if color.size==0
-      color=['-']
-    end
-    if size.size==0
-      size=['-']
-    end
-    
-    i = 0;
-    variants = []
-    color.each do |row1|
-      str = row1.gsub!(/_/, ' ')
-      size.each do |row2|
-
-        zzz = ShopifyAPI::Variant.new( 
-          :price                => prices[i],
-          :option1              => row1, 
-          :option2              => row2,   
-          :compare_at_price     => params[:_compare_at_price],
-          :sku                  => params[:_sku],
-          :inventory_management => 'shopify',
-          :inventory_quantity   => qty[i]
-        )
-        variants << zzz
-        i = i+1;
+    uri = URI('https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc 392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin/products.json')
+      
+      req = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
+      req.body = data
+      res = Net::HTTP.start(uri.hostname, uri.port) do |http|
+        http.request(req)
       end
-    end
-
-    new_product = ShopifyAPI::Product.new
-    new_product.title = params[:_title]
-    new_product.body_html = params[:_body]
-    new_product.product_type = params[:_type]
-    new_product.vendor = params[:_vendor]
-    new_product.images = images
-    new_product.tags = params[:_tags]
-    new_product.options = options
-    new_product.variants = variants
-    new_product.save
-    
-    expires_in(60.seconds, public: false)
-
-    respond_to do |format|
-      if new_product.save
-        format.json { head 201 }                  
-      else
-        format.html { redirect_to root_path, notice: 'Oops. Something went wrong.' }
-        format.json { render json: new_product.errors, status: :unprocessable_entity }
-      end
-    end
 
 
 
