@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   wrap_parameters format: [:json]
+  respond_to :html, :json
 
   #wrap_parameters format: [:json]
   # GET /products
@@ -10,6 +11,7 @@ class ProductsController < ApplicationController
 
     @products = Product.search(params[:search])
     @angel = 1;
+    respond_with(@products)
   end
 
   # GET /products/1
@@ -119,8 +121,9 @@ class ProductsController < ApplicationController
     
     expires_in(60.seconds, public: false)
 
-    respond_to :html, :json
-    head 201
+    flash[:notice] = "The product was successfully pushed." if new_product.save
+    respond_with(new_product)
+
   end
 
   # PATCH/PUT /products/1
