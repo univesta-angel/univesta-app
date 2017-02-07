@@ -121,7 +121,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if new_product.save
-        format.html { redirect_to new_product, notice: 'Product was successfully pushed.' }
+        format.html { redirect_to root_path, notice: 'Product was successfully pushed.' }
         format.json { render json: :show, status: :created, location: new_product }
       else
         format.html { redirect_to root_path, notice: 'Oops. Something went wrong.' }
