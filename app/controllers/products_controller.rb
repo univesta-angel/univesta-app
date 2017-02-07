@@ -118,15 +118,7 @@ class ProductsController < ApplicationController
     
     expires_in(60.seconds, public: false)
 
-    respond_to do |format|
-      if new_product.save
-        format.html { redirect_back fallback_location: new_product }
-        format.json { render json: 201 }
-      else
-        format.html { redirect_to root_path, notice: 'Oops. Something went wrong.' }
-        format.json { render json: new_product.errors, status: :unprocessable_entity }
-      end
-    end
+    head 201
 
 
 
