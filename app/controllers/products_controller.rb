@@ -57,10 +57,18 @@ class ProductsController < ApplicationController
   def push
     require 'net/http'
     require 'uri'
-    
-    res = Net::HTTP.get_response(URI('https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin/products.json'))
+    shop = ShopifyAPI::Shop.current
+
+    json_headers = {"Content-Type" => "application/json",
+                "Accept" => "application/json"}
+    new_product = {"product" => {
+        "title" => "sample product"
+      }
+    }
+
+    res = Net::HTTP.post(URI('https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin/products.json'), new_product.to_json, json_headers)
     res['location']
-    
+
   end
 
   # PATCH/PUT /products/1
