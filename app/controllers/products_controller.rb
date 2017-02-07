@@ -98,8 +98,7 @@ class ProductsController < ApplicationController
           :compare_at_price     => params[:_compare_at_price],
           :sku                  => params[:_sku],
           :inventory_management => 'shopify',
-          :inventory_quantity   => qty[i],
-          
+          :inventory_quantity   => qty[i]
         )
         variants << zzz
         i = i+1;
@@ -121,7 +120,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if new_product.save
-        format.html
+        format.html { redirect_back fallback_location: new_product }
         format.json { render json: 201 }
       else
         format.html { redirect_to root_path, notice: 'Oops. Something went wrong.' }
