@@ -123,7 +123,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if new_product.save
         format.html { redirect_to root_path, notice: 'Product was successfully pushed.' }
-        format.json { render :show, status: :created, head :created }
+        format.json { head :created }
       else
         format.html { redirect_to root_path, notice: 'Oops. Something went wrong.' }
         format.json { render json: new_product.errors, status: :unprocessable_entity }
