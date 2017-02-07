@@ -119,6 +119,8 @@ class ProductsController < ApplicationController
     
     expires_in(60.seconds, public: false)
 
+    head 201
+    render format.html { location: root_path }
   end
 
   # PATCH/PUT /products/1
