@@ -13,6 +13,7 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'jsonapi-resources'
 gem 'delayed_job_active_record'
 gem 'httparty'
+gem 'httplog'
 
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'

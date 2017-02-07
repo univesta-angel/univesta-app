@@ -120,8 +120,6 @@ class ProductsController < ApplicationController
 
     head 201
 
-
-
   end
 
 
