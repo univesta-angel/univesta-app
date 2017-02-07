@@ -121,10 +121,9 @@ class ProductsController < ApplicationController
     
     expires_in(60.seconds, public: false)
 
-    return false
-
     respond_to do |format|
       if new_product.save
+        format.html { return false }
         format.json { head 201 }                  
       else
         format.html { redirect_to root_path, notice: 'Oops. Something went wrong.' }
