@@ -119,8 +119,16 @@ class ProductsController < ApplicationController
     
     expires_in(60.seconds, public: false)
 
-    head 201
-    render format.html { location: root_path }
+    respond_to do |format|
+      if new_product.save
+        format.html { location: new_product, notice: 'Product was successfully pushed.' }
+        format.json { head 201, status: :created }
+      else
+        format.html { redirect_to root_path, notice: 'Oops. Something went wrong.' }
+        format.json { render json: new_product.errors, status: :unprocessable_entity }
+      end
+    end
+
   end
 
   # PATCH/PUT /products/1
