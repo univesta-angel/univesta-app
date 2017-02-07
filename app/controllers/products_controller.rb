@@ -121,14 +121,14 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if new_product.save
-        format.html { redirect_to root_path, notice: 'Product was successfully pushed.', head 201 }
-        format.json { render json: 201, status: :created }
+        format.html { redirect_to root_path, notice: 'Product was successfully pushed.' }
+        format.json { head 201 }
       else
         format.html { redirect_to root_path, notice: 'Oops. Something went wrong.' }
         format.json { render json: new_product.errors, status: :unprocessable_entity }
       end
     end
-
+    
   end
 
   # PATCH/PUT /products/1
