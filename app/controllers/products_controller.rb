@@ -121,7 +121,15 @@ class ProductsController < ApplicationController
     
     expires_in(60.seconds, public: false)
 
-    head 201
+    respond_to do |format|
+      if new_product.save
+        format.html { redirect_to :action=>'push', :status => :moved_permanently }
+        format.json { head 201 }                  
+      else
+        format.html { redirect_to root_path, notice: 'Oops. Something went wrong.' }
+        format.json { render json: new_product.errors, status: :unprocessable_entity }
+      end
+    end
 
 
 
