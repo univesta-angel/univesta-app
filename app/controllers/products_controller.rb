@@ -60,7 +60,6 @@ class ProductsController < ApplicationController
     shop = ShopifyAPI::Shop.current
 
    
-
     options = []
     #option = {}
     option = ShopifyAPI::Option.new(:name => "Color")
@@ -122,7 +121,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if new_product.save
-        format.html { redirect_to root_path, notice: 'Product was successfully pushed.' }
+        format.html
         format.json { render json: 201 }
       else
         format.html { redirect_to root_path, notice: 'Oops. Something went wrong.' }
