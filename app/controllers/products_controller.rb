@@ -123,7 +123,6 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if new_product.save
-        format.html { redirect_to :action=>'push', :status => :moved_permanently }
         format.json { head 201 }                  
       else
         format.html { redirect_to root_path, notice: 'Oops. Something went wrong.' }
