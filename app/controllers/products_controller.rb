@@ -119,8 +119,8 @@ class ProductsController < ApplicationController
     
     expires_in(60.seconds, public: false)
 
-    head 201
     respond_to :html, :json
+    head 201
   end
 
   # PATCH/PUT /products/1
