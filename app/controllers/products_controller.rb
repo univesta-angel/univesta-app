@@ -109,7 +109,7 @@ class ProductsController < ApplicationController
           :sku                  => params[:_sku],
           :inventory_management => 'shopify',
           :inventory_quantity   => qty[i],
-
+          
         )
         variants << zzz
         i = i+1;
