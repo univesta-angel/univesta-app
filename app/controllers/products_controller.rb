@@ -57,8 +57,8 @@ class ProductsController < ApplicationController
   def push
     require "net/http"
     require "uri"
-    #shop_url = "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin"
-    #ShopifyAPI::Base.site = shop_url
+    shop_url = "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin"
+    ShopifyAPI::Base.site = shop_url
     shop = ShopifyAPI::Shop.current
 
    
@@ -108,41 +108,28 @@ class ProductsController < ApplicationController
       end
     end
 
-    data = {
-      "product": {
-        "title": "Burton Custom Freestyle 151",
-        "body_html": "<strong>Good snowboard!<\/strong>",
-        "vendor": "Burton",
-        "product_type": "Snowboard",
-        "variants": [
-          {
-            "option1": "First",
-            "price": "10.00",
-            "sku": 123
-          },
-          {
-            "option1": "Second",
-            "price": "20.00",
-            "sku": "123"
-          }
-        ]
-      }
-    }
+    new_product = ShopifyAPI::Product.new
+    new_product.title = params[:_title]
+    new_product.body_html = params[:_body]
+    new_product.product_type = params[:_type]
+    new_product.vendor = params[:_vendor]
+    new_product.images = images
+    new_product.tags = params[:_tags]
+    new_product.options = options
+    new_product.variants = variants
+    new_product.save
     
-
-    uri = URI.parse("https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin")
-
-
-    # Full control
-    http = Net::HTTP.new(uri.host, uri.port)
-
-    request = Net::HTTP::Post.new(uri.request_uri)
-    request.set_form_data(data.to_json)
-
-    response = http.request(request)
-
     expires_in(60.seconds, public: false)
 
+    respond_to do |format|
+      if new_product.save
+        format.html { redirect_to root_path, notice: 'Product was successfully pushed.' }
+        format.json { head 201 }                  
+      else
+        format.html { redirect_to root_path, notice: 'Oops. Something went wrong.' }
+        format.json { render json: new_product.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /products/1
