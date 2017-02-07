@@ -121,7 +121,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if new_product.save
-        format.html { layout: !request.xhr? }
+        format.html { status: 301, notice: 'Product was successfully pushed.' }
         format.json { head 201 }
       else
         format.html { redirect_to root_path, notice: 'Oops. Something went wrong.' }
