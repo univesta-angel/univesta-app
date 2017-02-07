@@ -119,7 +119,6 @@ class ProductsController < ApplicationController
     
     expires_in(60.seconds, public: false)
 
-    head 201
   end
 
   # PATCH/PUT /products/1
