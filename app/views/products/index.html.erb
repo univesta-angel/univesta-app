@@ -34,8 +34,11 @@
   <script type="text/javascript">
     $(document).ready(function() {
       alert("hello");
+       $( ".item" ).click(function(){
 
-       
+        
+
+       }
     });
   </script>
 
@@ -112,6 +115,7 @@
 
 
 <% @products.each do |product| %>
+      <%= form_tag(push_path, method: 'post') do %>
       <%= hidden_field_tag :_colors, product.colors %>
       <%= hidden_field_tag :_sizes, product.sizes %>
       <%= hidden_field_tag :_prices, product.price %>
@@ -241,7 +245,7 @@
         <div class = "col-lg-12">
           <div class="text-right">
             <%= link_to "Remove Product", product, method: :delete, data: { confirm: 'Are you sure?' } %>
-            <%= button_tag 'Push to Store', class: "btn btn-success" %>
+            <%= submit_tag 'Push to Store', class: "btn btn-success " %>
           </div>
         </div>
       </div>
@@ -255,6 +259,7 @@
 
 
     <% @angel+=1 %>
+  <% end %>
 <% end %>
 <!--end navs-->
 </div>
