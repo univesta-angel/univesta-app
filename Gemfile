@@ -7,7 +7,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'devise_token_auth', github: 'lynndylanhurley/devise_token_auth'
+#gem 'devise_token_auth', github: 'lynndylanhurley/devise_token_auth'
 gem 'ruby-hmac'
 gem 'rack-cors', require: 'rack/cors'
 gem 'jsonapi-resources'
