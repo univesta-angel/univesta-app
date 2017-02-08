@@ -55,7 +55,7 @@ class ProductsController < ApplicationController
 
   # push to store action
   def push
-    shop_url = "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin"
+    shop_url = "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin/products.json"
     ShopifyAPI::Base.site = shop_url
     shop = ShopifyAPI::Shop.current
 
@@ -122,7 +122,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if new_product.save
         format.html { redirect_to root_path, notice: 'Product was successfully pushed.' }
-        format.json { render json: :show, status: :created }
+        format.json { render json: :show, status: 201 }
       else
         format.html { redirect_to root_path, notice: 'Oops. Something went wrong.' }
         format.json { render json: new_product.errors, status: :unprocessable_entity }
