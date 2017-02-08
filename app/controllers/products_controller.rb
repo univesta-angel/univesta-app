@@ -55,7 +55,6 @@ class ProductsController < ApplicationController
 
   # push to store action
   def push
-    self.content_type = 'application/json'
     shop_url = "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin"
     ShopifyAPI::Base.site = shop_url
     shop = ShopifyAPI::Shop.current
@@ -130,7 +129,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-        format.json { render :show, status: :ok, location: @product }
+        format.json { render json: 201, content_type: 'application/json' }
       else
         format.html { render :edit }
         format.json { render json: @product.errors, status: :unprocessable_entity }
