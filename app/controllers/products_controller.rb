@@ -120,7 +120,9 @@ class ProductsController < ApplicationController
     
     expires_in(60.seconds, public: false)
 
-    hdead 201
+    head 201
+
+    render json: new_product, content_type: 'application/json'
   end
 
   # PATCH/PUT /products/1
@@ -129,7 +131,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-        format.json { render json: 201, content_type: 'application/json' }
+        format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit }
         format.json { render json: @product.errors, status: :unprocessable_entity }
