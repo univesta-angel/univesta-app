@@ -117,7 +117,8 @@ class ProductsController < ApplicationController
     new_product.variants = variants
     new_product.save
     
-    head 201 
+    head 201
+    reponse.header["Location"].inspect 
   end
 
   # PATCH/PUT /products/1
