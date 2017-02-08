@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
    headers['Access-Control-Allow-Origin'] = '*'
    headers['Access-Control-Request-Method'] = '*'
    headers['Access-Control-Allow-Headers'] = '*'
+   headers['Content-Type'] = 'application/json'
  end
  
 end
