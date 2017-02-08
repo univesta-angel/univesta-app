@@ -29,7 +29,6 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-
     @product = Product.create(title: params[:title],
                               body_html: params[:body_html],
                               product_type: params[:product_type],
@@ -118,32 +117,18 @@ class ProductsController < ApplicationController
     new_product.variants = variants
     new_product.save
     
-    render :action => 'push_img'
+    expires_in(60.seconds, public: false)
 
+    respond_to do |format|
+      if new_product.save
+        format.html { redirect_to root_path, notice: 'Product was successfully pushed.' }
+        format.json { render json: 201 }
+      else
+        format.html { redirect_to root_path, notice: 'Oops. Something went wrong.' }
+        format.json { render json: new_product.errors, status: :unprocessable_entity }
+      end
+    end
   end
-
-  def push_img
-    shop_url = "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin/products/8243291664/images.json"
-    ShopifyAPI::Base.site = shop_url
-    shop = ShopifyAPI::Shop.current
-
-    images = []
-    image = {}
-    image["src"] = "https://ae01.alicdn.com/kf/HTB1VwpJPXXXXXcNXpXXq6xXFXXXJ/Free-Shipping-New-2013-Autumn-Mens-Fashion-Dress-Shirts-Round-Point-Corduroy-Slim-Fit-Long-sleeved.jpg_220x220.jpg"
-    images << image
-
-    new_image = ShopifyAPI::Image.new(images)
-
-    render :nothing => true
-  end
-
-
-
-
-
-
-
-
 
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
