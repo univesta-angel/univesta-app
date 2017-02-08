@@ -114,7 +114,8 @@ class ProductsController < ApplicationController
         :images => images
         :tags => params[:_tags]
         :options => options
-        :variants)
+        :variants => variants
+    )
     new_product.save
     
     expires_in(60.seconds, public: false)
