@@ -107,7 +107,6 @@ class ProductsController < ApplicationController
       end
     end
 
-    new_product.content_type = 'application/json'
     new_product = ShopifyAPI::Product.new(
         :title => params[:_title],
         :body_html => params[:_body],
