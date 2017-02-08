@@ -80,7 +80,7 @@ class ProductsController < ApplicationController
     images << image
     
     color = ['A','AA','AAA','AAAA']
-    size = ['L','XL','XXL','XXXL','XXXXL','XXXXXL','S','XS','XXS','XXXS','XXXXS','XXXXXS']
+    size = ['B','BB','BBB','BBBB','BBBBB','C','CC','CCC','CCCC']
 
     if color.size==0
       color=['-']
