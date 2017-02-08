@@ -68,8 +68,8 @@ class ProductsController < ApplicationController
     option1 = ShopifyAPI::Option.new(:name => "Size")
     options << option1
 
-    #color = params[:_colors].split
-    #size = params[:_sizes].split
+    color = params[:_colors].split
+    size = params[:_sizes].split
     prices = params[:_prices].split
     qty = params[:_avail_qty].split
     variant_img = params[:_variant_images].split
@@ -79,8 +79,6 @@ class ProductsController < ApplicationController
     image["src"] = params[:_img]
     images << image
     
-    color = ['A','AA','AAA','AAAA','AAAAA','D','DD','DDD','DDDD','DDDDD']
-    size = ['B','BB','BBB','BBBB','BBBBB','C','CC','CCC','CCCC','CCCCC']
 
     if color.size==0
       color=['-']
