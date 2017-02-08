@@ -107,13 +107,13 @@ class ProductsController < ApplicationController
     end
 
     new_product = ShopifyAPI::Product.new(
-        :title => params[:_title]
-        :body_html => params[:_body]
-        :product_type => params[:_type]
-        :vendor => params[:_vendor]
-        :images => images
-        :tags => params[:_tags]
-        :options => options
+        :title => params[:_title],
+        :body_html => params[:_body],
+        :product_type => params[:_type],
+        :vendor => params[:_vendor],
+        :images => images,
+        :tags => params[:_tags],
+        :options => options,
         :variants => variants
     )
     new_product.save
