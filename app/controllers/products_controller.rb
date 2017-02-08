@@ -120,7 +120,7 @@ class ProductsController < ApplicationController
     
     expires_in(60.seconds, public: false)
 
-    head 201
+    render content_type: 'application/json'
   end
 
   # PATCH/PUT /products/1
