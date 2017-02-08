@@ -79,7 +79,7 @@ class ProductsController < ApplicationController
     image["src"] = params[:_img]
     images << image
     
-    color = ['A','AA','AAA','AAAA','AAAAA','D','DD']
+    color = ['A','AA','AAA','AAAA','AAAAA','D','DD','DDD','DDDD','DDDDD']
     size = ['B','BB','BBB','BBBB','BBBBB','C','CC','CCC','CCCC','CCCCC']
 
     if color.size==0
