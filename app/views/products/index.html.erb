@@ -54,6 +54,8 @@
           data: data,
           beforeSend: function(xhr) {
             xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+            xhr.setRequestHeader('Access-Control-Request-Method', '*');
+            xhr.setRequestHeader('Access-Control-Allow-Headers', '*');
           },
           success: function() {
             response.addHeader("Access-Control-Allow-Origin", "*");
