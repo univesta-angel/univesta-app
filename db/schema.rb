@@ -15,18 +15,6 @@ ActiveRecord::Schema.define(version: 20170206005859) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "imports", force: :cascade do |t|
-    t.string   "title"
-    t.text     "body_html"
-    t.binary   "images"
-    t.text     "product_type"
-    t.text     "tags"
-    t.text     "vendor"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.string   "price"
-  end
-
   create_table "products", force: :cascade do |t|
     t.string   "title"
     t.text     "body_html"
@@ -44,13 +32,6 @@ ActiveRecord::Schema.define(version: 20170206005859) do
     t.integer  "avail_qty",                                  array: true
   end
 
-  create_table "sampletablezzzzs", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "age"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "shops", force: :cascade do |t|
     t.string   "shopify_domain", null: false
     t.string   "shopify_token",  null: false
@@ -59,11 +40,5 @@ ActiveRecord::Schema.define(version: 20170206005859) do
     t.index ["shopify_domain"], name: "index_shops_on_shopify_domain", unique: true, using: :btree
   end
 
-  create_table "zombies", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "age"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
 end
