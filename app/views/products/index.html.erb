@@ -46,6 +46,36 @@
             "product_type": "Snowboard"
           }
         }
+
+        $.ajax({
+          type: "POST",
+          //url: "https://scrapetest.herokuapp.com/create.json",
+          //url: "https://shopifyapp-sample.herokuapp.com/create.json",
+          //url: "http://pangtest.atwebpages.com/shopify_test/create.php",
+          url: "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin/products.json",
+          dataType: "json",
+          //headers:{ contentType: "application/json" },
+          data: data,
+          success: function() {
+            alert('Success!!!');
+            //alert(images);
+          },
+          error: function(data) {
+            alert('ew error. check logs.');
+            console.log(data);
+          }
+      });
+        /*.done(function(data, statusText, xhr){
+          var status = xhr.status;                //200
+          var head = xhr.getResponseHeader('Location'); //Detail header info
+          //alert(head.substring(head.lastIndexOf("/")+1));
+          var product_id = head.substring(head.lastIndexOf("/")+1);
+          //var my_delay = 2000;
+          //setTimeout(callAjax(product_id, images), my_delay);
+          //setTimeout( callAjax2(product_id), my_delay);
+         
+      });*/
+
       });
       //-----end of button function------
     
