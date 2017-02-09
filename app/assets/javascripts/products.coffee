@@ -12,7 +12,8 @@ $ ->
   $("a[data-background-color]").click (e) ->
     e.preventDefault()
 
-    alert('button pressed!');
+    alert('button pressed!')
+
         data = {
           "product": {
             "title": "Burton Custom Freestyle 151",
@@ -29,7 +30,7 @@ $ ->
           url: "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin/products.json",
           dataType: "json",
           data: data
-        });
+        })
 
         alert('asdfg')
 
