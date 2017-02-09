@@ -1,5 +1,11 @@
 $(document).ready(function(){
-    $('#aaaaaa').click(function(){
-        alert('Sign new href executed.');
+    $('.asd').click(function(){
+        alert('1111');
+    });
+     $('#aaaaaa2').click(function(){
+        alert('2222');
+    });
+     $('#aaaaaa3').click(function(){
+        alert($(this).val());
     });
 });
