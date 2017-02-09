@@ -1,5 +1,4 @@
-$('a').click(function (event){ 
-     event.preventDefault(); 
-     alert('aaaa');
-     return false; //for good measure
-});
+$ ->
+  $("a").click (e) ->
+    e.preventDefault()
+    alert('aaa')
