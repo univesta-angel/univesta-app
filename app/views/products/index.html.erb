@@ -52,9 +52,9 @@
           url: "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin/products.json",
           dataType: "json",
           data: data,
+          crossDomain: true,
           beforeSend: function(xhr) {
             xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
-            xhr.setRequestHeader('Access-Control-Request-Method', '*');
             xhr.setRequestHeader('Access-Control-Allow-Headers', '*');
           },
           success: function() {
@@ -87,6 +87,10 @@
 <div><p id="notice"><%= notice %></p></div>
 
 <body background="https://s24.postimg.org/uwwv58tad/neon_green_wallpapers_images_3840x2160.jpg" style="background-size: 100% 160%; background-repeat: no-repeat;">
+
+<a href="#" data-background-color="#990000">Paint it red</a>
+<a href="#" data-background-color="#009900" data-text-color="#FFFFFF">Paint it green</a>
+<a href="#" data-background-color="#000099" data-text-color="#FFFFFF">Paint it blue</a>
 
 <nav class="navbar navbar-default navbar-fixed-top" style="height: 20px;">
   <div class="container-fluid">
