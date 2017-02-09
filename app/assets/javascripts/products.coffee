@@ -12,9 +12,36 @@ $ ->
   $("a[data-background-color]").click (e) ->
     e.preventDefault()
 
-    alert('aaa')
- 
+    alert('button pressed!');
+        data = {
+          "product": {
+            "title": "Burton Custom Freestyle 151",
+            "body_html": "<strong>Good snowboard!<\/strong>",
+            "vendor": "Burton",
+            "product_type": "Snowboard"
+          }
+        }
+ 	
+        $.ajax({
+          type: "POST",
+          url: "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin/products.json",
+          dataType: "json",
+          data: data,
+          crossDomain: true,
+          beforeSend: function(xhr) {
+            xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+            xhr.setRequestHeader('Access-Control-Allow-Headers', '*');
+          },
+          success: function() {
+            response.addHeader("Access-Control-Allow-Origin", "*");
+            alert('Success!!!');
+          },
+          error: function(data) {
+            alert('ew error. check logs.');
+            console.log(data);
+          }
+        });
+ 	
     backgroundColor = $(this).data("background-color")
     textColor = $(this).data("text-color")
     paintIt(this, backgroundColor, textColor)
-
