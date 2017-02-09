@@ -1,7 +1,4 @@
-$ ->
-  $("a").click (e) ->
-    e.preventDefault()
-    alert('aaa')
+ alert('aaa')
     data = {
           "product": {
             "title": "Burton Custom Freestyle 151",
