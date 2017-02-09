@@ -1,10 +1,5 @@
- alert('aaa')
-    data = {
-          "product": {
-            "title": "Burton Custom Freestyle 151",
-            "body_html": "<strong>Good snowboard!<\/strong>",
-            "vendor": "Burton",
-            "product_type": "Snowboard"
-          }
-        }
-        alert('asd')
+$(document).ready(function(){
+    $('a').click(function(){
+        alert('Sign new href executed.');
+    });
+});
