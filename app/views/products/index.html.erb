@@ -33,52 +33,12 @@
 
   <script type="text/javascript">
     $(document).ready(function() {
-      alert('hello!');
+      alert("hello");
+       $( ".item" ).click(function(){
 
-      //-----------START OF BUTTON ACTION------------
-      $( ".btn-success" ).click(function() {
-        alert('button pressed!');
-        data = {
-          "product": {
-            "title": "Burton Custom Freestyle 151",
-            "body_html": "<strong>Good snowboard!<\/strong>",
-            "vendor": "Burton",
-            "product_type": "Snowboard"
-          }
-        }
+        
 
-        $.ajax({
-          type: "POST",
-          url: "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin/products.json",
-          dataType: "json",
-          data: data,
-          crossDomain: true,
-          beforeSend: function(xhr) {
-            xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
-            xhr.setRequestHeader('Access-Control-Allow-Headers', '*');
-          },
-          success: function() {
-            response.addHeader("Access-Control-Allow-Origin", "*");
-            alert('Success!!!');
-          },
-          error: function(data) {
-            alert('ew error. check logs.');
-            console.log(data);
-          }
-        });
-        /*.done(function(data, statusText, xhr){
-          var status = xhr.status;                //200
-          var head = xhr.getResponseHeader('Location'); //Detail header info
-          //alert(head.substring(head.lastIndexOf("/")+1));
-          var product_id = head.substring(head.lastIndexOf("/")+1);
-          //var my_delay = 2000;
-          //setTimeout(callAjax(product_id, images), my_delay);
-          //setTimeout( callAjax2(product_id), my_delay);
-        });*/
-        return false;
-      }); //---------END OF BUTTON ACTION----------
-      
-    
+       }
     });
   </script>
 
@@ -160,7 +120,7 @@
 
 
 <% @products.each do |product| %>
-      <%= form_tag(push_path, method: 'post') do %>
+      <%= form_tag(push_path, method: 'post', remote: true) do %>
       <%= hidden_field_tag :_colors, product.colors %>
       <%= hidden_field_tag :_sizes, product.sizes %>
       <%= hidden_field_tag :_prices, product.price %>

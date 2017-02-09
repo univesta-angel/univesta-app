@@ -15,3 +15,10 @@ $ ->
     backgroundColor = $(this).data("background-color")
     textColor = $(this).data("text-color")
     paintIt(this, backgroundColor, textColor)
+
+
+$(document).ready ->
+  $("#push").on("ajax:success", (e, data, status, xhr) ->
+    $("#push").append xhr.responseText
+  ).on "ajax:error", (e, xhr, status, error) ->
+    $("#push").append "<p>ERROR</p>"
