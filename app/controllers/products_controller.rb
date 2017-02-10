@@ -105,16 +105,16 @@ class ProductsController < ApplicationController
       end
     end
 
-    new_product = ShopifyAPI::Product.new(
-        :title => params[:_title],
-        :body_html => params[:_body],
-        :product_type => params[:_type],
-        :vendor => params[:_vendor],
-        :images => images,
-        :tags => params[:_tags],
-        :options => options,
-        :variants => variants
-    )
+    new_product = ShopifyAPI::Product.new
+    new_product.title = params[:_title]
+    new_product.body_html = params[:_body]
+    new_product.product_type = params[:_type]
+    new_product.vendor = params[:_vendor]
+    new_product.tags = params[:_tags]
+    new_product.options = options
+    new_product.variants = variants
+    new_product.save
+    new_product.images = [{ id: nil, variant_ids: [new_product.variants.first.id], src: "http://placehold.it/300/ff0000" }]
     new_product.save
     
     expires_in(60.seconds, public: false)
