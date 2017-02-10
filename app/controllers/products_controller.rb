@@ -114,22 +114,10 @@ class ProductsController < ApplicationController
     new_product.options = options
     new_product.variants = variants
     new_product.save
-    pao=[]
-    aaa = 0 
-    ctr = 0 
-      size.each do |row2|
-        aaa= 0 
-        color.each do |row1|
-            pao << { id: nil, variant_ids: [new_product.variants[ctr].id], src: variant_img[aaa] }
-         aaa = aaa+1 
-         ctr = ctr+1
-        end
 
-      end
-
-    #new_product.images = [{ id: nil, variant_ids: [new_product.variants[0].id], src: "http://placehold.it/300/ff0000" },{ id: nil, variant_ids: [new_product.variants[1].id], src: "http://placehold.it/300/ff00ff" },{ id: nil, variant_ids: [new_product.variants[2].id], src: "http://placehold.it/300/00aa00" }]
+    new_product.images = [{ id: nil, variant_ids: [new_product.variants[0].id],[new_product.variants[1].id] src: "http://placehold.it/300/ff0000" },{ id: nil, variant_ids: [new_product.variants[2].id],[new_product.variants[3].id] src: "http://placehold.it/300/ff00ff" }]
     
-   new_product.images = pao 
+  # new_product.images = pao 
     new_product.save
     
     expires_in(60.seconds, public: false)
