@@ -106,18 +106,28 @@ class ProductsController < ApplicationController
     end
 
     new_product = ShopifyAPI::Product.new(
-      :title => params[:_title],
-      :body_html => params[:_body],
-      :product_type => params[:_type],
-      :vendor => params[:_vendor],
-      :images => images,
-      :tags => params[:_tags],
-      :options => options,
-      :variants => variants
+        :title => params[:_title],
+        :body_html => params[:_body],
+        :product_type => params[:_type],
+        :vendor => params[:_vendor],
+        :images => images,
+        :tags => params[:_tags],
+        :options => options,
+        :variants => variants
     )
     new_product.save
     
     expires_in(60.seconds, public: false)
+
+    respond_to do |format|
+      if new_product.save
+        format.html { redirect_to root_path, notice: 'Product was successfully pushed.' }
+        format.json { render json: 201 }
+      else
+        format.html { redirect_to root_path, notice: 'Oops. Something went wrong.' }
+        format.json { render json: new_product.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /products/1
