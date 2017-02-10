@@ -127,9 +127,9 @@ class ProductsController < ApplicationController
 
       end
 
-    new_product.images = [{ id: nil, variant_ids: [new_product.variants[0].id], src: "http://placehold.it/300/ff0000" },{ id: nil, variant_ids: [new_product.variants[1].id], src: "http://placehold.it/300/ff00ff" },{ id: nil, variant_ids: [new_product.variants[2].id], src: "http://placehold.it/300/00aa00" }]
+    #new_product.images = [{ id: nil, variant_ids: [new_product.variants[0].id], src: "http://placehold.it/300/ff0000" },{ id: nil, variant_ids: [new_product.variants[1].id], src: "http://placehold.it/300/ff00ff" },{ id: nil, variant_ids: [new_product.variants[2].id], src: "http://placehold.it/300/00aa00" }]
     
-    
+   new_product.images = pao 
     new_product.save
     
     expires_in(60.seconds, public: false)
