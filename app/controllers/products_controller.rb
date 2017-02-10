@@ -114,7 +114,7 @@ class ProductsController < ApplicationController
     new_product.options = options
     new_product.variants = variants
     new_product.save
-    new_product.images = [{ id: nil, variant_ids: [new_product.variants.first.id], src: "http://placehold.it/300/ff0000" }]
+    new_product.images = [{ id: nil, variant_ids: [new_product.variants.second.id], src: "http://placehold.it/300/ff0000" }]
     new_product.save
     
     expires_in(60.seconds, public: false)
