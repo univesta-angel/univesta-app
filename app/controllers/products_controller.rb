@@ -110,10 +110,10 @@ class ProductsController < ApplicationController
     new_product.body_html = params[:_body]
     new_product.product_type = params[:_type]
     new_product.vendor = params[:_vendor]
+    new_product.images = images
     new_product.tags = params[:_tags]
     new_product.options = options
     new_product.variants = variants
-    new_product.images = [{ id: nil, variant_ids: [new_product.variants.first.id], src: images }]
     new_product.save
     
     expires_in(60.seconds, public: false)
