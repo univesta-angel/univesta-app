@@ -114,13 +114,9 @@ class ProductsController < ApplicationController
     new_product.options = options
     new_product.variants = variants
     new_product.save
+    new_product.images = [{ id: nil, variant_ids: [new_product.variants.id.values_at(2)], src: "http://placehold.it/300/ff0000" }]
+    new_product.save
     
-    variantzz = new_product.variants
-    variantzz.each do |variant|
-
-      new_product.images = [{ id: nil, variant_ids: [variant.id], src: "http://placehold.it/300/ff0000" }]
-      new_product.save
-    end
     expires_in(60.seconds, public: false)
 
     respond_to do |format|
