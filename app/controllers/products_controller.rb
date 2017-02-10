@@ -115,7 +115,8 @@ class ProductsController < ApplicationController
     new_product.variants = variants
     new_product.save
 
-    new_product.images = [{ id: nil, variant_ids: [new_product.variants[0].id],[new_product.variants[1].id] src: "http://placehold.it/300/ff0000" },{ id: nil, variant_ids: [new_product.variants[2].id],[new_product.variants[3].id] src: "http://placehold.it/300/ff00ff" }]
+    new_product.images = [{ id: nil, variant_ids: [new_product.variants[0].id,new_product.variants[1].id], src: "http://placehold.it/300/ff0000" },
+    { id: nil, variant_ids: [new_product.variants[2].id,new_product.variants[3].id] , src: "http://placehold.it/300/ff00ff" }]
     
   # new_product.images = pao 
     new_product.save
