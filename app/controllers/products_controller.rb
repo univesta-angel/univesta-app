@@ -90,7 +90,7 @@ class ProductsController < ApplicationController
     color.each do |row1|
       str = row1.gsub!(/_/, ' ')
       size.each do |row2|
-        #str2 = row2.gsub!(/_/, ' ')
+        str2 = row2.gsub!(/_/, ' ')
         zzz = ShopifyAPI::Variant.new( 
           :price                => prices[i],
           :option1              => row1, 
