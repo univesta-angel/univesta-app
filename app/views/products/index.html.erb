@@ -37,8 +37,6 @@
 
 <body background="https://s24.postimg.org/uwwv58tad/neon_green_wallpapers_images_3840x2160.jpg" style="background-size: 100% 160%; background-repeat: no-repeat;">
 
-<!--COFFEE SCRIPT TRY-->
-
 <nav class="navbar navbar-default navbar-fixed-top" style="height: 20px;">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -106,13 +104,13 @@
 
 <% @products.each do |product| %>
       <%= form_tag(push_path, method: 'post') do %>
-        <%= hidden_field_tag :_colors, product.colors %>
-        <%= hidden_field_tag :_sizes, product.sizes %>
-        <%= hidden_field_tag :_prices, product.price %>
-        <%= hidden_field_tag :_body, product.body_html %>
-        <%= hidden_field_tag :_compare_at_price, product.compare_at_price %>
-        <%= hidden_field_tag :_avail_qty, product.avail_qty %>
-        <%= hidden_field_tag :_variant_images, product.variant_images %>
+      <%= hidden_field_tag :_colors, product.colors %>
+      <%= hidden_field_tag :_sizes, product.sizes %>
+      <%= hidden_field_tag :_prices, product.price %>
+      <%= hidden_field_tag :_body, product.body_html %>
+      <%= hidden_field_tag :_compare_at_price, product.compare_at_price %>
+      <%= hidden_field_tag :_avail_qty, product.avail_qty %>
+      <%= hidden_field_tag :_variant_images, product.variant_images %>
 
 <!--nav-->
 

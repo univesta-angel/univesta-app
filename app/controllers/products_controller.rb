@@ -55,7 +55,7 @@ class ProductsController < ApplicationController
 
   # push to store action
   def push
-    shop_url = "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin"
+    shop_url = "https://4d60f4fb9986af453d74b9bee9369fd1:000a1b69647c053726bbdd82b103a83d@gels-store.myshopify.com/admin"
     ShopifyAPI::Base.site = shop_url
     shop = ShopifyAPI::Shop.current
 
