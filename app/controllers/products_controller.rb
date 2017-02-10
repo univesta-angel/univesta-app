@@ -114,7 +114,7 @@ class ProductsController < ApplicationController
     new_product.options = options
     new_product.variants = variants
     new_product.save
-    new_product.images = [{ id: nil, variant_ids: [product.variants.first.id], src: images }]
+    new_product.images = [{ id: nil, variant_ids: [new_product.variants.first.id], src: images }]
     new_product.save
     
     expires_in(60.seconds, public: false)
