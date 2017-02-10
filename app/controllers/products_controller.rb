@@ -125,7 +125,7 @@ class ProductsController < ApplicationController
           color2<<new_product.variants[ctr].id
           ctr = ctr+1
         end
-        pao << { id: nil, variant_ids: color, src: variant_img[aaa] }
+        pao << { id: nil, variant_ids: color2, src: variant_img[aaa] }
         aaa = aaa+1 
       end
 
