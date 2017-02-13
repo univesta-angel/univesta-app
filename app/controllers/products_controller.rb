@@ -75,12 +75,10 @@ class ProductsController < ApplicationController
     default_img = params[:_img].split
     
     images = []
-    a = 0;
     default_img.each do |img|
       image = {}
-      image["src"] = default_img[a]
+      image["src"] = img
       images << image
-      a = a + 1
     end
 
     if color.size==0
