@@ -69,6 +69,7 @@ class ProductsController < ApplicationController
     color = params[:_colors].split
     size = params[:_sizes].split
     prices = params[:_prices].split
+    compAtPrice = params[:_compare_at_price].split
     qty = params[:_avail_qty].split
     variant_img = params[:_variant_images].split
 
@@ -95,7 +96,7 @@ class ProductsController < ApplicationController
           :price                => prices[i],
           :option1              => row1, 
           :option2              => row2,   
-          :compare_at_price     => params[:_compare_at_price],
+          :compare_at_price     => compAtPrice[i],
           :sku                  => params[:_sku],
           :inventory_management => 'shopify',
           :inventory_quantity   => qty[i]
