@@ -81,6 +81,11 @@ class ProductsController < ApplicationController
       images << image
     end
     
+    pao = []
+    color2 =[]     #tempo storage
+    aaa = 0 
+    ctr = 0 
+
     if color.size==0
       size.each do |row2|  
         color2 << new_product.variants[ctr].id
@@ -137,11 +142,6 @@ class ProductsController < ApplicationController
       size=['-']
     end
     
-    pao = []
-    color2 =[]     #tempo storage
-    aaa = 0 
-    ctr = 0 
-
     
     new_product.images = pao 
     new_product.save
