@@ -128,9 +128,9 @@ class ProductsController < ApplicationController
         color2=[]
         color2<<new_product.variants[ctr].id
         ctr = ctr+1
-      end
         pao << { id: nil, variant_ids: color2, src: default_img[aaa] }
         aaa = aaa+1
+      end
     else
       color.each do |row1|
         color2=[]
