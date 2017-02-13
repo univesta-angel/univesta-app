@@ -107,7 +107,6 @@ class ProductsController < ApplicationController
     new_product.product_type = params[:_type]
     new_product.vendor = params[:_vendor]
     new_product.tags = params[:_tags]
-    new_product.images = images
     new_product.options = options
     new_product.variants = variants
     new_product.save
@@ -125,11 +124,15 @@ class ProductsController < ApplicationController
     
     if color.size==0
       color=['-']
-      size.each do |row2|  
+       color.each do |row1|
+          color2=[]
+          size.each do |row2|  
             color2<<new_product.variants[ctr].id
             ctr = ctr+1
           end
-       pao << { id: nil, variant_ids: color2, src: default_image[0]}
+          pao << { id: nil, variant_ids: color2, src: default_img[0] }
+          aaa = aaa+1 
+        end
           
     else
       color.each do |row1|
