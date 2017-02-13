@@ -128,19 +128,19 @@ class ProductsController < ApplicationController
         color2=[]
         color2<<new_product.variants[ctr].id
         ctr = ctr+1
-        pao << { id: nil, variant_ids: color2, src: default_img[0] }
       end
+        pao << { id: nil, variant_ids: color2, src: default_img[0] }
     else
       color.each do |row1|
-          color2=[]
-          size.each do |row2|  
-            color2<<new_product.variants[ctr].id
-            ctr = ctr+1
-          end
-          pao << { id: nil, variant_ids: color2, src: variant_img[aaa] }
-          aaa = aaa+1 
+        color2=[]
+        size.each do |row2|  
+          color2<<new_product.variants[ctr].id
+          ctr = ctr+1
         end
-      end  
+        pao << { id: nil, variant_ids: color2, src: variant_img[aaa] }
+        aaa = aaa+1 
+      end
+    end  
     new_product.images = pao 
     new_product.save
   
