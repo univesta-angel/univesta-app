@@ -69,6 +69,7 @@ class ProductsController < ApplicationController
     options << option1
 
     color = params[:_colors].split
+    colorz = params[:_colors].split
     size = params[:_sizes].split
     prices = params[:_prices].split
     compAtPrice = params[:_compare_at_price].split
@@ -125,7 +126,7 @@ class ProductsController < ApplicationController
     aaa = 0 
     ctr = 0 
 
-    if color.size==0
+    if colorz.size==0
      color.each do |row1|
         color2=[]
         size.each do |row2|
