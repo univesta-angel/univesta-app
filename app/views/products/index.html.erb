@@ -127,7 +127,7 @@
 <div id="myTabContent" class="tab-content">
 
   <!--PRODUCTS TAB-->
-  <div class="tab-pane fade active in" id="products<%= @angel %>">
+  <div class="tab-pane fade active in" id="products<%= @ctr %>">
     <div class="media" id="item">
       <div class="media-left">
         <%= image_tag(product.images.first, :size => "230x230", :alt => "picture") %><%= hidden_field_tag :_img, product.images %>
@@ -170,7 +170,7 @@
   <!--END OF PRODUCTS TAB-->
 
   <!--DESCRIPTION TAB-->
-  <div class="tab-pane fade" id="description<%= @angel %>">
+  <div class="tab-pane fade" id="description<%= @ctr %>">
     <p><%= product.body_html %><br><br>
     <%= product.images %><br><br>
     <%= product.colors %><br><br>
@@ -180,7 +180,7 @@
   <!--END OF DESCRIPTION TAB-->
 
   <!--VARIANTS TAB-->
-  <div class="tab-pane fade" id="variants<%= @angel %>">
+  <div class="tab-pane fade" id="variants<%= @ctr %>">
     <table class="table table-condensed table-bordered table-striped volumes">
       <thead>
         <tr>
@@ -198,15 +198,15 @@
           <tr>
            <% product.colors.each do |c| %>
               <% product.sizes.each do |s| %>
-                <td><div class = "v-img"><%= image_tag(product.images[@angel], :alt => "img", :size => "100x100") %></div></td>
+                <td><div class = "v-img"><%= image_tag(product.images[@ctr2], :alt => "img", :size => "100x100") %></div></td>
                 <td><%= text_field_tag :_sku, "", class: 'form-control', size: 10 %></td>
-                <td><%= text_field_tag :_color, c[@angel], class: 'form-control', size: 10 %></td>
-                <td><%= text_field_tag :_size, s[@angel], class: 'form-control', size: 10 %></td>
-                <td><%= label_tag product.price[@angel] %></td>
-                <td><%= text_field_tag :_prc, product.price[@angel], class: 'form-control', size: 10 %></td>
-                <td><%= text_field_tag :_compAtPrice, product.compare_at_price[@angel], class: 'form-control', size: 10 %></td>
-                <td><%= label_tag product.avail_qty[@angel] %></td>
-                <% @angel+=1 %>
+                <td><%= text_field_tag :_color, c[@ctr2], class: 'form-control', size: 10 %></td>
+                <td><%= text_field_tag :_size, s[@ctr2], class: 'form-control', size: 10 %></td>
+                <td><%= label_tag product.price[@ctr2] %></td>
+                <td><%= text_field_tag :_prc, product.price[@ctr2], class: 'form-control', size: 10 %></td>
+                <td><%= text_field_tag :_compAtPrice, product.compare_at_price[@ctr2], class: 'form-control', size: 10 %></td>
+                <td><%= label_tag product.avail_qty[@ctr2] %></td>
+                <% @ctr2+=1 %>
             <% end %>
           <% end %>  
           </tr>
@@ -216,7 +216,7 @@
   <!--END OF VARIANTS TAB-->
 
   <!--IMAGES TAB-->
-  <div class="tab-pane fade" id="images<%= @angel %>">
+  <div class="tab-pane fade" id="images<%= @ctr %>">
     <div>
       <div class="row space-bottom">
         <div class="image-select">
@@ -256,7 +256,7 @@
 <br/>
 
 
-    <% @angel+=1 %>
+    <% @ctr+=1 %>
   <% end %>
 <% end %>
 <!--end navs-->
