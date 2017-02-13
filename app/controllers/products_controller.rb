@@ -72,12 +72,16 @@ class ProductsController < ApplicationController
     compAtPrice = params[:_compare_at_price].split
     qty = params[:_avail_qty].split
     variant_img = params[:_variant_images].split
-
-    images = []
-    image = {}
-    image["src"] = params[:_img]
-    images << image
+    default_img = params[:_img].split
     
+    images = []
+    a = 0;
+    default_img.each do |img|
+      image = {}
+      image["src"] = default_img[a]
+      images << image
+      a = a + 1
+    end
 
     if color.size==0
       color=['-']
@@ -112,6 +116,7 @@ class ProductsController < ApplicationController
     new_product.product_type = params[:_type]
     new_product.vendor = params[:_vendor]
     new_product.tags = params[:_tags]
+    new_product.images = images
     new_product.options = options
     new_product.variants = variants
     new_product.save
