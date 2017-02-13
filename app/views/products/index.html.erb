@@ -196,19 +196,14 @@
       </thead>
         <tbody>
           <tr>
-           <%= product.colors.each do |c| %>
-              <%= product.sizes.each do |s| %>
-                <td><div class = "v-img"><%= image_tag(product.images[@ctr2], :alt => "img", :size => "100x100") %></div></td>
-                <td><%= text_field_tag :_sku, "", class: 'form-control', size: 10 %></td>
-                <td><%= text_field_tag :_color, c, class: 'form-control', size: 10 %></td>
-                <td><%= text_field_tag :_size, s, class: 'form-control', size: 10 %></td>
-                <td><%= label_tag product.price[@ctr2] %></td>
-                <td><%= text_field_tag :_prc, product.price[@ctr2], class: 'form-control', size: 10 %></td>
-                <td><%= text_field_tag :_compAtPrice, product.compare_at_price[@ctr2], class: 'form-control', size: 10 %></td>
-                <td><%= label_tag product.avail_qty[@ctr2] %></td>
-                <% @ctr2+=1 %>
-            <% end %>
-          <% end %>  
+            <td><div class = "v-img"><%= image_tag(product.images[0], :alt => "img", :size => "100x100") %></div></td>
+            <td><%= text_field_tag :_sku, "", class: 'form-control', size: 10 %></td>
+            <td><%= text_field_tag :_color, "", class: 'form-control', size: 10 %></td>
+            <td><%= text_field_tag :_size, "", class: 'form-control', size: 10 %></td>
+            <td><%= label_tag product.price[@ctr2] %></td>
+            <td><%= text_field_tag :_prc, product.price[@ctr2], class: 'form-control', size: 10 %></td>
+            <td><%= text_field_tag :_compAtPrice, product.compare_at_price[@ctr2], class: 'form-control', size: 10 %></td>
+            <td><%= label_tag product.avail_qty[@ctr2] %></td>
           </tr>
         </tbody>
       </table>
