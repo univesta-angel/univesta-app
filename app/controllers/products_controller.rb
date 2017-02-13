@@ -125,13 +125,12 @@ class ProductsController < ApplicationController
 
     
     if color.size==0
-          size.each do |row2|  
-            color2<<new_product.variants[ctr].id
-            ctr = ctr+1
-          end
-          pao << { id: nil, variant_ids: color2, src: default_img[0] }
-          aaa = aaa+1 
-        end
+      size.each do |row2|  
+        color2=[]
+        color2<<new_product.variants[ctr].id
+        pao << { id: nil, variant_ids: color2, src: default_img[0] }
+        ctr = ctr+1
+      end
     else
       color.each do |row1|
           color2=[]
