@@ -144,11 +144,9 @@
             <span class="input-group-addon" id="sizing-addon3">Collections:</span>
             <%= text_field_tag :_collections, "", class: 'form-control', placeholder: "Choose Collections", list: "browsers" %>
             <datalist id="browsers">
-              <option value="Internet Explorer">
-              <option value="Firefox">
-              <option value="Chrome">
-              <option value="Opera">
-              <option value="Safari">
+              <% @collect.each do |c| %>
+                <option value= c.title >
+              <% end %>
             </datalist> 
           </div>
 
@@ -198,7 +196,7 @@
       </thead>
         <tbody>
           <tr>
-            <td><div class = "v-img"><%= image_tag(product.images.first, :alt => "img", :size => "200x200") %></div></td>
+            <td><div class = "v-img"><%= image_tag(product.images.first, :alt => "img", :size => "120x120") %></div></td>
             <td><%= text_field_tag :_sku, "", class: 'form-control', size: 10 %></td>
             <td><%= text_field_tag :_color, "", class: 'form-control', size: 10 %></td>
             <td><%= text_field_tag :_size, "", class: 'form-control', size: 10 %></td>
