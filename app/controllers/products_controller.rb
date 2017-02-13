@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
     #@products = Product.all
 
     @products = Product.search(params[:search])
-    @collects = ShopifyAPI::Collect.find(:all)    #remove later
+    #@collects = ShopifyAPI::Collect.find(:all)    #get collection
     @angel = 1;
   end
 
