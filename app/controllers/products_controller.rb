@@ -81,6 +81,13 @@ class ProductsController < ApplicationController
       images << image
     end
     
+    if color.size==0
+      color=['-']
+    end
+    if size.size==0
+      size=['-']
+    end
+    
     i = 0;
     variants = []
     color.each do |row1|
@@ -110,11 +117,6 @@ class ProductsController < ApplicationController
     new_product.options = options
     new_product.variants = variants
     new_product.save
-    
-
-    if size.size==0
-      size=['-']
-    end
     
     pao=[]
     color2=[]     #tempo storage
