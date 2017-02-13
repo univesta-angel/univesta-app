@@ -130,7 +130,7 @@
   <div class="tab-pane fade active in" id="products<%= @angel %>">
     <div class="media" id="item">
       <div class="media-left">
-        <%= image_tag(product.images, :alt => "picture") %><%= hidden_field_tag :_img, product.images %>
+        <%= image_tag(product.images.first, :alt => "picture") %><%= hidden_field_tag :_img, product.images %>
       </div>
       <div class="media-body">
         <div class="product-title">
@@ -167,7 +167,7 @@
   <!--DESCRIPTION TAB-->
   <div class="tab-pane fade" id="description<%= @angel %>">
     <p><%= product.body_html %><br><br>
-    <%= product.variant_images %><br><br>
+    <%= product.images %><br><br>
     <%= product.colors %><br><br>
     <%= product.sizes %><br><br>
     <%= product.price %>----<%= product.price.size %><br><%= label_tag product.avail_qty %>-----------<%= label_tag product.avail_qty.size %></p>
