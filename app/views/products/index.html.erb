@@ -142,7 +142,14 @@
           </div>
           <div class="input-group input-group-sm">
             <span class="input-group-addon" id="sizing-addon3">Collections:</span>
-            <%= text_field_tag :_collections, "", class: 'form-control', placeholder: "Choose Collections" %>
+            <%= text_field_tag :_collections, "", class: 'form-control', placeholder: "Choose Collections", list: "browsers" %>
+            <datalist id="browsers">
+              <option value="Internet Explorer">
+              <option value="Firefox">
+              <option value="Chrome">
+              <option value="Opera">
+              <option value="Safari">
+            </datalist> 
           </div>
 
           <div class="row">
