@@ -82,7 +82,21 @@ class ProductsController < ApplicationController
     end
     
     if color.size==0
-      color=['-']
+      size.each do |row2|  
+        color2 << new_product.variants[ctr].id
+        ctr = ctr+1
+      end
+      pao << { id: nil, variant_ids: color2[0], src: default_img[0] }
+    else
+      color.each do |row1|
+        color2=[]
+        size.each do |row2|  
+          color2 << new_product.variants[ctr].id
+          ctr = ctr + 1
+        end
+        pao << { id: nil, variant_ids: color2, src: variant_img[aaa] }
+        aaa = aaa + 1
+      end
     end
     
     if size.size==0
@@ -123,28 +137,12 @@ class ProductsController < ApplicationController
       size=['-']
     end
     
-    pao=[]
-    color2=[]     #tempo storage
+    pao = []
+    color2 =[]     #tempo storage
     aaa = 0 
     ctr = 0 
 
-    if color.size==0
-      size.each do |row2|  
-        color2 << new_product.variants[ctr].id
-        ctr = ctr+1
-      end
-      pao << { id: nil, variant_ids: color2[0], src: default_img[0] }
-    else
-      color.each do |row1|
-        color2=[]
-        size.each do |row2|  
-          color2 << new_product.variants[ctr].id
-          ctr = ctr + 1
-        end
-          pao << { id: nil, variant_ids: color2, src: variant_img[aaa] }
-          aaa = aaa + 1
-      end
-    end  
+    
     new_product.images = pao 
     new_product.save
   
