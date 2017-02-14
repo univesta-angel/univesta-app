@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
   
   # order lists
   def order
-    @orders = ShopifAPI::Order.find(:all)
+   # @orders = ShopifAPI::Order.find(:all)
   end
 
   # GET /products/1
