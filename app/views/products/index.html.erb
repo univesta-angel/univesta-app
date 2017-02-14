@@ -29,10 +29,6 @@
     .product-title{
       margin-bottom: 20px;
     }
-    tbody {
-      overflow-y: auto;    /* Trigger vertical scroll    */
-      overflow-x: hidden;  /* Hide the horizontal scroll */
-    }
   </style>
 
 </head>
@@ -118,7 +114,7 @@
 
 <!--nav-->
 
-<img style="height: 360px; width: 1000px; margin-left: 130px; margin-top: 20px;" src="https://s23.postimg.org/70ol5adm3/lols.png">   
+<img style="height: 360px; width: 1000px; margin-left: 130px; margin-top: 20px;">   
 <ul class="nav nav-pills" style="margin-top: -20px; margin-left: 120px;">
   <li slot="select" ><span class="for-checkbox"><%= check_box_tag "product_ids[]", product.id %></span></li>
   <li class="active"><a href="#products<%= @ctr %>" data-toggle="tab" aria-expanded="true" style="margin-top: -319px; margin-left: 60px; font-family: Impact, Charcoal, sans-serif;">Product</a></li>
@@ -193,7 +189,7 @@
           <th>Inventory</th>
         </tr>
       </thead>
-        <tbody>
+        <tbody style="overflow-y: auto; overflow-x: hidden;">
           <%= product.colors.each.with_index do |color, i| %>
             <%= product.sizes.each.with_index do |size, x| %>
               <tr>
