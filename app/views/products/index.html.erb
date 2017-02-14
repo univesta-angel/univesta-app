@@ -185,10 +185,11 @@
         </tr>
       </thead>
         <tbody>
-          <%= product.colors.each.with_index do |color, i| %>
+          
+          <%= if !products.colors %>
             <%= product.sizes.each.with_index do |size, x| %>
               <tr>
-                <td><div class = "v-img"><%= image_tag(product.images[i], :alt => "img", :size => "100x100") %></div></td>
+                <td><div class = "v-img"><%= image_tag(product.images[x], :alt => "img", :size => "100x100") %></div></td>
                 <td><%= text_field_tag :_sku, "", class: 'form-control', size: 10 %></td>
                 <td><%= text_field_tag :_color, color, class: 'form-control', size: 10 %></td>
                 <td><%= text_field_tag :_size, size, class: 'form-control', size: 10 %></td>
@@ -198,9 +199,27 @@
                 <td><%= label_tag product.avail_qty[@ctr2] %></td>
               </tr>
               <% @ctr2 = @ctr2 + 1 %>
+              <% x = x + 1 %>
             <% end %>
-            <% i = i + 1 %>
-          <% end %>  
+          <% else %>
+            <%= product.colors.each.with_index do |color, i| %>
+              <%= product.sizes.each.with_index do |size, x| %>
+                <tr>
+                  <td><div class = "v-img"><%= image_tag(product.images[i], :alt => "img", :size => "100x100") %></div></td>
+                  <td><%= text_field_tag :_sku, "", class: 'form-control', size: 10 %></td>
+                  <td><%= text_field_tag :_color, color, class: 'form-control', size: 10 %></td>
+                  <td><%= text_field_tag :_size, size, class: 'form-control', size: 10 %></td>
+                  <td><%= label_tag product.price[@ctr2] %></td>
+                  <td><%= text_field_tag :_prc, product.price[@ctr2], class: 'form-control', size: 10 %></td>
+                  <td><%= text_field_tag :_compAtPrice, product.compare_at_price[@ctr2], class: 'form-control', size: 10 %></td>
+                  <td><%= label_tag product.avail_qty[@ctr2] %></td>
+                </tr>
+                <% @ctr2 = @ctr2 + 1 %>
+              <% end %>
+              <% i = i + 1 %>
+            <% end %>
+          <% end %>
+          
         </tbody>
       </table>
     </div>
