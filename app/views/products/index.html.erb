@@ -111,14 +111,13 @@
 <!--nav-->
 
 <div class="row">
-  <div class="col-md-12">
   <div class="panel-heading">  
     <ul class="nav nav-pills" style="margin-left: 10%; margin-right: 10%;">
       <li slot="select" ><span class="for-checkbox"><%= check_box_tag "product_ids[]", product.id %></span></li>
-      <li class="active"><a href="#products<%= @ctr %>" data-toggle="tab" aria-expanded="true" style="margin-top: 20%; margin-left: 60px; font-family: Impact, Charcoal, sans-serif;">Product</a></li>
-      <li class=""><a href="#description<%= @ctr %>" data-toggle="tab" aria-expanded="false" style="margin-top: 20%; margin-left: 140px; font-family: Impact, Charcoal, sans-serif;">Description</a></li>
-      <li class=""><a href="#variants<%= @ctr %>" data-toggle="tab" aria-expanded="false" style="margin-top: 20%; margin-left: 245px; font-family: Impact, Charcoal, sans-serif;">Variants</a></li>
-      <li class=""><a href="#images<%= @ctr %>" data-toggle="tab" aria-expanded="false" style="margin-top: 20%; margin-left: 332px; font-family: Impact, Charcoal, sans-serif;">Images</a></li>
+      <li class="active"><a href="#products<%= @ctr %>" data-toggle="tab" aria-expanded="true" style="margin-top: -319px; margin-left: 60px; font-family: Impact, Charcoal, sans-serif;">Product</a></li>
+      <li class=""><a href="#description<%= @ctr %>" data-toggle="tab" aria-expanded="false" style="margin-top: -319px; margin-left: 140px; font-family: Impact, Charcoal, sans-serif;">Description</a></li>
+      <li class=""><a href="#variants<%= @ctr %>" data-toggle="tab" aria-expanded="false" style="margin-top: -319px; margin-left: 245px; font-family: Impact, Charcoal, sans-serif;">Variants</a></li>
+      <li class=""><a href="#images<%= @ctr %>" data-toggle="tab" aria-expanded="false" style="margin-top: -319px; margin-left: 332px; font-family: Impact, Charcoal, sans-serif;">Images</a></li>
     </ul>
   </div>
 
@@ -135,26 +134,27 @@
         <div class="product-title">
           <b><%= product.title %></b>
         </div>
-        <div class="input-group">
-          <span class="input-group-addon">Change Name:</span>
-          <%= text_field_tag :_title, product.title, maxlength: 255, class: 'form-control' %>
-        </div>
-        <div class="input-group input-group-sm">
-          <span class="input-group-addon" id="sizing-addon3">Collections:</span>
-          <%= text_field_tag :_collections, "", class: 'form-control', placeholder: "Choose Collections" %>
-        </div>
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="input-group input-group-sm">
-              <span class="input-group-addon" id="sizing-addon3">Type:</span>
-                <%= text_field_tag :_type, "", class: 'form-control', placeholder: "Choose Type" %>
-            </div>
+          <div class="input-group">
+            <span class="input-group-addon">Change Name:</span>
+            <%= text_field_tag :_title, product.title, maxlength: 255, class: 'form-control' %>
           </div>
-          <div class="col-lg-6">
-            <div class="input-group input-group-sm">
-              <span class="input-group-addon" id="sizing-addon3">Tags:</span>
-              <%= text_field_tag :_tags, "", class: 'form-control', placeholder: "Insert Tags Here" %>
+          <div class="input-group input-group-sm">
+            <span class="input-group-addon" id="sizing-addon3">Collections:</span>
+            <%= text_field_tag :_collections, "", class: 'form-control', placeholder: "Choose Collections" %>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="input-group input-group-sm">
+                <span class="input-group-addon" id="sizing-addon3">Type:</span>
+                <%= text_field_tag :_type, "", class: 'form-control', placeholder: "Choose Type" %>
+              </div>
             </div>
+            <div class="col-lg-6">
+              <div class="input-group input-group-sm">
+                <span class="input-group-addon" id="sizing-addon3">Tags:</span>
+                <%= text_field_tag :_tags, "", class: 'form-control', placeholder: "Insert Tags Here" %>
+              </div>
           </div>
         </div>
       </div>
@@ -243,22 +243,17 @@
       </div>
     </div>
   
+      </div>
     </div>
-    </div>
-  </div>
 <br/>
 <br/>
-
-
     <% @ctr+=1 %>
   <% end %>
 <% end %>
 <!--end navs-->
 </div>
-</div>
 
 <!--as->
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="js/bootstrap.js"></script>
   <script src="js/bootstrap.min.js"></script>
