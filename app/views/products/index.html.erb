@@ -191,7 +191,7 @@
       </thead>
         <tbody>
           <tr>
-            <td><div class = "v-img"><%= image_tag(product.images.first, :alt => "img", :size => "100x100) %></div></td>
+            <td><div class = "v-img"><%= image_tag(product.images.first, :alt => "img", :size => "100x100") %></div></td>
             <td><%= text_field_tag :_sku, "", class: 'form-control', size: 10 %></td>
             <td><%= text_field_tag :_color, "", class: 'form-control', size: 10 %></td>
             <td><%= text_field_tag :_size, "", class: 'form-control', size: 10 %></td>
@@ -212,7 +212,7 @@
         <div class="image-select">
           <div class="product-img">
             <div class="product-img-action">
-                <%= image_tag(product.images.first, :alt => "img", :size => "220x220) %>
+                <%= image_tag(product.images.first, :alt => "img", :size => "220x220" ) %>
               <div class="icon-selected-box align-center">
                 <svg class="icon-selected">
                   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-selected"></use>
