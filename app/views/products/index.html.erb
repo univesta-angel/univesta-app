@@ -190,7 +190,7 @@
         </tr>
       </thead>
         <tbody>
-          <% product.colors.each do |color| %>
+          <%= product.colors.each do |color| %>
             <tr>
               <td><div class = "v-img"><%= image_tag(product.images[@ctr2], :alt => "img", :size => "100x100") %></div></td>
               <td><%= text_field_tag :_sku, "", class: 'form-control', size: 10 %></td>
@@ -228,7 +228,6 @@
     </div>
   </div>
   <!--END OF IMAGES TAB-->
-
 
     <!--PUSH BUTTON-->
     <div class="panel-footer">
