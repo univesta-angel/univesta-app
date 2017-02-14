@@ -11,6 +11,7 @@ class ProductsController < ApplicationController
     @products = Product.search(params[:search])
     #@collects = ShopifyAPI::Collect.find(:all)    #get collection
     @ctr = 1
+    @ctr2
   end
   
   # order lists
