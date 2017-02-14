@@ -35,7 +35,7 @@
 
 <div><p id="notice"><%= notice %></p></div>
 
-<body background="https://s24.postimg.org/uwwv58tad/neon_green_wallpapers_images_3840x2160.jpg" style="background-size: 100% 160%; background-repeat: no-repeat;">
+<body style="background-color: #f2f2f2;">
 
 <nav class="navbar navbar-default navbar-fixed-top" style="height: 20px;">
   <div class="container-fluid">
@@ -197,13 +197,13 @@
               <td><%= text_field_tag :_sku, "", class: 'form-control', size: 10 %></td>
               <td><%= text_field_tag :_color, color, class: 'form-control', size: 10 %></td>
               <td><%= text_field_tag :_size, size, class: 'form-control', size: 10 %></td>
-              <td><%= label_tag product.price[i] %></td>
-              <td><%= text_field_tag :_prc, product.price[i], class: 'form-control', size: 10 %></td>
-              <td><%= text_field_tag :_compAtPrice, product.compare_at_price[i], class: 'form-control', size: 10 %></td>
-              <td><%= label_tag product.avail_qty[i] %></td>            
-              <% i = i + 1 %>
+              <td><%= label_tag product.price[@ctr2] %></td>
+              <td><%= text_field_tag :_prc, product.price[@ctr2], class: 'form-control', size: 10 %></td>
+              <td><%= text_field_tag :_compAtPrice, product.compare_at_price[@ctr2], class: 'form-control', size: 10 %></td>
+              <td><%= label_tag product.avail_qty[@ctr2] %></td>
             </tr>
             <% end %>
+            <% i = i + 1 %>
           <% end %> 
         </tbody>
       </table>
