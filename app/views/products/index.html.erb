@@ -117,17 +117,17 @@
 <img style="height: 360px; width: 1000px; margin-left: 130px; margin-top: 20px;" src="https://s23.postimg.org/70ol5adm3/lols.png">   
 <ul class="nav nav-pills" style="margin-top: -20px; margin-left: 120px;">
   <li slot="select" ><span class="for-checkbox"><%= check_box_tag "product_ids[]", product.id %></span></li>
-  <li class="active"><a href="#products<%= @angel %>" data-toggle="tab" aria-expanded="true" style="margin-top: -319px; margin-left: 60px; font-family: Impact, Charcoal, sans-serif;">Product</a></li>
-  <li class=""><a href="#description<%= @angel %>" data-toggle="tab" aria-expanded="false" style="margin-top: -319px; margin-left: 140px; font-family: Impact, Charcoal, sans-serif;">Description</a></li>
-   <li class=""><a href="#variants<%= @angel %>" data-toggle="tab" aria-expanded="false" style="margin-top: -319px; margin-left: 245px; font-family: Impact, Charcoal, sans-serif;">Variants</a></li>
-    <li class=""><a href="#images<%= @angel %>" data-toggle="tab" aria-expanded="false" style="margin-top: -319px; margin-left: 332px; font-family: Impact, Charcoal, sans-serif;">Images</a></li>
+  <li class="active"><a href="#products<%= @ctr %>" data-toggle="tab" aria-expanded="true" style="margin-top: -319px; margin-left: 60px; font-family: Impact, Charcoal, sans-serif;">Product</a></li>
+  <li class=""><a href="#description<%= @ctr %>" data-toggle="tab" aria-expanded="false" style="margin-top: -319px; margin-left: 140px; font-family: Impact, Charcoal, sans-serif;">Description</a></li>
+   <li class=""><a href="#variants<%= @ctr %>" data-toggle="tab" aria-expanded="false" style="margin-top: -319px; margin-left: 245px; font-family: Impact, Charcoal, sans-serif;">Variants</a></li>
+    <li class=""><a href="#images<%= @ctr %>" data-toggle="tab" aria-expanded="false" style="margin-top: -319px; margin-left: 332px; font-family: Impact, Charcoal, sans-serif;">Images</a></li>
 </ul>
 
   <div class="panel-body" style=" margin-top: -300px; width: 800px; margin-left: 200px; color: #000;">
 <div id="myTabContent" class="tab-content">
 
   <!--PRODUCTS TAB-->
-  <div class="tab-pane fade active in" id="products<%= @angel %>">
+  <div class="tab-pane fade active in" id="products<%= @ctr %>">
     <div class="media" id="item">
       <div class="media-left">
         <%= image_tag(product.images.first, :alt => "picture", :size => "220x220") %><%= hidden_field_tag :_img, product.images %>
@@ -165,7 +165,7 @@
   <!--END OF PRODUCTS TAB-->
 
   <!--DESCRIPTION TAB-->
-  <div class="tab-pane fade" id="description<%= @angel %>">
+  <div class="tab-pane fade" id="description<%= @ctr %>">
     <p><%= product.body_html %><br><br>
     <%= product.variant_images %><br><br>
     <%= product.colors %><br><br>
@@ -175,7 +175,7 @@
   <!--END OF DESCRIPTION TAB-->
 
   <!--VARIANTS TAB-->
-  <div class="tab-pane fade" id="variants<%= @angel %>">
+  <div class="tab-pane fade" id="variants<%= @ctr %>">
     <table class="table table-condensed table-bordered table-striped volumes">
       <thead>
         <tr>
@@ -206,7 +206,7 @@
   <!--END OF VARIANTS TAB-->
 
   <!--IMAGES TAB-->
-  <div class="tab-pane fade" id="images<%= @angel %>">
+  <div class="tab-pane fade" id="images<%= @ctr %>">
     <div>
       <div class="row space-bottom">
         <div class="image-select">
@@ -246,7 +246,7 @@
 <br/>
 
 
-    <% @angel+=1 %>
+    <% @ctr+=1 %>
   <% end %>
 <% end %>
 <!--end navs-->
@@ -267,3 +267,4 @@
 </body>
 
 </html>
+
