@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   match 'create' => 'products#create', via: :post
   post 'push' => 'products#push', as: :push
   get 'myproducts' => 'my_products#index'
-  get 'orderlist' => 'products#order', as :orderlist
+  get 'orderlist' => 'products#order', as: :orderlist
 
   mount ShopifyApp::Engine, at: '/'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
