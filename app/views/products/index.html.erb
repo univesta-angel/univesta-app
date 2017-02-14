@@ -175,7 +175,7 @@
   <!--END OF DESCRIPTION TAB-->
 
   <!--VARIANTS TAB-->
-  <div class="tab-pane fade" id="variants<%= @ctr %>">
+  <div class="tab-pane fade" id="variants<%= @ctr %>" style="overflow:scroll; height:400px;">
     <table class="table table-condensed table-bordered table-striped volumes">
       <thead>
         <tr>
@@ -189,7 +189,7 @@
           <th>Inventory</th>
         </tr>
       </thead>
-        <tbody style="overflow-y: auto; overflow-x: hidden;">
+        <tbody>
           <%= product.colors.each.with_index do |color, i| %>
             <%= product.sizes.each.with_index do |size, x| %>
               <tr>
