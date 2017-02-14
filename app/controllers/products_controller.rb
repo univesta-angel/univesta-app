@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
 
     @products = Product.search(params[:search])
     #@collects = ShopifyAPI::Collect.find(:all)    #get collection
-    @angel = 1
+    @ctr = 1
   end
 
   # GET /products/1
