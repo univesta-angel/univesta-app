@@ -30,7 +30,6 @@
         margin-bottom: 20px;
       }
     </style>
-
   </head>
 
   <div><p id="notice"><%= notice %></p></div>
@@ -97,7 +96,6 @@
     <button type="submit" class="btn btn-success" style="width: 210px; height: 35px; margin-left: -100px;">Push All Products to Shop</button>
   </div>
 
-
 <% @products.each do |product| %>
       <%= form_tag(push_path, method: 'post', remote: true) do %>
       <%= hidden_field_tag :_colors, product.colors %>
@@ -111,6 +109,7 @@
 <!--nav-->
 
 <div class="row">
+  <div class="col-md-12">
   <div class="panel-heading">  
     <ul class="nav nav-pills" style="margin-left: 10%; margin-right: 10%;">
       <li slot="select" ><span class="for-checkbox"><%= check_box_tag "product_ids[]", product.id %></span></li>
@@ -134,28 +133,27 @@
         <div class="product-title">
           <b><%= product.title %></b>
         </div>
-          <div class="input-group">
-            <span class="input-group-addon">Change Name:</span>
-            <%= text_field_tag :_title, product.title, maxlength: 255, class: 'form-control' %>
-          </div>
-          <div class="input-group input-group-sm">
-            <span class="input-group-addon" id="sizing-addon3">Collections:</span>
-            <%= text_field_tag :_collections, "", class: 'form-control', placeholder: "Choose Collections" %>
-          </div>
-
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="input-group input-group-sm">
-                <span class="input-group-addon" id="sizing-addon3">Type:</span>
+        <div class="input-group">
+          <span class="input-group-addon">Change Name:</span>
+          <%= text_field_tag :_title, product.title, maxlength: 255, class: 'form-control' %>
+        </div>
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon" id="sizing-addon3">Collections:</span>
+          <%= text_field_tag :_collections, "", class: 'form-control', placeholder: "Choose Collections" %>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="input-group input-group-sm">
+              <span class="input-group-addon" id="sizing-addon3">Type:</span>
                 <%= text_field_tag :_type, "", class: 'form-control', placeholder: "Choose Type" %>
-              </div>
             </div>
-            <div class="col-lg-6">
-              <div class="input-group input-group-sm">
-                <span class="input-group-addon" id="sizing-addon3">Tags:</span>
-                <%= text_field_tag :_tags, "", class: 'form-control', placeholder: "Insert Tags Here" %>
-              </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="input-group input-group-sm">
+              <span class="input-group-addon" id="sizing-addon3">Tags:</span>
+              <%= text_field_tag :_tags, "", class: 'form-control', placeholder: "Insert Tags Here" %>
             </div>
+          </div>
         </div>
       </div>
     </div>
@@ -242,33 +240,21 @@
         </div>
       </div>
     </div>
-
+  
+    </div>
     </div>
   </div>
-</div>
 <br/>
 <br/>
-
-
     <% @ctr+=1 %>
   <% end %>
 <% end %>
 <!--end navs-->
 </div>
-
+</div>
 <!--as->
-
-
-
-
-
-
-
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="js/bootstrap.js"></script>
   <script src="js/bootstrap.min.js"></script>
 </body>
-
 </html>
-
