@@ -107,8 +107,8 @@
 <!--nav-->
 
 <div class="row">
-  <div class="panel-heading">  
-    <ul class="nav nav-pills" style="margin-left: 10%; margin-right: 10%; margin-top: 5%;">
+  <div class="panel-heading" style="margin-left: 10%; margin-right: 10%; margin-top: 4%;">  
+    <ul class="nav nav-pills">
       <li slot="select" ><span class="for-checkbox"><%= check_box_tag "product_ids[]", product.id %></span></li>
       <li class="active"><a href="#products<%= @ctr %>" data-toggle="tab" aria-expanded="true">Product</a></li>
       <li class=""><a href="#description<%= @ctr %>" data-toggle="tab" aria-expanded="false">Description</a></li>
@@ -117,7 +117,7 @@
     </ul>
   </div>
 
-<div class="panel-body" style="width: 800px; margin-left: 200px; color: #000;">
+<div class="panel-body"  style="margin-left: 10%; margin-right: 10%; width: 800px; color: #000">
   <div id="myTabContent" class="tab-content">
 
   <!--PRODUCTS TAB-->
@@ -170,7 +170,7 @@
 
   <!--VARIANTS TAB-->
   <div class="tab-pane fade" id="variants<%= @ctr %>">
-    <div class="container" style="overflow-y: scroll; height:400px; margin-left: 10%; margin-right: 10%;" %>
+    <div class="container" style="overflow-y: scroll; height:400px;" %>
     <table class="table table-condensed table-bordered table-striped volumes">
       <thead>
         <tr>
@@ -188,7 +188,7 @@
           <%= product.colors.each.with_index do |color, i| %>
             <%= product.sizes.each.with_index do |size, x| %>
               <tr>
-                <td><div class = "v-img"><%= image_tag(product.images[i], :alt => "img", :size => "100x100") %></div></td>
+                <td><div class = "v-img"><%= image_tag(product.images[@ctr3], :alt => "img", :size => "100x100") %></div></td>
                 <td><%= text_field_tag :_sku, "", class: 'form-control', size: 10 %></td>
                 <td><%= text_field_tag :_color, color, class: 'form-control', size: 10 %></td>
                 <td><%= text_field_tag :_size, size, class: 'form-control', size: 10 %></td>
@@ -199,7 +199,7 @@
               </tr>
               <% @ctr2 = @ctr2 + 1 %>
             <% end %>
-            <% i = i + 1 %>
+            <% @ctr3 = @ctr3 + 1 %>
           <% end %> 
         </tbody>
       </table>
