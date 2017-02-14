@@ -12,10 +12,16 @@ class ProductsController < ApplicationController
     #@collects = ShopifyAPI::Collect.find(:all)    #get collection
     @ctr = 1
   end
+  
+  # order lists
+  def order
+    @orders = ShopifAPI::Order.find(:all)
+  end
 
   # GET /products/1
   # GET /products/1.json
   def show
+    
   end
 
   # GET /products/new
