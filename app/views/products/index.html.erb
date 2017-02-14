@@ -191,8 +191,8 @@
       </thead>
         <tbody>
           <%= product.colors.each.with_index do |color, i| %>
-          <tr>
             <%= product.sizes.each.with_index do |size, x| %>
+            <tr>
               <td><div class = "v-img"><%= image_tag(product.images[i], :alt => "img", :size => "100x100") %></div></td>
               <td><%= text_field_tag :_sku, "", class: 'form-control', size: 10 %></td>
               <td><%= text_field_tag :_color, color, class: 'form-control', size: 10 %></td>
@@ -201,9 +201,9 @@
               <td><%= text_field_tag :_prc, product.price[i], class: 'form-control', size: 10 %></td>
               <td><%= text_field_tag :_compAtPrice, product.compare_at_price[i], class: 'form-control', size: 10 %></td>
               <td><%= label_tag product.avail_qty[i] %></td>            
-              i = i + 1
-            <% end %>
+              <% i = i + 1 %>
             </tr>
+            <% end %>
           <% end %> 
         </tbody>
       </table>
