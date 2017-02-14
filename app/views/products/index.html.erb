@@ -114,16 +114,18 @@
 
 <!--nav-->
    
-<ul class="nav nav-pills" style="margin-left: 10%; margin-right: 10%;">
-  <li slot="select" ><span class="for-checkbox"><%= check_box_tag "product_ids[]", product.id %></span></li>
-  <li class="active"><a href="#products<%= @ctr %>" data-toggle="tab" aria-expanded="true" style="margin-top: -319px; margin-left: 60px; font-family: Impact, Charcoal, sans-serif;">Product</a></li>
-  <li class=""><a href="#description<%= @ctr %>" data-toggle="tab" aria-expanded="false" style="margin-top: -319px; margin-left: 140px; font-family: Impact, Charcoal, sans-serif;">Description</a></li>
-   <li class=""><a href="#variants<%= @ctr %>" data-toggle="tab" aria-expanded="false" style="margin-top: -319px; margin-left: 245px; font-family: Impact, Charcoal, sans-serif;">Variants</a></li>
+<div class="panel-heading">  
+  <ul class="nav nav-pills" style="margin-left: 10%; margin-right: 10%;">
+    <li slot="select" ><span class="for-checkbox"><%= check_box_tag "product_ids[]", product.id %></span></li>
+    <li class="active"><a href="#products<%= @ctr %>" data-toggle="tab" aria-expanded="true" style="margin-top: -319px; margin-left: 60px; font-family: Impact, Charcoal, sans-serif;">Product</a></li>
+    <li class=""><a href="#description<%= @ctr %>" data-toggle="tab" aria-expanded="false" style="margin-top: -319px; margin-left: 140px; font-family: Impact, Charcoal, sans-serif;">Description</a></li>
+    <li class=""><a href="#variants<%= @ctr %>" data-toggle="tab" aria-expanded="false" style="margin-top: -319px; margin-left: 245px; font-family: Impact, Charcoal, sans-serif;">Variants</a></li>
     <li class=""><a href="#images<%= @ctr %>" data-toggle="tab" aria-expanded="false" style="margin-top: -319px; margin-left: 332px; font-family: Impact, Charcoal, sans-serif;">Images</a></li>
-</ul>
+  </ul>
+</div>
 
-  <div class="panel-body" style=" margin-top: -300px; width: 800px; margin-left: 200px; color: #000;">
-<div id="myTabContent" class="tab-content">
+<div class="panel-body" style=" margin-top: -300px; width: 800px; margin-left: 200px; color: #000;">
+  <div id="myTabContent" class="tab-content">
 
   <!--PRODUCTS TAB-->
   <div class="tab-pane fade active in" id="products<%= @ctr %>">
