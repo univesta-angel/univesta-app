@@ -187,7 +187,7 @@
             <%= product.sizes.each.with_index do |size, x| %>
               <tr>
                 <td><%= check_box_tag "product_ids[]", i %></td>
-                <td><div class = "v-img"><%= image_tag(product.variant_images[i], :size => "100x100") %></div></td>
+                <td><div class = "v-img"><%= image_tag(product.variant_images[i], :size => "100x100", :alt => "variant image") %></div></td>
                 <td><%= text_field_tag :_sku, "", class: 'form-control', size: 10 %></td>
                 <td><%= text_field_tag :_color, color, class: 'form-control', size: 10 %></td>
                 <td><%= text_field_tag :_size, size, class: 'form-control', size: 10 %></td>
@@ -211,7 +211,7 @@
     <div id="gallery">
       <ul id="grid">
         <%= product.variant_images.each do |image| %>
-         <li><%= image_tag(image, :size => "100x100") %></li>
+         <li><%= image_tag(image, :size => "100x100", :alt => "") %></li>
         <% end %>
       </ul>
     </div>
