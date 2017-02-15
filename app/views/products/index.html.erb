@@ -35,15 +35,13 @@
       // if all checkbox are selected, check the selectall checkbox
       // and viceversa
       $(".case").click(function(){
-
         if($(".case").length == $(".case:checked").length) {
           $("#selectall").attr("checked", "checked");
         } else {
           $("#selectall").removeAttr("checked");
         }
-
       });
-
+      
     });
     </script>
     
@@ -131,7 +129,7 @@
 <div class="container">
   <div class="panel-heading">
     <ul class="nav nav-pills">
-      <li slot="select" ><%= check_box_tag "product_ids[]", product.id, { :class => 'case' } %></li>
+      <li slot="select" ><input type="checkbox" class="case" name="product_ids[]" value="<%= product.id %>"></li>
       <li class="active"><a href="#products<%= @ctr %>" data-toggle="tab" aria-expanded="true">Product</a></li>
       <li class=""><a href="#description<%= @ctr %>" data-toggle="tab" aria-expanded="false">Description</a></li>
       <li class=""><a href="#variants<%= @ctr %>" data-toggle="tab" aria-expanded="false">Variants</a></li>
