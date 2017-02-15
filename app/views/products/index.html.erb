@@ -110,10 +110,11 @@
     <label style="color: white;">
       <input type="checkbox" id="selectall"/>
     </label>
-    <% submit_tag "Remove All Products" %>
+    <button type="submit" class="btn btn-default" style=" margin-left: 400px; width: 155px; height: 35px; margin-right: 100px;">Remove All Products</button>
+  <% end %>
+    
     <button type="submit" class="btn btn-success" style="width: 210px; height: 35px; margin-left: -100px;">Push All Products to Shop</button>
   </div>
-  <% end %>
 
 <% @products.each do |product| %>
       <%= form_tag(push_path, method: 'post', remote: true) do %>
