@@ -25,6 +25,30 @@
         margin-bottom: 20px;
       }
     </style>
+    
+    <script type="text/javascript">
+    $(document).ready(function(){
+
+      $("#selectall").click(function () {
+        $('.case').attr('checked', this.checked);
+      });
+
+      // if all checkbox are selected, check the selectall checkbox
+      // and viceversa
+      $(".case").click(function(){
+
+        if($(".case").length == $(".case:checked").length) {
+          $("#selectall").attr("checked", "checked");
+        } else {
+          $("#selectall").removeAttr("checked");
+        }
+
+      });
+
+    });
+    </script>
+    
+    
 
   </head>
 
@@ -84,10 +108,10 @@
     </form>
   </div>
     
-  <%= form_tag zzz_destroy_multiple_path(@products), method: :delete do %>
+  <%= form_tag products_destroy_multiple_path(@products), method: :delete do %>
   <div class="checkbox">
     <label style="color: white;">
-      <input type="checkbox"> Select All Products
+      <input type="checkbox" id="selectall"/>
     </label>
     <% submit_tag "Remove All Products" %>
     <button type="submit" class="btn btn-success" style="width: 210px; height: 35px; margin-left: -100px;">Push All Products to Shop</button>
