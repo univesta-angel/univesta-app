@@ -184,7 +184,7 @@
       </thead>
         <tbody>
           <%= product.colors.each.with_index do |color, i| %>
-            <%= product.sizes.each.with_index do |size, x| %>
+            <%= product.sizes.each do |size| %>
               <tr>
                 <td><%= check_box_tag "product_ids[]", i %></td>
                 <td><div class = "v-img"><%= image_tag(product.variant_images[i], :size => "100x100", :alt => "variant image") %></div></td>
