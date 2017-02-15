@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :products do
     delete 'destroy_multiple'
+    delete 'destroy_all_items'
   end
   
   root :to => 'products#index'
