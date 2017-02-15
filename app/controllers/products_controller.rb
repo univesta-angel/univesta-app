@@ -202,6 +202,15 @@ class ProductsController < ApplicationController
      format.json { head :no_content }
     end
   end
+  
+  def destroy_all_items
+    Product.delete_all
+
+    respond_to do |format|
+     format.html { redirect_to root_path, notice: 'All import products were deleted.' }
+     format.json { head :no_content }
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
