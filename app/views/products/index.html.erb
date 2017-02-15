@@ -107,7 +107,7 @@
 <div class="container">
   <div class="panel-heading">
     <ul class="nav nav-pills">
-      <li slot="select" ><span class="for-checkbox"><%= check_box_tag "product_ids[]", product.id %></span></li>
+      <li slot="select" ><%= check_box_tag "product_ids[]", product.id %></li>
       <li class="active"><a href="#products<%= @ctr %>" data-toggle="tab" aria-expanded="true">Product</a></li>
       <li class=""><a href="#description<%= @ctr %>" data-toggle="tab" aria-expanded="false">Description</a></li>
       <li class=""><a href="#variants<%= @ctr %>" data-toggle="tab" aria-expanded="false">Variants</a></li>
@@ -186,7 +186,8 @@
           <%= product.colors.each.with_index do |color, i| %>
             <%= product.sizes.each.with_index do |size, x| %>
               <tr>
-                <td><div class = "v-img"><%= image_tag(product.variant_images[i], :alt => "img", :size => "100x100") %></div></td>
+                <td><%= check_box_tag "product_ids[]", i %></td>
+                <td><div class = "v-img"><%= image_tag(product.variant_images[i], :size => "100x100") %></div></td>
                 <td><%= text_field_tag :_sku, "", class: 'form-control', size: 10 %></td>
                 <td><%= text_field_tag :_color, color, class: 'form-control', size: 10 %></td>
                 <td><%= text_field_tag :_size, size, class: 'form-control', size: 10 %></td>
@@ -207,21 +208,12 @@
 
   <!--IMAGES TAB-->
   <div class="tab-pane fade" id="images<%= @ctr %>">
-    <div>
-      <div class="row space-bottom">
-        <div class="image-select">
-          <div class="product-img">
-            <div class="product-img-action">
-                <%= image_tag(product.images.first, :alt => "img", :size => "220x220" ) %>
-              <div class="icon-selected-box align-center">
-                <svg class="icon-selected">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-selected"></use>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div id="gallery">
+      <ul id="grid">
+        <%= product.variant_images.each.with_index do |image| %>
+         <li><%= image_tag(image) %></li>
+        <% end %>
+      </ul>
     </div>
   </div>
   <!--END OF IMAGES TAB-->
