@@ -26,20 +26,25 @@
       }
     </style>
     
-    <script>
-    $(document).ready(function() {
-      $('#selectAll').click(function() {
-         if (this.checked) {
-             $(':checkbox').each(function() {
-                 this.checked = true;                        
-             });
-         } else {
-            $(':checkbox').each(function() {
-                 this.checked = false;                        
-             });
-         } 
+    <script type='text/javascript'>
+
+      $('#campaign_range_ids_4').click(function () {
+        if ($(this).is(':checked')) {
+          $('#campaign_range_ids_1,#campaign_range_ids_2,#campaign_range_ids_3').prop('checked', true);
+        } else {
+          $('#campaign_range_ids_1,#campaign_range_ids_2,#campaign_range_ids_3').prop('checked', false);
+        }
       });
-    });
+      
+      $('#campaign_range_ids_1,#campaign_range_ids_2,#campaign_range_ids_3').click(function () {
+        if ($(this).is(':checked')) {
+          
+        }
+        else {
+          $('#campaign_range_ids_4').prop('checked', false);
+        }
+      });
+
     </script>
 
   </head>
@@ -102,7 +107,7 @@
 
   <div class="checkbox">
     <label style="color: white;">
-      <input type="checkbox" id="selectAll"> Select All Products
+      <input id="campaign_range_ids_4" class="checkbox" type="checkbox" value="4" name="campaign[range_ids][]"> Select All Products
     </label>
     <button type="submit" class="btn btn-default" style=" margin-left: 400px; width: 155px; height: 35px; margin-right: 100px;">Remove All Products</button>
     <button type="submit" class="btn btn-success" style="width: 210px; height: 35px; margin-left: -100px;">Push All Products to Shop</button>
@@ -123,7 +128,7 @@
 <div class="container">
   <div class="panel-heading">
     <ul class="nav nav-pills">
-      <li slot="select" ><%= check_box_tag "product_ids[]", product.id %></li>
+      <li slot="select" ><%= check_box_tag "campaign_range_ids_"+"@ctr" %></li>
       <li class="active"><a href="#products<%= @ctr %>" data-toggle="tab" aria-expanded="true">Product</a></li>
       <li class=""><a href="#description<%= @ctr %>" data-toggle="tab" aria-expanded="false">Description</a></li>
       <li class=""><a href="#variants<%= @ctr %>" data-toggle="tab" aria-expanded="false">Variants</a></li>
