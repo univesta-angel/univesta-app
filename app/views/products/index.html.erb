@@ -88,7 +88,7 @@
     <div class="col-md-12">
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="  Search for Products" style="width: 600px; font-family: Verdana, Geneva, sans-serif; margin-right: 20px; margin-left: 10px; margin-left: 180px; color: black;">
+          <input type="text" class="form-control" placeholder="Search for Products" style="width: 600px; font-family: Verdana, Geneva, sans-serif; margin-right: 20px; margin-left: 10px; margin-left: 180px; color: black;">
         </div>
       <div class="btn-group" style="margin-left: 10px; margin-right: 10px;">
         <a href="#" class="btn btn-default">Default</a>
@@ -105,14 +105,11 @@
     </form>
   </div>
     
-  <%= form_tag product_destroy_multiple_path(@products), method: :delete do %>
   <div class="checkbox">
     <label style="color: white;">
       <input type="checkbox" id="selectall"/>
     </label>
-    <% submit_tag 'Remove All Products', { :class => 'btn btn-default' } %>
-  <% end %>
-    
+    <% button_to 'Remove All Products', product_destroy_all_items_path, { :class => 'btn btn-default' } %>
     <button type="submit" class="btn btn-success" style="width: 210px; height: 35px; margin-left: -100px;">Push All Products to Shop</button>
   </div>
 
