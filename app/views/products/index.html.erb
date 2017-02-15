@@ -109,7 +109,7 @@
     <label style="color: white;">
       <input type="checkbox" id="selectall"/>
     </label>
-    <% button_to 'Remove All Products', product_destroy_all_items_path, { :class => 'btn btn-default' } %>
+    <%= button_to 'Remove All', product_destroy_all_items_path(@products), method: :delete, data: { confirm: 'Are you sure?' } %>
     <button type="submit" class="btn btn-success" style="width: 210px; height: 35px; margin-left: -100px;">Push All Products to Shop</button>
   </div>
 
