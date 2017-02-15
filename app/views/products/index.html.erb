@@ -30,11 +30,11 @@
     $(document).ready(function(){
 
       $("#selectall").click(function () {
-        $('.case').attr('checked', this.checked);
+          $('.case').attr('checked', this.checked);
       });
 
-      // if all checkbox are selected, check the selectall checkbox
-      // and viceversa
+        // if all checkbox are selected, check the selectall checkbox
+        // and viceversa
       $(".case").click(function(){
 
         if($(".case").length == $(".case:checked").length) {
@@ -112,7 +112,7 @@
     <label style="color: white;">
       <input type="checkbox" id="selectall"/>
     </label>
-    <% button_to "Remove All Products", product_destroy_multiple_path(@products) %>
+    <% button_to "Remove All Products", product_destroy_multiple_path(@products), {class: 'btn btn-default'} %>
     <button type="submit" class="btn btn-success" style="width: 210px; height: 35px; margin-left: -100px;">Push All Products to Shop</button>
   </div>
 
