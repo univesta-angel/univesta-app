@@ -25,27 +25,6 @@
         margin-bottom: 20px;
       }
     </style>
-    
-    <script type='text/javascript'>
-    $(document).ready(function(){
-      $('#campaign_range_ids_4').click(function () {
-        if ($(this).is(':checked')) {
-          $('#campaign_range_ids').prop('checked', true);
-        } else {
-          $('#campaign_range_ids').prop('checked', false);
-        }
-      });
-      
-      $('#cb_id[]').click(function () {
-        if ($(this).is(':checked')) {
-          
-        }
-        else {
-          $('#campaign_range_ids_4').prop('checked', false);
-        }
-      });
-    });
-    </script>
 
   </head>
 
@@ -107,7 +86,7 @@
 
   <div class="checkbox">
     <label style="color: white;">
-      <input type="checkbox">Select All Products
+      <input type="checkbox"> Select All Products
     </label>
     <button type="submit" class="btn btn-default" style=" margin-left: 400px; width: 155px; height: 35px; margin-right: 100px;">Remove All Products</button>
     <button type="submit" class="btn btn-success" style="width: 210px; height: 35px; margin-left: -100px;">Push All Products to Shop</button>
@@ -217,12 +196,10 @@
                 <td><%= text_field_tag :_compAtPrice, product.compare_at_price[@ctr2], class: 'form-control', size: 10 %></td>
                 <td><%= label_tag product.avail_qty[@ctr2] %></td>
               </tr>
-              <%= variant_color << params[:_color] %>
-              <%= variant_size << params[:_size] %>
               <% @ctr2 = @ctr2 + 1 %>
             <% end %>
             <% i = i + 1 %>
-          <% end %>
+          <% end %>  
         </tbody>
       </table>
     </div>
@@ -234,7 +211,7 @@
     <div id="gallery">
       <ul id="grid">
         <%= product.variant_images.each do |image| %>
-         <li><%= image_tag(image.photo.url, :size => "100x100", :alt => "") %></li>
+         <li><%= image_tag(image, :size => "100x100", :alt => "") %></li>
         <% end %>
       </ul>
     </div>
