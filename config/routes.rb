@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'my_products/index'
 
   resources :products do
-    delete 'destroy_mupltiple'
+    delete 'destroy_multiple'
   end
   
   root :to => 'products#index'
