@@ -108,15 +108,13 @@
     </form>
   </div>
     
-  <%= form_tag product_destroy_multiple_path(@products), method: :delete do %>
   <div class="checkbox">
     <label style="color: white;">
       <input type="checkbox" id="selectall"/>
     </label>
-    <% submit_tag "Remove All Products" %>
+    <% button_to "Remove All Products", product_destroy_multiple_path(@products) %>
     <button type="submit" class="btn btn-success" style="width: 210px; height: 35px; margin-left: -100px;">Push All Products to Shop</button>
   </div>
-  <% end %>
 
 <% @products.each do |product| %>
       <%= form_tag(push_path, method: 'post', remote: true) do %>
