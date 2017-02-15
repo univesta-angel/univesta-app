@@ -83,15 +83,16 @@
       <button type="submit" class="btn btn-success" style="margin-left: 10px;">SEARCH</button>
     </form>
   </div>
-
+    
+  <%= form_tag zzz_destroy_multiple_path(@products), method: :delete do %>
   <div class="checkbox">
     <label style="color: white;">
       <input type="checkbox"> Select All Products
     </label>
-    <button type="submit" class="btn btn-default" style=" margin-left: 400px; width: 155px; height: 35px; margin-right: 100px;">Remove All Products</button>
+    <% submit_tag "Remove All Products" %>
     <button type="submit" class="btn btn-success" style="width: 210px; height: 35px; margin-left: -100px;">Push All Products to Shop</button>
   </div>
-
+  <% end %>
 
 <% @products.each do |product| %>
       <%= form_tag(push_path, method: 'post', remote: true) do %>
@@ -172,6 +173,7 @@
     <table class="table table-condensed table-bordered table-striped volumes">
       <thead>
         <tr>
+          <th></th>
           <th>Image</th>
           <th>SKU</th>
           <th>Color</th>
