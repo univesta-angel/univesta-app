@@ -310,11 +310,21 @@ class ProductsController < ApplicationController
     end
   end
   
-  def destroy_multiple
-    Product.destroy(params[:product_ids])
+  def select_action
+    if params[:commit] == "Remove selected"
+      Product.destroy(params[:product_ids])
+      
+    elsif params[:commit] == "Push selected"
+      Product.find(params[:product_ids]).each do |p|
+        
+        #create product api
+        
+        p.destroy
+      end
+    end
 
     respond_to do |format|
-     format.html { redirect_to root_path }
+     format.html { redirect_to zzzs_path, notice: "Success." }
      format.json { head :no_content }
     end
   end
