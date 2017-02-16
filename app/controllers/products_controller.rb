@@ -169,6 +169,122 @@ class ProductsController < ApplicationController
       end
     end
   end
+  
+  #------------------------------------------------------------------------------------------------------------------------
+  
+  def push_all
+    Product.all.each do |p|
+      
+      shop_url = "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin"
+      ShopifyAPI::Base.site = shop_url
+      shop = ShopifyAPI::Shop.current
+
+      options = []
+      #option = {}
+      option = ShopifyAPI::Option.new(:name => "Color")
+      options << option
+      option1 = ShopifyAPI::Option.new(:name => "Size")
+      options << option1
+
+      color = p.colors.split
+      colorz = p.colors.split
+      size = p.sizes.split
+      prices = p.prices.split
+      compAtPrice = p.compare_at_price.split
+      qty = p.avail_qty.split
+      variant_img = p.variant_images.split
+      default_img = p.images.split
+
+      images = []
+      default_img.each do |img|
+        image = {}
+        image["src"] = img
+        images << image
+      end
+
+      if color.size==0
+        color=['-']
+      end
+      if size.size==0
+        size=['-']
+      end
+
+      i = 0;
+      variants = []
+      color.each do |row1|
+        str = row1.gsub!(/_/, ' ')
+        size.each do |row2|
+          str2 = row2.gsub!(/_/, ' ')
+          zzz = ShopifyAPI::Variant.new( 
+            :price                => prices[i],
+            :option1              => row1, 
+            :option2              => row2,   
+            :compare_at_price     => compAtPrice[i],
+            :sku                  => params[:_sku],
+            :inventory_management => 'shopify',
+            :inventory_quantity   => qty[i]
+          )
+          variants << zzz
+          i = i + 1;
+        end
+      end
+      
+      products = ShopifyAPI::Product.new
+      
+      products = ShopifyAPI::Product.new
+      products.title = p.title
+      products.body_html = p.body_html
+      products.product_type = p.product_type
+      products.vendor = p.vendor
+      products.tags = p.tags
+      products.options = options
+      products.variants = variants
+      products.save
+    
+      pao = []
+      color2 =[]     #tempo storage
+      aaa = 0 
+      ctr = 0 
+
+      if colorz.size==0
+       color.each do |row1|
+          color2=[]
+          size.each do |row2|
+            color2 << new_product.variants[ctr].id
+            ctr = ctr + 1
+          end
+          pao << { id: nil, variant_ids: color2, src: default_img[0] }
+          aaa = aaa + 1
+        end
+      else
+        color.each do |row1|
+          color2=[]
+          size.each do |row2|
+            color2 << new_product.variants[ctr].id
+            ctr = ctr + 1
+          end
+          pao << { id: nil, variant_ids: color2, src: variant_img[aaa] }
+          aaa = aaa + 1
+        end
+      end
+
+      products.images = pao 
+      products.save
+      
+    end
+  
+    expires_in(60.seconds, public: false)
+
+    respond_to do |format|
+      if new_product.save
+        format.html { redirect_to root_path, notice: 'All product was successfully pushed.' }
+        format.json { render json: 201 }
+      else
+        format.html { redirect_to root_path, notice: 'Oops. Something went wrong.' }
+        format.json { render json: new_product.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
