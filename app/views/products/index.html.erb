@@ -28,10 +28,10 @@
     
     <script type="text/javascript">
     $(document).ready(function(){
+      //--------------------products checkbox--------------------
       $("#selectall").click(function () {
         $('.case').attr('checked', this.checked);
       });
-
       // if all checkbox are selected, check the selectall checkbox
       // and viceversa
       $(".case").click(function(){
@@ -39,6 +39,18 @@
           $("#selectall").attr("checked", "checked");
         } else {
           $("#selectall").removeAttr("checked");
+        }
+      });
+      //---------------------variant checkbox----------------------
+      $("#selectall-var").click(function () {
+        $('.vrnt').attr('checked', this.checked);
+      });
+      
+      $(".vrnt").click(function(){
+        if($(".vrnt").length == $(".case:checked").length) {
+          $("#selectall").attr("checked", "checked");
+        } else {
+          $("#selectall-var").removeAttr("checked");
         }
       });
       
@@ -192,7 +204,7 @@
     <table class="table table-condensed table-bordered table-striped volumes">
       <thead>
         <tr>
-          <th></th>
+          <th><input type="checkbox" id="selectall-var"/></th>
           <th>Image</th>
           <th>SKU</th>
           <th>Color</th>
@@ -207,7 +219,7 @@
           <%= product.colors.each.with_index do |color, i| %>
             <%= product.sizes.each do |size| %>
               <tr>
-                <td><%= check_box_tag "product_ids[]", i %></td>
+                <td><input type="checkbox" class="vrnt" name="variant_id[]" value="<%= i %>"/></td>
                 <td><div class = "v-img"><%= image_tag(product.variant_images[i], :size => "100x100", :alt => "variant image") %></div></td>
                 <td><%= text_field_tag :_sku, "", class: 'form-control', size: 10 %></td>
                 <td><%= text_field_tag :_color, color, class: 'form-control', size: 10 %></td>
