@@ -40,15 +40,15 @@ class ProductsController < ApplicationController
     @product = Product.create(title: params[:title],
                               body_html: params[:body_html],
                               product_type: params[:product_type],
-                              images: params[:images],
+                              images: params[:images],  #array
                               vendor: params[:vendor],
                               tags: params[:tags],
-                              price: params[:price],
-                              compare_at_price: params[:compare_at_price],
-                              colors: params[:colors],
-                              sizes: params[:sizes],
-                              avail_qty: params[:avail_qty],
-                              variant_images: params[:variant_images])
+                              price: params[:price], #array
+                              compare_at_price: params[:compare_at_price], #array
+                              colors: params[:colors],  #array
+                              sizes: params[:sizes],  #array
+                              avail_qty: params[:avail_qty],  #array
+                              variant_images: params[:variant_images])  #array
 
     respond_to do |format|
       if @product.save
