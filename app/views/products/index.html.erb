@@ -7,100 +7,123 @@
         icon: "<%= asset_path('favicon.ico') %>"
       });
     });
-
   </script>
   
 <% end %>
 
-<head>
-  <style type="text/css">
-    body {
-      vertical-align: middle;
-      margin-left:auto;
-      margin-right:auto;
-    }
-    .input-group.input-group-sm, .input-group-addon{
-      margin-top: 15px;
-    }
-    .container{
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
-    .product-title{
-      margin-bottom: 20px;
-    }
-  </style>
+  <head>
+    <style type="text/css">
+      body {
+        vertical-align: middle;
+        margin-left:auto;
+        margin-right:auto;
+      }
+      .input-group.input-group-sm, .input-group-addon{
+        margin-top: 15px;
+      }
+      .product-title{
+        margin-bottom: 20px;
+      }
+    </style>
+    
+    <script type="text/javascript">
+    $(document).ready(function(){
+      //--------------------products checkbox--------------------
+      $("#selectall").click(function () {
+        $('.case').attr('checked', this.checked);
+      });
+      // if all checkbox are selected, check the selectall checkbox
+      // and viceversa
+      $(".case").click(function(){
+        if($(".case").length == $(".case:checked").length) {
+          $("#selectall").attr("checked", "checked");
+        } else {
+          $("#selectall").removeAttr("checked");
+        }
+      });
+      //---------------------variant checkbox----------------------
+      $("#selectall-var").click(function () {
+        $('.vrnt').attr('checked', this.checked);
+      });
+      
+      $(".vrnt").click(function(){
+        if($(".vrnt").length == $(".case:checked").length) {
+          $("#selectall").attr("checked", "checked");
+        } else {
+          $("#selectall-var").removeAttr("checked");
+        }
+      });
+      
+    });
+    </script>
+    
+    
 
-</head>
+  </head>
 
-<div><p id="notice"><%= notice %></p></div>
+  <div><p id="notice"><%= notice %></p></div>
 
-<body background="https://s24.postimg.org/uwwv58tad/neon_green_wallpapers_images_3840x2160.jpg" style="background-size: 100% 160%; background-repeat: no-repeat;">
+  <body style="background-color: #f2f2f2;">
 
-<nav class="navbar navbar-default navbar-fixed-top" style="height: 20px;">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <img alt="Brand" class="navbar-brand" href="#" src="https://simplesharebuttons.com/images/somacro/buffer.png"><a class="navbar-brand" style="font-family: Georgia, serif; color: black;">Uberlo</a>
-    </div>
+    <nav class="navbar navbar-default navbar-fixed-top" style="height: 20px;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <img alt="Brand" class="navbar-brand" href="#" src="https://simplesharebuttons.com/images/somacro/buffer.png"><a class="navbar-brand" style="font-family: Georgia, serif; color: black;">Uberlo</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><strong>Import List</strong></a></li>
+          <li><a href="#"><strong>My Products</strong></a></li>
+        </ul>
+      </div>
+  </div>
+  </nav>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><strong>Import List</strong></a></li>
-        <li><a href="#"><strong>My Products</strong></a></li>
-      </ul>
+  <br/>
+  <div class="col-lg-12">
+    <div class="panel panel-primary">
+      <!-- Default panel contents -->
+      <div class="panel-heading"><strong>Import List!</strong></div>
+      <div class="panel-body">
+        <p>This section is for importing products.</p>
+      </div> 
     </div>
   </div>
-</nav>
-<br/>
-<div class="col-md-2"></div>
-<div class="col-lg-12">
-<div class="panel panel-primary">
-  <!-- Default panel contents -->
-  <div class="panel-heading"><strong>Import List!</strong></div>
-  <div class="panel-body">
-    <p>This section is for importing products.</p>
-  </div> 
-</div>
-</div>
-<div class="col-md-12">
 
+  <div class="col-md-12" style="margin-left: 10%; margin-right: 10%;">
     <div class="col-md-12">
-
-          <form class="navbar-form navbar-left" role="search">
+      <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="  Search for Products" style="width: 600px; font-family: Verdana, Geneva, sans-serif; margin-right: 20px; margin-left: 10px; border-radius: 15px 50px; margin-left: 180px; color: black;">
+          <input type="text" class="form-control" placeholder="Search for Products" style="width: 600px; font-family: Verdana, Geneva, sans-serif; margin-right: 20px; margin-left: 10px; margin-left: 180px; color: black;">
         </div>
       <div class="btn-group" style="margin-left: 10px; margin-right: 10px;">
-              <a href="#" class="btn btn-default">Default</a>
-              <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
+        <a href="#" class="btn btn-default">Default</a>
+        <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul>
       </div>
-        <button type="submit" class="btn btn-success" style="margin-left: 10px;">SEARCH</button>
-      </form>
-
+      <button type="submit" class="btn btn-success" style="margin-left: 10px;">SEARCH</button>
+    </form>
   </div>
-          <div class="checkbox" style="margin-top: 100px; margin-left: 175px;">
-          <label style="color: white;">
-            <input type="checkbox"> Select All Products
-          </label>
-          <button type="submit" class="btn btn-default" style=" margin-left: 400px; width: 155px; height: 35px; margin-right: 100px;">Remove All Products</button>
-          <button type="submit" class="btn btn-success" style="width: 210px; height: 35px; margin-left: -100px;">Push All Products to Shop</button>
-        </div>
-
+    
+  <div class="checkbox">
+    <label style="color: white;">
+      <input type="checkbox" id="selectall"/>
+    </label>
+    <%= button_to 'Remove All', product_destroy_all_items_path(@products), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= button_to 'Push All Products to Shop', push_all_path, method: :post %>
+  </div>
 
 <% @products.each do |product| %>
       <%= form_tag(push_path, method: 'post', remote: true) do %>
@@ -113,24 +136,25 @@
       <%= hidden_field_tag :_variant_images, product.variant_images %>
 
 <!--nav-->
+<div class="container">
+  <div class="panel-heading">
+    <ul class="nav nav-pills">
+      <li slot="select" ><input type="checkbox" class="case" name="product_ids[]" value="<%= product.id %>"></li>
+      <li class="active"><a href="#products<%= @ctr %>" data-toggle="tab" aria-expanded="true">Product</a></li>
+      <li class=""><a href="#description<%= @ctr %>" data-toggle="tab" aria-expanded="false">Description</a></li>
+      <li class=""><a href="#variants<%= @ctr %>" data-toggle="tab" aria-expanded="false">Variants</a></li>
+      <li class=""><a href="#images<%= @ctr %>" data-toggle="tab" aria-expanded="false">Images</a></li>
+    </ul>
+  </div>
 
-<img style="height: 360px; width: 1000px; margin-left: 130px; margin-top: 20px;" src="https://s23.postimg.org/70ol5adm3/lols.png">   
-<ul class="nav nav-pills" style="margin-top: -20px; margin-left: 120px;">
-  <li slot="select" ><span class="for-checkbox"><%= check_box_tag "product_ids[]", product.id %></span></li>
-  <li class="active"><a href="#products<%= @angel %>" data-toggle="tab" aria-expanded="true" style="margin-top: -319px; margin-left: 60px; font-family: Impact, Charcoal, sans-serif;">Product</a></li>
-  <li class=""><a href="#description<%= @angel %>" data-toggle="tab" aria-expanded="false" style="margin-top: -319px; margin-left: 140px; font-family: Impact, Charcoal, sans-serif;">Description</a></li>
-   <li class=""><a href="#variants<%= @angel %>" data-toggle="tab" aria-expanded="false" style="margin-top: -319px; margin-left: 245px; font-family: Impact, Charcoal, sans-serif;">Variants</a></li>
-    <li class=""><a href="#images<%= @angel %>" data-toggle="tab" aria-expanded="false" style="margin-top: -319px; margin-left: 332px; font-family: Impact, Charcoal, sans-serif;">Images</a></li>
-</ul>
-
-  <div class="panel-body" style=" margin-top: -300px; width: 800px; margin-left: 200px; color: #000;">
-<div id="myTabContent" class="tab-content">
+<div class="panel-body"  style="width: 800px; color: #000">
+  <div id="myTabContent" class="tab-content">
 
   <!--PRODUCTS TAB-->
-  <div class="tab-pane fade active in" id="products<%= @angel %>">
+  <div class="tab-pane fade active in" id="products<%= @ctr %>">
     <div class="media" id="item">
       <div class="media-left">
-        <%= image_tag(product.images, :alt => "picture") %><%= hidden_field_tag :_img, product.images %>
+        <%= image_tag(product.images.first, :alt => "picture", :size => "220x220") %><%= hidden_field_tag :_img, product.images %>
       </div>
       <div class="media-body">
         <div class="product-title">
@@ -157,7 +181,7 @@
                 <span class="input-group-addon" id="sizing-addon3">Tags:</span>
                 <%= text_field_tag :_tags, "", class: 'form-control', placeholder: "Insert Tags Here" %>
               </div>
-            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -165,7 +189,7 @@
   <!--END OF PRODUCTS TAB-->
 
   <!--DESCRIPTION TAB-->
-  <div class="tab-pane fade" id="description<%= @angel %>">
+  <div class="tab-pane fade" id="description<%= @ctr %>">
     <p><%= product.body_html %><br><br>
     <%= product.variant_images %><br><br>
     <%= product.colors %><br><br>
@@ -175,10 +199,12 @@
   <!--END OF DESCRIPTION TAB-->
 
   <!--VARIANTS TAB-->
-  <div class="tab-pane fade" id="variants<%= @angel %>">
+  <div class="tab-pane fade" id="variants<%= @ctr %>">
+    <div class="container" style="overflow-y: scroll; height:400px;" %>
     <table class="table table-condensed table-bordered table-striped volumes">
       <thead>
         <tr>
+          <th><input type="checkbox" id="selectall-var"/></th>
           <th>Image</th>
           <th>SKU</th>
           <th>Color</th>
@@ -190,42 +216,40 @@
         </tr>
       </thead>
         <tbody>
-          <tr>
-            <td><div class = "v-img"><%= image_tag(product.images, :alt => "img") %></div></td>
-            <td><%= text_field_tag :_sku, "", class: 'form-control', size: 10 %></td>
-            <td><%= text_field_tag :_color, "", class: 'form-control', size: 10 %></td>
-            <td><%= text_field_tag :_size, "", class: 'form-control', size: 10 %></td>
-            <td></td>
-            <td><%= text_field_tag :_prc, "", class: 'form-control', size: 10 %></td>
-            <td><%= text_field_tag :_compAtPrice, "", class: 'form-control', size: 10 %></td>
-            <td><%= label_tag product.avail_qty %></td>
-          </tr>
+          <%= product.colors.each.with_index do |color, i| %>
+            <%= product.sizes.each do |size| %>
+              <tr>
+                <td><input type="checkbox" class="vrnt" name="variant_id[]" value="<%= i %>"/></td>
+                <td><div class = "v-img"><%= image_tag(product.variant_images[i], :size => "100x100", :alt => "variant image") %></div></td>
+                <td><%= text_field_tag :_sku, "", class: 'form-control', size: 10 %></td>
+                <td><%= text_field_tag :_color, color, class: 'form-control', size: 10 %></td>
+                <td><%= text_field_tag :_size, size, class: 'form-control', size: 10 %></td>
+                <td><%= label_tag product.price[@ctr2] %></td>
+                <td><%= text_field_tag :_prc, product.price[@ctr2], class: 'form-control', size: 10 %></td>
+                <td><%= text_field_tag :_compAtPrice, product.compare_at_price[@ctr2], class: 'form-control', size: 10 %></td>
+                <td><%= label_tag product.avail_qty[@ctr2] %></td>
+              </tr>
+              <% @ctr2 = @ctr2 + 1 %>
+            <% end %>
+            <% i = i + 1 %>
+          <% end %>  
         </tbody>
       </table>
+    </div>
   </div>
   <!--END OF VARIANTS TAB-->
 
   <!--IMAGES TAB-->
-  <div class="tab-pane fade" id="images<%= @angel %>">
-    <div>
-      <div class="row space-bottom">
-        <div class="image-select">
-          <div class="product-img">
-            <div class="product-img-action">
-                <%= image_tag(product.images, :alt => "img") %>
-              <div class="icon-selected-box align-center">
-                <svg class="icon-selected">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-selected"></use>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="tab-pane fade" id="images<%= @ctr %>">
+    <div id="gallery">
+      <ul id="grid">
+        <%= product.variant_images.each do |image| %>
+         <li><%= image_tag(image, :size => "100x100", :alt => "") %></li>
+        <% end %>
+      </ul>
     </div>
   </div>
   <!--END OF IMAGES TAB-->
-
 
     <!--PUSH BUTTON-->
     <div class="panel-footer">
@@ -238,32 +262,21 @@
         </div>
       </div>
     </div>
-
-
-  </div>
-</div>
+  
+      </div>
+    </div>
 <br/>
 <br/>
-
-
-    <% @angel+=1 %>
+    <% @ctr+=1 %>
   <% end %>
 <% end %>
+</div>
 <!--end navs-->
 </div>
 
 <!--as->
-
-
-
-
-
-
-
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="js/bootstrap.js"></script>
   <script src="js/bootstrap.min.js"></script>
 </body>
-
 </html>
