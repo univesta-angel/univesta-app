@@ -3,21 +3,23 @@
 <head>
 	<title></title>
 </head>
-<body>
-	<table>
-		<thead>
-			<tr>
-				<th>Order Number</th>
-				<th>Financial Status</th>
-			</tr>
-		</thead>
-		<tbody>
-			<% @orders.each do |o| %>
-				<tr>
-					<td><%= o.id %></td>
-					<td><%= o.financial_status %></td>
-				</tr>
-		</tbody>
-	</table>
-</body>
+	
+	<body>
+	  <table>
+	    <thead>
+	      <tr>
+		<th>Order Number</th>
+		<th>Financial Status</th>
+	     </tr>
+	    </thead>
+	      <tbody>
+		<% @orders.each do |o| %>
+		  <tr>
+		    <td><%= o.id %></td>
+		    <td><%= o.financial_status %></td>
+		  </tr>
+		<% end %>
+	    </tbody>
+	  </table>
+	</body>
 </html>
