@@ -15,7 +15,6 @@ class OrderController < ApplicationController
     while(current_page <= pages)
       @products += GET /admin/orders.json?limit=250&page=current_page
       current_page += 1
-    end
     
   end
 end
