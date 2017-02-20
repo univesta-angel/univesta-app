@@ -6,8 +6,6 @@ Rails.application.routes.draw do
 
   resources :products do
   	delete 'destroy_multiple'
-  end
-
     post 'select_action'
     delete 'destroy_all_items'
   end
