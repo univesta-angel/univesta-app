@@ -25,39 +25,6 @@
         margin-bottom: 20px;
       }
     </style>
-    
-    <script type="text/javascript">
-    $(document).ready(function(){
-      //--------------------products checkbox--------------------
-      $("#selectall").click(function () {
-        $('.case').attr('checked', this.checked);
-      });
-      // if all checkbox are selected, check the selectall checkbox
-      // and viceversa
-      $(".case").click(function(){
-        if($(".case").length == $(".case:checked").length) {
-          $("#selectall").attr("checked", "checked");
-        } else {
-          $("#selectall").removeAttr("checked");
-        }
-      });
-      //---------------------variant checkbox----------------------
-      $("#selectall-var").click(function () {
-        $('.vrnt').attr('checked', this.checked);
-      });
-      
-      $(".vrnt").click(function(){
-        if($(".vrnt").length == $(".case:checked").length) {
-          $("#selectall").attr("checked", "checked");
-        } else {
-          $("#selectall-var").removeAttr("checked");
-        }
-      });
-      
-    });
-    </script>
-    
-    
 
   </head>
 
@@ -100,7 +67,7 @@
     <div class="col-md-12">
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search for Products" style="width: 600px; font-family: Verdana, Geneva, sans-serif; margin-right: 20px; margin-left: 10px; margin-left: 180px; color: black;">
+          <input type="text" class="form-control" placeholder="  Search for Products" style="width: 600px; font-family: Verdana, Geneva, sans-serif; margin-right: 20px; margin-left: 10px; margin-left: 180px; color: black;">
         </div>
       <div class="btn-group" style="margin-left: 10px; margin-right: 10px;">
         <a href="#" class="btn btn-default">Default</a>
@@ -116,14 +83,15 @@
       <button type="submit" class="btn btn-success" style="margin-left: 10px;">SEARCH</button>
     </form>
   </div>
-    
+
   <div class="checkbox">
     <label style="color: white;">
-      <input type="checkbox" id="selectall"/>
+      <input type="checkbox"> Select All Products
     </label>
-    <%= button_to 'Remove All', product_destroy_all_items_path(@products), method: :delete, data: { confirm: 'Are you sure?' } %>
-    <%= button_to 'Push All Products to Shop', push_all_path, method: :post %>
+    <button type="submit" class="btn btn-default" style=" margin-left: 400px; width: 155px; height: 35px; margin-right: 100px;">Remove All Products</button>
+    <button type="submit" class="btn btn-success" style="width: 210px; height: 35px; margin-left: -100px;">Push All Products to Shop</button>
   </div>
+
 
 <% @products.each do |product| %>
       <%= form_tag(push_path, method: 'post', remote: true) do %>
@@ -139,7 +107,7 @@
 <div class="container">
   <div class="panel-heading">
     <ul class="nav nav-pills">
-      <li slot="select" ><input type="checkbox" class="case" name="product_ids[]" value="<%= product.id %>"></li>
+      <li slot="select" ><span class="for-checkbox"><%= check_box_tag "product_ids[]", product.id %></span></li>
       <li class="active"><a href="#products<%= @ctr %>" data-toggle="tab" aria-expanded="true">Product</a></li>
       <li class=""><a href="#description<%= @ctr %>" data-toggle="tab" aria-expanded="false">Description</a></li>
       <li class=""><a href="#variants<%= @ctr %>" data-toggle="tab" aria-expanded="false">Variants</a></li>
@@ -183,6 +151,7 @@
               </div>
           </div>
         </div>
+        
       </div>
     </div>
   </div>
@@ -204,7 +173,6 @@
     <table class="table table-condensed table-bordered table-striped volumes">
       <thead>
         <tr>
-          <th><input type="checkbox" id="selectall-var"/></th>
           <th>Image</th>
           <th>SKU</th>
           <th>Color</th>
@@ -217,10 +185,9 @@
       </thead>
         <tbody>
           <%= product.colors.each.with_index do |color, i| %>
-            <%= product.sizes.each do |size| %>
+            <%= product.sizes.each.with_index do |size, x| %>
               <tr>
-                <td><input type="checkbox" class="vrnt" name="variant_id[]" value="<%= i %>"/></td>
-                <td><div class = "v-img"><%= image_tag(product.variant_images[i], :size => "100x100", :alt => "variant image") %></div></td>
+                <td><div class = "v-img"><%= image_tag(product.variant_images[i], :alt => "img", :size => "100x100") %></div></td>
                 <td><%= text_field_tag :_sku, "", class: 'form-control', size: 10 %></td>
                 <td><%= text_field_tag :_color, color, class: 'form-control', size: 10 %></td>
                 <td><%= text_field_tag :_size, size, class: 'form-control', size: 10 %></td>
@@ -241,12 +208,21 @@
 
   <!--IMAGES TAB-->
   <div class="tab-pane fade" id="images<%= @ctr %>">
-    <div id="gallery">
-      <ul id="grid">
-        <%= product.variant_images.each do |image| %>
-         <li><%= image_tag(image, :size => "100x100", :alt => "") %></li>
-        <% end %>
-      </ul>
+    <div>
+      <div class="row space-bottom">
+        <div class="image-select">
+          <div class="product-img">
+            <div class="product-img-action">
+                <%= image_tag(product.images.first, :alt => "img", :size => "220x220" ) %>
+              <div class="icon-selected-box align-center">
+                <svg class="icon-selected">
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-selected"></use>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <!--END OF IMAGES TAB-->
