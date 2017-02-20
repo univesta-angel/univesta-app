@@ -4,7 +4,7 @@ class OrderController < ApplicationController
     ShopifyAPI::Base.site = shop_url
     shop = ShopifyAPI::Shop.current
     
-    @orders = ShopifyAPI::Order.find(:all)
+    @orders = ShopifyAPI::Order.find(:all, params: { financial_status: 'paid' })
     
   end
 end
