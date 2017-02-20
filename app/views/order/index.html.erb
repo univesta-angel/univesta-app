@@ -1,34 +1,39 @@
-<html>
-	<% content_for :javascript do %>
-	  <script type="text/javascript">
-	    ShopifyApp.ready(function(){
-	      ShopifyApp.Bar.initialize({
-		title: "Order List",
-		icon: "<%= asset_path('favicon.ico') %>"
-	      });
-	    });
-	  </script>
-	<% end %>
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    ShopifyApp.ready(function(){
+      ShopifyApp.Bar.initialize({
+        title: "Home",
+        icon: "<%= asset_path('favicon.ico') %>"
+      });
+    });
+  </script>
+<% end %>
 
-<head>
-	<title></title>
-</head>
-	
-	<body>
-		<h2>Order List</h2>
-	  <table>
-	    <thead>
-	      <tr>
-		<th>Order Number</th>
-	     </tr>
-	    </thead>
-	      <tbody>
-		<% @orders.each do |o| %>
-		  <tr>
-		    <td><%= o.order_number %></td>
-		  </tr>
-		<% end %>
-	    </tbody>
-	  </table>
-	</body>
-</html>
+<h2>Orders</h2>
+
+
+<table border="1" style="width:100%">
+  <tr>
+    <th>Order ID</th>
+    <th>Recipient</th>
+    <th>Total Order</th>
+    <th>Date of Order</th>
+    <th>Sale Total</th>
+    <th>Sales Tax</th>
+    <th>Payment Gateway</th>
+    <th>Fulfillment Status</th>
+  </tr>
+
+  <% @orders.each do |order| %>
+  <tr>
+    <td><%= order.order_number %></td>
+    <td>cust</td>
+    <td>total</td>
+    <td><%= order.created_at %></td>
+    <td><%= order.subtotal_price %></td>
+    <td><%= order.total_tax %></td>
+    <td><%= order.payment_gateway_names %></td>
+    <td><%= order.fulfillment_status %></td>
+  </tr>
+ <% end %>
+</table>
