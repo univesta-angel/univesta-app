@@ -4,6 +4,6 @@ class OrderController < ApplicationController
     ShopifyAPI::Base.site = shop_url
     shop = ShopifyAPI::Shop.current
     
-  	@orders = ShopifyAPI::Order.all
+  	@orders = ShopifyAPI::Order.find(:all)
   end
 end
