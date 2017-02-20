@@ -1,5 +1,16 @@
 <!DOCTYPE html>
 <html>
+	<% content_for :javascript do %>
+	  <script type="text/javascript">
+	    ShopifyApp.ready(function(){
+	      ShopifyApp.Bar.initialize({
+		title: "Order List",
+		icon: "<%= asset_path('favicon.ico') %>"
+	      });
+	    });
+	  </script>
+	<% end %>
+
 <head>
 	<title></title>
 </head>
@@ -15,7 +26,7 @@
 	      <tbody>
 		<% @orders.each do |o| %>
 		  <tr>
-		    <td><%= o.id %></td>
+		    <td><%= o.order_number %></td>
 		  </tr>
 		<% end %>
 	    </tbody>
