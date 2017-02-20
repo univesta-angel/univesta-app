@@ -161,8 +161,8 @@
       <div id="myTabContent" class="tab-content">
         <div class="container">
           <div class="Row">
-            <div class="col-lg-3">Order <a href="#"><%= order.order_number%></a> <%= order.created_at %></div>
-            <div class="col-lg-3">Customer: <a href=""><%= order.shipping_address.first_name %>, <%= order.shipping_address.last_name %></a></div>
+            <div class="col-lg-3">Order <a href="#"><%= order.order_number %></a> <%= order.created_at %></div>
+            <div class="col-lg-3">Customer: <a href=""><%= order.shipping_address.first_name %> <%= order.shipping_address.last_name %></a></div>
             <div class="col-lg-3">Add Note</div>
             <div class="Column2"><button type="button" class="btn btn-default">Mark as Shipped</button></div>
           </div>
