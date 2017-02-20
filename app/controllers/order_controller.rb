@@ -10,10 +10,10 @@ class OrderController < ApplicationController
     pages = ceiling(count / 250.0)
 
     current_page = 1
-    @orders = []
+    orders = []
 
     while(current_page <= pages)
-      @products += GET /admin/orders.json?limit=250&page=current_page
+      orders += GET /admin/orders.json?limit=250&page=current_page
       current_page += 1
     
   end
