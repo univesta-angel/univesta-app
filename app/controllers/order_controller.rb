@@ -1,4 +1,4 @@
-class OrderController < ApplicationController
+class OrderController < ShopifyApp::AuthenticatedController
   def index
     
       @orders = ShopifyAPI::Order.find(:all)
