@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   get 'orders' => 'order#index', as: :orders
-
+  post 'products/bulkaction'
   get 'my_products/index'
 
   resources :products do
