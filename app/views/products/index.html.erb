@@ -72,15 +72,13 @@
       });
       
       function bulkAction(){
-        $("#bulkaction").change(function() {
-          $.ajax({
-            type: "POST",
-            data: { name : $(this).val() },
-            url: "products/bulkaction",
-            success: function(data){
-              alert('aaa');
-            }
-          });
+        $.ajax({
+          type: "POST",
+          data: { name : $(this).val() },
+          url: "products/bulkaction",
+          success: function(data){
+            alert('aaa');
+          }
         });
       }
     </script>
