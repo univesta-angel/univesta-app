@@ -144,6 +144,7 @@
 
 <%= form_tag product_select_action_path(@products) do %>
   <% @products.each do |product| %>
+    <%= hidden_field_tag :_id, product.id %>
     <%= hidden_field_tag :_colors, product.colors %>
     <%= hidden_field_tag :_sizes, product.sizes %>
     <%= hidden_field_tag :_prices, product.price %>
