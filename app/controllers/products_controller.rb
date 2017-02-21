@@ -95,236 +95,113 @@ class ProductsController < ApplicationController
     end
   end
   
-  def select_action
-    #------------ Remove Selected --------------
-    if params[:commit] == 'Remove selected'
-      Products.destroy(params[:check])
+  # push to store action
+  def push
+    shop_url = "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin"
+    ShopifyAPI::Base.site = shop_url
+    shop = ShopifyAPI::Shop.current
 
-      respond_to do |format|
-       format.html { redirect_to root_path, notice: 'Success.' }
-       format.json { head :no_content }
-      end
+    options = []
+    #option = {}
+    option = ShopifyAPI::Option.new(:name => "Color")
+    options << option
+    option1 = ShopifyAPI::Option.new(:name => "Size")
+    options << option1
+
+    color = params[:_colors].split
+    colorz = params[:_colors].split
+    size = params[:_sizes].split
+    prices = params[:_prices].split
+    compAtPrice = params[:_compare_at_price].split
+    qty = params[:_avail_qty].split
+    variant_img = params[:_variant_images].split
+    default_img = params[:_img].split
     
-    #------------- Push Selected ---------------
-    elsif params[:commit] == 'Push selected'
-           
-      Product.find(params[:select_all2]).each do |product|
-        shop_url = "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin"
-        ShopifyAPI::Base.site = shop_url
-        shop = ShopifyAPI::Shop.current
-
-        options = []
-        #option = {}
-        option = ShopifyAPI::Option.new(:name => "Color")
-        options << option
-        option1 = ShopifyAPI::Option.new(:name => "Size")
-        options << option1
-
-        color = params[:_colors].split
-        colorz = params[:_colors].split
-        size = params[:_sizes].split
-        prices = params[:_prices].split
-        compAtPrice = params[:_compare_at_price].split
-        qty = params[:_avail_qty].split
-        variant_img = params[:_variant_images].split
-        default_img = params[:_img].split
-
-        images = []
-        default_img.each do |img|
-          image = {}
-          image["src"] = img
-          images << image
-        end
-
-        if color.size==0
-          color=['-']
-        end
-        if size.size==0
-          size=['-']
-        end
-
-        i = 0;
-        variants = []
-        color.each do |row1|
-          str = row1.gsub!(/_/, ' ')
-          size.each do |row2|
-            str2 = row2.gsub!(/_/, ' ')
-            zzz = ShopifyAPI::Variant.new( 
-              :price                => prices[i],
-              :option1              => row1, 
-              :option2              => row2,   
-              :compare_at_price     => compAtPrice[i],
-              :sku                  => params[:_sku],
-              :inventory_management => 'shopify',
-              :inventory_quantity   => qty[i]
-            )
-            variants << zzz
-            i = i + 1;
-          end
-        end
-
-        new_product = ShopifyAPI::Product.new
-        new_product.title = params[:_title]
-        new_product.body_html = params[:_body]
-        new_product.product_type = params[:_type]
-        new_product.vendor = params[:_vendor]
-        new_product.tags = params[:_tags]
-        new_product.options = options
-        new_product.variants = variants
-        new_product.save
-
-        pao = []
-        color2 =[]     #tempo storage
-        aaa = 0 
-        ctr = 0 
-
-        if colorz.size==0
-         color.each do |row1|
-            color2=[]
-            size.each do |row2|
-              color2 << new_product.variants[ctr].id
-              ctr = ctr + 1
-            end
-            pao << { id: nil, variant_ids: color2, src: default_img[0] }
-            aaa = aaa + 1
-          end
-        else
-          color.each do |row1|
-            color2=[]
-            size.each do |row2|
-              color2 << new_product.variants[ctr].id
-              ctr = ctr + 1
-          end
-            pao << { id: nil, variant_ids: color2, src: variant_img[aaa] }
-            aaa = aaa + 1
-          end
-        end
-
-        new_product.images = pao 
-        new_product.save
-      
-      end
-      
-      respond_to do |format|
-        if new_product.save
-          format.html { redirect_to root_path, notice: 'Product was successfully pushed.' }
-          format.json { render json: 201 }
-        else
-          format.html { redirect_to root_path, notice: 'Oops. Something went wrong.' }
-          format.json { render json: new_product.errors, status: :unprocessable_entity }
-        end
-      end
-      
-    #--------- Push to Store -----------
-    elsif params[:commit] == 'Push to Store'
-      
-      Product.find(params[:_id]) do
-        shop_url = "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin"
-        ShopifyAPI::Base.site = shop_url
-        shop = ShopifyAPI::Shop.current
-
-        options = []
-        #option = {}
-        option = ShopifyAPI::Option.new(:name => "Color")
-        options << option
-        option1 = ShopifyAPI::Option.new(:name => "Size")
-        options << option1
-
-        color = params[:_colors].split
-        colorz = params[:_colors].split
-        size = params[:_sizes].split
-        prices = params[:_prices].split
-        compAtPrice = params[:_compare_at_price].split
-        qty = params[:_avail_qty].split
-        variant_img = params[:_variant_images].split
-        default_img = params[:_img].split
-
-        images = []
-        default_img.each do |img|
-          image = {}
-          image["src"] = img
-          images << image
-        end
-
-        if color.size==0
-          color=['-']
-        end
-        if size.size==0
-          size=['-']
-        end
-
-        i = 0;
-        variants = []
-        color.each do |row1|
-          str = row1.gsub!(/_/, ' ')
-          size.each do |row2|
-            str2 = row2.gsub!(/_/, ' ')
-            zzz = ShopifyAPI::Variant.new( 
-              :price                => prices[i],
-              :option1              => row1, 
-              :option2              => row2,   
-              :compare_at_price     => compAtPrice[i],
-              :sku                  => params[:_sku],
-              :inventory_management => 'shopify',
-              :inventory_quantity   => qty[i]
-            )
-            variants << zzz
-            i = i + 1;
-          end
-        end
-
-        new_product = ShopifyAPI::Product.new
-        new_product.title = params[:_title]
-        new_product.body_html = params[:_body]
-        new_product.product_type = params[:_type]
-        new_product.vendor = params[:_vendor]
-        new_product.tags = params[:_tags]
-        new_product.options = options
-        new_product.variants = variants
-        new_product.save
-
-        pao = []
-        color2 =[]     #tempo storage
-        aaa = 0 
-        ctr = 0 
-
-        if colorz.size==0
-         color.each do |row1|
-            color2=[]
-            size.each do |row2|
-              color2 << new_product.variants[ctr].id
-              ctr = ctr + 1
-            end
-            pao << { id: nil, variant_ids: color2, src: default_img[0] }
-            aaa = aaa + 1
-          end
-        else
-          color.each do |row1|
-            color2=[]
-            size.each do |row2|
-              color2 << new_product.variants[ctr].id
-              ctr = ctr + 1
-            end
-            pao << { id: nil, variant_ids: color2, src: variant_img[aaa] }
-            aaa = aaa + 1
-          end
-        end
-
-        new_product.images = pao 
-        new_product.save
-      end
-      
-      respond_to do |format|
-        if new_product.save
-          format.html { redirect_to root_path, notice: 'Product was successfully pushed.' }
-          format.json { render json: 201 }
-        else
-          format.html { redirect_to root_path, notice: 'Oops. Something went wrong.' }
-          format.json { render json: new_product.errors, status: :unprocessable_entity }
-        end
+    images = []
+    default_img.each do |img|
+      image = {}
+      image["src"] = img
+      images << image
+    end
+    
+    if color.size==0
+      color=['-']
+    end
+    if size.size==0
+      size=['-']
+    end
+    
+    i = 0;
+    variants = []
+    color.each do |row1|
+      str = row1.gsub!(/_/, ' ')
+      size.each do |row2|
+        str2 = row2.gsub!(/_/, ' ')
+        zzz = ShopifyAPI::Variant.new( 
+          :price                => prices[i],
+          :option1              => row1, 
+          :option2              => row2,   
+          :compare_at_price     => compAtPrice[i],
+          :sku                  => params[:_sku],
+          :inventory_management => 'shopify',
+          :inventory_quantity   => qty[i]
+        )
+        variants << zzz
+        i = i + 1;
       end
     end
 
+    new_product = ShopifyAPI::Product.new
+    new_product.title = params[:_title]
+    new_product.body_html = params[:_body]
+    new_product.product_type = params[:_type]
+    new_product.vendor = params[:_vendor]
+    new_product.tags = params[:_tags]
+    new_product.options = options
+    new_product.variants = variants
+    new_product.save
+
+    pao = []
+    color2 =[]     #tempo storage
+    aaa = 0 
+    ctr = 0 
+
+    if colorz.size==0
+     color.each do |row1|
+        color2=[]
+        size.each do |row2|
+          color2 << new_product.variants[ctr].id
+          ctr = ctr + 1
+        end
+        pao << { id: nil, variant_ids: color2, src: default_img[0] }
+        aaa = aaa + 1
+      end
+    else
+      color.each do |row1|
+        color2=[]
+        size.each do |row2|
+          color2 << new_product.variants[ctr].id
+          ctr = ctr + 1
+        end
+        pao << { id: nil, variant_ids: color2, src: variant_img[aaa] }
+        aaa = aaa + 1
+      end
+    end
+    
+    new_product.images = pao 
+    new_product.save
+  
+    expires_in(60.seconds, public: false)
+
+    respond_to do |format|
+      if new_product.save
+        format.html { redirect_to root_path, notice: 'Product was successfully pushed.' }
+        format.json { render json: 201 }
+      else
+        format.html { redirect_to root_path, notice: 'Oops. Something went wrong.' }
+        format.json { render json: new_product.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private
