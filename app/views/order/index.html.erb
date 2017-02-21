@@ -178,15 +178,15 @@
                     <!-- line items -->
               <% order.line_items.each do |item| %>
                 <div class="row">
-                  <div class="col-sm-3">
-                    <div><a><%= item.title %></a></div>
+                  <div class="col-sm-6">
+                    <div><h6><a><%= item.title %></a></h6></div>
                     <div><h5 style="color: grey"><%= item.sku %></h5></div></div>
                   <div class="col-sm-3">
                     <%= item.variant_title %></div>
                   <div class="col-sm-3">
                     ****tracking number
                   <div class="col-sm-3">
-                    <%= item.price %><span>x</span> <%= item.price %></div>
+                    <%= item.quantity %><span style="marginLeft: 5px; marginRight: 5px;">x</span><%= item.price %></div>
                 </div>
               <% end %>
               
