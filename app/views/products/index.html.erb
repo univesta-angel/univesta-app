@@ -128,7 +128,7 @@
       </form>
     </div>
 
-<%= form_tag product_select_action_path(@products) do %>
+
     <div class="row" style="margin-left: 10%; margin-right: 10%; margin-bottom: 20px;">
       <div class="col-sm-10">
         <label style="color: white;">
@@ -141,8 +141,9 @@
     </div>
     
   <div><p id="notice"><%= notice %></p></div>
-
-  <% @products.each do |product| %>
+<% @products.each do |product| %>
+  <%= form_tag product_select_action_path(@products) do %>
+    <%= hidden_field_tag :_id, product.id %>
     <%= hidden_field_tag :_colors, product.colors %>
     <%= hidden_field_tag :_sizes, product.sizes %>
     <%= hidden_field_tag :_prices, product.price %>
@@ -307,7 +308,7 @@
         <div class = "col-lg-12">
           <div class="text-right">
             <%= link_to "Remove Product", product, method: :delete, data: { confirm: 'Are you sure?' } %>
-            <%= submit_tag 'Push to Store', class: 'button#{@ctr}' %>
+            <%= submit_tag 'Push to Store', class: 'btn btn-success' %>
           </div>
         </div>
       </div>
@@ -318,9 +319,9 @@
 <br/>
 <br/>
     <% @ctr+=1 %>
+    <%= submit_tag 'Remove selected', class: "btn btn-default" %>
+    <%= submit_tag 'Push selected', class: "btn btn-default" %>
   <% end %>
-  <%= submit_tag 'Remove selected', class: "btn btn-default" %>
-  <%= submit_tag 'Push selected', class: "btn btn-default" %>
 <% end %>
 </div>
 <!--end navs-->
