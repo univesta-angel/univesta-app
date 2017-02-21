@@ -95,6 +95,12 @@ class ProductsController < ApplicationController
     end
   end
   
+  def select_action
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: 'Success.' }
+    end
+  end
+  
   # push to store action
   def push
     shop_url = "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin"
