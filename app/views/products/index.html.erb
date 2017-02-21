@@ -46,19 +46,20 @@
         
         // --- for each variant of product ---
         $("#select_all2).change(function(){  //"select all" change 
-          $(".checkbox").prop('checked', $(this).prop("checked")); //change all ".checkbox" checked status
+          $(".checkbox2").prop('checked', $(this).prop("checked")); //change all ".checkbox" checked status
         });
         //".checkbox" change 
-        $('.checkbox').change(function(){ 
+        $('.checkbox2').change(function(){ 
             //uncheck "select all", if one of the listed checkbox item is unchecked
             if(false == $(this).prop("checked")){ //if this item is unchecked
                 $("#select_all").prop('checked', false); //change "select all" checked status to false
             }
             //check "select all" if all checkbox items are checked
-            if ($('.checkbox:checked').length == $('.checkbox').length ){
+            if ($('.checkbox2:checked').length == $('.checkbox2').length ){
                 $("#select_all2).prop('checked', true);
             }
         });
+              
       });
     </script>
 
@@ -220,7 +221,7 @@
           <% product.colors.each.with_index do |color, i| %>
             <% product.sizes.each.with_index do |size, x| %>
               <tr>
-                <td><input class="checkbox" type="checkbox" name="check_var[]"></td>
+                <td><input class="checkbox2" type="checkbox" name="check_var[]"></td>
                 <td><div class = "v-img"><%= image_tag(product.variant_images[i], :alt => "img", :size => "100x100") %></div></td>
                 <td><%= text_field_tag :_sku, "", class: 'form-control', size: 10 %></td>
                 <td><%= text_field_tag :_color, color, class: 'form-control', size: 10 %></td>
