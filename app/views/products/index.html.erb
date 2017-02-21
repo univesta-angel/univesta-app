@@ -43,20 +43,19 @@
                 $("#select_all").prop('checked', true);
             }
         });
-        
-        // --- for each variant of product ---
-        $("#select_all2).change(function(){
+        // -- for each product variant ---
+        $("#select_all2").change(function(){  //"select all" change 
           $(".checkbox2").prop('checked', $(this).prop("checked")); //change all ".checkbox" checked status
         });
         //".checkbox" change 
         $('.checkbox2').change(function(){ 
             //uncheck "select all", if one of the listed checkbox item is unchecked
             if(false == $(this).prop("checked")){ //if this item is unchecked
-                $("#select_all").prop('checked', false); //change "select all" checked status to false
+                $("#select_all2").prop('checked', false); //change "select all" checked status to false
             }
             //check "select all" if all checkbox items are checked
             if ($('.checkbox2:checked').length == $('.checkbox2').length ){
-                $("#select_all2).prop('checked', true);
+                $("#select_all2").prop('checked', true);
             }
         });
               
