@@ -153,8 +153,8 @@
     <%= hidden_field_tag :_variant_images, product.variant_images %>
 
 <!--nav-->
-<div class="container">
-  <div class="panel-heading" style ="background-color: #fff;">
+<div class="container" style = "width: 1000px; background-color: #fff">
+  <div class="panel-heading">
     <ul class="nav nav-pills">
       <li slot="select" ><span class="for-checkbox"><input class="checkbox" type="checkbox" name="check[]"></span></li>
       <li class="active"><a href="#products<%= @ctr %>" data-toggle="tab" aria-expanded="true">Product</a></li>
@@ -164,7 +164,7 @@
     </ul>
   </div>
 
-<div class="panel-body"  style="color: #000; background-color: #fff">
+<div class="panel-body"  style="color: #000;">
   <div id="myTabContent" class="tab-content">
 
   <!--PRODUCTS TAB-->
