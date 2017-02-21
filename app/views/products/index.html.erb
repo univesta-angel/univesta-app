@@ -142,7 +142,7 @@
     
   <div><p id="notice"><%= notice %></p></div>
 <% @products.each do |product| %>
-  <%= form_tag product_select_action_path(@products) do %>
+  <%= form_tag (push_path, method: :post, remote: true) do %>
     <%= hidden_field_tag :_id, product.id %>
     <%= hidden_field_tag :_colors, product.colors %>
     <%= hidden_field_tag :_sizes, product.sizes %>
@@ -318,9 +318,7 @@
   </div>
 <br/>
 <br/>
-    <% @ctr+=1 %>
-    <%= submit_tag 'Remove selected', class: "btn btn-default" %>
-    <%= submit_tag 'Push selected', class: "btn btn-default" %>
+  <% @ctr+=1 %>
   <% end %>
 <% end %>
 </div>
