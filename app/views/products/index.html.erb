@@ -129,7 +129,7 @@
     </div>
 
 <%= form_tag product_select_action_path(@products) do %>
-  <div class="col-md-12">
+  <div class="col-md-12" style="marginBottom: 20px;">
     <div class="col-sm-10">
       <label style="color: white;">
         <input type="checkbox" id="select_all" style="marginRight: 7px">
@@ -153,7 +153,7 @@
     <%= hidden_field_tag :_variant_images, product.variant_images %>
 
 <!--nav-->
-<div class="container" style="marginTop: 20px;">
+<div class="container">
   <div class="panel-heading" style ="background-color: #fff;">
     <ul class="nav nav-pills">
       <li slot="select" ><span class="for-checkbox"><input class="checkbox" type="checkbox" name="check[]"></span></li>
@@ -164,7 +164,7 @@
     </ul>
   </div>
 
-<div class="panel-body"  style="width: 800px; color: #000; background-color: #fff">
+<div class="panel-body"  style="color: #000; background-color: #fff">
   <div id="myTabContent" class="tab-content">
 
   <!--PRODUCTS TAB-->
