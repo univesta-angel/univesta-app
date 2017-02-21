@@ -175,17 +175,21 @@
           </div>
           <div style="margin: auto; margin-top: 25px">
             <div style="border:1px; display:inline-block; background-color: #ddeaff; width: 1150px; height: 100px; margin-bottom: 10px">
-              <div class="row">
-                <td colspan="10">
-                  <div><a>****product name</a></div>
-                  <div><h5 style="color: grey">****product sku</h5></div></td>
-                <td colspan="10">
-                  ****variant</td>
-                <td colspan="10">
-                  ****tracking number
-                <td colspan="10">
-                  ***qty x <% order.subtotal_price %></td>
-            </div>
+                    <!-- line items -->
+              <%= order.line_items.each do |item| %>
+                <div class="row">
+                  <td colspan="10">
+                    <div><a><%= item.title %></a></div>
+                    <div><h5 style="color: grey"><%= item.sku %></h5></div></td>
+                  <td colspan="10">
+                    <%= item.variant_title %></td>
+                  <td colspan="10">
+                    ****tracking number
+                  <td colspan="10">
+                    <%= item.price %><span>x</span> <%= item.price %></td>
+                </div>
+              <% end %>
+              
           </div>
         </div>
       </div>
