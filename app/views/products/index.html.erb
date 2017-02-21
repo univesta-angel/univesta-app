@@ -142,7 +142,7 @@
     
   <div><p id="notice"><%= notice %></p></div>
 
-<%= form_tag product.select_action_path(@products) do %>
+<%= form_tag product_select_action_path(@products) do %>
   <% @products.each do |product| %>
     <%= hidden_field_tag :_colors, product.colors %>
     <%= hidden_field_tag :_sizes, product.sizes %>
