@@ -230,6 +230,33 @@
         </tr>
       </thead>
         <tbody>
+          <tr>
+            <!-- set value or mutliplier -->
+            <td>
+              <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  Change All Prices
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <li><a href="#">Set New Value</a></li>
+                  <li><a href="#">Multiply By</a></li>
+                </ul>
+              </div>
+            </td>
+            <td>
+              <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  Change All Prices
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <li><a href="#">Set New Value</a></li>
+                  <li><a href="#">Multiply By</a></li>
+                </ul>
+              </div>
+            </td>
+          </tr>
           <% product.colors.each.with_index do |color, i| %>
             <% product.sizes.each.with_index do |size, x| %>
               <tr>
@@ -292,8 +319,8 @@
 <br/>
     <% @ctr+=1 %>
   <% end %>
-  <%= submit_tag 'Remove selected' %>
-  <%= submit_tag 'Push selected' %>
+  <%= submit_tag 'Remove selected', class: "btn btn-default" %>
+  <%= submit_tag 'Push selected', class: "btn btn-default" %>
 <% end %>
 </div>
 <!--end navs-->
