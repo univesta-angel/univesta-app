@@ -143,7 +143,6 @@
   <div><p id="notice"><%= notice %></p></div>
 
   <% @products.each do |product| %>
-    <%= hidden_field_tag :_id, product.id %>
     <%= hidden_field_tag :_colors, product.colors %>
     <%= hidden_field_tag :_sizes, product.sizes %>
     <%= hidden_field_tag :_prices, product.price %>
@@ -308,7 +307,7 @@
         <div class = "col-lg-12">
           <div class="text-right">
             <%= link_to "Remove Product", product, method: :delete, data: { confirm: 'Are you sure?' } %>
-            <%= submit_tag 'Push to Store', class: "btn btn-success " %>
+            <%= submit_tag 'Push to Store', class: 'button@ctr', class: "btn btn-success " %>
           </div>
         </div>
       </div>
