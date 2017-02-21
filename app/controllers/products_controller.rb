@@ -194,13 +194,28 @@ class ProductsController < ApplicationController
     end
   end
   
-  def destroy_multiple
-    Product.destroy(params[:product_ids])
+  def destroy_all_items
+    Product.delete_all
 
     respond_to do |format|
-     format.html { redirect_to root_path }
+     format.html { redirect_to root_path, notice: 'All imports have been removed.' }
      format.json { head :no_content }
     end
+  end
+  
+  def select_action
+    if params[:commit] == "Remove selected"
+      Products.destroy(params[:check])
+
+      respond_to do |format|
+       format.html { redirect_to root_path, notice: 'Success.' }
+       format.json { head :no_content }
+      end
+
+    elsif params[:commit] == "Push selected"
+      
+    end
+
   end
 
   private
