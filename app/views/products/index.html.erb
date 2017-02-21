@@ -58,6 +58,16 @@
                 $("#select_all2").prop('checked', true);
             }
         });
+        
+        // --- hide / unhide dropwdown option ---
+        $('#bulkaction').hide();
+        $('#select_all').change(function () {
+          if ($('#select_all').prop("checked") == true) {
+              $('#bulkaction').show();
+          } else {
+              $('#action').hide();
+          }
+        });
               
       });
     </script>
@@ -122,14 +132,17 @@
 
   <div class="checkbox">
     <label style="color: white;">
-      <input type="checkbox" id="select_all">
+      <input type="checkbox" id="select_all" style="marginRight: 7px">
+      <select id="bulkaction">
+        <option value="">Push Selected</option>
+        <option value="Broth">Remove Selected</option>
+      </select>
     </label>
     <button type="submit" class="btn btn-default" style=" margin-left: 400px; width: 155px; height: 35px; margin-right: 100px;">Remove All Products</button>
     <button type="submit" class="btn btn-success" style="width: 210px; height: 35px; margin-left: -100px;">Push All Products to Shop</button>
   </div>
 
-
-<%= form_tag(push_path, method: 'post', remote: true) do %>
+  <%= form_tag(push_path, method: 'post', remote: true) do %>
     <% @products.each do |product| %>
       <%= hidden_field_tag :_colors, product.colors %>
       <%= hidden_field_tag :_sizes, product.sizes %>
@@ -279,8 +292,8 @@
 <br/>
     <% @ctr+=1 %>
   <% end %>
-  
-  <% submit_tag 'Push selected' %>
+  <%= submit_tag 'Remove selected' %>
+  <%= submit_tag 'Push selected' %>
 <% end %>
 </div>
 <!--end navs-->
