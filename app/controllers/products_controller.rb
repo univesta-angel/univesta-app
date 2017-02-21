@@ -95,10 +95,8 @@ class ProductsController < ApplicationController
     end
   end
   
-  def select_action
-    respond_to do |format|
-      format.html { redirect_to root_path, notice: 'Success.' }
-    end
+  def bulkaction
+    
   end
   
   # push to store action
