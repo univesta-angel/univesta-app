@@ -170,25 +170,22 @@ class ProductsController < ApplicationController
     color2 =[]     #tempo storage
     aaa = 0 
     ctr = 0 
-
+    
+    _varimg = params[:_varimg]
+    
     if colorz.size==0
-     color.each do |row1|
-        color2=[]
-        size.each do |row2|
+      variantsid.each do |row|
+          color2=[]
           color2 << new_product.variants[ctr].id
-          ctr = ctr + 1
-        end
-        pao << { id: nil, variant_ids: color2, src: default_img[0] }
-        aaa = aaa + 1
-      end
+          ctr += 1
+          pao << { id: nil, variant_ids: color2, src: default_img[0] }
+          aaa = aaa + 1
+       end
     else
-      color.each do |row1|
-        color2=[]
-        size.each do |row2|
+      variantsid.each do |row|
           color2 << new_product.variants[ctr].id
           ctr = ctr + 1
-        end
-        pao << { id: nil, variant_ids: color2, src: variant_img[aaa] }
+        pao << { id: nil, variant_ids: color2, src: _varimg[row.to_i] }
         aaa = aaa + 1
       end
     end
