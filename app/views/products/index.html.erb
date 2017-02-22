@@ -146,7 +146,7 @@
     
   <div><p id="notice"><%= notice %></p></div>
 <% @products.each do |product| %>
-  <%= form_tag(push_path, method: 'post', remote: true) do %>
+  <%= form_tag push_path(@products, remote: true) do %>
     <%= hidden_field_tag :_id, product.id %>
     <%= hidden_field_tag :_colors, product.colors %>
     <%= hidden_field_tag :_sizes, product.sizes %>
@@ -262,6 +262,7 @@
               </div>
             </td>
           </tr>
+          <%= @ctr2 = 0 %>
           <% product.colors.each.with_index do |color, i| %>
             <% product.sizes.each.with_index do |size, x| %>
               <tr>
@@ -276,7 +277,7 @@
                 <td><%= label_tag "_qty[]", product.avail_qty[@ctr2] %></td>
               </tr>
               <% @ctr2 += 1 %>
-            <% end %>
+              <% end %>
             <% i += 1 %>
           <% end %>  
         </tbody>
