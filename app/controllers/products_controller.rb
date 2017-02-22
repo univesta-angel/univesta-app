@@ -12,7 +12,6 @@ class ProductsController < ApplicationController
     #@collects = ShopifyAPI::Collect.find(:all)    #get collection
     @bulkaction = ["Push Selected", "Remove Selected"]
     @ctr = 1
-    @ctr2 = 0
   end
   
   # order lists
@@ -146,13 +145,13 @@ class ProductsController < ApplicationController
     variants = []
     variantsid.each do |variant|
         zzz = ShopifyAPI::Variant.new( 
-          :price                => _prc[variant],
-          :option1              => _color[variant], 
-          :option2              => _size[variant],   
-          :compare_at_price     => _cap[variant],
-          :sku                  => _sku[variant],
+          :price                => _prc[variant.to_i],
+          :option1              => _color[variant.to_i], 
+          :option2              => _size[variant.to_i],   
+          :compare_at_price     => _cap[variant.to_i],
+          :sku                  => _sku[variant.to_i],
           :inventory_management => 'shopify',
-          :inventory_quantity   => _qty[variant]
+          :inventory_quantity   => _qty[variant.to_i]
         )
         variants << zzz
     end
