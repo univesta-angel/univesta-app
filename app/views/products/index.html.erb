@@ -278,13 +278,13 @@
               <tr>
                 <td><input class="checkbox2" type="checkbox" name="check_var[]" value="<%= @ctr2 %>" checked></td>
                 <td><div class = "v-img"><%= image_tag(product.variant_images[i], :alt => "img", :size => "100x100") %></div></td>
-                <td><%= text_field_tag :_sku, "", class: 'form-control', size: 10 %></td>
-                <td><%= text_field_tag :_color, color, class: 'form-control', size: 10 %></td>
-                <td><%= text_field_tag :_size, size, class: 'form-control', size: 10 %></td>
+                <td><%= text_field_tag "_sku[]", "", class: 'form-control', size: 10 %></td>
+                <td><%= text_field_tag "_color[]", color, class: 'form-control', size: 10 %></td>
+                <td><%= text_field_tag "_size[]", size, class: 'form-control', size: 10 %></td>
                 <td><%= label_tag product.price[@ctr2] %></td>
-                <td><%= text_field_tag :_prc, product.price[@ctr2], class: 'form-control', size: 10 %></td>
-                <td><%= text_field_tag :_compAtPrice, product.compare_at_price[@ctr2], class: 'form-control', size: 10 %></td>
-                <td><%= label_tag :_availqty, product.avail_qty[@ctr2] %></td>
+                <td><%= text_field_tag "_prc[]", product.price[@ctr2], class: 'form-control', size: 10 %></td>
+                <td><%= text_field_tag "_compAtPrice[]", product.compare_at_price[@ctr2], class: 'form-control', size: 10 %></td>
+                <td><%= label_tag "_availqty[]", product.avail_qty[@ctr2] %></td>
               </tr>
               <% @ctr2 = @ctr2 + 1 %>
             <% end %>
