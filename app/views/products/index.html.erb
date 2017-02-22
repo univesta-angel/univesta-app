@@ -267,7 +267,8 @@
             <% product.sizes.each.with_index do |size, x| %>
               <tr>
                 <td><input class="checkbox2" type="checkbox" name="check_var[]" value="<%= @ctr2 %>" checked></td>
-                <td><div class = "v-img"><%= image_tag(product.variant_images[i], :size => "100x100", :alt => "variant image") %></div></td>
+                <td><div class = "v-img"><%= image_tag(product.variant_images[i], :size => "100x100", :alt => "variant image") %>
+                  <%= hidden_field_tag "_varimg[]", product.variant_images[i] %></div></td>
                 <td><%= text_field_tag "_sku[]", "", class: 'form-control', size: 10 %></td>
                 <td><%= text_field_tag "_color[]", color, class: 'form-control', size: 10 %></td>
                 <td><%= text_field_tag "_size[]", size, class: 'form-control', size: 10 %></td>
