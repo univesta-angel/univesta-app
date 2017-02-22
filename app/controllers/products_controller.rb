@@ -135,23 +135,26 @@ class ProductsController < ApplicationController
       size=['-']
     end
     
-    i = 0;
+    variantsid = params[:check_var]
+    _color = params[:_color]
+    _size = params[:_size]
+    _sku = params[:_sku]
+    _prc = params[:_prc]
+    _cap = params[:_compAtPrice]
+    _qty = params[:_availqty]
+    
     variants = []
-    color.each do |row1|
-      str = row1.gsub!(/_/, ' ')
-      size.each do |row2|
-        str2 = row2.gsub!(/_/, ' ')
+    variantsid.each do |variant|
         zzz = ShopifyAPI::Variant.new( 
-          :price                => prices[i],
-          :option1              => row1, 
-          :option2              => row2,   
-          :compare_at_price     => compAtPrice[i],
-          :sku                  => params[:_sku],
+          :price                => _prc[variant],
+          :option1              => _color[variant], 
+          :option2              => _size[variant],   
+          :compare_at_price     => _cap[variant],
+          :sku                  => _sku[variant],
           :inventory_management => 'shopify',
-          :inventory_quantity   => qty[i]
+          :inventory_quantity   => _qty[variant]
         )
         variants << zzz
-        i = i + 1;
       end
     end
 
