@@ -155,7 +155,6 @@ class ProductsController < ApplicationController
           :inventory_quantity   => _qty[variant]
         )
         variants << zzz
-      end
     end
 
     new_product = ShopifyAPI::Product.new
