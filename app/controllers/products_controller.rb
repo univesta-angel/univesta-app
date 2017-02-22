@@ -174,18 +174,23 @@ class ProductsController < ApplicationController
     _varimg = params[:_varimg]
     
     if colorz.size==0
+      color2 = []
       variantsid.each do |row|
-          color2=[]
-          color2 << new_product.variants[ctr].id
-          ctr += 1
-          pao << { id: nil, variant_ids: color2, src: default_img[0] }
-          aaa = aaa + 1
-       end
+        _color.each do |c|
+            color2 << new_product.variants[ctr].id
+            ctr = ctr + 1
+        end
+        pao << { id: nil, variant_ids: color2, src: default_img[0] }
+        aaa = aaa + 1
+      end
     else
       variantsid.each do |row|
-          color2 << new_product.variants[ctr].id
-          ctr = ctr + 1
-        pao << { id: nil, variant_ids: color2, src: _varimg[row.to_i] }
+        color2 = []
+        _color.each do |c|
+            color2 << new_product.variants[ctr].id
+            ctr = ctr + 1
+        end
+        pao << { id: nil, variant_ids: color2, src: _varimg[aaa] }
         aaa = aaa + 1
       end
     end
