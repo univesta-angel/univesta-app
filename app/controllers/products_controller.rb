@@ -141,7 +141,7 @@ class ProductsController < ApplicationController
     _sku = params[:_sku]
     _prc = params[:_prc]
     _cap = params[:_compAtPrice]
-    _qty = params[:_availqty]
+    _qty = params[:_qty]
     
     variants = []
     variantsid.each do |variant|
