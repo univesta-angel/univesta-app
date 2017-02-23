@@ -44,6 +44,7 @@ class ProductsController < ApplicationController
                               vendor: params[:vendor],
                               tags: params[:tags],
                               price: params[:price],
+                              price2: params[:price],
                               compare_at_price: params[:compare_at_price],
                               colors: params[:colors],
                               sizes: params[:sizes],
