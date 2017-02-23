@@ -262,7 +262,7 @@
               </div>
             </td>
           </tr>
-          <%= @ctr2 = 0 %>
+          <%= hidden_field_tag @ctr2 = 0 %>
           <% product.colors.each.with_index do |color, i| %>
             <% product.sizes.each.with_index do |size, x| %>
               <tr>
@@ -272,9 +272,9 @@
                 <td><%= text_field_tag "_sku[]", "", class: 'form-control', size: 10 %></td>
                 <td><%= text_field_tag "_color[]", color, class: 'form-control', size: 10 %></td>
                 <td><%= text_field_tag "_size[]", size, class: 'form-control', size: 10 %></td>
-                <td><%= label_tag product.price[@ctr2] %></td>
-                <td><%= text_field_tag "_prc[]", product.price[@ctr2], class: 'form-control', size: 10 %></td>
-                <td><%= text_field_tag "_compAtPrice[]", product.compare_at_price[@ctr2], class: 'form-control', size: 10 %></td>
+                <td><%= label_tag number_to_currency(product.price[@ctr2]) %></td>
+                <td><%= text_field_tag "_prc[]", number_with_preicision(product.price2[@ctr2].to_f + 1, :precision => 2), class: 'form-control', size: 10 %></td>
+                <td><%= text_field_tag "_compAtPrice[]", number_with_precision(product.compare_at_price[@ctr2], :precision => 2), class: 'form-control', size: 10 %></td>
                 <td><%= label_tag product.avail_qty[@ctr2] %><%= hidden_field_tag "_qty[]", product.avail_qty[@ctr2] %></td>
               </tr>
               <% @ctr2 += 1 %>
