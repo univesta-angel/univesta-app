@@ -72,35 +72,89 @@
         var btn_op1 = $('#dropdownMenu1')
         var btn_op2 = $('#dropdownMenu2')
         var price_op1 = $('ul#list1.dropdown-menu li a#op1a')
-        var cap_op1 = $('ul#list2.dropdown-menu li a#op1b')
+        var price_op2 = $('ul#list1.dropdown-menu li a#op1b')
+        var cap_op1 = $('ul#list2.dropdown-menu li a#op2a')
+        var cap_op2 = $('ul#list2.dropdown-menu li a#op2b')
 
-        price_op1.on('click',function(){
-          btn_op1.toggleClass('active')
-          $(this).toggleClass('active')
-          btn_op2.removeClass('active')
-        });
-        cap_op1.on('click',function(){
-          btn_op2.toggleClass('active')
-          $(this).toggleClass('active')
-          btn_op1.removeClass('active')
+        $('.price-edit').on('click',function(){
+          switch ($(this).attr('id')){
+            // price - set new value
+            case 'op1a':
+              btn_op2.removeClass('active')
+              $('.price-edit').removeClass('active')
+
+              btn_op1.toggleClass('active')
+              price_op1.toggleClass('active')
+              break;
+
+            // price - multiply by
+            case 'op1b':
+              btn_op2.removeClass('active')
+              $('.price-edit').removeClass('active')
+
+              btn_op1.toggleClass('active')
+              price_op2.toggleClass('active')
+              break;
+
+            // compare at price - set new value
+            case 'op2a':
+              btn_op1.removeClass('active')
+              $('.price-edit').removeClass('active')
+
+              btn_op2.toggleClass('active')
+              cap_op1.toggleClass('active')
+              break;
+
+            // compare at price - multiply by
+            case 'op2b':
+              btn_op1.removeClass('active')
+              $('.price-edit').removeClass('active')
+
+              btn_op2.toggleClass('active')
+              cap_op2.toggleClass('active')
+              break;
+
+            default:
+              btn_op1.removeClass('active')
+              btn_op2.removeClass('active')
+          }
         });
 
-        //--------- send ajax request to change price/compare at price
-        $('#apply').on('click', function(e){
+        $('.btn.btn-sm.flex-right').on('click', function(e){
           e.preventDefault();
-          var nv = $('#new_val').val();
-          var productid = $('#foredit').val();
-          var urlpath ='';
-          if (price_op1.hasClass('active')){
-            urlpath = '/edit_price';
+          switch ($(this).attr('id')){
+            case 'apply':
+              e.preventDefault();
+              var nv = $('#new_val').val();
+              var productid = $('#foredit').val();
+              var urlpath ='';
+              if (price_op1.hasClass('active')){
+                urlpath = '/edit_price';
+              }
+              else if(cap_op1.hasClass('active')) {
+                urlpath = '/edit_cap';
+              }
+              sendParams(nv, productid, urlpath);
+              $('#myModal').modal('toggle');
+              break;
+
+            case 'apply2':
+              e.preventDefault();
+              var nv2 = $('#multiplier').val();
+              var productid2 = $('#foredit2').val();
+              var urlpath2 ='';
+              if (price_op2.hasClass('active')){
+                urlpath2 = '/multiply_price';
+              }
+              else if(cap_op2.hasClass('active')){
+                urlpath2 = '/multiply_cap';
+              }
+              
+              sendParams(nv2, productid2, urlpath2);
+              $('#myModal2').modal('toggle');
+              break;
           }
-          else if(cap_op1.hasClass('active')) {
-            urlpath = '/edit_cap';
-          }
-          
-          sendParams(nv, productid, urlpath);
-          $('#myModal').modal('toggle'); 
-        }); //--- end
+        })
 
         //----- keep active tab on display
         $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
@@ -300,7 +354,7 @@
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" id="list1">
                   <li><%= link_to "Set New Value", "#", {:id => 'op1a', :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal' } %></li>
-                  <li><%= link_to "Multiply By", "#", {:id => 'op2a', :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal'} %></li>
+                  <li><%= link_to "Multiply By", "#", {:id => 'op1b', :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal2'} %></li>
                 </ul>
               </div>
             </td>
@@ -311,8 +365,8 @@
                   <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" id="list2">
-                  <li><%= link_to "Set New Value", "#", {:id => 'op1b', :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal' } %></li>
-                  <li><%= link_to "Multiply By", "#", {:id => 'op2b', :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal'} %></li>
+                  <li><%= link_to "Set New Value", "#", {:id => 'op2a', :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal' } %></li>
+                  <li><%= link_to "Multiply By", "#", {:id => 'op2b', :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal2'} %></li>
                 </ul>
               </div>
             </td>
@@ -328,6 +382,28 @@
                             <%= hidden_field_tag 'foredit', product.id %>
                             <input type="text" name="new_val" placeholder="Enter Value" class="form-control" style="width: 180px;" id="new_val">
                             <button class="btn btn-sm flex-right" id="apply"> Apply </button>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>   
+                </div>
+              </div>
+              <!-- End of Modal -->
+            
+            <!-- Modal for Multiply By -->
+              <div class="modal" id="myModal2" role="dialog">
+                <div class="modal-dialog modal-sm" style="position: absolute; top: 37%; left: 34%;">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      <div class ="row">
+                        <div>
+                          <div class="container-flex" style="margin-right: 10px; margin-left: 10px; float: left">
+                            <%= hidden_field_tag 'foredit2', product.id %>
+                            <input type="text" name="multiplier" placeholder="Enter Multiplier" class="form-control" style="width: 180px;" id="multiplier">
+                            <button class="btn btn-sm flex-right" id="apply2"> Apply </button>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                           </div>
                         </div>
