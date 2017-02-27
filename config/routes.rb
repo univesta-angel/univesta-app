@@ -17,10 +17,10 @@ Rails.application.routes.draw do
   post 'push' => 'products#push', as: :push
   post 'pushall' => 'products#push_all', as: :pushall
   
-  post 'edit_price' => 'imports#edit_price', as: :edit_price
-  post 'edit_cap' => 'imports#edit_cap', as: :edit_cap
-  delete 'remove_all' => 'imports#remove_all', as: :remove_all
-  delete 'imports_remove' => 'imports#remove_selected', as: :remove_selected
+  post 'edit_price' => 'products#edit_price', as: :edit_price
+  post 'edit_cap' => 'products#edit_cap', as: :edit_cap
+  delete 'remove_all' => 'products#remove_all', as: :remove_all
+  delete 'imports_remove' => 'products#remove_selected', as: :remove_selected
   
 
   mount ShopifyApp::Engine, at: '/'
