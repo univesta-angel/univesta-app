@@ -168,8 +168,8 @@ class ProductsController < ApplicationController
     variantsid.each do |variant|
         zzz = ShopifyAPI::Variant.new( 
           :price                => _prc[variant.to_i],
-          :option1              => _color[variant.to_i], 
-          :option2              => _size[variant.to_i],   
+          :option1              => _color[variant.to_i].gsub('_', ' '),
+          :option2              => _size[variant.to_i].gsub('_', ' '),   
           :compare_at_price     => _cap[variant.to_i],
           :sku                  => _sku[variant.to_i],
           :inventory_management => 'shopify',
