@@ -227,7 +227,7 @@
   <div id="myTabContent" class="tab-content">
 
   <!--PRODUCTS TAB-->
-  <div class="tab-pane fade active in" id="products<%= @ctr %>">
+  <div class="tab-pane active in" id="products<%= @ctr %>">
     <div class="media" id="item">
       <div class="media-left">
         <%= image_tag(product.images.first, :alt => "picture", :size => "220x220") %><%= hidden_field_tag :_img, product.images %>
@@ -266,13 +266,13 @@
   <!--END OF PRODUCTS TAB-->
 
   <!--DESCRIPTION TAB-->
-  <div class="tab-pane fade" id="description<%= @ctr %>">
+  <div class="tab-pane" id="description<%= @ctr %>">
     <p><%= product.body_html %></p>
   </div>
   <!--END OF DESCRIPTION TAB-->
 
   <!--VARIANTS TAB-->
-  <div class="tab-pane fade" id="variants<%= @ctr %>">
+  <div class="tab-pane" id="variants<%= @ctr %>">
     <div class="container" style="overflow-y: scroll; height:400px;" %>
     <table class="table table-condensed table-bordered table-striped volumes">
       <thead>
@@ -363,7 +363,7 @@
   <!--END OF VARIANTS TAB-->
 
   <!--IMAGES TAB-->
-  <div class="tab-pane fade" id="images<%= @ctr %>">
+  <div class="tab-pane" id="images<%= @ctr %>">
     <div id="gallery">
       <ul id="grid">
         <% product.variant_images.each do |image| %>
