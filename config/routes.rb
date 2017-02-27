@@ -19,8 +19,8 @@ Rails.application.routes.draw do
   
   post 'edit_price' => 'products#edit_price', as: :edit_price
   post 'edit_cap' => 'products#edit_cap', as: :edit_cap
-  post 'multiply_price' => 'imports#multiply_price', as: :multiply_price
-  post 'multiply_cap' => 'imports#multiply_cap', as: :multiply_cap
+  post 'multiply_price' => 'products#multiply_price', as: :multiply_price
+  post 'multiply_cap' => 'products#multiply_cap', as: :multiply_cap
   delete 'remove_all' => 'products#remove_all', as: :remove_all
   delete 'imports_remove' => 'products#remove_selected', as: :remove_selected
   
