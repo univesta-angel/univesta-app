@@ -93,31 +93,59 @@ class ProductsController < ApplicationController
   def edit_price
     new_val = '%.2f' % params[:new_val]
     new_value = new_val.to_s
-
     new_prices = []
     Product.find(params[:productid]) do |product|
       product.price2.each do |price|
         new_prices << new_value
       end
     end
-
     Product.update(params[:productid], :price2 => new_prices)
-
   end
 
   def edit_cap
     new_val = '%.2f' % params[:new_val]
     new_value = new_val.to_s
-
     new_prices = []
     Product.find(params[:productid]) do |product|
       product.compare_at_price.each do |price|
         new_prices << new_value
       end
     end
-
     Product.update(params[:productid], :compare_at_price => new_prices)
+  end
+  
+  def multiply_price
+    multiplier = params[:new_val]
+    new_prices = []
+    Import.find(params[:productid]) do |product|
+      product.price.each do |price|
+        prc = price.to_f
+        new_prices << prc
+      end
+    end
+    new_prices2 = []
+    new_prices.each do |n|
+      new_prc = n * 2
+      new_prices2 << new_prc.to_s
+    end
+    Import.update(params[:productid], :price2 => new_prices2)
+  end
 
+  def multiply_cap
+    multiplier = params[:new_val]
+    new_prices = []
+    Import.find(params[:productid]) do |product|
+      product.price.each do |price|
+        prc = price.to_f
+        new_prices << prc
+      end
+    end
+    new_prices2 = []
+    new_prices.each do |n|
+      new_prc = n * 2
+      new_prices2 << new_prc.to_s
+    end
+    Import.update(params[:productid], :compare_at_price => new_prices2)
   end
   
   # push to store action
