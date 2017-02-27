@@ -18,6 +18,7 @@ gem 'httplog'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'bootstrap-datepicker-rails'
+gem 'image-picker-rails'
 
 gem 'activemerchant'
 
