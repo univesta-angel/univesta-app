@@ -164,6 +164,11 @@
         if(activeTab){
             $('#myTab a[href="' + activeTab + '"]').tab('show');
         } // ---- end
+        
+        $("select").imagepicker({
+          hide_select : true,
+          show_label  : false
+        })
 
       });
 
@@ -442,11 +447,13 @@
   <!--IMAGES TAB-->
   <div class="tab-pane" id="images<%= @ctr %>">
     <div id="gallery">
-      <ul id="grid">
+        <select class="image-picker show-html" multiple="multiple">
+        <% hidden_field_tag @ctr3 = 1 %>
         <% product.variant_images.each do |image| %>
-         <li><%= image_tag(image, :size => "100x100", :alt => "") %></li>
+          <option data-img-src="<%= image %>" value="<%= @ctr3 %>">Variant Image <%= @ctr3 %></option>
+        <% @ctr3 += 1 %>
         <% end %>
-      </ul>
+        </select>
     </div>
   </div>
   <!--END OF IMAGES TAB-->
