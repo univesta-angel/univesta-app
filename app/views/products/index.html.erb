@@ -67,11 +67,66 @@
           } else {
               $('#bulkaction').hide();
           }
+        }); //---end
+        
+        var btn_op1 = $('#dropdownMenu1')
+        var btn_op2 = $('#dropdownMenu2')
+        var price_op1 = $('ul#list1.dropdown-menu li a#op1a')
+        var cap_op1 = $('ul#list2.dropdown-menu li a#op1b')
+
+        price_op1.on('click',function(){
+          btn_op1.toggleClass('active')
+          $(this).toggleClass('active')
+          btn_op2.removeClass('active')
         });
-        
+        cap_op1.on('click',function(){
+          btn_op2.toggleClass('active')
+          $(this).toggleClass('active')
+          btn_op1.removeClass('active')
+        });
+
+        //--------- send ajax request to change price/compare at price
+        $('#apply').on('click', function(e){
+          e.preventDefault();
+          var nv = $('#new_val').val();
+          var productid = $('#foredit').val();
+          var urlpath ='';
+          if (price_op1.hasClass('active')){
+            urlpath = '/edit_price';
+          }
+          else if(cap_op1.hasClass('active')) {
+            urlpath = '/edit_cap';
+          }
+          
+          sendParams(nv, productid, urlpath);
+          $('#myModal').modal('toggle'); 
+        }); //--- end
+
+        //----- keep active tab on display
+        $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
+            localStorage.setItem('activeTab', $(e.target).attr('href'));
+        });
+        var activeTab = localStorage.getItem('activeTab');
+        if(activeTab){
+            $('#myTab a[href="' + activeTab + '"]').tab('show');
+        } // ---- end
+
       });
-      
-        
+
+      function sendParams(nv, productid, urlpath){
+        $.ajax({
+          url: urlpath,
+          type: 'post',
+          data: {
+            new_val: nv,
+            productid: productid
+          },
+          dataType: 'application/json',
+          success: function(data){
+            location.reload();
+          }
+        });
+      }
     </script>
 
   </head>
@@ -243,24 +298,44 @@
                   Change All Prices
                   <span class="caret"></span>
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                  <li><a href="#">Set New Value</a></li>
-                  <li><a href="#">Multiply By</a></li>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" id="list1">
+                  <li><%= link_to "Set New Value", "#", {:id => 'op1a', :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal' } %></li>
+                  <li><%= link_to "Multiply By", "#", {:id => 'op2a', :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal'} %></li>
                 </ul>
               </div>
             </td>
             <td>
               <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                   Change All Prices
                   <span class="caret"></span>
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                  <li><a href="#">Set New Value</a></li>
-                  <li><a href="#">Multiply By</a></li>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" id="list2">
+                  <li><%= link_to "Set New Value", "#", {:id => 'op1b', :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal' } %></li>
+                  <li><%= link_to "Multiply By", "#", {:id => 'op2b', :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal'} %></li>
                 </ul>
               </div>
             </td>
+            <!-- Modal -->
+              <div class="modal" id="myModal" role="dialog" value="<%= product.id %>">
+                <div class="modal-dialog modal-sm" style="position: absolute; top: 37%; left: 34%;">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      <div class ="row">
+                        <div>
+                          <div class="container-flex" style="margin-right: 10px; margin-left: 10px; float: left">
+                            <input type="text" name="new_val" placeholder="Enter Value" class="form-control" style="width: 180px;" id="new_val">
+                            <button class="btn btn-sm flex-right" id="apply"> Apply </button>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>   
+                </div>
+              </div>
+              <!-- End of Modal -->
           </tr>
           <%= hidden_field_tag @ctr2 = 0 %>
           <% product.colors.each.with_index do |color, i| %>
@@ -289,21 +364,12 @@
 
   <!--IMAGES TAB-->
   <div class="tab-pane fade" id="images<%= @ctr %>">
-    <div>
-      <div class="row space-bottom">
-        <div class="image-select">
-          <div class="product-img">
-            <div class="product-img-action">
-                <%= image_tag(product.images.first, :alt => "img", :size => "220x220" ) %>
-              <div class="icon-selected-box align-center">
-                <svg class="icon-selected">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-selected"></use>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div id="gallery">
+      <ul id="grid">
+        <% product.variant_images.each do |image| %>
+         <li><%= image_tag(image, :size => "100x100", :alt => "") %></li>
+        <% end %>
+      </ul>
     </div>
   </div>
   <!--END OF IMAGES TAB-->
