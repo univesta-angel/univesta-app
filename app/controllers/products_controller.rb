@@ -234,6 +234,9 @@ class ProductsController < ApplicationController
       format.html { redirect_to imports_path, notice: 'All imports were deleted.' }
     end
   end
+  
+  def push_all
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
