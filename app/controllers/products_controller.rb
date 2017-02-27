@@ -86,17 +86,38 @@ class ProductsController < ApplicationController
     end
   end
   
-  def destroy_all_items
-    Product.delete_all
-
-    respond_to do |format|
-     format.html { redirect_to root_path, notice: 'All imports have been removed.' }
-     format.json { head :no_content }
-    end
-  end
-  
   def bulkaction
     
+  end
+  
+  def edit_price
+    new_val = '%.2f' % params[:new_val]
+    new_value = new_val.to_s
+
+    new_prices = []
+    Import.find(params[:productid]) do |product|
+      product.price2.each do |price|
+        new_prices << new_value
+      end
+    end
+
+    Import.update(params[:productid], :price2 => new_prices)
+
+  end
+
+  def edit_cap
+    new_val = '%.2f' % params[:new_val]
+    new_value = new_val.to_s
+
+    new_prices = []
+    Import.find(params[:productid]) do |product|
+      product.compare_at_price.each do |price|
+        new_prices << new_value
+      end
+    end
+
+    Import.update(params[:productid], :compare_at_price => new_prices)
+
   end
   
   # push to store action
@@ -203,6 +224,14 @@ class ProductsController < ApplicationController
         format.html { redirect_to root_path, notice: 'Oops. Something went wrong.' }
         format.json { render json: new_product.errors, status: :unprocessable_entity }
       end
+    end
+  end
+  
+  def remove_all
+    Product.delete_all
+
+    respond_to do |format|
+      format.html { redirect_to imports_path, notice: 'All imports were deleted.' }
     end
   end
 
