@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   match 'create' => 'products#create', via: :post
   
   post 'push' => 'products#push', as: :push
-  post 'push_all' => 'products#push', as: :push_all
+  post 'push_all' => 'products#push_all', as: :push_all
   
   post 'edit_price' => 'imports#edit_price', as: :edit_price
   post 'edit_cap' => 'imports#edit_cap', as: :edit_cap
