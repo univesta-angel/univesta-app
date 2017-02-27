@@ -125,7 +125,7 @@ class ProductsController < ApplicationController
     end
     new_prices2 = []
     new_prices.each do |n|
-      new_prc = n * 2
+      new_prc = n * multiplier
       new_prices2 << new_prc.to_s
     end
     Product.update(params[:productid], :price2 => new_prices2)
@@ -142,7 +142,7 @@ class ProductsController < ApplicationController
     end
     new_prices2 = []
     new_prices.each do |n|
-      new_prc = n * 2
+      new_prc = n * multiplier
       new_prices2 << new_prc.to_s
     end
     Product.update(params[:productid], :compare_at_price => new_prices2)
