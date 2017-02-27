@@ -115,37 +115,27 @@ class ProductsController < ApplicationController
   end
   
   def multiply_price
-    multiplier = params[:new_val]
+    multiplier = params[:new_val].to_f
     new_prices = []
     Product.find(params[:productid]) do |product|
       product.price.each do |price|
-        prc = price.to_f
+        prc = price.to_f * multiplier
         new_prices << prc
       end
     end
-    new_prices2 = []
-    new_prices.each do |n|
-      new_prc = n * multiplier
-      new_prices2 << new_prc.to_s
-    end
-    Product.update(params[:productid], :price2 => new_prices2)
+    Product.update(params[:productid], :price2 => new_prices)
   end
 
   def multiply_cap
-    multiplier = params[:new_val]
+    multiplier = params[:new_val].to_f
     new_prices = []
     Product.find(params[:productid]) do |product|
       product.price.each do |price|
-        prc = price.to_f
+        prc = price.to_f * multiplier
         new_prices << prc
       end
     end
-    new_prices2 = []
-    new_prices.each do |n|
-      new_prc = n * multiplier
-      new_prices2 << new_prc.to_s
-    end
-    Product.update(params[:productid], :compare_at_price => new_prices2)
+    Product.update(params[:productid], :compare_at_price => new_prices)
   end
   
   # push to store action
