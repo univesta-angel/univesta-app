@@ -6,7 +6,6 @@ Rails.application.routes.draw do
 
   resources :products do
     post 'select_action'
-    delete 'destroy_all_items'
   end
   
   root :to => 'products#index'
