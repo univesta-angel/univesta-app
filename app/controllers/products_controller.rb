@@ -95,13 +95,13 @@ class ProductsController < ApplicationController
     new_value = new_val.to_s
 
     new_prices = []
-    Import.find(params[:productid]) do |product|
+    Product.find(params[:productid]) do |product|
       product.price2.each do |price|
         new_prices << new_value
       end
     end
 
-    Import.update(params[:productid], :price2 => new_prices)
+    Product.update(params[:productid], :price2 => new_prices)
 
   end
 
@@ -110,13 +110,13 @@ class ProductsController < ApplicationController
     new_value = new_val.to_s
 
     new_prices = []
-    Import.find(params[:productid]) do |product|
+    Product.find(params[:productid]) do |product|
       product.compare_at_price.each do |price|
         new_prices << new_value
       end
     end
 
-    Import.update(params[:productid], :compare_at_price => new_prices)
+    Product.update(params[:productid], :compare_at_price => new_prices)
 
   end
   
