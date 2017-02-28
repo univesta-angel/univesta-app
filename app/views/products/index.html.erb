@@ -421,7 +421,24 @@
               </div>
               <!-- End of Modal -->
           </tr>
-           
+          <%= hidden_field_tag @ctr2 = 0 %>
+          <% product.colors.each.with_index do |color, i| %>
+            <% product.sizes.each do |size| %>
+              <tr>
+                <td><input class="checkbox2" type="checkbox" name="check_var[]" value="<%= @ctr2 %>" checked></td>
+                <td><div class = "v-img"><%= image_tag(product.variant_images[i], :size => "100x100", :alt => "variant image") %><%= hidden_field_tag "_varimg[]", product.variant_images[i] %></div></td>
+                <td><%= text_field_tag "_sku[]", "", class: 'form-control', size: 10 %></td>
+                <td><%= text_field_tag "_color[]", color, class: 'form-control', size: 10 %></td>
+                <td><%= text_field_tag "_size[]", size, class: 'form-control', size: 10 %></td>
+                <td><%= label_tag number_to_currency(product.price[@ctr2]) %></td>
+                <td><%= text_field_tag "_prc2[]", number_with_precision(product.price2[@ctr2].to_f, :precision => 2), class: 'form-control', size: 10 %></td>
+                <td><%= text_field_tag "_compAtPrice[]", number_with_precision(product.compare_at_price[@ctr2].to_f, :precision => 2), class: 'form-control', size: 10 %></td>
+                <td><%= label_tag product.avail_qty[@ctr2] %><%= hidden_field_tag "_qty[]", product.avail_qty[@ctr2] %></td>
+              </tr>
+              <% @ctr2 += 1 %>
+            <% end %>
+            <% i += 1 %>
+          <% end %> 
         </tbody>
       </table>
     </div>
