@@ -187,17 +187,22 @@
     </div>
   </div>
 
-    <div class="row" style="margin-left: 10%; margin-right: 10%; margin-bottom: 20px;">
-      <div class="col-sm-10">
-        <label style="color: white;">
-          <input type="checkbox" id="select_all" style="margin-right: 7px">
-            <select class="selectpicker" id="bulkaction">
-              <option>Push Selected</option>
-              <option>Remove Selected</option>
-            </select>
-        </label>
-        <%= button_to 'Remove All', remove_all_path, data: { confirm: 'Are you sure?' } %>
-        <%= button_to 'Push All', pushall_path %>
+    <div class="row" style="margin-left: 25%; margin-right: 17.1%; margin-bottom: 20px;">
+      <div class="col-md-6">
+        <div class="checkbox">
+          <label style="color: white;">
+            <input type="checkbox" id="select_all" style="margin-right: 7px">
+            <%= select_tag 'bulkaction', options_for_select(@urls) %>
+          </label>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div style="float:right;">
+          <%= button_to 'Push All Products', pushall_path, class: 'btn btn-default all' %>
+        </div>
+        <div style="float:right; margin-right: 10px;">
+          <%= button_to 'Remove All Products', remove_all_path, class: 'btn btn-default all', data: { confirm: 'Are you sure?' } %>
+        </div>
       </div>
     </div>
     
