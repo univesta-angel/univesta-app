@@ -211,12 +211,11 @@
     
   <div><p id="notice"><%= notice %></p></div>
   
-<div style="margin-left: 25%; margin-right: 10%; background-color: "> <!-- list of products -->
   <% @products.each do |product| %>
     <%= form_tag push_path, method: 'post', remote: true do %>
     
   <!--nav-->
-  <div class="row">
+  <div class="row" style="margin-left: 25%; margin-right: 10%; background-color: ">
     <div class="cold-md-12">
 
       <div class="panel panel-heading">
@@ -405,8 +404,6 @@
       </div>
       <!--END OF IMAGES TAB-->
 
-    
-  
     </div> 
   </div> <!-- END OF PANEL BODY -->
 
@@ -423,11 +420,8 @@
   <% end %>
 <% end %>
       
-
-    
     </div>
   </div>
-</div>
 <!--end navs-->
 
 <!--as->
