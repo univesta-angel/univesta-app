@@ -210,50 +210,46 @@
     </div>
     
   <div><p id="notice"><%= notice %></p></div>
-<% @products.each do |product| %>
-  <%= form_tag push_path, method: 'post', remote: true do %>
-    <%= hidden_field_tag :_id, product.id %>
-    <%= hidden_field_tag :_colors, product.colors %>
-    <%= hidden_field_tag :_sizes, product.sizes %>
-    <%= hidden_field_tag :_prices, product.price %>
-    <%= hidden_field_tag :_body, product.body_html %>
-    <%= hidden_field_tag :_compare_at_price, product.compare_at_price %>
-    <%= hidden_field_tag :_avail_qty, product.avail_qty %>
-    <%= hidden_field_tag :_variant_images, product.variant_images %>
+  
+<div style="margin-left: 25%; margin-right: 10%; background-color: "> <!-- list of products -->
+  <% @products.each do |product| %>
+    <%= form_tag push_path, method: 'post', remote: true do %>
+    
+  <!--nav-->
+  <div class="row">
+    <div class="cold-md-12">
 
-<!--nav-->
-<div class="container" style = "width: 1000px; margin-bottom: 5px;">
-  <div class="panel-heading" style="background-color: #fff;">
-    <ul class="nav nav-pills" id="myTab">
-      <li slot="select" ><span class="for-checkbox"><input class="checkbox" type="checkbox" name="check[]"></span></li>
-      <li class="active"><a href="#products<%= @ctr %>" data-toggle="tab" aria-expanded="true">Product</a></li>
-      <li class=""><a href="#description<%= @ctr %>" data-toggle="tab" aria-expanded="false">Description</a></li>
-      <li class=""><a href="#variants<%= @ctr %>" data-toggle="tab" aria-expanded="false">Variants</a></li>
-      <li class=""><a href="#images<%= @ctr %>" data-toggle="tab" aria-expanded="false">Images</a></li>
-    </ul>
-  </div>
+      <div class="panel panel-heading">
+        <ul class="nav nav-pills" id="myTab">
+          <li slot="select" ><span class="for-checkbox"></span><input class="checkbox" type="checkbox" name="check[]" value = <%= product.id %>></li>
+          <li class="active"><a href="#products<%= @ctr %>" data-toggle="tab" aria-expanded="true">Product</a></li>
+          <li class=""><a href="#description<%= @ctr %>" data-toggle="tab" aria-expanded="false">Description</a></li>
+          <li class=""><a href="#variants<%= @ctr %>" data-toggle="tab" aria-expanded="false">Variants</a></li>
+          <li class=""><a href="#images<%= @ctr %>" data-toggle="tab" aria-expanded="false">Images</a></li>
+        </ul>
+      </div>
 
-<div class="panel-body"  style="color: #000;">
-  <div id="myTabContent" class="tab-content">
+      <div class="panel panel-body">
+      <div id="myTabContent" class="tab-content">
 
   <!--PRODUCTS TAB-->
-  <div class="tab-pane active in" id="products<%= @ctr %>">
-    <div class="media" id="item">
-      <div class="media-left">
-        <%= image_tag(product.images.first, :alt => "picture", :size => "220x220") %><%= hidden_field_tag :_img, product.images %>
-      </div>
-      <div class="media-body">
-        <div class="product-title">
-          <b><%= product.title %></b>
-        </div>
-          <div class="input-group">
-            <span class="input-group-addon">Change Name:</span>
-            <%= text_field_tag :_title, product.title, maxlength: 255, class: 'form-control' %>
+      <div class="tab-pane active in" id="products<%= @ctr %>">
+        <div class="media" id="item">
+          <div class="media-left">
+            <%= image_tag(product.images.first, :alt => "picture", :size => "210x210") %>
           </div>
-          <div class="input-group input-group-sm">
-            <span class="input-group-addon" id="sizing-addon3">Collections:</span>
-            <%= text_field_tag :_collections, "", class: 'form-control', placeholder: "Choose Collections" %>
-          </div>
+          <div class="media-body">
+            <div class="product-title">
+              <b><%= product.title %></b>
+            </div>
+              <div class="input-group">
+                <span class="input-group-addon">Change Name:</span>
+                <%= text_field_tag "_title", product.title, maxlength: 255, class: 'form-control' %>
+              </div>
+              <div class="input-group input-group-sm">
+                <span class="input-group-addon" id="sizing-addon3">Collections:</span>
+                <%= text_field_tag :_collections, "", class: 'form-control', placeholder: "Choose Collections" %>
+              </div>
 
           <div class="row">
             <div class="col-lg-6">
@@ -267,167 +263,172 @@
                 <span class="input-group-addon" id="sizing-addon3">Tags:</span>
                 <%= text_field_tag :_tags, "", class: 'form-control', placeholder: "Insert Tags Here" %>
               </div>
+            </div>
+          </div>
           </div>
         </div>
-        
       </div>
-    </div>
-  </div>
-  <!--END OF PRODUCTS TAB-->
+      <!--END OF PRODUCTS TAB-->
 
-  <!--DESCRIPTION TAB-->
-  <div class="tab-pane" id="description<%= @ctr %>">
-    <p><%= product.body_html %></p>
-  </div>
-  <!--END OF DESCRIPTION TAB-->
+      <!--DESCRIPTION TAB-->
+      <div class="tab-pane" id="description<%= @ctr %>">
+        <p><%= product.body_html %></p>
+      </div>
+      <!--END OF DESCRIPTION TAB-->
 
-  <!--VARIANTS TAB-->
-  <div class="tab-pane" id="variants<%= @ctr %>">
-    <div class="container" style="overflow-y: scroll; height:400px;" %>
-    <table class="table table-condensed table-bordered table-striped volumes">
-      <thead>
-        <tr>
-          <th><input type="checkbox" id="select_all2" checked></th>
-          <th>Image</th>
-          <th>SKU</th>
-          <th>Color</th>
-          <th>Size</th>
-          <th>Cost</th>
-          <th>Price</th>
-          <th>Compared At Price</th>
-          <th>Inventory</th>
-        </tr>
-      </thead>
-        <tbody>
-          <tr>
-            <!-- set value or mutliplier -->
-            <td colspan="6"></td>
-            <td>
-              <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                  Change All Prices
-                  <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" id="list1">
-                  <li><%= link_to "Set New Value", "#", { :class => 'price-edit', :id => 'op1a', :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal' } %></li>
-                  <li><%= link_to "Multiply By", "#", { :class => 'price-edit', :id => 'op1b', :remote => true, 'data-toggle' => "modal", 'data-target' => '#myModal2' } %></li>
-                </ul>
-              </div>
-            </td>
-            <td>
-              <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                  Change All Prices
-                  <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" id="list2">
-                  <li><%= link_to "Set New Value", "#", {:class => 'price-edit', :id => 'op2a', :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal' } %></li>
-                  <li><%= link_to "Multiply By", "#", {:class => 'price-edit', :id => 'op2b', :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal2' } %></li>
-                </ul>
-              </div>
-            </td>
-            <!-- Modal -->
-              <div class="modal" id="myModal" role="dialog">
-                <div class="modal-dialog modal-sm" style="position: absolute; top: 37%; left: 34%;">
-                  <!-- Modal content-->
-                  <div class="modal-content">
-                    <div class="modal-body">
-                      <div class ="row">
-                        <div>
-                          <div class="container-flex" style="margin-right: 10px; margin-left: 10px; float: left">
-                            <%= hidden_field_tag 'foredit', product.id %>
-                            <input type="text" name="new_val" placeholder="Enter Value" class="form-control" style="width: 180px;" id="new_val">
-                            <button class="btn btn-sm flex-right" id="apply"> Apply </button>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>   
-                </div>
-              </div>
-              <!-- End of Modal -->
-            
-            <!-- Modal for Multiply By -->
-              <div class="modal" id="myModal2" role="dialog">
-                <div class="modal-dialog modal-sm" style="position: absolute; top: 37%; left: 34%;">
-                  <!-- Modal content-->
-                  <div class="modal-content">
-                    <div class="modal-body">
-                      <div class ="row">
-                        <div>
-                          <div class="container-flex" style="margin-right: 10px; margin-left: 10px; float: left">
-                            <%= hidden_field_tag 'foredit2', product.id %>
-                            <input type="text" name="multiplier" placeholder="Enter Multiplier" class="form-control" style="width: 180px;" id="multiplier">
-                            <button class="btn btn-sm flex-right" id="apply2"> Apply </button>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>   
-                </div>
-              </div>
-              <!-- End of Modal -->
-          </tr>
-          <%= hidden_field_tag @ctr2 = 0 %>
-          <% product.colors.each.with_index do |color, i| %>
-            <% product.sizes.each do |size| %>
+      <!--VARIANTS TAB-->
+      <div class="tab-pane" id="variants<%= @ctr %>">
+        <div class="container" style="overflow-y: scroll; height:300px; width: 1100px;" %>
+          <table class="table table-condensed table-bordered table-striped volumes">
+            <thead>
               <tr>
-                <td><input class="checkbox2" type="checkbox" name="check_var[]" value="<%= @ctr2 %>" checked></td>
-                <td><div class = "v-img"><%= image_tag(product.variant_images[i], :size => "100x100", :alt => "variant image") %><%= hidden_field_tag "_varimg[]", product.variant_images[i] %></div></td>
-                <td><%= text_field_tag "_sku[]", "", class: 'form-control', size: 10 %></td>
-                <td><%= text_field_tag "_color[]", color, class: 'form-control', size: 10 %></td>
-                <td><%= text_field_tag "_size[]", size, class: 'form-control', size: 10 %></td>
-                <td><%= label_tag number_to_currency(product.price[@ctr2]) %></td>
-                <td><%= text_field_tag "_prc2[]", number_with_precision(product.price2[@ctr2].to_f, :precision => 2), class: 'form-control', size: 10 %></td>
-                <td><%= text_field_tag "_compAtPrice[]", number_with_precision(product.compare_at_price[@ctr2].to_f, :precision => 2), class: 'form-control', size: 10 %></td>
-                <td><%= label_tag product.avail_qty[@ctr2] %><%= hidden_field_tag "_qty[]", product.avail_qty[@ctr2] %></td>
+                <th><input type="checkbox" id="select_all2" checked></th>
+                <th>Image</th>
+                <th>SKU</th>
+                <th>Color</th>
+                <th>Size</th>
+                <th>Cost</th>
+                <th>Price</th>
+                <th>Compared At Price</th>
+                <th>Inventory</th>
               </tr>
-              <% @ctr2 += 1 %>
-            <% end %>
-            <% i += 1 %>
-          <% end %> 
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <!--END OF VARIANTS TAB-->
+            </thead>
+              <tbody>
+              <tr>
+                  <!-- set value or mutliplier -->
+                  <td colspan="6" style='text-align: right;'></td>
+                  <td>
 
-  <!--IMAGES TAB-->
-  <div class="tab-pane" id="images<%= @ctr %>">
-    <select multiple="multiple" class="image-picker show-html">
-      <% hidden_field_tag @ctr3 = 1 %>
-      <% product.variant_images.each do |image| %>
-      <option data-img-src="<%= image %>" value="<%= @ctr3 %>">Variant Image <%= @ctr3 %></option>
-      <% @ctr3 += 1 %>
-      <% end %>
-    </select>
-  </div>
-  <!--END OF IMAGES TAB-->
+                    <div class="dropdown">
+                      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Change All Prices
+                        <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" id="list1">
+                        <li><%= link_to "Set New Value", "#", { :class => 'price-edit', :id => 'op1a', :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal' } %></li>
+                        <li><%= link_to "Multiply By", "#", { :class => 'price-edit', :id => 'op1b', :remote => true, 'data-toggle' => "modal", 'data-target' => '#myModal2' } %></li>
+                      </ul>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="dropdown">
+                      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Change All Prices
+                        <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" id="list2">
+                        <li><%= link_to "Set New Value", "#", {:class => 'price-edit', :id => 'op2a', :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal' } %></li>
+                        <li><%= link_to "Multiply By", "#", {:class => 'price-edit', :id => 'op2b', :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal2' } %></li>
+                      </ul>
+                    </div>
+                  </td>
+                    <!-- Modal -->
+                    <div class="modal" id="myModal" role="dialog">
+                      <div class="modal-dialog modal-sm" style="position: absolute; top: 37%; left: 34%;">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                          <div class="modal-body">
+                            <div class ="row">
+                              <div>
+                                <div class="container-flex" style="float: left">
+                                  <%= hidden_field_tag 'foredit', product.id %>
+                                  <input type="text" name="new_val" placeholder="Enter Value" class="form-control" style="width: 180px;" id="new_val">
+                                  <button class="btn btn-sm flex-right" id="apply"> Apply </button>
+                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>   
+                      </div>
+                    </div>
+                    <!-- End of Modal -->
 
-    <!--PUSH BUTTON-->
-    <div class="panel-footer">
-      <div class = "row">
-        <div class = "col-lg-12">
-          <div class="text-right">
-            <%= link_to "Remove Product", product, method: :delete, data: { confirm: 'Are you sure?' } %>
-            <%= submit_tag 'Push to Store', class: 'btn btn-success' %>
+                    <!-- Modal for Multiply By -->
+                    <div class="modal" id="myModal2" role="dialog">
+                      <div class="modal-dialog modal-sm" style="position: absolute; top: 37%; left: 34%;">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                          <div class="modal-body">
+                            <div class ="row">
+                              <div>
+                                <div class="container-flex" style="float: left">
+                                  <%= hidden_field_tag 'foredit2', product.id %>
+                                  <input type="text" name="multiplier" placeholder="Enter Multiplier" class="form-control" style="width: 180px;" id="multiplier">
+                                  <button class="btn btn-sm flex-right" id="apply2"> Apply </button>
+                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>   
+                      </div>
+                    </div>
+                    <!-- End of Modal -->
+                    <td></td>
+                </tr>
+                <%= hidden_field_tag @ctr2 = 0 %>
+                <% product.colors.each.with_index do |color, i| %>
+                  <% product.sizes.each do |size| %>
+                    <tr>
+                      <td><input class="checkbox2" type="checkbox" name="check_var[]" value="<%= @ctr2 %>" checked></td>
+                      <td><div class = "v-img"><%= image_tag(product.variant_images[i], :size => "100x100", :alt => "variant image") %><%= hidden_field_tag "_varimg[]", product.variant_images[i] %></div></td>
+                      <td><%= text_field_tag "_sku[]", "", class: 'form-control', size: 10 %></td>
+                      <td><%= text_field_tag "_color[]", color, class: 'form-control', size: 10 %></td>
+                      <td><%= text_field_tag "_size[]", size, class: 'form-control', size: 10 %></td>
+                      <td><%= label_tag number_to_currency(product.price[@ctr2]) %></td>
+                      <td><%= text_field_tag "_prc2[]", number_with_precision(product.price2[@ctr2].to_f, :precision => 2), class: 'form-control', size: 10 %></td>
+                      <td><%= text_field_tag "_compAtPrice[]", number_with_precision(product.compare_at_price[@ctr2].to_f, :precision => 2), class: 'form-control', size: 10 %></td>
+                      <td><%= label_tag product.avail_qty[@ctr2] %><%= hidden_field_tag "_qty[]", product.avail_qty[@ctr2] %></td>
+                    </tr>
+                    <% @ctr2 += 1 %>
+                  <% end %>
+                  <% i += 1 %>
+                <% end %>  
+              </tbody>
+            </table>
           </div>
         </div>
+      <!--END OF VARIANTS TAB-->
+
+      <!--IMAGES TAB-->
+      <div class="tab-pane" id="images<%= @ctr %>">
+        <div id="gallery">
+            <select class="image-picker show-html" multiple="multiple">
+            <% hidden_field_tag @ctr3 = 1 %>
+            <% product.variant_images.each do |image| %>
+              <option data-img-src="<%= image %>" value="<%= @ctr3 %>">Cute Kitten <%= @ctr3 %></option>
+            <% @ctr3 += 1 %>
+            <% end %>
+            </select>
+        </div>
+      </div>
+      <!--END OF IMAGES TAB-->
+
+    
+  
+    </div> 
+  </div> <!-- END OF PANEL BODY -->
+
+  <!--PUSH BUTTON-->
+    <div class="panel panel-footer" style="background-color: #ffffff; position: relative;">
+      <div class="text-right">
+        <%= link_to "Remove Product", product, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+        <%= submit_tag 'Push to Store', class: "btn btn-success " %>
       </div>
     </div>
-  
-    </div>
-  </div>
-<br/>
-<br/>
+    <br/>
+    <br/>
   <% @ctr+=1 %>
   <% end %>
 <% end %>
+      
+
+    
+    </div>
+  </div>
 </div>
 <!--end navs-->
-</div>
 
 <!--as->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
