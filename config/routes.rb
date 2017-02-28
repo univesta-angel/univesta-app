@@ -10,8 +10,6 @@ Rails.application.routes.draw do
   
   root :to => 'products#index'
   
-  get 'myproducts' => 'my_products#index'
-  
   match 'create' => 'products#create', via: :post
   
   post 'push' => 'products#push', as: :push
