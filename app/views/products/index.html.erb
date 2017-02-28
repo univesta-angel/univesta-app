@@ -453,11 +453,7 @@
   <div class="tab-pane" id="images<%= @ctr %>">
     <div id="gallery">
         <select class="image-picker show-html" multiple="multiple">
-        <% hidden_field_tag @ctr3 = 1 %>
-        <% product.variant_images.each do |image| %>
-          <option data-img-src="<%= image %>" value="<%= @ctr3 %>">Variant Image <%= @ctr3 %></option>
-        <% @ctr3 += 1 %>
-        <% end %>
+        
         </select>
     </div>
   </div>
