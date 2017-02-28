@@ -192,7 +192,10 @@
         <div class="checkbox">
           <label style="color: white;">
             <input type="checkbox" id="select_all" style="margin-right: 7px">
-            <%= select_tag 'bulkaction', options_for_select(@urls) %>
+            <select class="selectpicker" id="bulkaction">
+              <option>Push Selected</option>
+              <option>Remove Selected</option>
+             </select>
           </label>
         </div>
       </div>
