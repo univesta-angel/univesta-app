@@ -146,12 +146,18 @@
                 <% order.line_items.each do |item| %>
                   <div class="row">
                     <div class="col-sm-6">
-                      <div><h6><a><%= item.title %></a></h6></div>
-                      <div><h5 style="color: grey"><%= item.sku %></h5></div></div>
+                      <div class="center"><h6><a><%= item.title %></a></h6></div>
+                      <div class="center"><h5 style="color: grey"><%= item.sku %></h5></div></div>
                     <div class="col-sm-3">
-                      <%= item.variant_title %></div>
+                      	<div class="center">
+			    <%= item.variant_title %>
+		    	</div>
+		    </div>
                     <div class="col-sm-3">
-                      ****tracking number</div>
+                      	<div class="center">
+			    ****tracking number
+		    	</div>
+		    </div>
                     <div class="col-sm-3">
                       <%= item.quantity %><span style="marginLeft: 5px; marginRight: 5px;">x</span><%= item.price %></div>
                   </div>
