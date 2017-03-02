@@ -378,7 +378,7 @@
                       <td><%= text_field_tag "_color[]", color, class: 'form-control', size: 10 %></td>
                       <td><%= text_field_tag "_size[]", size, class: 'form-control', size: 10 %></td>
                       <td><%= label_tag number_to_currency(product.price[@ctr2]) %></td>
-                      <td><%= text_field_tag "_prc2[]", number_with_precision(product.price2[@ctr2].to_f, :precision => 2), class: 'form-control', size: 10 %></td>
+                      <td><%= text_field_tag "_prc2[]", number_with_precision(product.price2[@ctr2].to_f, :precision => 2), class: 'form-control', size: 10 %><%= text_field_tag "index", @ctr2 %></td>
                       <td><%= text_field_tag "_compAtPrice[]", number_with_precision(product.compare_at_price[@ctr2].to_f, :precision => 2), class: 'form-control', size: 10 %></td>
                       <td><%= label_tag product.avail_qty[@ctr2] %><%= hidden_field_tag "_qty[]", product.avail_qty[@ctr2] %></td>
                     </tr>
