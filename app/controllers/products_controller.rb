@@ -89,7 +89,7 @@ class ProductsController < ApplicationController
   def bulkaction
     
   end
-  
+   
   def edit_price
     new_val = '%.2f' % params[:new_val]
     new_value = new_val.to_s
@@ -117,25 +117,41 @@ class ProductsController < ApplicationController
   def multiply_price
     multiplier = params[:new_val].to_f
     new_prices = []
-    Product.find(params[:productid]) do |product|
-      product.price.each do |price|
-        prc = price.to_f * multiplier
-        new_prices << prc
-      end
+    aaa = params[:productid];
+    
+    Product.all.each do |product|
+        if product.id==aaa.to_i
+          product.price.each do |price|
+            prc = price.to_f * multiplier
+            new_prices << prc
+          end
+        end
     end
     Product.update(params[:productid], :price2 => new_prices)
+    respond_to do |format|
+      format.html 
+      format.js
+    end
   end
 
   def multiply_cap
     multiplier = params[:new_val].to_f
     new_prices = []
-    Product.find(params[:productid]) do |product|
-      product.price.each do |price|
-        prc = price.to_f * multiplier
-        new_prices << prc
-      end
+    aaa = params[:productid];
+    Product.all.each do |product|
+        if product.id==aaa.to_i
+          product.price.each do |price|
+            prc = price.to_f * multiplier
+            new_prices << prc
+          end
+        end
     end
     Product.update(params[:productid], :compare_at_price => new_prices)
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
   end
   
   # push to store action
