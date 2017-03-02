@@ -206,7 +206,7 @@
         <div class="media" id="item">
           <div class="media-left">
             <% aaa = product.images.first %>
-            <%= image_tag(aaa, :alt => "picture", :size => "260x260") %>
+            <img src="data:image/jpg;base64,<%= product.images.first %>"/>
           </div>
           <div class="media-body">
             <div class="product-title">
