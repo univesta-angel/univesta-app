@@ -205,11 +205,11 @@
       <div class="tab-pane active in" id="products<%= @ctr %>">
         <div class="media" id="item">
           <div class="media-left">
-            <%= image_tag(product.images.first, :alt => "picture", :size => "260x260") %>
+            <%= image_tag(product.images[0], :alt => "picture", :size => "260x260") %>
           </div>
           <div class="media-body">
             <div class="product-title">
-              <b><%= product.images.first.value %></b>
+              <b><%= product.images.first %></b>
             </div>
               <div class="input-group">
                 <span class="input-group-addon">Change Name:</span>
