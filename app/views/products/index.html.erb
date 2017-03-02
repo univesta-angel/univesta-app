@@ -54,83 +54,48 @@
           } else {
               $('#bulkaction').hide();
           }
-        }); //---end
-        
-        var btn_op1 = $('#dropdownMenu1')
-        var btn_op2 = $('#dropdownMenu2')
-        var price_op1 = $('ul#list1.dropdown-menu li a#op1a')
-        var price_op2 = $('ul#list1.dropdown-menu li a#op1b')
-        var cap_op1 = $('ul#list2.dropdown-menu li a#op2a')
-        var cap_op2 = $('ul#list2.dropdown-menu li a#op2b')
+        }); // ---- end
+
+        var prod_id;
+        var linkid; 
         $('.price-edit').on('click',function(){
-          switch ($(this).attr('id')){
-            // price - set new value
-            case 'op1a':
-              btn_op2.removeClass('active')
-              $('.price-edit').removeClass('active')
-              btn_op1.toggleClass('active')
-              price_op1.toggleClass('active')
-              break;
-            // price - multiply by
-            case 'op1b':
-              btn_op2.removeClass('active')
-              $('.price-edit').removeClass('active')
-              btn_op1.toggleClass('active')
-              price_op2.toggleClass('active')
-              break;
-            // compare at price - set new value
-            case 'op2a':
-              btn_op1.removeClass('active')
-              $('.price-edit').removeClass('active')
-              btn_op2.toggleClass('active')
-              cap_op1.toggleClass('active')
-              break;
-            // compare at price - multiply by
-            case 'op2b':
-              btn_op1.removeClass('active')
-              $('.price-edit').removeClass('active')
-              btn_op2.toggleClass('active')
-              cap_op2.toggleClass('active')
-              break;
-            default:
-              btn_op1.removeClass('active')
-              btn_op2.removeClass('active')
-          }
+            prod_id = $(this).attr('aaa');
+            linkid = $(this).attr('id');
         });
+
         $('.btn.btn-sm.flex-right').on('click', function(e){
           e.preventDefault();
           switch ($(this).attr('id')){
             case 'apply':
               e.preventDefault();
-              var nv = $('#new_val').val();
-              var productid = $('#foredit').val();
+              var nv = $('#new_val'+prod_id).val();
               var urlpath ='';
-              if (price_op1.hasClass('active')){
+              if (linkid=='op1a'){
                 urlpath = '/edit_price';
               }
-              else if(cap_op1.hasClass('active')) {
+              else if(linkid=='op2a') {
                 urlpath = '/edit_cap';
               }
-              sendParams(nv, productid, urlpath);
-              $('#myModal').modal('toggle');
+              sendParams(nv, prod_id, urlpath);
+              $('#myModal'+prod_id).modal('hide');
               break;
+
             case 'apply2':
               e.preventDefault();
-              var nv2 = $('#multiplier').val();
-              var productid2 = $('#foredit2').val();
+              var nv2 = $('#multiplier'+prod_id).val();
               var urlpath2 ='';
-              if (price_op2.hasClass('active')){
+              if (linkid=='op1b'){
                 urlpath2 = '/multiply_price';
               }
-              else if(cap_op2.hasClass('active')){
+              else if(linkid=='op2b'){
                 urlpath2 = '/multiply_cap';
               }
-              
-              sendParams(nv2, productid2, urlpath2);
-              $('#myModal2').modal('toggle');
+              sendParams(nv2, prod_id, urlpath2);
+              $('#myModal2').modal('hide');
               break;
           }
         })
+
         //----- keep active tab on display
         $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
             localStorage.setItem('activeTab', $(e.target).attr('href'));
@@ -139,12 +104,15 @@
         if(activeTab){
             $('#myTab a[href="' + activeTab + '"]').tab('show');
         } // ---- end
-        
+
         $("select").imagepicker({
           hide_select : true,
           show_label  : false
         })
+
+
       });
+
       function sendParams(nv, productid, urlpath){
         $.ajax({
           url: urlpath,
@@ -155,7 +123,7 @@
           },
           dataType: 'application/json',
           success: function(data){
-            //window.location.reload();
+            window.location.reload()
           }
         });
       }
@@ -306,8 +274,8 @@
                         <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" id="list1">
-                        <li><%= link_to "Set New Value", "#", { :class => 'price-edit', :id => 'op1a', :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal' } %></li>
-                        <li><%= link_to "Multiply By", "#", { :class => 'price-edit', :id => 'op1b', :remote => true, 'data-toggle' => "modal", 'data-target' => '#myModal2' } %></li>
+                        <li><%= link_to "Set New Value", "#", { :class => 'price-edit', :id => 'op1a', :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal'+product.id.to_s ,:aaa =>product.id.to_s} %></li>
+                        <li><%= link_to "Multiply By", "#", { :class => 'price-edit', :id => 'op1b', :remote => true, 'data-toggle' => "modal", 'data-target' => '#myModal2'+product.id.to_s  , :aaa =>product.id.to_s} %></li>
                       </ul>
                     </div>
                   </td>
@@ -318,55 +286,54 @@
                         <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" id="list2">
-                        <li><%= link_to "Set New Value", "#", {:class => 'price-edit', :id => 'op@ctra', :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal' } %></li>
-                        <li><%= link_to "Multiply By", "#", {:class => 'price-edit', :id => 'op@ctrb', :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal2' } %></li>
+                        <li><%= link_to "Set New Value", "#", {:class => 'price-edit', :id => 'op2a', :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal'+product.id.to_s, :aaa =>product.id.to_s} %></li>
+                        <li><%= link_to "Multiply By", "#", {:class => 'price-edit', :id => 'op2b', :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal2'+product.id.to_s, :aaa =>product.id.to_s} %></li>
                       </ul>
                     </div>
                   </td>
-                    <!-- Modal -->
-                    <div class="modal" id="myModal" role="dialog">
-                      <div class="modal-dialog modal-sm" style="position: absolute; top: 37%; left: 34%;">
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                          <div class="modal-body">
-                            <div class ="row">
-                              <div>
-                                <div class="container-flex" style="float: left">
-                                  <%= text_field_tag 'foredit', product.id %>
-                                  <input type="text" name="new_val" placeholder="Enter Value" class="form-control" style="width: 180px;" id="new_val">
-                                  <button class="btn btn-sm flex-right" id="apply"> Apply </button>
-                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>   
-                      </div>
-                    </div>
-                    <!-- End of Modal -->
-
-                    <!-- Modal for Multiply By -->
-                    <div class="modal" id="myModal2" role="dialog">
-                      <div class="modal-dialog modal-sm" style="position: absolute; top: 37%; left: 34%;">
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                          <div class="modal-body">
-                            <div class ="row">
-                              <div>
-                                <div class="container-flex" style="float: left">
-                                  <%= hidden_field_tag 'foredit2', product.id %>
-                                  <input type="text" name="multiplier" placeholder="Enter Multiplier" class="form-control" style="width: 180px;" id="multiplier">
-                                  <button class="btn btn-sm flex-right" id="apply2"> Apply </button>
-                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>   
-                      </div>
-                    </div>
-                    <!-- End of Modal -->
                     <td></td>
+                
+                <!-- Modal -->
+    <div class="modal" id="myModal<%= product.id %>" role="dialog">
+      <div class="modal-dialog modal-sm" style="position: absolute; top: 37%; left: 34%;">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class ="row">
+              <div>
+                <div class="container-flex" style="float: left">
+                  <input type="text" name="new_val" placeholder="Enter Value" class="form-control" style="width: 180px;" id="new_val<%= product.id %>">
+                  <button class="btn btn-sm flex-right" id="apply"> Apply </button>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>   
+      </div>
+    </div>
+    <!-- End of Modal -->
+
+    <!-- Modal for Multiply By -->
+    <div class="modal" id="myModal2<%= product.id %>" role="dialog">
+      <div class="modal-dialog modal-sm" style="position: absolute; top: 37%; left: 34%;">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class ="row">
+              <div>
+                <div class="container-flex" style="float: left">
+                  <input type="text" name="multiplier" placeholder="Enter Multiplier" class="form-control" style="width: 180px;" id="multiplier<%= product.id %>">
+                  <button class="btn btn-sm flex-right" id="apply2"> Apply </button>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>   
+      </div>
+    </div>
+    <!-- End of Modal -->
                 </tr>
                 <%= hidden_field_tag @ctr2 = 0 %>
                 <% product.colors.each.with_index do |color, i| %>
