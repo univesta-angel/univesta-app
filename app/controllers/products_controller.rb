@@ -184,7 +184,7 @@ class ProductsController < ApplicationController
           :compare_at_price     => "11.99",
           :sku                  => "",
           :inventory_management => "shopify",
-          :inventory_quantity   => "10"
+          :inventory_quantity   => 10
     )
         variants << zzz
     end
