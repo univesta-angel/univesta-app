@@ -206,7 +206,7 @@
         <div class="media" id="item">
           <div class="media-left">
             <% aaa = product.images.first %>
-            <%= image_tag product.images.first.at(2), :size => '260x260' %>
+            <%= image_tag product.images.first..at(0)[:value], :size => '260x260' %>
           </div>
           <div class="media-body">
             <div class="product-title">
