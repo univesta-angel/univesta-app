@@ -205,8 +205,9 @@
       <div class="tab-pane active in" id="products<%= @ctr %>">
         <div class="media" id="item">
           <div class="media-left">
-            <% aaa = product.images.first %>
-            <%= image_tag product.images.first.at(0)[:value], :size => '260x260' %>
+            <% aaa = [product.images.first] %>
+            
+            <%= image_tag aaa.at(0)[:value], :size => '260x260' %>
           </div>
           <div class="media-body">
             <div class="product-title">
