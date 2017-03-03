@@ -172,13 +172,13 @@ class ProductsController < ApplicationController
           :option1              => "red",
           :option2              => "S",   
           :compare_at_price     => "11.99",
-          :sku                  => "abc123",
-          :inventory_management => 'shopify',
-          :inventory_quantity   => 1
+          :sku                  => "",
+          :inventory_management => "shopify",
+          :inventory_quantity   => "10"
     )
     
     new_product = ShopifyAPI::Product.new
-    new_product.title = "aaa"
+    new_product.title = "bbb"
     new_product.options = options
     new_product.variants = variant
     new_product.save
