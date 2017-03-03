@@ -170,7 +170,7 @@ class ProductsController < ApplicationController
     color = params[:_colors].split
     colorz = params[:_colors].split
     size = params[:_sizes].split
-    prices = params[:_prices].split
+    prices = params[:_prc2].split
     compAtPrice = params[:_compare_at_price].split
     qty = params[:_avail_qty].split
     variant_img = params[:_variant_images].split
@@ -194,7 +194,7 @@ class ProductsController < ApplicationController
     _color = params[:_color]
     _size = params[:_size]
     _sku = params[:_sku]
-    _prc = params[:_prc]
+    _prc = params[:_prc2]
     _cap = params[:_compAtPrice]
     _qty = params[:_qty]
     
