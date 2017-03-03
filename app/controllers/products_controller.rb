@@ -192,7 +192,7 @@ class ProductsController < ApplicationController
     new_product = ShopifyAPI::Product.new
     new_product.title = "bbb"
     new_product.options = options
-    new_product.variants = variantS
+    new_product.variants = variants
     new_product.save
     
   end
