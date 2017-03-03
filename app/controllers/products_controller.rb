@@ -159,110 +159,11 @@ class ProductsController < ApplicationController
     shop_url = "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin"
     ShopifyAPI::Base.site = shop_url
     shop = ShopifyAPI::Shop.current
-
-    options = []
-    #option = {}
-    option = ShopifyAPI::Option.new(:name => "Color")
-    options << option
-    option1 = ShopifyAPI::Option.new(:name => "Size")
-    options << option1
-
-    color = params[:_colors].split
-    colorz = params[:_colors].split
-    size = params[:_sizes].split
-    prices = params[:_prc2].split
-    compAtPrice = params[:_compare_at_price].split
-    qty = params[:_avail_qty].split
-    variant_img = params[:_variant_images].split
-    default_img = params[:_img].split
     
-    images = []
-    default_img.each do |img|
-      image = {}
-      image["src"] = img
-      images << image
-    end
-    
-    if color.size==0
-      color=['-']
-    end
-    if size.size==0
-      size=['-']
-    end
-    
-    variantsid = params[:check_var]
-    _color = params[:_color]
-    _size = params[:_size]
-    _sku = params[:_sku]
-    _prc = params[:_prc2]
-    _cap = params[:_compAtPrice]
-    _qty = params[:_qty]
-    
-    variants = []
-    variantsid.each do |variant|
-        zzz = ShopifyAPI::Variant.new( 
-          :price                => "10.00",
-          :option1              => "Red",
-          :option2              => "S",   
-          :compare_at_price     => "11.99",
-          :sku                  => "",
-          :inventory_management => 'shopify',
-          :inventory_quantity   => 100
-        )
-        variants << zzz
-    end
-
     new_product = ShopifyAPI::Product.new
-    new_product.title = "Sample product"
-    new_product.body_html = ""
-    new_product.product_type = "dress"
-    new_product.vendor = "abc shop"
-    new_product.tags = "tag"
-    new_product.options = options
-    new_product.variants = variants
+    new_product.title = "aaa"
     new_product.save
-
-    pao = []
-    color2 =[]     #tempo storage
-    aaa = 0 
-    ctr = 0 
     
-    _varimg = params[:_varimg]
-    
-    if colorz.size==0
-      variantsid.each do |row|
-        color2 = []
-        color2 << new_product.variants[ctr].id
-        ctr = ctr + 1
-      end
-      pao << { id: nil, variant_ids: color2, src: default_img[0] }
-    else
-      gel = ''
-      variantsid.each do |row|
-        if gel!=_varimg[row.to_i]
-          color2 = []
-          color2 << new_product.variants[ctr].id
-          ctr = ctr + 1  
-          pao << { id: nil, variant_ids: color2, src: _varimg[row.to_i] }
-          gel = _varimg[row.to_i]
-        end
-      end
-    end
-    
-    new_product.images = pao 
-    new_product.save
-  
-    expires_in(60.seconds, public: false)
-
-    respond_to do |format|
-      if new_product.save
-        format.html { redirect_to root_path, notice: 'Product was successfully pushed.' }
-        format.json { render json: 201 }
-      else
-        format.html { redirect_to root_path, notice: 'Oops. Something went wrong.' }
-        format.json { render json: new_product.errors, status: :unprocessable_entity }
-      end
-    end
   end
   
   def remove_all
