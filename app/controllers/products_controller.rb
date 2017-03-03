@@ -218,20 +218,12 @@ class ProductsController < ApplicationController
       variantsid.each do |row|
           new_var << new_product.variants[ctr].id
           pao << { id: nil, variant_ids: color2, src: _varimg[row.to_i] }
-          new_var << new_product.variants[ctr].id
+          ctr += 1
        end
-    end
-      
-      
-      
     end
     
     new_product.images = pao 
     new_product.save
-    
-    respond_to do |format|
-      format.html { redirect_to imports_path, notice: 'Product was successfully pushed.' }
-    end
     
   end
   
