@@ -171,7 +171,7 @@ class ProductsController < ApplicationController
     _color = params[:_color]
     _size = params[:_size]
     _sku = params[:_sku]
-    _prc = params[:_prc]
+    _prc = params[:_prc2]
     _cap = params[:_compAtPrice]
     _qty = params[:_qty]
     
