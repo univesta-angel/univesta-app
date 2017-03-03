@@ -209,18 +209,24 @@ class ProductsController < ApplicationController
       variantsid.each do |row|
         new_var = []
         new_var << new_product.variants[ctr].id
-        ctr = ctr + 1
+        ctr += 1
       end
       pao << { id: nil, variant_ids: new_var, src: default_img[0] }
     else
+      _imgclr = []
+      _idvar = []
       variantsid.each do |row|
+        _imgclr << _color[row.to_i]
+        _idvar << row.to_i
+      end
+      _imgclr.uniq.each do |row2|
         new_var = []
-        _color.each do |row2|
+        _idvar.each do |row3|
           new_var << new_product.variants[ctr].id
-          ctr = ctr + 1
+          ctr += 1
         end
-        pao << {:id: nil, variants_ids: new_var, src: _varimg[row.to_i]}
-      end 
+        pao << {:id: nil, variant_ids: new_var, src: _varimg[row3] }
+      end
     end
     
     new_product.images = pao 
