@@ -215,25 +215,27 @@ class ProductsController < ApplicationController
     else
       gel = ''
       color2 = []
+      lastvarimg = ''
       variantsid.each do |row|
         if gel==''
           gel = _varimg[row.to_i]
-          color2 << new_product.variants[row.to_i].id
+          color2 << new_product.variants[ctr].id
              
         elsif gel!=_varimg[row.to_i]
-          pao << { id: nil, variant_ids: color2, src: _varimg[lastrow] }
+          pao << { id: nil, variant_ids: color2, src: lastvarimg }
           gel = _varimg[row.to_i]
           color2 = []
-          color2 << new_product.variants[row.to_i].id
-       else
-          color2 << new_product.variants[row.to_i].id
-        end
+          color2 << new_product.variants[ctr].id
+        else
+          color2 << new_product.variants[ctr].id
+       end
         
     
     #color2 << new_product.variants[ctr].id
-        lastrow = row.to_i
+        lastvarimg =  _varimg[row.to_i]
+        ctr = ctr+1
       end
-      pao << { id: nil, variant_ids: color2, src: _varimg[lastrow] }
+      pao << { id: nil, variant_ids: color2, src: lastvarimg }
       
     end
     
