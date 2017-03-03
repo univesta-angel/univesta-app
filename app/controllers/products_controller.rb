@@ -237,11 +237,15 @@ class ProductsController < ApplicationController
       end
       pao << { id: nil, variant_ids: color2, src: default_img[0] }
     else
+      gel = ''
       variantsid.each do |row|
-        color2 = []
-        color2 << new_product.variants[ctr].id
-        pao << { id: nil, variant_ids: color2, src: _varimg[row.to_i] }
-        ctr = ctr + 1
+        if gel!=_varimg[row.to_i]
+          color2 = []
+          color2 << new_product.variants[ctr].id
+          ctr = ctr + 1  
+          pao << { id: nil, variant_ids: color2, src: _varimg[row.to_i] }
+          gel = _varimg[row.to_i]
+        end
       end
     end
     
