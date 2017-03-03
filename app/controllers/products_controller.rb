@@ -159,18 +159,9 @@ class ProductsController < ApplicationController
     shop_url = "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin"
     ShopifyAPI::Base.site = shop_url
     shop = ShopifyAPI::Shop.current
-    
-    options = []
-    #option = {}
-    option = ShopifyAPI::Option.new(:name => "Color")
-    options << option
-    option1 = ShopifyAPI::Option.new(:name => "Size")
-    options << option1
-    
+   
     variant = ShopifyAPI::Variant.new( 
           :price                => "10.00",
-          :option1              => "red",
-          :option2              => "S",   
           :compare_at_price     => "11.99",
           :sku                  => "",
           :inventory_management => "shopify",
@@ -179,7 +170,6 @@ class ProductsController < ApplicationController
     
     new_product = ShopifyAPI::Product.new
     new_product.title = "bbb"
-    new_product.options = options
     new_product.variants = variant
     new_product.save
     
