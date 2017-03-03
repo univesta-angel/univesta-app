@@ -160,8 +160,14 @@ class ProductsController < ApplicationController
     ShopifyAPI::Base.site = shop_url
     shop = ShopifyAPI::Shop.current
    
+    options = []
+    #option = {}
+    option = ShopifyAPI::Option.new(:name => "Color")
+    options << option
+    
     variant = ShopifyAPI::Variant.new( 
           :price                => "10.00",
+          :option1              => "red",
           :compare_at_price     => "11.99",
           :sku                  => "",
           :inventory_management => "shopify",
@@ -170,6 +176,7 @@ class ProductsController < ApplicationController
     
     new_product = ShopifyAPI::Product.new
     new_product.title = "bbb"
+    new_product.options = options
     new_product.variants = variant
     new_product.save
     
