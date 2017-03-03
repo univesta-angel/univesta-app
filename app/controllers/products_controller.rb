@@ -205,7 +205,7 @@ class ProductsController < ApplicationController
     
     _varimg = params[:_varimg]
     
-    if colorz.size==0
+    if _color.size==0
       variantsid.each do |row|
         color2 = []
         color2 << new_product.variants[ctr].id
@@ -227,6 +227,10 @@ class ProductsController < ApplicationController
     
     new_product.images = pao 
     new_product.save
+    
+    respond_to do |format|
+      format.html { redirect_to imports_path, notice: 'Product was successfully pushed.' }
+    end
     
   end
   
