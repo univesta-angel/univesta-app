@@ -233,7 +233,7 @@ class ProductsController < ApplicationController
     #color2 << new_product.variants[ctr].id
         ctr = ctr + 1  
       end
-      
+      pao << { id: nil, variant_ids: color2, src: _varimg[ctr-1] }
       
       
       
