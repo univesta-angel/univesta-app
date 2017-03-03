@@ -221,7 +221,7 @@ class ProductsController < ApplicationController
           color2 << new_product.variants[ctr].id
              
         elsif gel!=_varimg[row.to_i]
-          pao << { id: nil, variant_ids: color2, src: _varimg[row.to_i] }
+          pao << { id: nil, variant_ids: color2, src: _varimg[ctr-1] }
           gel = _varimg[row.to_i]
           color2 = []
           color2 << new_product.variants[ctr].id
