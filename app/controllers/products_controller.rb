@@ -199,7 +199,7 @@ class ProductsController < ApplicationController
     new_product.save
     
     pao = []
-    new_var =[]     #tempo storage
+    color2 =[]     #tempo storage
     aaa = 0 
     ctr = 0 
     
@@ -207,23 +207,43 @@ class ProductsController < ApplicationController
     
     if _color.size==0
       variantsid.each do |row|
-        new_var = []
-        new_var << new_product.variants[ctr].id
+        color2 = []
+        color2 << new_product.variants[ctr].id
         ctr = ctr + 1
       end
       pao << { id: nil, variant_ids: color2, src: default_img[0] }
     else
       gel = ''
-      new_var = []
+      color2 = []
       variantsid.each do |row|
-          new_var << new_product.variants[ctr].id
+        if gel==''
+          gel = _varimg[row.to_i]
+          color2 << new_product.variants[ctr].id
+             
+        elsif gel!=_varimg[row.to_i]
           pao << { id: nil, variant_ids: color2, src: _varimg[row.to_i] }
-          ctr += 1
+          gel = _varimg[row.to_i]
+          color2 = []
+          color2 << new_product.variants[ctr].id
+        else
+          color2 << new_product.variants[ctr].id
        end
+        
+    
+    #color2 << new_product.variants[ctr].id
+        ctr = ctr + 1  
+      end
+      
+      
+      
     end
     
     new_product.images = pao 
     new_product.save
+    
+    respond_to do |format|
+      format.html { redirect_to imports_path, notice: 'Product was successfully pushed.' }
+    end
     
   end
   
