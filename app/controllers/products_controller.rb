@@ -178,8 +178,8 @@ class ProductsController < ApplicationController
     variantsid.each do |variant|
       zzz = ShopifyAPI::Variant.new( 
         :price                => _prc[variant.to_i],
-        :option1              => _color[variant.to_i],
-        :option2              => _size[variant.to_i],   
+        :option1              => _color[variant.to_i].gsub('_', ' '),
+        :option2              => _size[variant.to_i].gsub('_', ' '),   
         :compare_at_price     => _cap[variant.to_i],
         :sku                  => _sku[variant.to_i],
         :inventory_management => "shopify",
@@ -196,6 +196,36 @@ class ProductsController < ApplicationController
     new_product.tags = params[:_tags]
     new_product.options = options
     new_product.variants = variants
+    new_product.save
+    
+    pao = []
+    color2 =[]     #tempo storage
+    aaa = 0 
+    ctr = 0 
+    
+    _varimg = params[:_varimg]
+    
+    if colorz.size==0
+      variantsid.each do |row|
+        color2 = []
+        color2 << new_product.variants[ctr].id
+        ctr = ctr + 1
+      end
+      pao << { id: nil, variant_ids: color2, src: default_img[0] }
+    else
+      gel = ''
+      variantsid.each do |row|
+        if gel!=_varimg[row.to_i]
+          color2 = []
+          color2 << new_product.variants[ctr].id
+          ctr = ctr + 1  
+          pao << { id: nil, variant_ids: color2, src: _varimg[row.to_i] }
+          gel = _varimg[row.to_i]
+        end
+      end
+    end
+    
+    new_product.images = pao 
     new_product.save
     
   end
