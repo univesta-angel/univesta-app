@@ -167,9 +167,20 @@ class ProductsController < ApplicationController
     option1 = ShopifyAPI::Option.new(:name => "Size")
     options << option1
     
+    variant = ShopifyAPI::Variant.new( 
+          :price                => "10.00",
+          :option1              => "red",
+          :option2              => "S",   
+          :compare_at_price     => "11.99",
+          :sku                  => "abc123",
+          :inventory_management => 'shopify',
+          :inventory_quantity   => 1
+    )
+    
     new_product = ShopifyAPI::Product.new
     new_product.title = "aaa"
     new_product.options = options
+    new_product.variants = variant
     new_product.save
     
   end
