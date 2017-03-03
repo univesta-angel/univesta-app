@@ -201,10 +201,10 @@ class ProductsController < ApplicationController
     variants = []
     variantsid.each do |variant|
         zzz = ShopifyAPI::Variant.new( 
-          :price                => _prc[variant.to_i],
+          :price                => _prc[variant.to_i].to_s,
           :option1              => _color[variant.to_i],
           :option2              => _size[variant.to_i],   
-          :compare_at_price     => _cap[variant.to_i],
+          :compare_at_price     => _cap[variant.to_i].to_s,
           :sku                  => _sku[variant.to_i],
           :inventory_management => 'shopify',
           :inventory_quantity   => _qty[variant.to_i]
