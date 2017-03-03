@@ -160,8 +160,16 @@ class ProductsController < ApplicationController
     ShopifyAPI::Base.site = shop_url
     shop = ShopifyAPI::Shop.current
     
+    options = []
+    #option = {}
+    option = ShopifyAPI::Option.new(:name => "Color")
+    options << option
+    option1 = ShopifyAPI::Option.new(:name => "Size")
+    options << option1
+    
     new_product = ShopifyAPI::Product.new
     new_product.title = "aaa"
+    new_product.options = options
     new_product.save
     
   end
