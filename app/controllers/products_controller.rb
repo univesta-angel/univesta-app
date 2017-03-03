@@ -212,6 +212,7 @@ class ProductsController < ApplicationController
         ctr = ctr + 1
       end
       pao << { id: nil, variant_ids: color2, src: default_img[0] }
+      
     else
       gel = ''
       color2 = []
@@ -219,24 +220,18 @@ class ProductsController < ApplicationController
         if gel==''
           gel = _varimg[row.to_i]
           color2 << new_product.variants[ctr].id
-             
         elsif gel!=_varimg[row.to_i]
-          pao << { id: nil, variant_ids: color2, src: _varimg[row.to_i] }
+          pao << { id: nil, variant_ids: color2, src: _varimg[row.to_i-1] }
           gel = _varimg[row.to_i]
           color2 = []
           color2 << new_product.variants[ctr].id
         else
           color2 << new_product.variants[ctr].id
-       end
-        
-    
-    #color2 << new_product.variants[ctr].id
+        end
+        #color2 << new_product.variants[ctr].id
         ctr = ctr + 1  
-      end
-      
-      
-      
     end
+       pao << { id: nil, variant_ids: color2, src: _varimg[row.to_i-1] }
     
     new_product.images = pao 
     new_product.save
