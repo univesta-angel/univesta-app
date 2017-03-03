@@ -216,18 +216,27 @@ class ProductsController < ApplicationController
       gel = ''
       color2 = []
       variantsid.each do |row|
-        if gel!=new_product.variants[ctr].id and gel!=''
-          pao << { id: nil, variant_ids: color2, src: _varimg[row.to_i] }
-          gel = _varimg[row.to_i]
-          color2 = []
-        end
         if gel==''
           gel = new_product.variants[ctr].id
-        end        
+          color2 << new_product.variants[ctr].id
+             
+        elsif gel!=new_product.variants[ctr].id
+          pao << { id: nil, variant_ids: color2, src: _varimg[row.to_i] }
+          gel = new_product.variants[ctr].id
+          color2 = []
+          color2 << new_product.variants[ctr].id
+       else
+          color2 << new_product.variants[ctr].id
+        end
         
-        color2 << new_product.variants[ctr].id
+    
+    #color2 << new_product.variants[ctr].id
         ctr = ctr + 1  
       end
+      
+      
+      
+      
     end
     
     new_product.images = pao 
