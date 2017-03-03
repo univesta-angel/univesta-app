@@ -164,15 +164,30 @@ class ProductsController < ApplicationController
     #option = {}
     option = ShopifyAPI::Option.new(:name => "Color")
     options << option
+    option1 = ShopifyAPI::Option.new(:name => "Size")
+    options << option1
     
-    variant = ShopifyAPI::Variant.new( 
+    variantsid = params[:check_var]
+    _color = params[:_color]
+    _size = params[:_size]
+    _sku = params[:_sku]
+    _prc = params[:_prc]
+    _cap = params[:_compAtPrice]
+    _qty = params[:_qty]
+    
+    variants = []
+    variantsid.each do |variant|
+        zzz = ShopifyAPI::Variant.new( 
           :price                => "10.00",
           :option1              => "red",
+          :option2              => "s",   
           :compare_at_price     => "11.99",
           :sku                  => "",
           :inventory_management => "shopify",
           :inventory_quantity   => "10"
     )
+        variants << zzz
+    end
     
     new_product = ShopifyAPI::Product.new
     new_product.title = "bbb"
