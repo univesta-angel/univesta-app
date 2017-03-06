@@ -94,7 +94,13 @@
           hide_select : true,
           show_label  : false
         })
-
+        
+      $(function() {
+        $('div#froala-editor').froalaEditor({
+          height: 250,
+          toolbarButtons: ['paragraphFormat', 'clearFormatting' , '|', 'bold', 'italic', 'underline', 'strikeThrough', '|',  'subscript', 'superscript', '|', 'undo', 'redo' , '|', 'formatOL', 'formatUL' , '|', 'align', '|', 'outdent', 'indent', '|', 'insertImage', 'insertLink', '|', 'align' , '|', 'insertHR', '|', 'html']
+        })
+      });
 
       });
 
