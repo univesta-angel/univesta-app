@@ -218,7 +218,12 @@
               </div>
               <div class="input-group input-group-sm">
                 <span class="input-group-addon" id="sizing-addon3">Collections:</span>
-                <%= text_field_tag :_collections, "", class: 'form-control', placeholder: "Choose Collections" %>
+                <input list="collections" name="_collections" placeholder="Choose Collections">
+                <datalist id="collections">
+                  <% @collections.each do |c| %>
+                    <option value="<%= c %>">
+                  <% end %>
+                </datalist>
               </div>
 
           <div class="row">
