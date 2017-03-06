@@ -94,6 +94,8 @@
           hide_select : true,
           show_label  : false
         })
+            
+});
       /*
       $(function() {
         $('div#froala-editor').froalaEditor({
@@ -103,7 +105,6 @@
       });
       */
 
-      });
 
       function sendParams(nv, productid, urlpath){
         $.ajax({
