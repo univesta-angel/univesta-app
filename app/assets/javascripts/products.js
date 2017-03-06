@@ -101,9 +101,9 @@
           toolbarButtons: ['paragraphFormat', 'clearFormatting' , '|', 'bold', 'italic', 'underline', 'strikeThrough', '|',  'subscript', 'superscript', '|', 'undo', 'redo' , '|', 'formatOL', 'formatUL' , '|', 'align', '|', 'outdent', 'indent', '|', 'insertImage', 'insertLink', '|', 'align' , '|', 'insertHR', '|', 'html']
         })
       });
+      */
 
       });
-      */
 
       function sendParams(nv, productid, urlpath){
         $.ajax({
