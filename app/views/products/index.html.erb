@@ -122,11 +122,8 @@
 
       <!--DESCRIPTION TAB-->
       <div class="tab-pane" id="description<%= @ctr %>">
-        <div id="froala-editor">
-          <p>
-            <%= product.body_html %>
-          </p>
-        </div>
+        <trix-editor input="x" class="editor"></trix-editor>
+        <input id="x" type="hidden" name="content" value="<%= product.body_html %>">
       </div>
       <!--END OF DESCRIPTION TAB-->
 
