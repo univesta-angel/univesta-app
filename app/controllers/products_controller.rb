@@ -12,6 +12,18 @@ class ProductsController < ApplicationController
     #@collects = ShopifyAPI::Collect.find(:all)    #get collection
     @bulkaction = ["Push Selected", "Remove Selected"]
     @ctr = 1
+    
+    @collections = []
+    @cc = ShopifyAPI::CustomCollection.find(:all, :params => {:limit => 250})
+    @cc.each do |c|
+      @collections << c
+    end
+
+    @sc = ShopifyAPI::SmartCollection.find(:all, :params => {:limit => 250})
+    @sc.each do |c|
+     @collections << c
+    end
+    
   end
   
   # order lists
