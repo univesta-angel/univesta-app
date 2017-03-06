@@ -205,7 +205,7 @@ class ProductsController < ApplicationController
     
     new_product = ShopifyAPI::Product.new
     new_product.title = params[:_title]
-    new_product.body_html = params[:_body].gsub('/', '\/')
+    new_product.body_html = params[:_body].gsub('&nbsp;', '').gsub('/','\/')
     new_product.product_type = params[:_type]
     new_product.vendor = params[:_vendor]
     new_product.tags = params[:_tags]
