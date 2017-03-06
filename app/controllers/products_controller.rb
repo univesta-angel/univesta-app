@@ -205,7 +205,7 @@ class ProductsController < ApplicationController
     
     new_product = ShopifyAPI::Product.new
     new_product.title = params[:_title]
-    new_product.body_html = params[:_body]
+    new_product.body_html = params[:_body].gsub('/', '\/')
     new_product.product_type = params[:_type]
     new_product.vendor = params[:_vendor]
     new_product.tags = params[:_tags]
@@ -261,10 +261,6 @@ class ProductsController < ApplicationController
       #ShopifyAPI::Collect.create(:product_id => new_product.id, :collection_id => params[:_collections])
     else
       
-    end
-    
-    respond_to do |format|
-      format.html { redirect_to imports_path, notice: 'Product was successfully pushed.' }
     end
     
   end
