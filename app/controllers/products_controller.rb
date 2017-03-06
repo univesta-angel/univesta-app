@@ -244,9 +244,6 @@ class ProductsController < ApplicationController
         else
           color2 << new_product.variants[ctr].id
        end
-        
-    
-    #color2 << new_product.variants[ctr].id
         lastvarimg =  _varimg[row.to_i]
         ctr = ctr+1
       end
@@ -257,11 +254,11 @@ class ProductsController < ApplicationController
     new_product.images = pao 
     new_product.save
     
-    if params[:_collections] != nil
+    #if params[:_collections] != nil
       #ShopifyAPI::Collect.create(:product_id => new_product.id, :collection_id => params[:_collections])
-    else
+    #else
       
-    end
+    #end
     
   end
   
