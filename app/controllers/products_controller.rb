@@ -257,6 +257,12 @@ class ProductsController < ApplicationController
     new_product.images = pao 
     new_product.save
     
+    if params[:_collections] != nil
+      #ShopifyAPI::Collect.create(:product_id => new_product.id, :collection_id => '')
+    else
+      
+    end
+    
     respond_to do |format|
       format.html { redirect_to imports_path, notice: 'Product was successfully pushed.' }
     end
