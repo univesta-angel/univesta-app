@@ -14,6 +14,7 @@
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
 //= require image-picker
+//= require trix
 //= require froala_editor.min.js
 //= require bootstrap-tagsinput
 //= require jquery_ujs
