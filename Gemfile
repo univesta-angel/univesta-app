@@ -19,6 +19,8 @@ gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'image-picker-rails'
+gem 'bootstrap-tagsinput-rails'
+gem "wysiwyg-rails"
 
 gem 'activemerchant'
 
