@@ -21,6 +21,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'image-picker-rails'
 gem 'bootstrap-tagsinput-rails'
 gem "wysiwyg-rails"
+gem 'trix'
 
 gem 'activemerchant'
 
