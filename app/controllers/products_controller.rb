@@ -258,7 +258,7 @@ class ProductsController < ApplicationController
     new_product.save
     
     if params[:_collections] != nil
-      #ShopifyAPI::Collect.create(:product_id => new_product.id, :collection_id => '')
+      #ShopifyAPI::Collect.create(:product_id => new_product.id, :collection_id => params[:_collections])
     else
       
     end
