@@ -70,7 +70,9 @@
 
       <div class="panel panel-heading">
         <ul class="nav nav-tabs" id="myTab">
-          <li slot="select"><input class="checkbox" type="checkbox" name="check[]" value = <%= product.id %>></li>
+          <li slot="select" >
+            <input class="checkbox" type="checkbox" name="check[]" value ="<%= product.id %>" style="margin: 13px;">
+          </li>
           <li class="active"><a href="#products<%= @ctr %>" data-toggle="tab" aria-expanded="true">Product</a></li>
           <li class=""><a href="#description<%= @ctr %>" data-toggle="tab" aria-expanded="false">Description</a></li>
           <li class=""><a href="#variants<%= @ctr %>" data-toggle="tab" aria-expanded="false">Variants</a></li>
