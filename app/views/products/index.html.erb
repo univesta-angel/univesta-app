@@ -221,7 +221,7 @@
                 <input list="collections" name="_collections" id="_collections" placeholder="Choose Collections" class="form-control">
                 <datalist id="collections">
                   <% @collections.each do |c| %>
-                    <option value="<%= c.title %>">
+                    <option value="<%= c.title %>" id="<%= c.id %>">
                   <% end %>
                 </datalist>
               </div>
