@@ -92,10 +92,10 @@
           <%= form_tag push_path, method: 'post', remote: true do %>
             <!--nav-->
             <div class="row">
-              <div class="cold-md-10">
+              <div class="col-md-10">
 
-              <div class="panel panel-heading">
-                <ul class="nav nav-tabs" id="myTab">
+              <div class="panel-heading">
+                <ul class="nav" id="myTab">
                   <li slot="select" >
                     <input class="checkbox" type="checkbox" name="check[]" value ="<%= product.id %>" style="margin: 13px;">
                   </li>
@@ -106,7 +106,7 @@
                 </ul>
               </div>
 
-              <div class="panel panel-body">
+              <div class="panel-body">
                 <div id="myTabContent" class="tab-content">
 
                 <!--PRODUCTS TAB-->
@@ -125,11 +125,9 @@
                         </div>
                         <div class="input-group input-group-sm">
                           <span class="input-group-addon" style="height: 30px;">Collections:</span>
-                          <input list="collections" name="_collections" id="_collections" class="form-control" />
+                          <input type="text" list="collections" class="form-control" />
                           <datalist id="collections">
-                            <% @collections.each do |c| %>
-                              <option value="<%= c.title %>"></option>
-                            <% end %>
+                            <option value="abc"></option>
                           </datalist>
                         </div>
 
@@ -137,13 +135,13 @@
                       <div class="col-lg-6">
                         <div class="input-group input-group-sm">
                           <span class="input-group-addon" id="sizing-addon3">Type:</span>
-                          <%= text_field_tag :_type, "", class: 'form-control', placeholder: "Choose Type" %>
+                          <%= text_field_tag :_type, "", class: 'form-control', placeholder: "Set Type" %>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="input-group input-group-sm">
                           <span class="input-group-addon" id="sizing-addon3">Tags:</span>
-                          <input name="_tags" id="_tags" placeholder="Insert Tags Here" data-role="tagsinput" class="form-control">
+                          <input list="collections" name="_tags" id="_tags" data-role="tagsinput" class="form-control">
                         </div>
                       </div>
                     </div>
@@ -300,7 +298,7 @@
                 </div> <!-- END OF PANEL BODY -->
 
                 <!--PUSH BUTTON-->
-                <div class="panel panel-footer" style="background-color: #ffffff; position: relative;">
+                <div class="panel-footer">
                   <div class="text-right">
                     <%= link_to "Remove Product", product, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
                     <%= submit_tag 'Push to Store', class: "btn btn-success " %>
