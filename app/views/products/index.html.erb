@@ -125,10 +125,10 @@
                         </div>
                         <div class="input-group input-group-sm">
                           <span class="input-group-addon" style="height: 30px;">Collections:</span>
-                          <input name="_colelctions" id="_collections" type="text" list="collections" class="form-control" />
+                          <input list="collections" name="_collections" id="_collections" class="form-control" />
                           <datalist id="collections">
                             <% @collections.each do |c| %>
-                              <option value="<% c.title %>"></option>
+                              <option value="<%= c.title %>"></option>
                             <% end %>
                           </datalist>
                         </div>
