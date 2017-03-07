@@ -125,7 +125,12 @@
                         </div>
                         <div class="input-group input-group-sm">
                           <span class="input-group-addon" style="height: 30px;">Collections:</span>
-                          <input list="collections" name="_collections" id="_collections" placeholder="Choose Collections" data-role="tagsinput" class="form-control">
+                          <input name="_colelctions" id="_collections" type="text" list="collections" class="form-control" />
+                          <datalist id="collections">
+                            <% @collections.each do |c| %>
+                              <option value="<% c.title %>"></option>
+                            <% end %>
+                          </datalist>
                         </div>
 
                     <div class="row">
@@ -138,7 +143,7 @@
                       <div class="col-lg-6">
                         <div class="input-group input-group-sm">
                           <span class="input-group-addon" id="sizing-addon3">Tags:</span>
-                          <%= text_field_tag :_tags, "", class: 'form-control', placeholder: "Insert Tags Here" %>
+                          <input name="_tags" id="_tags" placeholder="Insert Tags Here" data-role="tagsinput" class="form-control">
                         </div>
                       </div>
                     </div>
