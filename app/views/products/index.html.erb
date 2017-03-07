@@ -13,282 +13,308 @@
 
 <body style="background-color: #f2f2f2;">
 
-  <div class="row" style="margin-left: 17%; margin-right: 10%; margin-bottom: 20px;">
-    <div class="col-md-12">
-      <form class="navbar-form navbar-left" role="search">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search for Products" style="width: 600px; font-family: Verdana, Geneva, sans-serif; margin-right: 20px; margin-left: 10px; margin-left: 180px; color: black;">
-          </div>
-        <div class="btn-group" style="margin-left: 10px; margin-right: 10px;display:inline-block;">
-          <a href="#" class="btn btn-default">Default</a>
-          <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
+  <div class="container-fluid text-center">    
+    <div class="row content">
+
+      <div class="col-sm-3 sidenav">
+        <nav class="navbar navbar-fixed vertical">
+          <ul>
+            <li>
+              <a href="#">Products</a>
+              <div>
+                <ul>
+                  <li><%= link_to image_tag("trolley.png", alt: "logo", size: "30x30"), '/imports', class: "disabled" %></li>
+                  <li><%= link_to image_tag("pricetag.png", alt: "logo", size: "30x30"), '/my_products', class: "disabled" %></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a href="#">Orders</a>
+              <div>
+                <ul>
+                  <li><%= link_to image_tag("page.png", alt: "logo", size: "30x30"), '/orders' %></li>
+                </ul>
+              </div>
+            </li>
           </ul>
+        </nav>
+      </div>
+
+      <!-- start of center column -->
+      <div class="col-sm-8 text-left"> 
+        <div class="row" style="margin-bottom: 20px;">
+          <div class="col-md-12" style="margin-top: 20px;">
+            <form class="navbar-form navbar-left" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search for Products" style="width: 600px; font-family: Verdana, Geneva, sans-serif; margin-right: 10px; color: black;">
+              </div>
+            <div class="btn-group" style="margin-right: 10px; display:inline-block;">
+              <a href="#" class="btn btn-default">Default</a>
+              <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </div>
+              <button type="submit" class="btn btn-default">Search</button>
+            </form>
+          </div>
         </div>
-          <button type="submit" class="btn btn-success" style="margin-left: 10px;">SEARCH</button>
-        </form>
+
+        <div class="row" style="margin-bottom: 30px;">
+          <div class="col-md-4">
+            <div class="checkbox">
+                <input type="checkbox" id="select_all" style="margin-right: 7px; margin-left: 1px;">
+                <%= select_tag 'bulkaction', options_for_select(@urls) %>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div style="float:right; margin-right: 18px;">
+              <%= button_to 'Push All Products', pushall_path, class: 'btn btn-success all' %>
+            </div>
+            <div style="float:right; margin-right: 10px;">
+              <%= button_to 'Remove All Products', remove_all_path, class: 'btn btn-default all', data: { confirm: 'Are you sure?' } %>
+            </div>
+          </div>
+        </div>
+
+          <div><p id="notice"><%= notice %></p></div>
+
+        <div style=""> <!-- list of products -->  
+
+          <% @imports.each do |product| %>
+          <%= form_tag push_path(@imports, remote: true) do %> 
+            <!--nav-->
+            <div class="row">
+              <div class="cold-md-10">
+
+              <div class="panel panel-heading">
+                <ul class="nav nav-tabs" id="myTab">
+                  <li slot="select" >
+                    <input class="checkbox" type="checkbox" name="check[]" value ="<%= product.id %>" style="margin: 13px;">
+                  </li>
+                  <li class="active"><a href="#products<%= @ctr %>" data-toggle="tab" aria-expanded="true">Product</a></li>
+                  <li class=""><a href="#description<%= @ctr %>" data-toggle="tab" aria-expanded="false">Description</a></li>
+                  <li class=""><a href="#variants<%= @ctr %>" data-toggle="tab" aria-expanded="false">Variants</a></li>
+                  <li class=""><a href="#images<%= @ctr %>" data-toggle="tab" aria-expanded="false">Images</a></li>
+                </ul>
+              </div>
+
+              <div class="panel panel-body">
+                <div id="myTabContent" class="tab-content">
+
+                <!--PRODUCTS TAB-->
+                <div class="tab-pane active in" id="products<%= @ctr %>">
+                  <div class="media" id="item">
+                    <div class="media-left">
+                      <%= image_tag(product.images.first, :alt => "picture", :size => "210x210") %>
+                    </div>
+                    <div class="media-body">
+                      <div class="product-title">
+                        <b><%= product.title %></b>
+                      </div>
+                        <div class="input-group">
+                          <span class="input-group-addon">Change Name:</span>
+                          <%= text_field_tag "_title", product.title, maxlength: 255, class: 'form-control' %>
+                        </div>
+                        <div class="input-group input-group-sm">
+                          <span class="input-group-addon" style="height: 30px;">Collections:</span>
+                          <input list="collections" name="_collections" id="_collections" placeholder="Choose Collections" data-role="tagsinput" class="form-control">
+                        </div>
+
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="input-group input-group-sm">
+                          <span class="input-group-addon" id="sizing-addon3">Type:</span>
+                          <%= text_field_tag :_type, "", class: 'form-control', placeholder: "Choose Type" %>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="input-group input-group-sm">
+                          <span class="input-group-addon" id="sizing-addon3">Tags:</span>
+                          <%= text_field_tag :_tags, "", class: 'form-control', placeholder: "Insert Tags Here" %>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <!--END OF PRODUCTS TAB-->
+
+                <!--DESCRIPTION TAB-->
+                <div class="tab-pane" id="description<%= @ctr %>">
+                  <trix-editor input="x" class="editor"></trix-editor>
+                  <input id="x" type="hidden" name="content" value="<%= product.body_html %>">
+                </div>
+                <!--END OF DESCRIPTION TAB-->
+
+                  <!--VARIANTS TAB-->
+                  <div class="tab-pane" id="variants<%= @ctr %>">
+                    <div class="container" style="margin-left: -10px; overflow-y: scroll; height:300px; width: 1100px;" %>
+                      <table class="table table-condensed table-bordered table-striped volumes">
+                        <thead>
+                          <tr>
+                            <th><input type="checkbox" id="select_all2" checked></th>
+                            <th>Image</th>
+                            <th>SKU</th>
+                            <th>Color</th>
+                            <th>Size</th>
+                            <th>Cost</th>
+                            <th>Price</th>
+                            <th>Compared At Price</th>
+                            <th>Inventory</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <!-- set value or mutliplier -->
+                            <td colspan="6" style='text-align: right;'></td>
+                            <td>
+                              <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                  Change All Prices
+                                  <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" id="list1">
+                                  <li><%= link_to "Set New Value", "#", { :class => 'price-edit', :id => 'op1a', :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal'+product.id.to_s ,:aaa =>product.id.to_s} %></li>
+                                  <li><%= link_to "Multiply By", "#", { :class => 'price-edit', :id => 'op1b', :remote => true, 'data-toggle' => "modal", 'data-target' => '#myModal2'+product.id.to_s  , :aaa =>product.id.to_s} %></li>
+                                </ul>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                  Change All Prices
+                                  <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" id="list2">
+                                  <li><%= link_to "Set New Value", "#", {:class => 'price-edit', :id => 'op2a', :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal'+product.id.to_s, :aaa =>product.id.to_s} %></li>
+                                  <li><%= link_to "Multiply By", "#", {:class => 'price-edit', :id => 'op2b', :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal2'+product.id.to_s, :aaa =>product.id.to_s} %></li>
+                                </ul>
+                              </div>
+                            </td>
+                            <td></td>
+
+                            <!-- Modal -->
+                            <div class="modal" id="myModal<%= product.id %>" role="dialog">
+                              <div class="modal-dialog modal-sm" style="position: absolute; top: 37%; left: 34%;">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                  <div class="modal-body">
+                                    <div class ="row">
+                                      <div>
+                                        <div class="container-flex" style="float: left">
+                                          <input type="text" name="new_val" placeholder="Enter Value" class="form-control" style="width: 180px;" id="new_val<%= product.id %>">
+                                          <button class="btn btn-sm flex-right" id="apply"> Apply </button>
+                                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>   
+                              </div>
+                            </div>
+                            <!-- End of Modal -->
+
+                            <!-- Modal for Multiply By -->
+                            <div class="modal" id="myModal2<%= product.id %>" role="dialog">
+                              <div class="modal-dialog modal-sm" style="position: absolute; top: 37%; left: 34%;">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                  <div class="modal-body">
+                                    <div class ="row">
+                                      <div>
+                                        <div class="container-flex" style="float: left">
+                                          <input type="text" name="multiplier" placeholder="Enter Multiplier" class="form-control" style="width: 180px;" id="multiplier<%= product.id %>">
+                                          <button class="btn btn-sm flex-right" id="apply2"> Apply </button>
+                                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>   
+                              </div>
+                            </div>
+                            <!-- End of Modal -->
+
+                            </tr>
+                            <%= hidden_field_tag @ctr2 = 0 %>
+                            <% product.colors.each.with_index do |color, i| %>
+                              <% product.sizes.each do |size| %>
+                                <tr>
+                                  <td><input class="checkbox2" type="checkbox" name="check_var[]" value="<%= @ctr2 %>" checked></td>
+                                  <td><div class = "v-img"><%= image_tag(product.variant_images[i], :size => "100x100", :alt => "variant image") %><%= hidden_field_tag "_varimg[]", product.variant_images[i] %></div></td>
+                                  <td><%= text_field_tag "_sku[]", "", class: 'form-control', size: 10 %></td>
+                                  <td><%= text_field_tag "_color[]", color, class: 'form-control', size: 10 %></td>
+                                  <td><%= text_field_tag "_size[]", size, class: 'form-control', size: 10 %></td>
+                                  <td><%= label_tag number_to_currency(product.price[@ctr2]) %></td>
+                                  <td><%= text_field_tag "_prc2[]", number_with_precision(product.price2[@ctr2].to_f, :precision => 2), class: 'form-control', size: 10 %></td>
+                                  <td><%= text_field_tag "_compAtPrice[]", number_with_precision(product.compare_at_price[@ctr2].to_f, :precision => 2), class: 'form-control', size: 10 %></td>
+                                  <td><%= label_tag product.avail_qty[@ctr2] %><%= hidden_field_tag "_qty[]", product.avail_qty[@ctr2] %></td>
+                                </tr>
+                                <% @ctr2 += 1 %>
+                              <% end %>
+                              <% i += 1 %>
+                            <% end %>  
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  <!--END OF VARIANTS TAB-->
+
+                  <!--IMAGES TAB-->
+                  <div class="tab-pane" id="images<%= @ctr %>">
+                    <div id="gallery">
+                        <select class="image-picker show-html" multiple="multiple">
+                        <% hidden_field_tag @ctr3 = 1 %>
+                        <% imgarr = [] %>
+                        <% product.images.each do |image| %>
+                        <% imgarr << image %>
+                        <% end %>
+                        <% product.variant_images.each do |image| %>
+                        <% imgarr << image %>
+                        <% end %>
+                        <% imgarr.each do |image| %>
+                          <option data-img-src="<%= image %>" value="<%= @ctr3 %>">Cute Kitten <%= @ctr3 %></option>
+                        <% @ctr3 += 1 %>
+                        <% end %>
+                        </select>
+                    </div>
+                  </div>
+                  <!--END OF IMAGES TAB-->
+
+
+
+                  </div> 
+                </div> <!-- END OF PANEL BODY -->
+
+                <!--PUSH BUTTON-->
+                <div class="panel panel-footer" style="background-color: #ffffff; position: relative;">
+                  <div class="text-right">
+                    <%= link_to "Remove Product", product, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+                    <%= submit_tag 'Push to Store', class: "btn btn-success " %>
+                  </div>
+                </div>
+                <br/>
+                <br/>
+
+                <% @ctr+=1 %>
+                <% end %>
+              <% end %>
+
+            </div>
+
+          </div>
+        </div> <!-- end of products -->
+
+
+      </div> <!-- end of center column-->
+
     </div>
   </div>
 
-    <div class="row" style="margin-left: 25%; margin-right: 17.1%; margin-bottom: 20px;">
-      <div class="col-md-6">
-        <div class="checkbox">
-          <label style="color: white;">
-            <input type="checkbox" id="select_all" style="margin-right: 7px">
-            <select class="selectpicker" id="bulkaction">
-              <option>Push Selected</option>
-              <option>Remove Selected</option>
-             </select>
-          </label>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div style="float:right;">
-          <%= button_to 'Push All Products', pushall_path, class: 'btn btn-default all' %>
-        </div>
-        <div style="float:right; margin-right: 10px;">
-          <%= button_to 'Remove All Products', remove_all_path, class: 'btn btn-default all', data: { confirm: 'Are you sure?' } %>
-        </div>
-      </div>
-    </div>
-    
-  <div style="margin-left: 25%; margin-right: 10%;"><p id="notice"><%= notice %></p></div>
-  
-<div style="margin-left: 25%; margin-right: 10%;"> <!-- list of products -->
-  
-  <% @products.each do |product| %>
-    <%= form_tag push_path, method: 'post', remote: true do %>
-    
-  <!--nav-->
-  <div class="row">
-    <div class="cold-md-12">
-
-      <div class="panel panel-heading">
-        <ul class="nav nav-tabs" id="myTab">
-          <li slot="select" >
-            <input class="checkbox" type="checkbox" name="check[]" value ="<%= product.id %>" style="margin: 13px;">
-          </li>
-          <li class="active"><a href="#products<%= @ctr %>" data-toggle="tab" aria-expanded="true">Product</a></li>
-          <li class=""><a href="#description<%= @ctr %>" data-toggle="tab" aria-expanded="false">Description</a></li>
-          <li class=""><a href="#variants<%= @ctr %>" data-toggle="tab" aria-expanded="false">Variants</a></li>
-          <li class=""><a href="#images<%= @ctr %>" data-toggle="tab" aria-expanded="false">Images</a></li>
-        </ul>
-      </div>
-
-      <div class="panel panel-body">
-      <div id="myTabContent" class="tab-content">
-
-  <!--PRODUCTS TAB-->
-      <div class="tab-pane active in" id="products<%= @ctr %>">
-        <div class="media" id="item">
-          <div class="media-left">
-            <% aaa = product.images.first %>
-            <%= image_tag aaa, :size => '260x260' %>
-          </div>
-          <div class="media-body">
-            <div class="product-title">
-              <b><%= product.title %></b>
-            </div>
-              <div class="input-group">
-                <span class="input-group-addon">Change Name:</span>
-                <%= text_field_tag "_title", product.title, maxlength: 255, class: 'form-control' %>
-              </div>
-              <div class="input-group input-group-sm">
-                <span class="input-group-addon" id="sizing-addon3">Collections:</span>
-                <input list="collections" name="_collections" id="_collections" placeholder="Choose Collections" data-role="tagsinput" class="form-control">
-              </div>
-
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="input-group input-group-sm">
-                <span class="input-group-addon" id="sizing-addon3">Type:</span>
-                <%= text_field_tag :_type, "", class: 'form-control', placeholder: "Choose Type" %>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="input-group input-group-sm">
-                <span class="input-group-addon" id="sizing-addon3">Tags:</span>
-                <%= text_field_tag :_tags, "", class: 'form-control', placeholder: "Insert Tags Here" %>
-              </div>
-            </div>
-          </div>
-          </div>
-        </div>
-      </div>
-      <!--END OF PRODUCTS TAB-->
-
-      <!--DESCRIPTION TAB-->
-      <div class="tab-pane" id="description<%= @ctr %>">
-        <trix-editor input="x" class="editor"></trix-editor>
-        <input id="x" type="hidden" name="content" value="<%= product.body_html %>">
-      </div>
-      <!--END OF DESCRIPTION TAB-->
-
-      <!--VARIANTS TAB-->
-      <div class="tab-pane" id="variants<%= @ctr %>">
-        <div class="container variant" style="margin-left: -10px; overflow-y: scroll; height:300px; width: 1100px;" %>
-          <table class="table table-condensed table-bordered table-striped volumes">
-            <thead>
-              <tr>
-                <th><input type="checkbox" id="select_all2" checked></th>
-                <th>Image</th>
-                <th>SKU</th>
-                <th>Color</th>
-                <th>Size</th>
-                <th>Cost</th>
-                <th>Price</th>
-                <th>Compared At Price</th>
-                <th>Inventory</th>
-              </tr>
-            </thead>
-              <tbody>
-              <tr>
-                  <!-- set value or mutliplier -->
-                  <td colspan="6" style='text-align: right;'></td>
-                  <td>
-
-                    <div class="dropdown">
-                      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        Change All Prices
-                        <span class="caret"></span>
-                      </button>
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" id="list1">
-                        <li><%= link_to "Set New Value", "#", { :class => 'price-edit', :id => 'op1a', :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal'+product.id.to_s ,:aaa =>product.id.to_s} %></li>
-                        <li><%= link_to "Multiply By", "#", { :class => 'price-edit', :id => 'op1b', :remote => true, 'data-toggle' => "modal", 'data-target' => '#myModal2'+product.id.to_s  , :aaa =>product.id.to_s} %></li>
-                      </ul>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="dropdown">
-                      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        Change All Prices
-                        <span class="caret"></span>
-                      </button>
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" id="list2">
-                        <li><%= link_to "Set New Value", "#", {:class => 'price-edit', :id => 'op2a', :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal'+product.id.to_s, :aaa =>product.id.to_s} %></li>
-                        <li><%= link_to "Multiply By", "#", {:class => 'price-edit', :id => 'op2b', :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal2'+product.id.to_s, :aaa =>product.id.to_s} %></li>
-                      </ul>
-                    </div>
-                  </td>
-                    <td></td>
-                
-                <!-- Modal -->
-    <div class="modal" id="myModal<%= product.id %>" role="dialog">
-      <div class="modal-dialog modal-sm" style="position: absolute; top: 37%; left: 34%;">
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-body">
-            <div class ="row">
-              <div>
-                <div class="container-flex" style="float: left">
-                  <input type="text" name="new_val" placeholder="Enter Value" class="form-control" style="width: 180px;" id="new_val<%= product.id %>">
-                  <button class="btn btn-sm flex-right" id="apply"> Apply </button>
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>   
-      </div>
-    </div>
-    <!-- End of Modal -->
-
-    <!-- Modal for Multiply By -->
-    <div class="modal" id="myModal2<%= product.id %>" role="dialog">
-      <div class="modal-dialog modal-sm" style="position: absolute; top: 37%; left: 34%;">
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-body">
-            <div class ="row">
-              <div>
-                <div class="container-flex" style="float: left">
-                  <input type="text" name="multiplier" placeholder="Enter Multiplier" class="form-control" style="width: 180px;" id="multiplier<%= product.id %>">
-                  <button class="btn btn-sm flex-right" id="apply2"> Apply </button>
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>   
-      </div>
-    </div>
-    <!-- End of Modal -->
-                </tr>
-                <%= hidden_field_tag @ctr2 = 0 %>
-                <% product.colors.each.with_index do |color, i| %>
-                  <% product.sizes.each do |size| %>
-                    <tr>
-                      <td><input class="checkbox2" type="checkbox" name="check_var[]" value="<%= @ctr2 %>" checked></td>
-                      <td><div class = "v-img"><%= image_tag(product.variant_images[i], :size => "100x100", :alt => "variant image") %><%= hidden_field_tag "_varimg[]", product.variant_images[i] %></div></td>
-                      <td><%= text_field_tag "_sku[]", "", class: 'form-control', size: 10 %></td>
-                      <td><%= text_field_tag "_color[]", color, class: 'form-control', size: 10 %></td>
-                      <td><%= text_field_tag "_size[]", size, class: 'form-control', size: 10 %></td>
-                      <td><%= label_tag number_to_currency(product.price[@ctr2]) %></td>
-                      <td><%= text_field_tag "_prc2[]", number_with_precision(product.price2[@ctr2].to_f, :precision => 2), class: 'form-control', size: 10 %></td>
-                      <td><%= text_field_tag "_compAtPrice[]", number_with_precision(product.compare_at_price[@ctr2].to_f, :precision => 2), class: 'form-control', size: 10 %></td>
-                      <td><%= label_tag product.avail_qty[@ctr2] %><%= hidden_field_tag "_qty[]", product.avail_qty[@ctr2] %></td>
-                    </tr>
-                    <% @ctr2 += 1 %>
-                  <% end %>
-                  <% i += 1 %>
-                <% end %>  
-              </tbody>
-            </table>
-          </div>
-        </div>
-      <!--END OF VARIANTS TAB-->
-
-      <!--IMAGES TAB-->
-      <div class="tab-pane" id="images<%= @ctr %>">
-        <div id="gallery">
-            <select class="image-picker show-html" multiple="multiple">
-            <% hidden_field_tag @ctr3 = 1 %>
-            <% imgarr = [] %>
-            <% product.images.each do |image| %>
-            <% imgarr << image %>
-            <% end %>
-            <% product.variant_images.each do |image| %>
-            <% imgarr << image %>
-            <% end %>
-            <% imgarr.each do |image| %>
-              <option data-img-src="<%= image %>" value="<%= @ctr3 %>">Cute Kitten <%= @ctr3 %></option>
-            <% @ctr3 += 1 %>
-            <% end %>
-            </select>
-        </div>
-      </div>
-      <!--END OF IMAGES TAB-->
-
-    </div> 
-  </div> <!-- END OF PANEL BODY -->
-
-  <!--PUSH BUTTON-->
-    <div class="panel panel-footer" style="background-color: #ffffff; position: relative;">
-      <div class="text-right">
-        <%= link_to "Remove Product", product, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
-        <%= submit_tag 'Push to Store', class: "btn btn-success " %>
-      </div>
-    </div>
-    <br/>
-    <br/>
-  <% @ctr+=1 %>
-  <% end %>
-<% end %>
-      
-    </div>
-  </div>
-  
-</div>
-<!--end navs-->
-
-<!--as->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="js/bootstrap.js"></script>
-  <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
