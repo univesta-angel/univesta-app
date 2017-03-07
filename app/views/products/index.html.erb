@@ -85,8 +85,8 @@
 
         <div style=""> <!-- list of products -->  
 
-          <% @imports.each do |product| %>
-          <%= form_tag push_path(@imports, remote: true) do %> 
+        <% @products.each do |product| %>
+          <%= form_tag push_path, method: 'post', remote: true do %>
             <!--nav-->
             <div class="row">
               <div class="cold-md-10">
