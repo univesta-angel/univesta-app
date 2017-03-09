@@ -242,13 +242,12 @@
 				  </li>
 				</ul>
 	    	</div>
-		    
-		 <% @orders.each do |order| %>
+
 			<div class="row">
 		        <div class="container order-detail">
 		          <div class="Row">
-		            <div class="col-md-3">Order <a href="#"><%= order.order_number %></a><span class="date"><%= order.created_at %></span></div>
-		            <div class="col-md-3">Customer: <a href="#"><%= order.shipping_address.name %></a></div>
+		            <div class="col-md-3">Order <a href="#">#1001</a><span class="date">2017 03 09</span></div>
+		            <div class="col-md-3">Customer: <a href="#">Angel Santiago</a></div>
 		            <div class="col-md-3">Add Note</div>
 		            <div class="Column2"><button type="button" class="btn btn-default mark-ship-btn">Mark as Shipped</button></div>
 		          </div>
@@ -261,7 +260,6 @@
 		          </div>
 		            <div class="line-item-detail">
 		                    <!-- line items -->
-			    <% order.line_items.each do |item| %>
 		                <div class="row">
 
 		                  <div class="col-md-1">
@@ -272,16 +270,16 @@
 
 		                  <div class="col-md-3">
 		                    <div class="line-item-title">
-		                    	<h5><a><%= item.title %></a></h5>
+		                    	<h5><a>sample product #1</a></h5>
 	                    	</div>
 		                    <div class="line-item-sku">
-		                    	<h6 style="color: grey"><%= item.sku %></h6>
+		                    	<h6 style="color: grey">1234556-abc</h6>
 		                    </div>
 	                      </div>
 
 		                  <div class="col-md-2">
 		                  	<div class="line-item-color">
-		                  		<h5><%= item.variant_title %></h5>
+		                  		<h5>Black</h5>
 		                  	</div>
 		                  </div>
 
@@ -293,15 +291,14 @@
 
 		                  <div class="col-md-3">
 		                  	<div class="line-item-qtyprice">
-		                  		<h5><%= item.quantity %><span>X</span><%= item.price %></h5>
+		                  		<h5>1<span>X</span>11.99</h5>
 		                  	</div>
 		                  </div>
 	            		</div>
-				<% end %>
+	            		
 	              	</div>
 	        	</div>
 			</div>
-		<% end %>
 
 	    </div>
 	    <!-- end of center column -->
