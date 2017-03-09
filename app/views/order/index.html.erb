@@ -28,156 +28,286 @@
       display: table-cell;
       float: right;
     }
+      .aaa{
+      	width: 190px;
+      }
+      .navbar-nav{
+      	width: 1200px;
+      	background-color: #3D405B;
+      	border: 1px;
+		border-radius: 3px;
+		-webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.36);
+		-moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.36);
+		box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.36);
+      }
+      ul.nav.navbar-nav > li > a {
+      	color: white;
+      }
+      .search-orders {
+      	margin-top: 10px;
+      	margin-bottom: 20px;
+      	margin-left: 17%;
+      }
+      #search-key {
+      	float: left;
+      }
+      .date-range{
+      	float: right;
+      }
+      .order-option {
+      	margin-top: 10px;
+      	margin-bottom: 10px;
+      	margin-left: 9%;
+      }
+      .order-detail{
+      	margin-top: 20px;
+      	margin-left: 10%;
+      	color: #000;
+      	background-color: #ffffff;
+      	width: 1200px;
+      	border: 1px;
+		border-radius: 3px;
+		-webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+		-moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+		box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+      }
+      .order-detail > div > div > span.date {
+      	margin-left: 5px;
+      }
+      .order-detail > div > div > a {
+      	margin-left: 5px;
+      	color: #76A28C;
+      }
+      .line-item-detail{
+      	border:1px;
+      	display:inline-block;
+      	background-color: #F4F1DE;
+      	width: 100%;
+      	height: 100px;
+      	margin-top: 20px;
+      	margin-bottom: 10px;
+      	border: 1px solid grey;
+		border-radius: 3px;
+      }
+      .line-item-img{
+      	padding: 5px;
+      	margin-left: 30px;
+      	margin-top: 18px;
+      	border: 1px solid grey;
+      }
+      .line-item-title, .line-item-color, .line-item-trackNo {
+      	margin-left: 30px;
+      	margin-top: 30px;
+      }
+      .line-item-title > h5 > a {
+      	color: #76A28C;
+      }
+      .line-item-sku{
+      	margin-left: 30px;
+      	margin-top: -5px;
+      }
+      div.line-item-color > h5, div.line-item-trackNo > h5 {
+      	color: grey;
+      }
+      .line-item-qtyprice{
+      	display: inline;
+      	color: grey;
+      	margin-top: 30px;
+      	margin-left: 30px;
+      	text-align: right;
+      }
+      .line-item-qtyprice > h5 > span {
+      	margin-left: 15px;
+      	margin-right: 15px;
+      }
+      .order-prd-btn{
+      	background-color: #E07A5F;
+      	color: white;
+      }
+      .add-order-btn, .mark-ship-btn {
+      	background-color: white;
+      	border: 1px solid grey;
+      }
+      .filter-btn{
+      	background-color: #F2CC8F;
+      }
+
   </style>
 
 </head>
 
+
 <body style="background-color: #f2f2f2">
-  <div><p id="notice"><%= notice %></p></div>
 
-    <div class="row" style="margin-left: 10%; margin-right: 10%;">
-	    <div class="col-md-12">
-        <form class="navbar-form navbar-left" role="search" style=" margin-right: 15%; margin-left: 15%;">
-          <div class="form-group">
-              <input type="text" class="form-control" placeholder="Enter Keywords" style="width: 582px; color: black;">
-          </div>
-          <button type="submit" class="btn btn-default" style="margin-left: 10px;  margin-right: 10px; width: 100px">Filter</button>
+	<div class="container-fluid text-center">
+	  <div class="row content">
 
-          <input type="text" data-provide='datepicker' style="margin-left: 10px; margin-right: 10px;"> - <input type="text" data-provide='datepicker' style="margin-left: 10px; margin-right: 10px;">
-          <div class="btn-group" style="margin-left: 10px; margin-right: 10px;">
-            <a href="#" class="btn btn-default">Select Date Range</a>
-            <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-            </ul>
-          </div>
-        </form>
+	    <div class="col-sm-2 sidenav">
+	      <nav class="navbar navbar-fixed vertical">
+	        <ul>
+	          <li>
+	            <a href="#">Products</a>
+	            <div>
+	              <ul>
+	                <li><%= link_to image_tag("trolley.png", alt: "logo", size: "30x30"), '/imports', class: "disabled" %></li>
+	                <li><%= link_to image_tag("pricetag.png", alt: "logo", size: "30x30"), '/my_products', class: "disabled" %></li>
+	              </ul>
+	            </div>
+	          </li>
+	          <li>
+	            <a href="#">Orders</a>
+	            <div>
+	              <ul>
+	                <li><%= link_to image_tag("page.png", alt: "logo", size: "30x30"), '/orders' %></li>
+	              </ul>
+	            </div>
+	          </li>
+	        </ul>
+	      </nav>
 	    </div>
-    </div>
 
-    <div class="row">
-	    <div class="col-md-12" style="margin-left: 17%; margin-right: 10%;">
-	      <form class="navbar-form navbar-left">
-        <div class="btn-group">
-          <a href="#" class="btn btn-default" style="width: 218px;">Fulfillment Status: All</a>
-          <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></a>
-          <ul class="dropdown-menu" style="margin-left: 10px;">
-            <li><input type="checkbox" name="vehicle" value="Bike">Unknown</li>
-            <li><input type="checkbox" name="vehicle" value="Bike">Fulfilled</li>
-            <li><input type="checkbox" name="vehicle" value="Bike">Unfulfilled</li>
-            <li><input type="checkbox" name="vehicle" value="Bike">Partial</li>
-          </ul>
-        </div>
-        <div class="btn-group">
-          <a href="#" class="btn btn-default" style="width: 218px;">Financial Status: All</a>
-          <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </div>
-        <div class="btn-group">
-          <a href="#" class="btn btn-default" style="width: 218px;">Flags Status: All</a>
-          <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </div>
-        <div class="btn-group">
-          <a href="#" class="btn btn-default" style="width: 218px;">Order Status: All</a>
-          <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </div>
-        <div class="btn-group">
-          <a href="#" class="btn btn-default" style="width: 218px;">Sources Status: All</a>
-          <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </div>
-      </form>
-    </div>
-  </div>
+	    <!-- start of center colum -->
+	    <div class="col-sm-8 text-left">
+      		<div><p id="notice"><%= notice %></p></div>	
+			<br/>
 
-<!--nav-->
- <% @orders.each do |order| %>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="panel-body" style=" margin-top: 50px; margin-right: 15%; margin-left: 12.5%; color: #000; background-color: #ffffff;">
-        <div id="myTabContent" class="tab-content">
-          <div class="container">
-            <div class="Row">
-              <div class="col-lg-3">Order <a href="#"><%= order.order_number %> </a><%= order.created_at %></div>
-              <div class="col-lg-3">Customer: <a href=""><%= order.shipping_address.name %></a></div>
-              <div class="col-lg-3">Add Note</div>
-              <div class="Column2"><button type="button" class="btn btn-default">Mark as Shipped</button></div>
-            </div>
-            <hr>
-            <div class="Row">
-              <div class="col-lg-3"><span class="label label-warning" style="margin-right: 10px">To Order</span>Supplier: <a href="#">Warehouse #0001</a></div>
-              <div class="col-lg-2">Ali Order No:<button type="button" class="btn btn-sm" style="margin-left: 20px;">Add</button></div>
-              <div class="col-lg-3">Shipped:<b style="margin-left: 5px">0/1</b><button type="button" class="btn btn-sm" style="margin-left: 10px">Mark as Shipped</button></div>
-              <div class="Column2"><button type="button" class="btn btn-default" style="background-color: orange; color: white;">Order Product</button></div>
-            </div>
-            <div style="margin: auto; margin-top: 25px">
-              <div style="border:1px; display:inline-block; background-color: #ddeaff; width: 1150px; height: 100px; margin-bottom: 10px">
-                      <!-- line items -->
-                <% order.line_items.each do |item| %>
-                  <div class="row">
-                    <div class="col-sm-5">
-                      <div><h6><a><%= item.title %></a></h6></div>
-                      <div><h5 style="color: grey"><%= item.sku %></h5></div></div>
-                    <div class="col-sm-3">
-                      	<div>
-			    <%= item.variant_title %>
-		    	</div>
+			<div class="row search-orders">
+			    <div class="col-md-13">
+			      <form class="navbar-form navbar-left" role="search" >
+			        <div class="form-group">
+			            <input type="text" class="form-control" id="search-key" placeholder="Enter Keywords" style="width: 400px; color: black;">
+			        </div>
+			        <button type="submit" class="btn btn-default filter-btn" style="margin-left: 10px;  margin-right: 10px; width: 70px">Filter</button>
+
+			        <input type="text" data-provide='datepicker' style="margin-left: 7px; margin-right: 10px; width: 120px;"> - <input type="text" data-provide='datepicker' style="margin-left: 10px; margin-right: 10px; width: 120px;">
+			        <div class="btn-group date-range" style="margin-left: 10px; margin-right: 10px;">
+			          <a href="#" class="btn btn-default flex-right" id="date-range">Select Date Range</a>
+			          <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></a>
+			          <ul class="dropdown-menu">
+			            <li><a href="#">Action</a></li>
+			            <li><a href="#">Another action</a></li>
+			            <li><a href="#">Something else here</a></li>
+			            <li class="divider"></li>
+			            <li><a href="#">Separated link</a></li>
+			          </ul>
+			        </div>
+			      </form>
+			    </div>
 		    </div>
-                    <div class="col-sm-3">
-                      	<div>
-			    ****tracking number
-		    	</div>
-		    </div>
-                    <div class="col-sm-3">
-                      	<div style="">
-			    <%= item.quantity %><span style="marginLeft: 5px; marginRight: 5px;">x</span><%= item.price %>
-		    	</div>
-		    </div>
-                  </div>
-                <% end %>
 
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-<% end %>
+		    <div class="row order-option">
+			    <ul class="nav navbar-nav">
+				  <li role="presentation" class="dropdown">
+				    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+				      Fulfillment Status: All <span class="caret"></span>
+				    </a>
+				    <ul class="dropdown-menu">
+				    	<li><input type="checkbox" name="vehicle" value="Bike">Unknown</li>
+			            <li><input type="checkbox" name="vehicle" value="Bike">Fulfilled</li>
+			            <li><input type="checkbox" name="vehicle" value="Bike">Unfulfilled</li>
+			            <li><input type="checkbox" name="vehicle" value="Bike">Partial</li>
+				    </ul>
+				  </li>
+				  <li role="presentation" class="dropdown">
+				    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+				      Financial Status: All <span class="caret"></span>
+				    </a>
+				    <ul class="dropdown-menu">
+				    	<li>ABC</li>
+				    </ul>
+				  </li>
+				  <li role="presentation" class="dropdown">
+				    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+				      Flags Status: All <span class="caret"></span>
+				    </a>
+				    <ul class="dropdown-menu">
+				    	<li>ABC</li>
+				    </ul>
+				  </li>
+				  <li role="presentation" class="dropdown">
+				    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+				      Order Status: All <span class="caret"></span>
+				    </a>
+				    <ul class="dropdown-menu">
+				    	<li>ABC</li>
+				    </ul>
+				  </li>
+				  <li role="presentation" class="dropdown">
+				    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+				      Sources Status: All <span class="caret"></span>
+				    </a>
+				    <ul class="dropdown-menu">
+				    	<li>ABC</li>
+				    </ul>
+				  </li>
+				</ul>
+	    	</div>
+		    
+		 <% @orders.each do |order| %>
+			<div class="row">
+		        <div class="container order-detail">
+		          <div class="Row">
+		            <div class="col-md-3">Order <a href="#">#1001</a><span class="date">2017 03 09</span></div>
+		            <div class="col-md-3">Customer: <a href="#">Angel Santiago</a></div>
+		            <div class="col-md-3">Add Note</div>
+		            <div class="Column2"><button type="button" class="btn btn-default mark-ship-btn">Mark as Shipped</button></div>
+		          </div>
+		          <hr>
+		          <div class="Row">
+		            <div class="col-md-3"><span class="label label-warning" style="margin-right: 10px">To Order</span>Supplier: <a href="#">Warehouse #0001</a></div>
+		            <div class="col-md-3">Ali Order No:<button type="button" class="btn btn-sm add-order-btn" style="margin-left: 20px;">Add</button></div>
+		            <div class="col-md-3">Shipped:<b style="margin-left: 5px">0/1</b><button type="button" class="btn btn-sm mark-ship-btn" style="margin-left: 10px">Mark as Shipped</button></div>
+		            <div class="Column2"><%= button_to "Order Product", aliexp_path, method: 'get', remote: true, class: 'btn btn-default order-prd-btn' %></div>
+		          </div>
+		            <div class="line-item-detail">
+		                    <!-- line items -->
+			    <% order.line_items.each do |item| %>
+		                <div class="row">
 
+		                  <div class="col-md-1">
+		                    <div>
+		                    	<img src="http://placehold.it/50x50" class="line-item-img">
+		                    </div>
+	                      </div>
 
-<!--as->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="js/bootstrap.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+		                  <div class="col-md-3">
+		                    <div class="line-item-title">
+		                    	<h5><a><%= item.title %></a></h5>
+	                    	</div>
+		                    <div class="line-item-sku">
+		                    	<h6 style="color: grey"><%= item.sku %></h6>
+		                    </div>
+	                      </div>
+
+		                  <div class="col-md-2">
+		                  	<div class="line-item-color">
+		                  		<h5><%= item.variant_title %></h5>
+		                  	</div>
+		                  </div>
+
+		                  <div class="col-md-2">
+		                  	<div class="line-item-trackNo">
+		                  		<h5>No Tracking Number</h5>
+		                  	</div>
+                		  </div>
+
+		                  <div class="col-md-3">
+		                  	<div class="line-item-qtyprice">
+		                  		<h5><%= item.quantity %><span>X</span><%= item.price %></h5>
+		                  	</div>
+		                  </div>
+				<% end %>
+	            		</div>
+	              	</div>
+	        	</div>
+			</div>
+		<% end %>
+
+	    </div>
+	    <!-- end of center column -->
+
+	  </div>
+	</div>
+
 </body>
 </html>
