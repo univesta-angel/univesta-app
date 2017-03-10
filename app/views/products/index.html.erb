@@ -117,7 +117,7 @@
                           <input type="text" list="collections" class="form-control" />
                           <datalist id="collections">
                             <% @collections.each do %>
-                              <option value="<% c.title %>"/>
+                              <option value="<%= c.title %>"></option>
                             <% end %>
                           </datalist>
                         </div>
