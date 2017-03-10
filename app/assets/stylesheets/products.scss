@@ -152,7 +152,7 @@ ul#myTab > li > a {
 
 ul#myTab > li > a.active {
     color: white;
-    background-color: #black;
+    background-color: black;
 }
 
 .panel-heading{
@@ -171,5 +171,11 @@ ul#myTab > li > a.active {
   background-color: white;
   padding: 10px 0;
 }
+
+.page-content{
+  margin-left: 20%;
+}
+
+
 
 
