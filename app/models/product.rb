@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
-	def self.search(search)
-	  if search
-	    where('lower(title) LIKE ?', "%#{search.downcase}%")
+	def self.search(searchprd)
+	  if searchprd
+	    where('lower(title) LIKE ?', "%#{searchprd.downcase}%")
 	  else
 	    all
 	  end
