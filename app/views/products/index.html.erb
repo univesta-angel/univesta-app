@@ -17,13 +17,13 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
       <ul class="nav sidebar-nav">
           <li>
-              <%= link_to image_tag("trolley.png", alt: "logo", size: "160x160"), '/', class: "disabled" %>
+              <%= link_to image_tag("trolley-white.png", alt: "logo", size: "160x160"), '/', class: "disabled" %>
           </li>
           <li>
-              <%= link_to image_tag("pricetag.png", alt: "logo", size: "160x160"), '/my_products', class: "disabled" %>
+              <%= link_to image_tag("pricetag-white.png", alt: "logo", size: "160x160"), '/my_products', class: "disabled" %>
           </li>
           <li>
-              <%= link_to image_tag("page.png", alt: "logo", size: "160x160"), '/orders' %>
+              <%= link_to image_tag("pages.png", alt: "logo", size: "160x160"), '/orders' %>
           </li>
       </ul>
     </nav>
@@ -43,20 +43,9 @@
           <div class="col-md-12" style="margin-top: 20px;">
             <form class="navbar-form navbar-left" role="search">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search for Products" style="width: 600px; font-family: Verdana, Geneva, sans-serif; margin-right: 10px; color: black;">
+                <input type="text" class="form-control" placeholder="Search for Products" id="search-prd">
               </div>
-            <div class="btn-group" style="margin-right: 10px; display:inline-block;">
-              <a href="#" class="btn btn-default">Default</a>
-              <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
-            </div>
-              <button type="submit" class="btn btn-default">Search</button>
+              <button type="submit" class="btn btn-default" id="search-btn">Search</button>
             </form>
           </div>
         </div>
@@ -72,10 +61,10 @@
             </div>
           </div>
           <div class="col-md-7">
-            <div style="float:right; margin-right: 18px;">
-              <%= button_to 'Push All Products', pushall_path, class: 'btn btn-success all' %>
+            <div style="float:right; margin-right: 13px;">
+              <%= button_to 'Push All Products to Shop', pushall_path, class: 'btn btn-success all' %>
             </div>
-            <div style="float:right; margin-right: 10px;">
+            <div style="float:right; margin-right: 5px;">
               <%= button_to 'Remove All Products', remove_all_path, class: 'btn btn-default all', data: { confirm: 'Are you sure?' } %>
             </div>
           </div>
@@ -83,7 +72,7 @@
 
           <div><p id="notice"><%= notice %></p></div>
 
-        <div style=""> <!-- list of products -->  
+        <div> <!-- list of products -->  
 
         <% @products.each do |product| %>
           <%= form_tag push_path, method: 'post', remote: true do %>
@@ -110,7 +99,7 @@
                 <div class="tab-pane active in" id="products<%= @ctr %>">
                   <div class="media" id="item">
                     <div class="media-left">
-                      <%= image_tag(product.images.first, :alt => "picture", :size => "210x210") %>
+                      <%= image_tag(product.images.first, :alt => "picture", :size => "210x210", class: "prd-image") %>
                     </div>
                     <div class="media-body">
                       <div class="product-title">
@@ -253,10 +242,10 @@
                                   <td><%= text_field_tag "_sku[]", "", class: 'form-control', size: 10 %></td>
                                   <td><%= text_field_tag "_color[]", color, class: 'form-control', size: 10 %></td>
                                   <td><%= text_field_tag "_size[]", size, class: 'form-control', size: 10 %></td>
-                                  <td><%= label_tag number_to_currency(product.price[@ctr2]) %></td>
+                                  <td><%= label_tag "", number_to_currency(product.price[@ctr2]), class: "var-cost" %></td>
                                   <td><%= text_field_tag "_prc2[]", number_with_precision(product.price2[@ctr2].to_f, :precision => 2), class: 'form-control', size: 10 %></td>
                                   <td><%= text_field_tag "_compAtPrice[]", number_with_precision(product.compare_at_price[@ctr2].to_f, :precision => 2), class: 'form-control', size: 10 %></td>
-                                  <td><%= label_tag product.avail_qty[@ctr2] %><%= hidden_field_tag "_qty[]", product.avail_qty[@ctr2] %></td>
+                                  <td><%= label_tag "", product.avail_qty[@ctr2], class: "inv-qty" %><%= hidden_field_tag "_qty[]", product.avail_qty[@ctr2] %></td>
                                 </tr>
                                 <% @ctr2 += 1 %>
                               <% end %>
@@ -297,10 +286,11 @@
                 <!--PUSH BUTTON-->
                 <div class="panel-footer">
                   <div class="text-right">
-                    <%= link_to "Remove Product", product, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
-                    <%= submit_tag 'Push to Store', class: "btn btn-success " %>
+                    <%= link_to "Remove Product", product, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default all" %>
+                    <%= submit_tag 'Push to Store', class: "btn btn-success push-btn" %>
                   </div>
                 </div>
+                <br/>
                 <br/>
                 <br/>
 
