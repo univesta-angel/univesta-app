@@ -43,12 +43,12 @@
         <div class="row" style="margin-bottom: 20px;">
           <div class="col-md-14" style="margin-top: 20px;">
             <div class="panel-body align-center search-form">
-            <form class="navbar-form" role="search">
-              <div class="form-group" style="float: center;">
-                <input type="text" id="search-prd" class="form-control" placeholder="Search for Products">
-              </div>
-              <button type="submit" class="btn btn-default" id="search-btn">Search</button>
-            </form>
+              <%= form_tag(imports_path, method: :get) do %>
+                <div class="form-group">
+                <%= text_field_tag "searchprd", params[:searchprd], class: "form-control", placeholder: "Seach for Products" %>
+                </div>
+                <%= submit_tag 'Search', name: nil, class: "btn btn-default", id: "search-btn" %>
+              <% end %>
           </div>
           </div>
         </div>
