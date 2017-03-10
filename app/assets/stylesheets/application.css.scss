@@ -23,10 +23,10 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-
 body {
     position: relative;
     overflow-x: hidden;
+    background-color: #f7f7f7;
 }
 body,
 html { height: 100%;}
@@ -58,7 +58,7 @@ html { height: 100%;}
     margin-left: -220px;
     overflow-y: auto;
     overflow-x: hidden;
-    background: #3D405B;
+    background: #2D2D2D;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -119,7 +119,7 @@ html { height: 100%;}
 
 }
 .sidebar-nav li:first-child:before {
-    background-color: #E07A5F;   
+    background-color: #E07A5F;
 }
 .sidebar-nav li:nth-child(2):before {
     background-color: #F2CC8F;   
