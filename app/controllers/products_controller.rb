@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
     ShopifyAPI::Base.site = shop_url
     shop = ShopifyAPI::Shop.current
 
-    @products = Product.search(params[:search])
+    @products = Product.search(params[:searchprd])
     #@collects = ShopifyAPI::Collect.find(:all)    #get collection
     @bulkaction = ["Push Selected", "Remove Selected"]
     @ctr = 1
