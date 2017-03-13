@@ -14,6 +14,8 @@ gem 'jsonapi-resources'
 gem 'delayed_job_active_record'
 gem 'httparty'
 gem 'httplog'
+gem "watir-rails"
+gem 'phantomjs', '~> 2.1', '>= 2.1.1.0'
 
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
