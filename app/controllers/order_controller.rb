@@ -33,6 +33,5 @@ class OrderController < ApplicationController
     browser.text_field(name: "city").set "Chicago Heights"
     browser.text_field(name: "zip").set "60411"
     browser.text_field(name: "mobileNo").set "1000000000"
-    end
   end
 end
