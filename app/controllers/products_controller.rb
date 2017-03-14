@@ -215,11 +215,6 @@ class ProductsController < ApplicationController
     new_product.product_type = params[:_type]
     new_product.vendor = params[:_vendor]
     new_product.tags = params[:_tags]
-    new_product.metafields = [{ "key" => "title",
-                                "value" => ae_url,
-                                "value_type" => "string",
-                                "namespace" => "univestaapp"
-                             }]
     new_product.options = options
     new_product.variants = variants
     new_product.save
