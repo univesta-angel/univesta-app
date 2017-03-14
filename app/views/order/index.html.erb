@@ -245,6 +245,11 @@
 	    	</div>
 			<% @orders.each do |order| %>
 		    
+		    
+			<div class="row">
+		        <div class="container order-detail">
+		          <div class="Row">
+				  
 		    	    <% ae_url = '' %>
 			    <% pid = 0 %>
 		    	
@@ -261,12 +266,9 @@
 		    
 		    	    <% ae_link = 'https://www.aliexpress.com/item/'+ ae_url +'.html' %>
 		    
-		    		<%= label_tag :url1, ae_url %>
-		    		<%= label_tag :url2, ae_link %>
-		    
-			<div class="row">
-		        <div class="container order-detail">
-		          <div class="Row">
+				<%= label_tag :url1, ae_url %>
+				<%= label_tag :url2, ae_link %>
+				  
 		            <div class="col-md-3">Order <a href="#"><%= order.order_number %></a><span class="date"><%= order.created_at %></span></div>
 		            <div class="col-md-3">Customer: <a href="#"><%= order.shipping_address.name %></a></div>
 		            <div class="col-md-3">Add Note</div>
