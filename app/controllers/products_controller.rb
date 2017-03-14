@@ -217,11 +217,7 @@ class ProductsController < ApplicationController
     new_product.tags = params[:_tags]
     new_product.options = options
     new_product.variants = variants
-    new_product.metafields = [{ "key" => "title",
-                                "value" => ae_url,
-                                "value_type" => "string",
-                                "namespace" => "univestaapp"
-                             }]
+    new_product.add_metafield(ShopifyAPI::Metafield.new({:namespace => 'aliexp',:key => 'categ_pid',:value => ae_url,:value_type => 'string'}))
     new_product.save
     
     pao = []
