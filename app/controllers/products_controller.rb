@@ -203,12 +203,22 @@ class ProductsController < ApplicationController
       variants << zzz
     end
     
+    ae_url = ''
+    Product.find(params[:pid]) do |p|
+      ae_url = p.ae_url
+    end
+    
     new_product = ShopifyAPI::Product.new
     new_product.title = params[:_title]
     new_product.body_html = params[:content].gsub('&nbsp;', '').gsub('/','\/')
     new_product.product_type = params[:_type]
     new_product.vendor = params[:_vendor]
     new_product.tags = params[:_tags]
+    new_product.metafields = [{ "key" => "title",
+                                "value" => ae_url,
+                                "value_type" => "string",
+                                "namespace" => "univestaapp"
+                             }]
     new_product.options = options
     new_product.variants = variants
     new_product.save
