@@ -64,7 +64,8 @@ class ProductsController < ApplicationController
                               colors: params[:colors],
                               sizes: params[:sizes],
                               avail_qty: params[:avail_qty],
-                              variant_images: params[:variant_images])
+                              variant_images: params[:variant_images],
+                              ae_url: params[:ae_url])
 
     respond_to do |format|
       if @product.save
