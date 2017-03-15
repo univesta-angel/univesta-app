@@ -243,11 +243,12 @@
 				  </li>
 				</ul>
 	    	</div>
-			<% @orders.each do |order| %>
-		    
+		<% @orders.each do |order| %>
+		    	
 			<div class="row">
 		        <div class="container order-detail">
 		          <div class="Row">
+				  
 		            <div class="col-md-3">Order <a href="#"><%= order.order_number %></a><span class="date"><%= order.created_at %></span></div>
 		            <div class="col-md-3">Customer: <a href="#"><%= order.shipping_address.name %></a></div>
 		            <div class="col-md-3">Add Note</div>
@@ -259,28 +260,32 @@
 		            <div class="col-md-3">Ali Order No:<button type="button" class="btn btn-sm add-order-btn" style="margin-left: 20px;">Add</button></div>
 		            <div class="col-md-3">Shipped:<b style="margin-left: 5px">0/1</b><button type="button" class="btn btn-sm mark-ship-btn" style="margin-left: 10px">Mark as Shipped</button></div>
 		            
-		    <% order.line_items.each do |item| %>
-		  	<% pid = 0 %>
-			<% pid = item.product_id %>
-		      	<% product = ShopifyAPI::Product.find(pid) %>
-				  
-		      	<% product.each do |product| %>
-			<% metafields = product.metafields %>
-		      	<% end %>
-			<% ae_url = '' %>
-		      	<% metafields.each do |metaf| %>
-			<% ae_url = metaf.value %>
-	       		<% end %>
-				  
-	       		<% ae_link << 'https://www.aliexpress.com/item/'+ ae_url +'.html' %>
+			<% pid = 0 %>
+			<% order.line_items.each do |item| %>
+				<% pid = item.product_id %>
 
-			  <div class="Column2"><%= button_to "Order Product", ae_link, method: 'get', class: 'btn btn-default order-prd-btn' %></div>
-		          </div>
+				<% product = ShopifyAPI::Product.find(pid) %>
+
+				<% product.each do |product| %>
+					<% metafields = product.metafields %>
+				<% end %>
+
+				<% ae_url = '' %>
+				<% metafields.each do |metaf| %>
+					<% ae_url = metaf.value %>
+				<% end %>
+
+				<% ae_link << 'https://www.aliexpress.com/item/'+ ae_url +'.html' %>
+				<div class="Column2"><%= button_to "Order Product", ae_link, method: 'get', class: 'btn btn-default order-prd-btn' %></div>
+		        <% end %>
+				  
+			</div>
 		            <div class="line-item-detail">
 		                    <!-- line items -->
 		                <div class="row">
 				
-				<%= label_tag :url2, ae_link%>
+			    	<%= label_tag :url2, ae_link%>
+			<% order.line_items.each do |item| %>
 			  	<div class="col-md-1">
 		                    <div>
 		                    	<img src="http://placehold.it/50x50" class="line-item-img">
