@@ -7,7 +7,7 @@ class OrderController < ApplicationController
     @orders = ShopifyAPI::Order.find(:all, :params => {limit: 5, order: "created_at DESC"})
     
     @ae_url = ''
-    id = 0
+    pid = 0
     
     @orders.each do |order|
       order.line_items.each do |item|
