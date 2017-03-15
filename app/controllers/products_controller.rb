@@ -253,18 +253,19 @@ class ProductsController < ApplicationController
       
     end
     
+    new_product.images = pao 
+    new_product.save
+    
+    sleep 1
+    
     ae_url = ''
     mf_key = ''
     Product.find(params[:pid]) do |p|
       ae_url = p.ae_url
       mf_key = p.mf_key
     end
-    
-    new_product.add_metafield(ShopifyAPI::Metafield.new({:namespace => mf_key,:key => mf_key,:value => ae_url,:value_type => 'string'}))
-    
-    new_product.images = pao 
-    new_product.save
-    
+    product = ShopifyAPI::Product.last
+    product.add_metafield(ShopifyAPI::Metafield.new({:namespace => mf_key,:key => mf_key,:value => ae_url,:value_type => 'string'}))
     #if params[:_collections] != nil
       #ShopifyAPI::Collect.create(:product_id => new_product.id, :collection_id => params[:_collections])
     #else
