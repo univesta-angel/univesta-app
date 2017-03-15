@@ -65,7 +65,8 @@ class ProductsController < ApplicationController
                               sizes: params[:sizes],
                               avail_qty: params[:avail_qty],
                               variant_images: params[:variant_images],
-                              ae_url: params[:ae_url])
+                              ae_url: params[:ae_url],
+                              mf_key: params[:mf_key])
 
     respond_to do |format|
       if @product.save
@@ -256,11 +257,13 @@ class ProductsController < ApplicationController
     new_product.save
     
     ae_url = ''
+    mf_key = ''
     Product.find(params[:pid]) do |p|
       ae_url = p.ae_url
+      mf_key = p.mf_key
     end
     
-    new_product.add_metafield(ShopifyAPI::Metafield.new({:namespace => 'aliexp',:key => 'categ_pid',:value => ae_url,:value_type => 'string'}))
+    new_product.add_metafield(ShopifyAPI::Metafield.new({:namespace => 'aliexp',:key => mf_key,:value => ae_url,:value_type => 'string'}))
     
     
     #if params[:_collections] != nil
