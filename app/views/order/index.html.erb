@@ -249,8 +249,7 @@
 		        <div class="container order-detail">
 		          <div class="Row">
 				  
-				<%= label_tag :url1, @ae_url %>
-				<%= label_tag :url2, @ae_link %>
+				<%= label_tag :url2, @ae_link[@ctr] %>
 				  
 		            <div class="col-md-3">Order <a href="#"><%= order.order_number %></a><span class="date"><%= order.created_at %></span></div>
 		            <div class="col-md-3">Customer: <a href="#"><%= order.shipping_address.name %></a></div>
@@ -307,6 +306,7 @@
 	              	</div>
 	        	</div>
 			</div>
+		    <% @ctr = @ctr + 1 %>
 		<% end %>
 
 	    </div>
