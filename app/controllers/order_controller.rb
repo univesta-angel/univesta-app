@@ -18,7 +18,7 @@ class OrderController < ApplicationController
       product = ShopifyAPI::Product.find(pid)
       metafield = product.metafields
       metafield.each do |m|
-        @ae_url << m.value
+        @ae_url = m.value
         @ae_link << 'https://www.aliexpress.com/item/'+ @ae_url +'.html'
       end
     end
