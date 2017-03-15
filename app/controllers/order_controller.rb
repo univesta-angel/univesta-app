@@ -5,32 +5,6 @@ class OrderController < ApplicationController
     shop = ShopifyAPI::Shop.current
     
     @orders = ShopifyAPI::Order.find(:all, :params => {limit: 5, order: "created_at DESC"})
-    @ctr = 0
-    @ae_link = []
-    
-    @ae_url = ''
-    pid = []
-    
-    @orders.each do |order|
-      order.line_items.each do |item|
-        pid << item.product_id
-      end
-      
-      metafield = []
-      ShopifyAPI::Product.find(pid).each do |product|
-        metafield << product.metafields
-      end
-      
-      mf = []
-      metafield.each do |metaf|
-        mf << metaf
-      end
-      
-      mf.each do |m|
-        @ae_url = m.value
-        @ae_link << 'https://www.aliexpress.com/item/'+ @ae_url +'.html'
-      end
-    end
     
   end
   
