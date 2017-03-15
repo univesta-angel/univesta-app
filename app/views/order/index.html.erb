@@ -265,7 +265,7 @@
 				<% pid = item.product_id %>
 
 				<% product = ShopifyAPI::Product.find(pid) %>
-
+				  
 				<% product.each do |product| %>
 					<% metafields = product.metafields %>
 				<% end %>
@@ -275,7 +275,7 @@
 					<% ae_url = metaf.value %>
 				<% end %>
 
-				<% ae_link << 'https://www.aliexpress.com/item/'+ ae_url +'.html' %>
+				<% ae_link = 'https://www.aliexpress.com/item/'+ ae_url +'.html' %>
 				<div class="Column2"><%= button_to "Order Product", ae_link, method: 'get', class: 'btn btn-default order-prd-btn' %></div>
 		        <% end %>
 				  
