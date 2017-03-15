@@ -263,7 +263,7 @@ class ProductsController < ApplicationController
       mf_key = p.mf_key
     end
     
-    new_product.add_metafield(ShopifyAPI::Metafield.new({:namespace => 'aliexp',:key => mf_key,:value => ae_url,:value_type => 'string'}))
+    new_product.add_metafield(ShopifyAPI::Metafield.new({:namespace => mf_key,:key => mf_key,:value => ae_url,:value_type => 'string'}))
     
     
     #if params[:_collections] != nil
