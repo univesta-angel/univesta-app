@@ -261,7 +261,8 @@ class ProductsController < ApplicationController
       ae_url = p.ae_url
       mf_key = p.mf_key
     end
-    new_product.add_metafield(ShopifyAPI::Metafield.new({
+    _product = ShopifyAPI::Product.find(nil)
+    _product.add_metafield(ShopifyAPI::Metafield.new({
                                :namespace => mf_key,
                                :key => mf_key,
                                :value => ae_url,
