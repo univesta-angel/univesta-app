@@ -79,7 +79,8 @@
 
         <% @products.each do |product| %>
           <%= form_tag push_path, method: 'post', remote: true do %>
-          <%= hidden_field_tag :pid, product.id %>
+          <%= hidden_field_tag :ae_url, product.ae_url %>
+          <%= hidden_field_tag :mf_key, product.mf_key %>
             <!--nav-->
             <div class="row">
               <div class="col-md-10">
