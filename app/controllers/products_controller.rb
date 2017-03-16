@@ -215,6 +215,14 @@ class ProductsController < ApplicationController
     new_product.variants = variants
     new_product.save
     
+    ae_url = ''
+    mf_key = ''
+    Product.find(params[:pid]) do |p|
+      ae_url = p.ae_url
+      mf_key = p.mf_key
+    end
+    new_product.add_metafield(ShopifyAPI::Metafield.new(:namespace => me_key, :key => mf_key, :value => ae_url, :value_type => "string"))
+    
     pao = []
     color2 =[]     #tempo storage
     aaa = 0 
@@ -255,13 +263,6 @@ class ProductsController < ApplicationController
     new_product.images = pao
     new_product.save
     
-    ae_url = ''
-    mf_key = ''
-    Product.find(params[:pid]) do |p|
-      ae_url = p.ae_url
-      mf_key = p.mf_key
-    end
-    new_product.add_metafield(ShopifyAPI::Metafield.new(:namespace => me_key, :key => mf_key, :value => ae_url, :value_type => "string"))
     #if params[:_collections] != nil
       #ShopifyAPI::Collect.create(:product_id => new_product.id, :collection_id => params[:_collections])
     #else
