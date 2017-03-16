@@ -204,7 +204,14 @@ class ProductsController < ApplicationController
       )
       variants << zzz
     end
-
+    
+    ae_url = ''
+    mf_key = ''
+    Product.find(params[:pid]) do |p|
+      ae_url = p.ae_url
+      mf_key = p.mf_key
+    end
+    
     new_product = ShopifyAPI::Product.new
     new_product.title = params[:_title]
     new_product.body_html = params[:content].gsub('&nbsp;', '').gsub('/','\/')
@@ -213,6 +220,14 @@ class ProductsController < ApplicationController
     new_product.tags = params[:_tags]
     new_product.options = options
     new_product.variants = variants
+    new_product.metafields = [
+        {
+          "key" => mf_key,
+          "value" => ae_url,
+          "value_type" => "string",
+          "namespace" => mf_key
+        }
+      ]
     new_product.save
     
     pao = []
@@ -254,20 +269,6 @@ class ProductsController < ApplicationController
     
     new_product.images = pao
     new_product.save
-    
-    ae_url = ''
-    mf_key = ''
-    Product.find(params[:pid]) do |p|
-      ae_url = p.ae_url
-      mf_key = p.mf_key
-    end
-    _product = ShopifyAPI::Product.find(nil)
-    _product.add_metafield(ShopifyAPI::Metafield.new({
-                               :namespace => mf_key,
-                               :key => mf_key,
-                               :value => ae_url,
-                               :value_type => 'string'
-                            }))
     
     #if params[:_collections] != nil
       #ShopifyAPI::Collect.create(:product_id => new_product.id, :collection_id => params[:_collections])
