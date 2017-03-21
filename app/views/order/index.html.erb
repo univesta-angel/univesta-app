@@ -263,14 +263,14 @@
 			    <%= label_tag :url1, ae_url %>
 			    <%= label_tag :url2, ae_link %>
 				  
-			<div><%= label_tag :c_name, order.shipping_address.name %></div>
-			<div><%= label_tag :country, order.shipping_address.country %></div>				  
-		  	<div><%= label_tag :province, order.shipping_address.province %></div>
-			<div><%= label_tag :address1, order.shipping_address.address1 %></div>
-		  	<div><%= label_tag :address2, order.shipping_address.address2 %></div>
-		  	<div><%= label_tag :city, order.shipping_address.city %></div>				  
-		  	<div><%= label_tag :zip, order.shipping_address.zip %></div>				  
-		  	<div><%= label_tag :phone, order.shipping_address.phone %></div>
+			<div><%= label_tag :c_name, order.shipping_address.name, :id => 'c_name' %></div>
+			<div><%= label_tag :, order.shipping_address.countr, :id => 'country' %></div>				  
+		  	<div><%= label_tag :province, order.shipping_address.province, :id => 'province' %></div>
+			<div><%= label_tag :address1, order.shipping_address.address1, :id => 'address1' %></div>
+		  	<div><%= label_tag :address2, order.shipping_address.address2, :id => 'address2' %></div>
+		  	<div><%= label_tag :city, order.shipping_address.city, :id => 'city' %></div>				  
+		  	<div><%= label_tag :zip, order.shipping_address.zip, :id => 'zip' %></div>				  
+		  	<div><%= label_tag :phone, order.shipping_address.phone, :id => 'phone' %></div>
 				  
 		            <div class="col-md-3">Order <a href="#"><%= order.order_number %></a><span class="date"><%= order.created_at %></span></div>
 		            <div class="col-md-3">Customer: <a href="#"><%= order.shipping_address.name %></a></div>
