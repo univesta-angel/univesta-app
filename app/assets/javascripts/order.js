@@ -2,8 +2,10 @@
 var editorExtensionId = "abcdefghijklmnoabcdefhijklmnoabc";
 
 // Make a simple request:
-chrome.runtime.sendMessage(editorExtensionId, {openUrlInEditor: url},
-  function(response) {
-    if (!response.success)
-      handleError(url);
-  });
+document.getElementById('order-btn').addEventListener('click', function() {
+  var go = function() {
+        var event = document.createEvent('Event');
+        event.initEvent('hello');
+        document.dispatchEvent(event);
+    }
+});
