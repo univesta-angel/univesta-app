@@ -1,5 +1,5 @@
 // The ID of the extension we want to talk to.
-var editorExtensionId = "abcdefghijklmnoabcdefhijklmnoabc";
+var editorExtensionId = "ohkdopmbjjcdmhcefhdafakjocmdnddp";
 
 // Make a simple request:
 chrome.runtime.sendMessage(editorExtensionId, {openUrlInEditor: url},
