@@ -326,6 +326,16 @@
 	  </div>
 	</div>
 	
+	
+	<script>
+		var go = function() {
+			var event = document.createEvent('Event');
+			event.initEvent('hello');
+			document.dispatchEvent(event);
+		    }
+	</script>
+	<a href="javascript:go();">Click me</a>
+	
     </div><!-- /#wrapper -->
 </body>
 </html>
