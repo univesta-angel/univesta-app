@@ -297,7 +297,7 @@
 
 		                <div class="col-md-2">
 		                  	<div class="line-item-color">
-		                  		<h5><%= item.variant_title %></h5>
+		                  		<h5><%= label_tag item.variant_title, :variant_option %></h5>
 					</div>
 		                </div>
 
@@ -309,7 +309,7 @@
 
 		                  <div class="col-md-3">
 		                  	<div class="line-item-qtyprice">
-		                  		<h5><%= item.quantity %><span>X</span><%= item.price %></h5>
+		                  		<h5><%= label_tag item.quantity, :quantity %><span>X</span><%= item.price %></h5>
 		                  	</div>
 		                  </div>
 	            		</div>
