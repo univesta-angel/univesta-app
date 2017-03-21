@@ -273,7 +273,7 @@
 		            <div class="col-md-3"><span class="label label-warning" style="margin-right: 10px">To Order</span>Supplier: <a href="#">Warehouse #0001</a></div>
 		            <div class="col-md-3">Ali Order No:<button type="button" class="btn btn-sm add-order-btn" style="margin-left: 20px;">Add</button></div>
 		            <div class="col-md-3">Shipped:<b style="margin-left: 5px">0/1</b><button type="button" class="btn btn-sm mark-ship-btn" style="margin-left: 10px">Mark as Shipped</button></div>
-		            <div class="Column2"><%= button_tag "Order Product", id: 'order-btn', class: 'btn btn-default order-prd-btn' %></div>
+		            <div class="Column2"><%= button_to "Order Product", ae_link, id: 'order-btn', class: 'btn btn-default order-prd-btn' %></div>
 		          </div>
 		            <div class="line-item-detail">
 		                    <!-- line items -->
@@ -326,15 +326,7 @@
 	  </div>
 	</div>
 	
-	
-	<script>
-		var go = function() {
-			var event = document.createEvent('Event');
-			event.initEvent('hello');
-			document.dispatchEvent(event);
-		    }
-	</script>
-	<a href="javascript:go();">Click me</a>
+	<a href=>Click me</a>
 	
     </div><!-- /#wrapper -->
 </body>
