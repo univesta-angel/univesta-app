@@ -263,6 +263,15 @@
 			    <%= label_tag :url1, ae_url %>
 			    <%= label_tag :url2, ae_link %>
 				  
+		     	<%= label_tag :c_name, order.shipping_address.name %>
+			<%= label_tag :country, order.shipping_address.country %>				  
+		  	<%= label_tag :province, order.shipping_address.province %>
+			<%= label_tag :address1, order.shipping_address.address1 %>
+		  	<%= label_tag :address2, order.shipping_address.address2 %>
+		  	<%= label_tag :city, order.shipping_address.city %>				  
+		  	<%= label_tag :zip, order.shipping_address.zip %>				  
+		  	<%= label_tag :phone, order.shipping_address.phone %>
+				  
 		            <div class="col-md-3">Order <a href="#"><%= order.order_number %></a><span class="date"><%= order.created_at %></span></div>
 		            <div class="col-md-3">Customer: <a href="#"><%= order.shipping_address.name %></a></div>
 		            <div class="col-md-3">Add Note</div>
@@ -297,7 +306,7 @@
 
 		                <div class="col-md-2">
 		                  	<div class="line-item-color">
-		                  		<h5><%= label_tag item.variant_title, :variant_option %></h5>
+		                  		<h5><%= label_tag :variant_option, item.variant_title %></h5>
 					</div>
 		                </div>
 
@@ -309,7 +318,7 @@
 
 		                  <div class="col-md-3">
 		                  	<div class="line-item-qtyprice">
-		                  		<h5><%= label_tag item.quantity, :quantity %><span>X</span><%= item.price %></h5>
+		                  		<h5><%= label_tag :quantity, item.quantity  %><span>X</span><%= item.price %></h5>
 		                  	</div>
 		                  </div>
 	            		</div>
