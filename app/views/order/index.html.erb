@@ -315,7 +315,7 @@
 
 		                  <div class="col-md-3">
 		                  	<div class="line-item-qtyprice">
-		                  		<h5><%= label_tag :quantity, item.quantity, :id => 'quantity_'+order.number %><span>X</span><%= item.price %></h5>
+						<h5><p id="variant_option_<%= order.order_number %>"><%= item.quantity %></p><span>X</span><%= item.price %></h5>
 		                  	</div>
 		                  </div>
 	            		</div>
