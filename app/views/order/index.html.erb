@@ -249,28 +249,26 @@
 		        <div class="container order-detail">
 		          <div class="Row">
 				  
-		    	    <% ae_url = '' %>
-			    <% pid = 0 %>
-			    <% order.line_items.each do |item| %>
-			    	<% pid = item.product_id %>
-			    <% end %>
-			    <% product = ShopifyAPI::Product.find(pid) %>
-			    <% metafield = product.metafields %>
-			    <% metafield.each do |m| %>
-			      <% ae_url = m.value %>
-			    <% end %>
-		    	    <% ae_link = 'https://www.aliexpress.com/item/'+ ae_url +'.html' %>
-			    <%= label_tag :url1, ae_url %>
-			    <%= label_tag :url2, ae_link %>
-				  
-			<div><%= label_tag :c_name, order.shipping_address.name, :id => 'c_name' %></div>
-			<div><%= label_tag :, order.shipping_address.countr, :id => 'country' %></div>				  
-		  	<div><%= label_tag :province, order.shipping_address.province, :id => 'province' %></div>
-			<div><%= label_tag :address1, order.shipping_address.address1, :id => 'address1' %></div>
-		  	<div><%= label_tag :address2, order.shipping_address.address2, :id => 'address2' %></div>
-		  	<div><%= label_tag :city, order.shipping_address.city, :id => 'city' %></div>				  
-		  	<div><%= label_tag :zip, order.shipping_address.zip, :id => 'zip' %></div>				  
-		  	<div><%= label_tag :phone, order.shipping_address.phone, :id => 'phone' %></div>
+		    	<% ae_url = '' %>
+			<% pid = 0 %>
+			<% order.line_items.each do |item| %>
+				<% pid = item.product_id %>
+			<% end %>
+			<% product = ShopifyAPI::Product.find(pid) %>
+			<% metafield = product.metafields %>
+			<% metafield.each do |m| %>
+				<% ae_url = m.value %>
+			<% end %>
+		    	<% ae_link = 'https://www.aliexpress.com/item/'+ ae_url +'.html' %>
+			<%= hidden_field_tag :prd_link, ae_link %>
+			<%= hidden_field_tag :c_name, order.shipping_address.name %>
+			<%= hidden_field_tag :, order.shipping_address.country %>				  
+			<%= hidden_field_tag :province, order.shipping_address.province %>
+			<%= hidden_field_tag :address1, order.shipping_address.address1 %>
+			<%= hidden_field_tag :address2, order.shipping_address.address2 %>
+			<%= hidden_field_tag :city, order.shipping_address.city %>				  
+			<%= hidden_field_tag :zip, order.shipping_address.zip %>				  
+			<%= hidden_field_tag :phone, order.shipping_address.phone %>  
 				  
 		            <div class="col-md-3">Order <a href="#"><%= order.order_number %></a><span class="date"><%= order.created_at %></span></div>
 		            <div class="col-md-3">Customer: <a href="#"><%= order.shipping_address.name %></a></div>
@@ -282,7 +280,7 @@
 		            <div class="col-md-3"><span class="label label-warning" style="margin-right: 10px">To Order</span>Supplier: <a href="#">Warehouse #0001</a></div>
 		            <div class="col-md-3">Ali Order No:<button type="button" class="btn btn-sm add-order-btn" style="margin-left: 20px;">Add</button></div>
 		            <div class="col-md-3">Shipped:<b style="margin-left: 5px">0/1</b><button type="button" class="btn btn-sm mark-ship-btn" style="margin-left: 10px">Mark as Shipped</button></div>
-		            <div class="Column2"><%= button_to "Order Product", ae_link, method: 'get', id: 'order-btn', class: 'btn btn-default order-prd-btn' %></div>
+		            <div class="Column2"><%= button_tag "Order Product", id: 'order-btn', class: 'btn btn-default order-prd-btn' %></div>
 		          </div>
 		            <div class="line-item-detail">
 		                    <!-- line items -->
