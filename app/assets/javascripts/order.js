@@ -1,5 +1,8 @@
 $(document).ready(function(){
   $("#order-btn").click(function(){
+    
+      alert($(this).find(".customername").text());
+    
       var event = document.createEvent('Event');
       event.initEvent('hello');
       document.dispatchEvent(event);
