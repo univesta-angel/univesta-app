@@ -1,12 +1,20 @@
 $(document).ready(function(){
   $("#order-btn").click(function(){
     
-      alert($(this).find(".customername").text());
+      alert($(this).attr("data_id"));
+      var data_id = $(this).attr("data_id");
     
-      var event = document.createEvent('Event');
-      event.initEvent('hello');
+      var event = new CustomEvent("initiate", {
+          detail: {
+            message: data_id
+          },
+          bubbles: true,
+          cancelable: true
+        } 
+      );
       document.dispatchEvent(event);
-      var product_link = $("#prd_link").text();
+    
+      var product_link = document.getElementById('ae_link_'+data_id).value;
       window.open(product_link, "_self")
   });
 });
