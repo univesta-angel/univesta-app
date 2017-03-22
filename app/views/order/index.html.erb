@@ -262,7 +262,7 @@
 		    	<% ae_link = 'https://www.aliexpress.com/item/'+ ae_url +'.html' %>
 			<%= hidden_field_tag :prd_link, ae_link %>
 			<%= hidden_field_tag :c_name, order.shipping_address.name %>
-			<%= hidden_field_tag :, order.shipping_address.country %>				  
+			<%= hidden_field_tag :country, order.shipping_address.country %>				  
 			<%= hidden_field_tag :province, order.shipping_address.province %>
 			<%= hidden_field_tag :address1, order.shipping_address.address1 %>
 			<%= hidden_field_tag :address2, order.shipping_address.address2 %>
