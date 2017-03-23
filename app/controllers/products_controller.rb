@@ -260,14 +260,10 @@ class ProductsController < ApplicationController
     custom = CustomCollection.find(:all, :params => { :title => collection })
     coll_id = 0
     if custom != nil)
-      custom.each do |col|
-        coll_id = col.id
-      end
+      coll_id = custom.id
     elsif custom == nil
       smart = SmartCollection.find(:all, :params => { :title => collection })
-      smart.each do |col|
-        coll_id = col.id
-      end
+      coll_id = smart.id
     else
       respond_to do |format|
         format.html { redirect_to products_url, notice: 'Something went wrong.' }
