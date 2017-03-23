@@ -257,8 +257,15 @@ class ProductsController < ApplicationController
     
     collection = params[:collection]
     custom = ShopifyAPI::CustomCollection.find(:all, :params => { :title => collection })
-    coll_id = custom[0].id
-    new_product.add_to_collection(coll_id)
+    coll_id = 0
+    if custom == nil
+      smart = ShopifyAPI::SmartCollection.find(:all, :params => { :title => collection })
+      coll_id = smart[0].id
+      new_product.add_to_collection(ShopifyAPI::CustomCollection.find(coll_id))
+    else
+      coll_id = custom[0].id
+      new_product.add_to_collection(ShopifyAPI::CustomCollection.find(coll_id))
+    end
     
   end
   
