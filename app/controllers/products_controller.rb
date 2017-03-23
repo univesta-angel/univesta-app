@@ -259,7 +259,7 @@ class ProductsController < ApplicationController
     coll = ShopifyAPI::CustomCollection.find(:all, :params => { :title => collection })
     if coll == nil
       new_product.add_to_collection(coll)
-    else coll == nil
+    else
       coll = ShopifyAPI::SmartCollection.find(:all, :params => { :title => collection })
       new_product.add_to_collection(coll)
     else
