@@ -249,29 +249,9 @@ class ProductsController < ApplicationController
         lastvarimg =  _varimg[row.to_i]
         ctr = ctr+1
       end
-      pao << { id: nil, variant_ids: color2, src: lastvarimg }
-      
+      pao << { id: nil, variant_ids: color2, src: lastvarimg }      
     end
-    
-    new_product.images = pao 
-    new_product.save
-    
-    collection = params[:collection]
-    custom = CustomCollection.find(:all, :params => { :title => collection })
-    coll_id = 0
-    if custom != nil)
-      coll_id = custom.id
-    elsif custom == nil
-      smart = SmartCollection.find(:all, :params => { :title => collection })
-      coll_id = smart.id
-    else
-      respond_to do |format|
-        format.html { redirect_to products_url, notice: 'Something went wrong.' }
-        format.json { head :no_content }
-      end
-    end
-  
-    ShopifyAPI::Collect.create(:product_id => nil, :collection_id => coll_id)
+   
     
   end
   
