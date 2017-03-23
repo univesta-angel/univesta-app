@@ -21,11 +21,6 @@ class ProductsController < ApplicationController
     @cc.each do |c|
       @collections << c
     end
-
-    @sc = ShopifyAPI::SmartCollection.find(:all, :params => {:limit => 250})
-    @sc.each do |c|
-     @collections << c
-    end
     
   end
   
@@ -257,15 +252,8 @@ class ProductsController < ApplicationController
     
     collection = params[:collection]
     custom = ShopifyAPI::CustomCollection.find(:all, :params => { :title => collection })
-    coll_id = 0
-    if custom == nil
-      smart = ShopifyAPI::SmartCollection.find(:all, :params => { :title => collection })
-      coll_id = smart[0].id
-      new_product.add_to_collection(ShopifyAPI::CustomCollection.find(coll_id))
-    else
-      coll_id = custom[0].id
-      new_product.add_to_collection(ShopifyAPI::CustomCollection.find(coll_id))
-    end
+    coll_id = custom[0].id
+    new_product.add_to_collection(ShopifyAPI::CustomCollection.find(coll_id))
     
   end
   
