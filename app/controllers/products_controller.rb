@@ -253,25 +253,22 @@ class ProductsController < ApplicationController
     end
     
     new_product.images = pao
+    new_product.save 
     
     collection = params[:collection]
     custom = ShopifyAPI::CustomCollection.find(:all, :params => { :title => collection })
-    coll_id = 0
+    
     if custom != nil
-      coll_id = custom.id
+      new_product.add_to_collection(custom)
     elsif custom == nil
-      smart = SHopifyAPI::SmartCollection.find(:all, :params => { :title => collection })
-      coll_id = smart.id
+      smart = ShopifyAPI::SmartCollection.find(:all, :params => { :title => collection })
+      new_product.add_to_collection(smart)
     else
       respond_to do |format|
         format.html { redirect_to products_url, notice: 'Something went wrong.' }
         format.json { head :no_content }
       end
     end
-    
-    new_product.save 
-  
-    ShopifyAPI::Collect.create(:product_id => new_product.id, :collection_id => coll_id)
     
   end
   
