@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $("#order-btn").click(function(){
+  $(".order-prd-btn").click(function(){
     
       alert($(this).attr("data_id"));
       var data_id = $(this).attr("data_id");
