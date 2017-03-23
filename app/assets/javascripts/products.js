@@ -16,19 +16,11 @@
             }
         });
         // -- for each product variant ---
-        $("#select_all2").change(function(){  //"select all" change 
-          $(".checkbox2").prop('checked', $(this).prop("checked")); //change all ".checkbox" checked status
-        });
-        //".checkbox" change 
-        $('.checkbox2').change(function(){ 
-            //uncheck "select all", if one of the listed checkbox item is unchecked
-            if(false == $(this).prop("checked")){ //if this item is unchecked
-                $("#select_all2").prop('checked', false); //change "select all" checked status to false
-            }
-            //check "select all" if all checkbox items are checked
-            if ($('.checkbox2:checked').length == $('.checkbox2').length ){
-                $("#select_all2").prop('checked', true);
-            }
+        $('input[id="select_all2"]').bind('click', function(){
+          //alert($(this).attr('data-id'))
+          var mainCB = $(this).attr('data-id')
+          var status = $(this).is(':checked');
+          $('input[class="checkbox2"][data-id="'+mainCB+'"]').prop('checked', status);
         });
         
         // --- hide / unhide dropwdown option ---
