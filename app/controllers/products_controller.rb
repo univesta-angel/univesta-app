@@ -256,11 +256,26 @@ class ProductsController < ApplicationController
     new_product.images = pao 
     new_product.save
     
-    #if params[:_collections] != nil
-      #ShopifyAPI::Collect.create(:product_id => new_product.id, :collection_id => params[:_collections])
-    #else
-      
-    #end
+    collection = params[:collection]
+    custom = CustomCollection.find(:all, :params => { :title => collection })
+    coll_id = 0
+    if custom != nil)
+      custom.each do |col|
+        coll_id = col.id
+      end
+    elsif custom == nil
+      smart = SmartCollection.find(:all, :params => { :title => collection })
+      smart.each do |col|
+        coll_id = col.id
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to products_url, notice: 'Something went wrong.' }
+        format.json { head :no_content }
+      end
+    end
+  
+    ShopifyAPI::Collect.create(:product_id => nil, :collection_id => coll_id)
     
   end
   
