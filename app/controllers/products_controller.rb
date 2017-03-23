@@ -252,8 +252,7 @@ class ProductsController < ApplicationController
       pao << { id: nil, variant_ids: color2, src: lastvarimg }      
     end
     
-    new_product.images = pao 
-    new_product.save
+    new_product.images = pao
     
     collection = params[:collection]
     custom = ShopifyAPI::CustomCollection.find(:all, :params => { :title => collection })
@@ -269,6 +268,8 @@ class ProductsController < ApplicationController
         format.json { head :no_content }
       end
     end
+    
+    new_product.save 
   
     ShopifyAPI::Collect.create(:product_id => new_product.id, :collection_id => coll_id)
     
