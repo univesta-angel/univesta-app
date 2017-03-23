@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   root :to => 'products#index'
   
   match 'create' => 'products#create', via: :post
-  get 'aliexp' => 'order#aliexp'
   
   post 'push' => 'products#push', as: :push
   post 'pushall' => 'products#push_all', as: :pushall
