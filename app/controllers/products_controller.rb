@@ -270,7 +270,7 @@ class ProductsController < ApplicationController
       end
     end
   
-    ShopifyAPI::Collect.create(:product_id => nil, :collection_id => coll_id)
+    ShopifyAPI::Collect.create(:product_id => new_product.id, :collection_id => coll_id)
     
   end
   
