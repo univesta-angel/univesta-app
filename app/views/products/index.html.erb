@@ -116,7 +116,7 @@
                         </div>
                         <div class="input-group input-group-sm">
                           <span class="input-group-addon" style="height: 30px;">Collections:</span>
-                          <input type="text" list="collections" class="form-control" />
+                          <input type="text" list="collections" class="form-control" id="collection" />
                           <datalist id="collections">
                             <% @collections.each do |c| %>
                               <option value="<%= c.title %>"></option>
