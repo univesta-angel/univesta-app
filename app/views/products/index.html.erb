@@ -156,7 +156,7 @@
                       <table class="table table-condensed table-striped volumes">
                         <thead>
                           <tr>
-                            <th><input type="checkbox" id="select_all2" checked></th>
+                            <th><input type="checkbox" id="select_all2" data-id="<%= product.id %>" checked></th>
                             <th>Image</th>
                             <th>SKU</th>
                             <th>Color</th>
@@ -244,7 +244,7 @@
                             <% product.colors.each.with_index do |color, i| %>
                               <% product.sizes.each do |size| %>
                                 <tr>
-                                  <td><input class="checkbox2" type="checkbox" name="check_var[]" value="<%= @ctr2 %>" checked></td>
+                                  <td><input class="checkbox2" type="checkbox" name="check_var[]" value="<%= @ctr2 %>" data-id="<%= product.id %>" checked></td>
                                   <td><div class = "v-img"><%= image_tag(product.variant_images[i], :size => "100x100", :alt => "variant image") %><%= hidden_field_tag "_varimg[]", product.variant_images[i] %></div></td>
                                   <td><%= text_field_tag "_sku[]", "", class: 'form-control', size: 10 %></td>
                                   <td><%= text_field_tag "_color[]", color, class: 'form-control', size: 10 %></td>
