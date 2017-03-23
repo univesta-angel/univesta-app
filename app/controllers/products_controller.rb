@@ -256,18 +256,14 @@ class ProductsController < ApplicationController
     new_product.save 
     
     collection = params[:collection]
-    custom = ShopifyAPI::CustomCollection.find(:all, :params => { :title => collection })
-    
-    if custom != nil
-      new_product.add_to_collection(custom)
-    elsif custom == nil
-      smart = ShopifyAPI::SmartCollection.find(:all, :params => { :title => collection })
-      new_product.add_to_collection(smart)
+    coll = ShopifyAPI::CustomCollection.find(:all, :params => { :title => collection })
+    if coll == nil
+      new_product.add_to_collection(coll)
+    else coll == nil
+      coll = ShopifyAPI::SmartCollection.find(:all, :params => { :title => collection })
+      new_product.add_to_collection(coll)
     else
-      respond_to do |format|
-        format.html { redirect_to products_url, notice: 'Something went wrong.' }
-        format.json { head :no_content }
-      end
+      # do nothing
     end
     
   end
