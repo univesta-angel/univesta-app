@@ -1,23 +1,8 @@
 <html>
-
   <body>
-
-
-
-
-      <h2>Pushed Products</h2>
-
-      <ul>
-          <div>
-            <p>
-              <b><br></b>
-            </p>
-          </div>
-
-      </ul>
-      <br>
-
-
+    <h2>Pushed Products</h2>
+    <% @myproducts.each do |product| %>
+      <div><p><%= product.title %></p></div>
+    <% end %>
   </body>
-
 </html>
