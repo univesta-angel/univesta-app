@@ -18,7 +18,7 @@
       <!-- End of Sidebar -->
       
       <div class="container-fluid text-center">
-	      <div class="row content">
+      	<div class="row content">
           <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
             <span class="hamb-top"></span>
             <span class="hamb-middle"></span>
@@ -26,41 +26,41 @@
           </button>
           
           <div class="row search-orders">
-			      <div class="col-md-13">
-              <form class="navbar-form navbar-left" role="search" >
-                <div class="form-group">
-                    <input type="text" class="form-control" id="search-key" placeholder="Enter Keywords" style="width: 400px; color: black;">
-                </div>
-                <button type="submit" class="btn btn-default filter-btn" style="margin-left: 10px;  margin-right: 10px; width: 70px">Filter</button>
-                <input type="text" data-provide='datepicker' style="margin-left: 7px; margin-right: 10px; width: 120px;"> - <input type="text" data-provide='datepicker' style="margin-left: 10px; margin-right: 10px; width: 120px;">
-                <div class="btn-group date-range" style="margin-left: 10px; margin-right: 10px;">
-                  <a href="#" class="btn btn-default flex-right" id="date-range">Select Date Range</a>
-                  <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                  </ul>
-                </div>
-              </form>
-			      </div>
-		      </div>
+		<div class="col-md-13">
+		      <form class="navbar-form navbar-left" role="search" >
+			<div class="form-group">
+			    <input type="text" class="form-control" id="search-key" placeholder="Enter Keywords" style="width: 400px; color: black;">
+			</div>
+			<button type="submit" class="btn btn-default filter-btn" style="margin-left: 10px;  margin-right: 10px; width: 70px">Filter</button>
+			<input type="text" data-provide='datepicker' style="margin-left: 7px; margin-right: 10px; width: 120px;"> - <input type="text" data-provide='datepicker' style="margin-left: 10px; margin-right: 10px; width: 120px;">
+			<div class="btn-group date-range" style="margin-left: 10px; margin-right: 10px;">
+			  <a href="#" class="btn btn-default flex-right" id="date-range">Select Date Range</a>
+			  <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></a>
+			  <ul class="dropdown-menu">
+			    <li><a href="#">Action</a></li>
+			    <li><a href="#">Another action</a></li>
+			    <li><a href="#">Something else here</a></li>
+			    <li class="divider"></li>
+			    <li><a href="#">Separated link</a></li>
+			  </ul>
+			</div>
+		      </form>
+		</div>
+	  </div>
           
           <div class="col-sm-12 text-left page-content">
             <div><p id="notice"><%= notice %></p></div><br/>
             
-            <% @myproducts.each do |product| %>  
+            <% @myproducts.in_groups_of(2, false).each do |product| %>  
               <div class="row">
-                <div class="panel">
-                  <div class="panel-header">
-                  </div><!-- end of panel header-->
-                  <div class="panel-body">
-                    <a><%= product.title %></a>
-                  </div><!-- end of panel body-->
-                </div><!-- end of panel-->
-              </div>
+	      	<div class="col">
+		  <div class="panel-header">
+		  </div><!-- end of panel header -->
+		  <div class="panel-body">
+		    <a><%= product.title %></a>
+		  </div><!-- end of panel body -->
+      		</div><!-- end of col -->
+              </div><!-- end of row -->
             <% end %>
             
           </div><!-- end of page content -->
