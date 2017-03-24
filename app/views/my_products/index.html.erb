@@ -1,4 +1,11 @@
 <html>
+	<head>
+		<style>
+			.prd-block {
+				display:inline-block;
+			}
+		</style>
+	</head>
   <body>
     <div class="wrapper">
       <!-- Sidebar -->
@@ -52,7 +59,7 @@
             <div><p id="notice"><%= notice %></p></div><br/>
             
             <% @myproducts.in_groups_of(2, false).each do |group| %>  
-              <div class="row">
+              <div class="row prd-block">
 	      	<div class="col-md-6">
 		  <% group.each do |product| %>
 		    <div class="panel-heading" style="width: 500px;">
