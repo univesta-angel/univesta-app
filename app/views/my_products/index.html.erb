@@ -51,9 +51,9 @@
           <div class="col-sm-12 text-left page-content">
             <div><p id="notice"><%= notice %></p></div><br/>
             
-            <% @myproducts.in_groups_of(2, false).each do |group| %>  
+            <% @myproducts.in_groups_of(3, false).each do |group| %>  
               <div class="row">
-	      	<div class="col">
+	      	<div class="col" style="width: 500px;">
 		  <% group.each do |product| %>
 		    <div class="panel-heading">
 		    </div><!-- end of panel header -->
@@ -63,6 +63,8 @@
 		  <% end %>
       		</div><!-- end of col -->
               </div><!-- end of row -->
+	    <br/>
+	    <br/>
             <% end %>
             
           </div><!-- end of page content -->
