@@ -13,9 +13,10 @@
 
 <head>
   <style type="text/css">
-    .page-content{
-      	margin-left: 20%;
-      }
+    #page-content{
+      width: 1024px;
+      margin: 0 auto;
+    }
     .Row {
       display: table;
       width: 100%; /*Optional*/
@@ -67,7 +68,7 @@
       	margin-left: -1px;
       	color: #000;
       	background-color: #ffffff;
-      	width: 1200px;
+      	width: 1000px;
       	border: 1px;
 		border-radius: 3px;
 		-webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
@@ -163,11 +164,11 @@
 			<span class="hamb-bottom"></span>
 		</button>
 	
-	<div class="container-fluid text-center">
+	<div class="container-fluid text-center" id="page-content">
 	  <div class="row content">
 
 	    <!-- start of center colum -->
-	    <div class="col-sm-12 text-left page-content">
+	    <div class="col-sm-12 text-left">
       		<div><p id="notice"><%= notice %></p></div>	
 			<br/>
 
