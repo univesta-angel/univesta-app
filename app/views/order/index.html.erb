@@ -103,7 +103,7 @@
       	margin-left: 30px;
       	margin-top: 18px;
       }
-      .line-item-title > h5 > a {
+      .line-item-title > h6 > a {
       	color: #76A28C;
       }
       .line-item-sku{
@@ -294,7 +294,7 @@
 
 		                <div class="col-md-3">
 		                    <div class="line-item-title">
-		                    	<h5><a><%= item.title %></a></h5>
+		                    	<h6><a><%= item.title %></a></h6>
 	                    	</div>
 		                    <div class="line-item-sku">
 		                    	<h6 style="color: grey"><%= item.sku %></h6>
@@ -315,7 +315,7 @@
 
 		                  <div class="col-md-3">
 		                  	<div class="line-item-qtyprice">
-						<h5><p id="quantity_<%= order.order_number %>"><%= item.quantity %></p><span>X</span><%= item.price %></h5>
+						<h5 id="quantity_<%= order.order_number %>"><%= item.quantity %></h5><span>&times;</span><h5><%= item.price %></h5>
 		                  	</div>
 		                  </div>
 	            		</div>
