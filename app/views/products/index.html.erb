@@ -44,9 +44,7 @@
           <div class="col-md-12">
             <div class="panel-body align-center search-form">
               <%= form_tag(root_path, method: :get) do %>
-                <div class="form-group">
                 <%= text_field_tag "searchprd", params[:searchprd], class: "form-control", placeholder: "Seach for Products" %>
-                </div>
                 <%= submit_tag 'Search', name: nil, class: "btn btn-default", id: "search-btn" %>
               <% end %>
             </div>
