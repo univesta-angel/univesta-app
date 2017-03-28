@@ -256,11 +256,14 @@ class ProductsController < ApplicationController
     Product.delete_all
 
     respond_to do |format|
-      format.html { redirect_to imports_path, notice: 'All imports were deleted.' }
+      format.html { redirect_to root_path, notice: 'All imports were deleted.' }
     end
   end
   
   def push_all
+    Product.all.each do |product|
+      
+    end
   end
 
   private
