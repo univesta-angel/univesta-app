@@ -1,7 +1,6 @@
-// Place all the styles related to the Products controller here.
+// Place all the styles related to the Imports controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-      
 #page-content {
   width: 1024px;
   margin: 0 auto;
@@ -12,53 +11,56 @@
   margin-bottom: 20px;
 }
 
-.input-group.input-group-sm, .input-group-addon{
-  margin-top: 15px;
-}
-
-.all{
-  text-align: right;
-}
-
-.product-title{
-  margin-bottom: 20px;
-}
-
-.container-flex{
-  width: 280px;
-  margin-top: 10px;
-  margin-right: 10px;
+#bulkaction {
   margin-left: 10px;
-  float: center;
 }
+      .input-group.input-group-sm, .input-group-addon{
+        margin-top: 15px;
+      }
 
-.input-xs {
-  height: 22px;
-  padding: 2px 5px;
-  font-size: 12px;
-  line-height: 1.5; /* If Placeholder of the input is moved up, rem/modify this. */
-  border-radius: 3px;
-}
+      .all{
+        text-align: right;
+      }
 
-.image_picker_image {
-  max-width: 140px;
-  max-height: 100px;
-  background-color: #FF0000;
-}
+      .product-title{
+        margin-bottom: 20px;
+      }
 
-.tab-pane{
-      height:300px;
-}
+      .container-flex{
+        width: 280px;
+        margin-top: 10px;
+        margin-right: 10px;
+        margin-left: 10px;
+        float: center;
+      }
 
-.panel{
-      width: 1130px;
-}
+      .input-xs {
+        height: 22px;
+        padding: 2px 5px;
+        font-size: 12px;
+        line-height: 1.5; /* If Placeholder of the input is moved up, rem/modify this. */
+        border-radius: 3px;
+      }
+
+      .image_picker_image {
+        max-width: 140px;
+        max-height: 100px;
+        background-color: #FF0000;
+      }
+
+      .tab-pane{
+      	height:300px;
+      }
+
+      .panel{
+      	width: 1130px;
+      }
 
 .editor {
   height: 260px;
   overflow: auto;
 }
- 
+
 
 // navbar products
 
@@ -118,6 +120,10 @@ div.panel-footer{
   background-color: #fff;
 }
 
+#select_all {
+  vertical-align: middle;
+}
+
 .btn.btn-success {
   margin-left: 5px;
   background-color: #81B29A;
@@ -136,8 +142,8 @@ span.input-group-addon {
 }
 
 .panel-body.align-center.search-form {
-  background-color: #2d2d2d;
-  border: 1px solid grey;
+  background-color: #FFFFFF;
+  border: 1px solid white;
   border-radius: 2px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -159,6 +165,7 @@ span#sizing-addon3.input-group-addon.w-tags {
 }
 
 #search-btn {
+  background-color: #F2CC8F;
   display: inline-block;
   width: 100px;
 }
