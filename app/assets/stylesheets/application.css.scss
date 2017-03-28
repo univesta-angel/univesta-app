@@ -23,13 +23,17 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-body {
-    position: relative;
-    overflow-x: hidden;
-    background-color: #f7f7f7;
+html, body {
+  height: 100%;
 }
-body,
-html { height: 100%;}
+html {
+  width: 100;
+}
+body {
+    background-color: #f7f7f7;
+    vertical-align: middle;
+    min-width: 1024px;
+}
 .nav .open > a, 
 .nav .open > a:hover, 
 .nav .open > a:focus {background-color: transparent;}
