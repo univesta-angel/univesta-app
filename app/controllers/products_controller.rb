@@ -23,11 +23,6 @@ class ProductsController < ApplicationController
     end
     
   end
-  
-  # order lists
-  def order
-   # @orders = ShopifAPI::Order.find(:all)
-  end
 
   # GET /products/1
   # GET /products/1.json
@@ -54,8 +49,8 @@ class ProductsController < ApplicationController
                               vendor: params[:vendor],
                               tags: params[:tags],
                               price: params[:price],
-                              price2: params[:price2],
-                              compare_at_price: params[:compare_at_price],
+                              price2: params[:price2] + 1,
+                              compare_at_price: params[:compare_at_price] + 1,
                               colors: params[:colors],
                               sizes: params[:sizes],
                               avail_qty: params[:avail_qty],
