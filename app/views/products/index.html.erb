@@ -34,14 +34,14 @@
       <span class="hamb-bottom"></span>
     </button>
 
-  <div class="container-fluid text-center">    
+  <div class="container-fluid text-center" id="page-content">    
     <div class="row content">
 
       <!-- start of center column -->
-      <div class="col-sm-8 text-left page-content"> 
+      <div class="col-sm-8 text-left"> 
         
-        <div class="row" style="margin-bottom: 20px;">
-          <div class="col-md-14" style="margin-top: 20px;">
+        <div class="row">
+          <div class="col-md-12">
             <div class="panel-body align-center search-form">
               <%= form_tag(root_path, method: :get) do %>
                 <div class="form-group">
@@ -49,31 +49,29 @@
                 </div>
                 <%= submit_tag 'Search', name: nil, class: "btn btn-default", id: "search-btn" %>
               <% end %>
-          </div>
-          </div>
-        </div>
-
-        <div class="row" style="margin-bottom: 30px;">
-          <div class="col-md-4">
-            <div class="checkbox">
-                <input type="checkbox" id="select_all" style="margin-right: 7px; margin-left: 1px;">
-                <select class="selectpicker" id="bulkaction">
-                  <option>Push Selected</option>
-                  <option>Remove Selected</option>
-                </select>
-            </div>
-          </div>
-          <div class="col-md-7">
-            <div style="float:right; margin-right: 13px;">
-              <%= button_to 'Push All Products to Shop', pushall_path, class: 'btn btn-success all' %>
-            </div>
-            <div style="float:right; margin-right: 5px;">
-              <%= button_to 'Remove All Products', remove_all_path, class: 'btn btn-default all', data: { confirm: 'Are you sure?' } %>
             </div>
           </div>
         </div>
 
-          <div><p id="notice"><%= notice %></p></div>
+        <div class="row">
+          <div class="col-md-10">
+            <div class="container-fluid">
+              <input type="checkbox" id="select_all" style="margin-right: 7px; margin-left: 1px;">
+              <select class="selectpicker" id="bulkaction">
+                <option>Push Selected</option>
+                <option>Remove Selected</option>
+              </select>
+              <%= button_to pushall_path, class: 'btn btn-success all', id: 'push-all-prd' do %>
+                <span class="glyphicon glyphicon-plus" style="margin-right: 10px;"></span>Push All Products to Shop
+              <% end %>
+              <%= button_to remove_all_path, class: 'btn btn-default all', id: 'remove-all-prd', data: { confirm: 'Are you sure?' } do %>
+                <span class="glyphicon glyphicon-minus" style="margin-right: 10px;"></span>Remove All Products
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div><p id="notice"><%= notice %></p></div>
 
         <div> <!-- list of products -->  
 
@@ -84,7 +82,7 @@
             <div class="row">
               <div class="col-md-10">
 
-              <div class="panel-heading">
+              <div class="panel-heading" id="prd-head">
                 <ul class="nav" id="myTab">
                   <li slot="select" >
                     <input class="checkbox" type="checkbox" name="check[]" value ="<%= product.id %>" style="margin: 13px;">
@@ -152,7 +150,7 @@
 
                   <!--VARIANTS TAB-->
                   <div class="tab-pane" id="variants<%= @ctr %>">
-                    <div class="container" style="margin-left: -10px; overflow-y: scroll; height:300px; width: 1100px;" %>
+                    <div class="container" style="margin-left: -10px; overflow-y: scroll; height:300px; width: 980px;" %>
                       <table class="table table-condensed table-striped volumes">
                         <thead>
                           <tr>
@@ -293,8 +291,12 @@
                 <!--PUSH BUTTON-->
                 <div class="panel-footer">
                   <div class="text-right">
-                    <%= link_to "Remove Product", product, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default all" %>
-                    <%= submit_tag 'Push to Store', class: "btn btn-success push-btn" %>
+                    <%= link_to product, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default all" do %>
+                      <span class="glyphicon glyphicon-minus" style="margin-right: 10px;"></span> Remove Product
+                    <% end %>
+                    <%= button_tag(type: "submit", class: "btn btn-success push-btn") do %>
+                      <span class="glyphicon glyphicon-plus" style="margin-right: 10px;"></span>Push to Store
+                    <% end %>
                   </div>
                 </div>
                 <br/>
