@@ -22,6 +22,9 @@
 //= require_tree .
 
 $(document).ready(function () {
+  
+  $('.datepicker').datepicker();
+  
   var trigger = $('.hamburger'),
       overlay = $('.overlay'),
      isClosed = false;
