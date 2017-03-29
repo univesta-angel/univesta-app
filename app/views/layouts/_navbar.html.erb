@@ -1,24 +1,14 @@
-<head>
-<nav class="navbar navbar-fixed vertical">
-      <ul>
-        <li>
-          <%= link_to image_tag("shopbag.png", alt: "logo", size: "20x20"), '#' %>
-          <div>
-            <ul>
-              <li><a href="/">Imports List</a></li>
-              <li><a href="/my_products">My Products</a></li>
-            </ul>
-          </div>
-        </li>
-        <li>
-          <%= link_to image_tag("pages.png", alt: "logo", size: "20x20"), '#' %>
-          <div>
-            <ul>
-              <li><a href="/orders">Orders</a></li>
-            </ul>
-          </div>
-        </li>
-      </ul>
-  </nav>
 
-</head>
+<nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+  <ul class="nav sidebar-nav">
+    <li>
+        <%= link_to image_tag("trolley-white.png", alt: "logo", size: "50x50"), '/', class: "disabled" %>
+    </li>
+    <li>
+        <%= link_to image_tag("pricetag-white.png", alt: "logo", size: "50x50"), '/my_products', class: "disabled" %>
+    </li>
+    <li>
+        <%= link_to image_tag("pages.png", alt: "logo", size: "50x50"), '/orders' %>
+    </li>
+  </ul>
+</nav>
