@@ -6,7 +6,7 @@ class MyProductsController < ApplicationController
   def delete_my_product
     ShopifyAPI::Product.delete(:prd_id)
     respond_to do |format|
-      format.html { redirect_to root_path, notice: 'Product was successfully deleted.' }
+      format.html { redirect_to my_products_path, notice: 'Product was successfully deleted.' }
     end
   end
 end
