@@ -1,3 +1,26 @@
 // Place all the styles related to the MyProducts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#page-content {
+	width: 1024px;
+	margin: 0 auto;
+}
+.search-orders {
+	margin-top: 10px;
+	margin-bottom: 20px;
+/*margin-left: 25%;*/
+}
+#search-key {
+	float: left;
+}
+.date-range{
+	float: right;
+}
+.prd-image {
+	width: 136px;
+	height: 136px;
+	border: 1px solid grey;
+}
+.prd-title {
+	font-size: 20px; 
+}
