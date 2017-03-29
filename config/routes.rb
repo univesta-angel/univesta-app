@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   delete 'remove_all' => 'products#remove_all', as: :remove_all
   delete 'imports_remove' => 'products#remove_selected', as: :remove_selected
   
-  post 'delete_product' => 'my_products#delete_my_product', as: :delete_product
+  delete 'delete_product' => 'my_products#delete_my_product', as: :delete_product
 
   mount ShopifyApp::Engine, at: '/'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
