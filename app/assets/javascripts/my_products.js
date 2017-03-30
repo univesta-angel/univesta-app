@@ -1,3 +1,4 @@
+$(document).ready(function() {
 $('#daterange').daterangepicker({
       "ranges": {
           "Today": [
@@ -35,3 +36,4 @@ $('#daterange').daterangepicker({
   $('#daterange').on('cancel.daterangepicker', function(ev, picker) {
     $(this).val('');
   });
+});
