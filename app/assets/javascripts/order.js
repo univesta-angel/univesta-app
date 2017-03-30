@@ -52,7 +52,7 @@ $(document).ready(function(){
     console.log("A new date range was chosen: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
   });
 
-  $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
+  $('#daterange').on('cancel.daterangepicker', function(ev, picker) {
     $(this).val('');
   });
 
