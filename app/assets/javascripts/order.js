@@ -1,12 +1,10 @@
 $(document).ready(function(){
   var start = moment().subtract(29, 'days');
   var end = moment();
-
-  $('.datepicker').datepicker();
+  $('#daterange'.click(function(){
+    alert('abc');
+  });
   $('#daterange').daterangepicker({
-      "locale": {
-        format: "YYYY-MM-DD"
-      },
       "ranges": {
           "Today": [
               "2017-03-30T01:19:42.901Z",
@@ -58,7 +56,6 @@ $(document).ready(function(){
   });
 
   $(".order-prd-btn").click(function(){
-    
       alert($(this).attr("data_id"));
       var data_id = $(this).attr("data_id");
     
