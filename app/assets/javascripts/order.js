@@ -1,7 +1,7 @@
 $(document).ready(function(){
   var start = moment().subtract(29, 'days');
   var end = moment();
-  $('#daterange'.click(function(){
+  $('#daterange').click(function(){
     alert('abc');
   });
   $('#daterange').daterangepicker({
