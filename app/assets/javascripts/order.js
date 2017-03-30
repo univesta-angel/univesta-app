@@ -36,7 +36,7 @@ $(document).ready(function(){
     //alert(start.format('YYYY-MM-DD'))
       $.ajax({
         url: "/orders",
-        type: 'GET',
+        type: 'POST',
         data: {
           start: start.format('YYYY-MM-DD'),
           end: end.format('YYYY-MM-DD')
@@ -44,7 +44,7 @@ $(document).ready(function(){
         dataType: 'application/json',
         success: function(data){
           //window.location.reload()
-          window.open("/orders?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD')+"", "_self");
+          alert("success.")
         }
       });
     console.log("A new date range was chosen: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
