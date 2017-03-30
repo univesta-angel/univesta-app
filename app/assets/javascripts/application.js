@@ -24,8 +24,8 @@
 
 $(document).ready(function () {
   
-  $('.datepicker').datepicker();
-  $('input[name="datefilter"]').daterangepicker({
+  //$('.datepicker').datepicker();
+  $('#daterange').daterangepicker({
       "ranges": {
           "Today": [
               "2017-03-30T01:19:42.901Z",
@@ -59,7 +59,7 @@ $(document).ready(function () {
     console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
   });
 
-  $('.date_range').on('cancel.daterangepicker', function(ev, picker) {
+  $('#daterange').on('cancel.daterangepicker', function(ev, picker) {
     $(this).val('');
   });
   
