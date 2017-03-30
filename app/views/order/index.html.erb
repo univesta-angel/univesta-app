@@ -249,8 +249,8 @@
 			<%= hidden_field_tag :zip, order.shipping_address.zip, id: 'zip_'+order.order_number.to_s %>				  
 			<%= hidden_field_tag :phone, order.shipping_address.phone, id: 'phone_'+order.order_number.to_s %>
 				  
-		            <div class="col-md-4">Order #<a href="#" class="order-no"><%= order.order_number %></a><span class="date"><%= order.created_at %></span></div>
-		            <div class="col-md-3">Customer: <a href="#" id="customername_<%= order.order_number %>" class="customername"><%= order.shipping_address.name %></a></div>
+		            <div class="col-md-4">Order #<a href="https://gels-store.myshopify.com/admin/orders/#{order.id}" class="order-no"><%= order.order_number %></a><span class="date"><%= order.created_at %></span></div>
+		            <div class="col-md-3">Customer: <a href="https://gels-store.myshopify.com/admin/orders/#{order.customer.id}" id="customername_<%= order.order_number %>" class="customername"><%= order.shipping_address.name %></a></div>
 		            <div class="col-md-3">Add Note</div>
 		            <div class="Column2"><button type="button" class="btn btn-default mark-ship-btn">Mark as Shipped</button></div>
 		          </div>
