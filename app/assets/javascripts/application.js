@@ -13,6 +13,7 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
+//= require moment
 //= require daterangepicker
 //= require image-picker
 //= require trix
