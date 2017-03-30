@@ -34,20 +34,7 @@ $(document).ready(function(){
       "endDate": end
   }, function(start, end, label) {
     //alert(start.format('YYYY-MM-DD'))
-      $.ajax({
-        url: "/orders",
-        type: 'POST',
-        data: {
-          start: start.format('YYYY-MM-DD'),
-          end: end.format('YYYY-MM-DD')
-        },
-        dataType: 'application/json',
-        success: function(data){
-          //window.location.reload()
-          alert("success.")
-        }
-      });
-    console.log("A new date range was chosen: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+    window.open("https://shopifyapp-sample.herokuapp.com/orders?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD')+"", "_self");
   });
 
   $('#daterange').on('cancel.daterangepicker', function(ev, picker) {
