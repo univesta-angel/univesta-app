@@ -2,9 +2,6 @@ $(document).ready(function(){
   var start = moment().subtract(29, 'days');
   var end = moment();
 
-  $('#daterange').click(function() {
-    alert('hi');
-  });
   $('#daterange').daterangepicker({
       "ranges": {
           "Today": [
@@ -46,7 +43,7 @@ $(document).ready(function(){
         },
         dataType: 'application/json',
         success: function(data){
-          window.location.reload()
+          //window.location.reload()
         }
       });
     console.log("A new date range was chosen: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
