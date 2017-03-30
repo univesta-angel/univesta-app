@@ -38,7 +38,7 @@
 				    <a href="#" class="btn btn-default flex-right" id="date-range">Action</a>
 				    <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></a>
 				    <ul class="dropdown-menu">
-				      <li><%= link_to "Delete from Shopify", delete_product_path(product), method: :delete, :prd_id => product.id, data: {confirm: 'Are you sure?'} %></li>
+				      <li><%= link_to "Delete from Shopify", product, method: :delete, :prd_id => product.id, data: {confirm: 'Are you sure?'} %></li>
 				      <li>Stop Tracking</li>
 				      <li>Override this Product</li>
 				      <li>Prevent price from auto-updating</li>
