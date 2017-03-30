@@ -1,6 +1,7 @@
 $(document).ready(function(){
   var start = moment().subtract(29, 'days');
   var end = moment();
+
   $('#daterange').click(function(){
     alert('abc');
   });
@@ -47,7 +48,7 @@ $(document).ready(function(){
         success: function(data){
           window.location.reload()
         }
-    });
+      });
     console.log("A new date range was chosen: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
   });
 
