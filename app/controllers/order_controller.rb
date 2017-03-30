@@ -4,7 +4,8 @@ class OrderController < ApplicationController
     ShopifyAPI::Base.site = shop_url
     shop = ShopifyAPI::Shop.current
     
-    @orders = ShopifyAPI::Order.find(:all, :params => {limit: 5, order: "created_at DESC"})
+    #@orders = ShopifyAPI::Order.find(:all, :params => {limit: 5, order: "created_at DESC"})
+    @orders = ShopifyAPI::Order.find(:all, :params => { :created_at_min => params[:start], :created_at_max => params[:end] })
     
   end
 end
