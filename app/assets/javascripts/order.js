@@ -41,7 +41,7 @@ $(document).ready(function(){
   $('#daterange').on('cancel.daterangepicker', function(ev, picker) {
     $(this).val('');
   });
-  
+  //--------------------------------------------------------------------------------------------------------  
   $(".add-note-btn").click(function(){
       var dataid = $(this).attr("data-id");
       alert(dataid)
@@ -87,17 +87,7 @@ $(document).ready(function(){
         history.pushState(null, null, loc.pathname+'?'+data);
     }
   });
-
   
-
-
-
-
-
-
-
-
-
   //--------------------------------------------------------------------------------------------------------
   $(".order-prd-btn").click(function(){
       alert($(this).attr("data_id"));
