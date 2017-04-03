@@ -184,10 +184,10 @@
 				      Fulfillment Status: All <span class="caret"></span>
 				    </a>
 				    <ul class="dropdown-menu">
-				    	<li><input type="checkbox" name="vehicle" value="Bike">Unknown</li>
-			            <li><input type="checkbox" name="vehicle" value="Bike">Fulfilled</li>
-			            <li><input type="checkbox" name="vehicle" value="Bike">Unfulfilled</li>
-			            <li><input type="checkbox" name="vehicle" value="Bike">Partial</li>
+				    	<li><input type="checkbox" name="unknown" class="fulfillment_status" value="any">Unknown</li>
+			            <li><input type="checkbox" name="fulfilled" class="fulfillment_status" value="shipped">Fulfilled</li>
+			            <li><input type="checkbox" name="unfulfilled" class="fulfillment_status" value="unshipped">Unfulfilled</li>
+			            <li><input type="checkbox" name="partial" class="fulfillment_status" value="partial">Partial</li>
 				    </ul>
 				  </li>
 				  <li role="presentation" class="dropdown">
@@ -195,15 +195,10 @@
 				      Financial Status: All <span class="caret"></span>
 				    </a>
 				    <ul class="dropdown-menu">
-				    	<li>ABC</li>
-				    </ul>
-				  </li>
-				  <li role="presentation" class="dropdown">
-				    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-				      Flags Status: All <span class="caret"></span>
-				    </a>
-				    <ul class="dropdown-menu">
-				    	<li>ABC</li>
+				    <li><input type="checkbox" name="partially_paid" class="financial_status" value="partially_paid">Partially Paid</li>
+			            <li><input type="checkbox" name="paid" class="financial_status" value="paid">Paid</li>
+			            <li><input type="checkbox" name="partially_refunded" class="financial_status" value="partially_refunded">Partially refunded</li>
+			            <li><input type="checkbox" name="refunded" class="financial_status" value="refunded">Refunded</li>
 				    </ul>
 				  </li>
 				  <li role="presentation" class="dropdown">
@@ -211,15 +206,10 @@
 				      Order Status: All <span class="caret"></span>
 				    </a>
 				    <ul class="dropdown-menu">
-				    	<li>ABC</li>
-				    </ul>
-				  </li>
-				  <li role="presentation" class="dropdown">
-				    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-				      Sources Status: All <span class="caret"></span>
-				    </a>
-				    <ul class="dropdown-menu">
-				    	<li>ABC</li>
+			            <li><input type="checkbox" name="order_placed" class="order_status" value="open">Order Placed</li>
+			            <li><input type="checkbox" name="in_processing" class="order_status" value="unshipped">In Processing</li>
+			            <li><input type="checkbox" name="shipped" class="order_status" value="shipped">Shipped</li>
+			            <li><input type="checkbox" name="cancelled" class="order_status" value="cancelled">Cancelled</li>
 				    </ul>
 				  </li>
 				</ul>
