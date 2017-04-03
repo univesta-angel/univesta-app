@@ -63,29 +63,39 @@ $(document).ready(function(){
   //--------------------------------------------------------------------------------------------------------
   
   $('input[type="checkbox"]').on('change', function(e){
-      var data = [],
-          loc = $('<a>', { href: window.location })[0];
-      $('input[class="fulfillment_status"]').each(function(i){
-        if(this.checked){
-            data.push('fulfillment_status='+this.value);
-        }
-      });
-      $('input[class="financial_status"]').each(function(i){
-        if(this.checked){
-            data.push('financial_status='+this.value);
-        }
-      });
-      $('input[class="order_status"]').each(function(i){
-        if(this.checked){
-            data.push('order_status='+this.value);
-        }
-      });
-      data = data.join('&');
-
-      //$.post('/orders', data);
-      if(history.pushState){
-          history.pushState(null, null, loc.pathname+'?'+data);
+    var data = [],
+        loc = $('<a>', {href:window.location})[0];
+    $('input[class="fulfillment_status"]').each(function(i){
+      if(this.checked){
+          data.push('fulfillment_status='+this.value);
       }
+      else{
+        loc.pathname.slice(0, loc.pathname.indexOf('fulfillment_status='+this.value))
+        window.location.reload
+      }
+    });
+    $('input[class="financial_status"]').each(function(i){
+      if(this.checked){
+          data.push('financial_status='+this.value);
+      }
+      else{
+        loc.pathname.slice(0, loc.pathname.indexOf('fulfillment_status='+this.value))
+      }
+    });
+    $('input[class="order_status"]').each(function(i){
+      if(this.checked){
+          data.push('order_status='+this.value);
+      }
+      else{
+        loc.pathname.slice(0, loc.pathname.indexOf('fulfillment_status='+this.value))
+      }
+    });
+    data = data.join('&');
+    
+    $.get('/orders', data);
+    if(history.replaceState){
+        history.replaceState(null, null, loc.pathname+'?'+data);
+    }
   });
   
   //--------------------------------------------------------------------------------------------------------
