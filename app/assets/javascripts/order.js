@@ -43,7 +43,10 @@ $(document).ready(function(){
       $("div[data-id='"+dataid+"']").fadeToggle("slow","linear"); 
   });
   //--------------------------------------------------------------------------------------------------------
-  
+  var checked = JSON.parse(localStorage.getItem('checkbox1zaal1'));
+  if(checked == true){
+    document.querySelector('input[type="checkbox"]').checked = true;
+  }
   $('input[type="checkbox"]').on('change', function(e){
     var data = [],
         loc = $('<a>', {href:window.location})[0];
