@@ -94,8 +94,8 @@ $(document).ready(function(){
     data = data.join('&');
     
     $.get('/orders', data);
-    if(history.replaceState){
-        history.replaceState(null, null, loc.pathname+'?'+data);
+    if(history.pushState){
+        history.pushState(null, null, loc.pathname+'?'+data);
     }
   });
   
