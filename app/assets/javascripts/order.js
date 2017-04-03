@@ -42,7 +42,8 @@ $(document).ready(function(){
   });
   
   $(".add-note-btn").click(function(){
-      var dataid = $(this).attr("data-id");
+      alert($(this).attr("data-id"));
+    //var dataid = $(this).attr("data-id");
       $("div[data-id='"+dataid+"']").fadeToggle("slow","linear");
       var noteid = "note_"+dataid;
       var note = localStorage[noteid];
