@@ -16,10 +16,10 @@ class OrderController < ApplicationController
         @orders << ShopifyAPI::Order.find(:all, :params => { :fulfillment_status => fs })
       end
       params[:financial_status].each do |fis|
-        @orders << ShopifyAPI::Order.find(:all, :params => { :fulfillment_status => fis })
+        @orders << ShopifyAPI::Order.find(:all, :params => { :financial_status => fis })
       end
-      params[fulfillment_status].each do |os|
-        @orders << ShopifyAPI::Order.find(:all, :params => { :fulfillment_status => os })
+      params[:order_status].each do |os|
+        @orders << ShopifyAPI::Order.find(:all, :params => { :status => os })
       end
     else
       @orders = ShopifyAPI::Order.find(:all, :params => {limit: 5, order: "created_at DESC"})
