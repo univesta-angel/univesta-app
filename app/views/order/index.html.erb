@@ -252,13 +252,13 @@
 				  
 		            <div class="col-md-4">Order #<%= link_to order.order_number, "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin/orders/#{order.id}", method: "get", target: "_blank" %><span class="date"><%= order.created_at %></span></div>
 				  <div class="col-md-3">Customer: <%= link_to order.shipping_address.name, "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin/customers/#{order.customer.id}", method: "get", target: "_blank", id: "customername_#{order.order_number}", class: "customername" %></div>
-				  <div class="col-md-3"><button type="button" class="btn btn-sm add-order-btn" style="margin-left: 20px;">Add Note</button></div>
+				  <div class="col-md-3"><button type="button" class="btn btn-sm add-note-btn" style="margin-left: 20px;" data-id="<%= order.order_number %>">Add Note</button></div>
 				  <div class="Column2"><button type="button" class="btn btn-default mark-ship-btn">Mark as Shipped</button></div>
 		          </div>
 		          <hr>
 		          <div class="Row">
 		            <div class="col-md-3"><span class="label label-warning" style="margin-right: 10px">To Order</span>Supplier: <a href="#">Warehouse #0001</a></div>
-		            <div class="col-md-3">Ali Order No:<button type="button" class="btn btn-sm add-note-btn" style="margin-left: 20px;">Add</button></div>
+		            <div class="col-md-3">Ali Order No:<button type="button" class="btn btn-sm add-order-no-btn" style="margin-left: 20px;">Add</button></div>
 		            <div class="col-md-3">Shipped:<b style="margin-left: 5px">0/1</b><button type="button" class="btn btn-sm mark-ship-btn" style="margin-left: 10px">Mark as Shipped</button></div>
 		            <div class="Column2"><%= button_tag "Order Product", id: 'order-btn', class: 'btn btn-default order-prd-btn', data_id: order.order_number %></div>
 		          </div>
