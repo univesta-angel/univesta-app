@@ -4,38 +4,19 @@ $(document).ready(function(){
 
   $('#daterange').daterangepicker({
       "ranges": {
-          "Today": [
-              "2017-03-30T01:19:42.901Z",
-              "2017-03-30T01:19:42.901Z"
-          ],
-          "Yesterday": [
-              "2017-03-29T01:19:42.901Z",
-              "2017-03-29T01:19:42.901Z"
-          ],
-          "Last 7 Days": [
-              "2017-03-24T01:19:42.901Z",
-              "2017-03-30T01:19:42.901Z"
-          ],
-          "Last 30 Days": [
-              "2017-03-01T01:19:42.901Z",
-              "2017-03-30T01:19:42.901Z"
-          ],
-          "This Month": [
-              "2017-02-28T16:00:00.000Z",
-              "2017-03-31T15:59:59.999Z"
-          ],
-          "Last Month": [
-              "2017-01-31T16:00:00.000Z",
-              "2017-02-28T15:59:59.999Z"
-          ]
+          'Today': [moment(), moment()],
+           'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+           'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+           'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+           'This Month': [moment().startOf('month'), moment().endOf('month')],
+           'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
       },
       "alwaysShowCalendars": true,
       "startDate": start,
       "endDate": end
   }, function(start, end, label) {
     //alert(start.format('YYYY-MM-DD'))
-    var winLoc = $('<a>', {href:window.location});
-    history.replaceState(null, null, winLoc.pathname+"start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD'))
+    history.pushState(window.location.pathname+"?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD'))
     //window.open("https://shopifyapp-sample.herokuapp.com/orders?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD')+"", "_self");
   });
 
@@ -72,7 +53,6 @@ $(document).ready(function(){
       }
       else{
         loc.pathname.slice(0, loc.pathname.indexOf('fulfillment_status='+this.value))
-        window.location.reload
       }
     });
     $('input[class="financial_status"]').each(function(i){
