@@ -34,7 +34,8 @@ $(document).ready(function(){
       "endDate": end
   }, function(start, end, label) {
     //alert(start.format('YYYY-MM-DD'))
-    window.open("https://shopifyapp-sample.herokuapp.com/orders?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD')+"", "_self");
+    window.location.search = "start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD')
+    //window.open("https://shopifyapp-sample.herokuapp.com/orders?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD')+"", "_self");
   });
 
   $('#daterange').on('cancel.daterangepicker', function(ev, picker) {
@@ -59,7 +60,20 @@ $(document).ready(function(){
       console.log("note saved")
       $("div[data-id='"+dataid+"']").fadeToggle("slow","linear"); 
   });
+  //--------------------------------------------------------------------------------------------------------
   
+  
+  
+
+
+
+
+
+
+
+
+
+  //--------------------------------------------------------------------------------------------------------
   $(".order-prd-btn").click(function(){
       alert($(this).attr("data_id"));
       var data_id = $(this).attr("data_id");
