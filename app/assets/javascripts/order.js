@@ -34,7 +34,7 @@ $(document).ready(function(){
       "endDate": end
   }, function(start, end, label) {
     //alert(start.format('YYYY-MM-DD'))
-    window.history.pushState = "start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD')
+    history.pushState = "start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD')
     //window.open("https://shopifyapp-sample.herokuapp.com/orders?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD')+"", "_self");
   });
 
@@ -62,7 +62,32 @@ $(document).ready(function(){
   });
   //--------------------------------------------------------------------------------------------------------
   
-  
+    $('input[type="checkbox"]').on('change', function(e){
+    var data = [],
+        loc = $('<a>', {href:window.location})[0];
+    $('input[class="fulfillment_status"]').each(function(i){
+      if(this.checked){
+          data.push('fulfillment_status='+this.value);
+      }
+    });
+    $('input[class="financial_status"]').each(function(i){
+      if(this.checked){
+          data.push('financial_status='+this.value);
+      }
+    });
+    $('input[class="order_status"]').each(function(i){
+      if(this.checked){
+          data.push('order_status='+this.value);
+      }
+    });
+    data = data.join('&');
+
+    $.post('/orders', data);
+    if(history.pushState){
+        history.pushState(null, null, loc.pathname+'?'+data);
+    }
+  });
+
   
 
 
