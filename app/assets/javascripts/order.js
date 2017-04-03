@@ -39,8 +39,27 @@ $(document).ready(function(){
 
   $('#daterange').on('cancel.daterangepicker', function(ev, picker) {
     $(this).val('');
-  });   
-  $(".order-prd-btn").click(function(){
+  });
+  
+  $(".add-note-btn").click(function(){
+      var dataid = $(this).attr("data-id");
+      $("div[data-id='"+dataid+"']").fadeToggle("slow","linear");
+      var noteid = "note_"+dataid;
+      var note = localStorage[noteid];
+      //console.log(note)
+      document.getElementById("note").value = note;
+  });
+
+  $('.save-note-btn').click(function(){
+      var dataid = $(this).attr("data-id");
+      var note_ = document.getElementById("note").value;
+      var noteid = "note_"+dataid;
+      localStorage[noteid] = note_;
+      console.log("note saved")
+      $("div[data-id='"+dataid+"']").fadeToggle("slow","linear"); 
+  });
+  
+  $(".note-save").click(function(){
       alert($(this).attr("data_id"));
       var data_id = $(this).attr("data_id");
     
