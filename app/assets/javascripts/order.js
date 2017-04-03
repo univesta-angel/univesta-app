@@ -42,18 +42,18 @@ $(document).ready(function(){
   });
   
   $(".add-note-btn").click(function(){
-      alert($(this).attr("data-id"));
-    //var dataid = $(this).attr("data-id");
+      var dataid = $(this).attr("data-id");
+      alert(dataid)
       $("div[data-id='"+dataid+"']").fadeToggle("slow","linear");
       var noteid = "note_"+dataid;
       var note = localStorage[noteid];
       //console.log(note)
-      document.getElementById("note").value = note;
+      var note_ = document.querySelector("textarea[dataid='"+dataid+"']").value = note;
   });
 
   $('.save-note-btn').click(function(){
       var dataid = $(this).attr("data-id");
-      var note_ = document.getElementById("note").value;
+      var note_ = document.querySelector("textarea[dataid='"+dataid+"']").value;
       var noteid = "note_"+dataid;
       localStorage[noteid] = note_;
       console.log("note saved")
