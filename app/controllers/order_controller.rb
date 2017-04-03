@@ -11,14 +11,8 @@ class OrderController < ApplicationController
     if params[:start] and params[:end]
       @orders = ShopifyAPI::Order.find(:all, :params => { :created_at_min => params[:start], :created_at_max => params[:end] })
     elsif params[:fulfillment_status] or params[:financial_status] or params[:order_status]
-      params[:fulfillment_status].each do |fs|
-        @orders << ShopifyAPI::Order.find(:all, :params => { :fulfillment_status => fs })
-      end
       params[:financial_status].each do |fis|
         @orders << ShopifyAPI::Order.find(:all, :params => { :financial_status => fis })
-      end
-      params[:order_status].each do |os|
-        @orders << ShopifyAPI::Order.find(:all, :params => { :status => os })
       end
     else
       @orders = ShopifyAPI::Order.find(:all, :params => {limit: 5, order: "created_at DESC"})
