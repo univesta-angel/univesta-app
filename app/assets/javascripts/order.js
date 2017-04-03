@@ -60,7 +60,7 @@ $(document).ready(function(){
       $("div[data-id='"+dataid+"']").fadeToggle("slow","linear"); 
   });
   
-  $(".note-save").click(function(){
+  $(".order-prd-btn").click(function(){
       alert($(this).attr("data_id"));
       var data_id = $(this).attr("data_id");
     
