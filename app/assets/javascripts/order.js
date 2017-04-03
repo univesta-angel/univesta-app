@@ -34,7 +34,7 @@ $(document).ready(function(){
       "endDate": end
   }, function(start, end, label) {
     //alert(start.format('YYYY-MM-DD'))
-    window.location.search = "start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD')
+    window.history.pushState = "start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD')
     //window.open("https://shopifyapp-sample.herokuapp.com/orders?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD')+"", "_self");
   });
 
