@@ -34,7 +34,9 @@ class OrderController < ApplicationController
     end #end of if else statement
     
     if request.xhr?
-      redirect_to "window.location = #{orders_path}"
+      respond_to do |format|
+        format.html { redirect_to orders_path }
+      end
     end
       
   end
