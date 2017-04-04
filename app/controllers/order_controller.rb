@@ -32,6 +32,10 @@ class OrderController < ApplicationController
       end
        
     end #end of if else statement
+    
+    if request.xhr?
+      redirect_to "window.location = #{orders_path}"
+    end
       
   end
 end
