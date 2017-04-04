@@ -35,7 +35,7 @@ class OrderController < ApplicationController
     
     if request.xhr?
       respond_to do |format|
-        format.html { redirect_to orders_path }
+        format.js { render: "window.location.reload()" }
       end
     end
       
