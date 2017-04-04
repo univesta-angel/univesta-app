@@ -95,11 +95,10 @@ $(document).ready(function(){
     localStorage.setItem('checkbox1', checkbox[0].checked);
     $.ajax({
       url: "/orders",
-      type: "POST",
+      type: "GET",
       data: data,
       success: function(){
-        alert('ok')
-    }
+      }
     });
     if(history.pushState){
         history.pushState(null, null, loc.pathname+'?'+data);
