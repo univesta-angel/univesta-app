@@ -16,7 +16,18 @@ $(document).ready(function(){
       "endDate": end
   }, function(start, end, label) {
     //alert(start.format('YYYY-MM-DD'))
-    history.pushState(null, null, window.location.pathname+"?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD'))
+    var winLoc = $('<a>', {href:window.location})[0];
+    //history.replaceState(null, null, winLoc.pathname+"start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD'))
+    var currentURL = window.location.href
+    if(currentURL.endsWith("/orders")||currentURL.endsWith("/orders?")){
+      window.location.href = window.location.pathname+"?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
+    }
+    else if(currentURL.indexOf("start=") > -1 && currentURL.indexOf("end=") > -1){
+      window.location.href = window.location.pathname+"?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
+    }
+    else{
+      //window.location.href = window.location.href+"&start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
+    }
     //window.open("https://shopifyapp-sample.herokuapp.com/orders?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD')+"", "_self");
   });
 
@@ -43,9 +54,13 @@ $(document).ready(function(){
       $("div[data-id='"+dataid+"']").fadeToggle("slow","linear"); 
   });
   //--------------------------------------------------------------------------------------------------------
-  var checked = JSON.parse(localStorage.getItem('checkbox1zaal1'));
-  if(checked == true){
-    document.querySelector('input[type="checkbox"]').checked = true;
+  var checked = localStorage.getItem('checkbox1');
+  var checkboxes = document.querySelectorAll('input[type="checkbox"]')
+  for (var i = 0; i < checkboxes.length; i++) {
+    var box = checkboxes[i];
+    if (box.hasAttribute("value")) {
+        setupBox(box);
+    }
   }
   $('input[type="checkbox"]').on('change', function(e){
     var data = [],
@@ -63,7 +78,7 @@ $(document).ready(function(){
           data.push('financial_status='+this.value);
       }
       else{
-        loc.pathname.slice(0, loc.pathname.indexOf('fulfillment_status='+this.value))
+        loc.pathname.slice(0, loc.pathname.indexOf('financial_status='+this.value))
       }
     });
     $('input[class="order_status"]').each(function(i){
@@ -71,16 +86,27 @@ $(document).ready(function(){
           data.push('order_status='+this.value);
       }
       else{
-        loc.pathname.slice(0, loc.pathname.indexOf('fulfillment_status='+this.value))
+        loc.pathname.slice(0, loc.pathname.indexOf('order_status='+this.value))
       }
     });
     data = data.join('&');
-    
-    $.get('/orders', data);
+    var checkbox = document.getElementsByClassName('fulfillment_status')
+    localStorage.removeItem('checkbox1')
+    localStorage.setItem('checkbox1', checkbox[0].checked);
     if(history.pushState){
         history.pushState(null, null, loc.pathname+'?'+data);
+        window.location.replace(loc.pathname+'?'+data);
     }
   });
+  function setupBox(box) {
+    var storageId = box.getAttribute("value");
+    var oldVal    = localStorage.getItem(storageId);
+    box.checked = oldVal === "true" ? true : false;
+
+    box.addEventListener("change", function() {
+        localStorage.setItem(storageId, this.checked); 
+    });
+  }
   
   //--------------------------------------------------------------------------------------------------------
   $(".order-prd-btn").click(function(){
