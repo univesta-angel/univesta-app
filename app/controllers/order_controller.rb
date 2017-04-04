@@ -29,6 +29,8 @@ class OrderController < ApplicationController
           end
         end
       end #end of if else statement
+      
+      render json: @orders
     
     else
       
