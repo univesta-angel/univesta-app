@@ -5,10 +5,14 @@ class OrderController < ApplicationController
     shop = ShopifyAPI::Shop.current
 
     #@orders = ShopifyAPI::Order.find(:all, :params => {limit: 5, order: "created_at DESC"})
-    if params[:start] and params[:end]
+    if params[:start].present? && params[:end].present?
       @orders = ShopifyAPI::Order.find(:all, :params => { :created_at_min => params[:start], :created_at_max => params[:end] })
-    elsif params[:financial_status]
-      @orders = ShopifyAPI::Order.find(:all, :params => { :financial_status => params[:financial_status] })
+    elsif params[:financial_status].present?
+      @order = []
+      fin_s = params[:financial_status]
+      fin_s.each do |fns|
+        @orders << ShopifyAPI::Order.find(:all, :params => { :financial_status => fns })
+      end
     else
       @orders = ShopifyAPI::Order.find(:all, :params => {limit: 5, order: "created_at DESC"})
     end
