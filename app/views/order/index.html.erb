@@ -231,8 +231,8 @@
 				</ul>
 	    	</div>
 		
-		<div>
-	        	<%= render partial: 'orders_list' %>
+		<div id="items_grid">
+	        	<%= render partial: 'orders_list', locals: {orders: orders} %>
 		</div>
 	    </div>
 	    <!-- end of center column -->
