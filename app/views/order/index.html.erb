@@ -268,7 +268,12 @@
 				  <div class="col-md-3">Customer: <%= link_to order.shipping_address.name, "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin/customers/#{order.customer.id}", method: "get", target: "_blank", id: "customername_#{order.order_number}", class: "customername" %></div>
 				  <div class="col-md-3"><button type="button" class="btn btn-sm add-note-btn" style="margin-left: 20px;" data-id="<%= order.order_number %>">Add Note</button></div>
 				  <div class="Column2"><button type="button" class="btn btn-default mark-ship-btn">Mark as Shipped</button></div>
-		          </div>
+			</div>
+				
+				<div class="add-note" style="position:absolute;width:350px;height:300px;display:none;float:left;margin-left:470px;margin-top:110px;top:123px;background-color:white;border:1px solid grey;border-radius:5px;" data-id="<%= order.order_number %>">
+					<textarea type="text" name="note" class="form-control" id="note" data-id="<%= order.order_number %>" style="width:96%;height:85%;margin-top:6px;margin-left:7px;margin-right:10px;resize:none;"></textarea>
+					<button class="btn btn-default save-note-btn" type="submit" style="width:96%;margin-left:7px;" data-id="<%= order.order_number %>">Save</button>
+				</div>	
 		          <hr>
 		          <div class="Row">
 		            <div class="col-md-3"><span class="label label-warning" style="margin-right: 10px">To Order</span>Supplier: <a href="#">Warehouse #0001</a></div>
@@ -318,10 +323,6 @@
 	            		
 	              	</div>
 	        	</div>
-			<div class="add-note" style="position:absolute;width:350px;height:300px;display:none;float:left;margin-left:470px;margin-top:110px;top:123px;background-color:white;border:1px solid grey;border-radius:5px;" data-id="<%= order.order_number %>">
-				<textarea type="text" name="note" class="form-control" id="note" data-id="<%= order.order_number %>" style="width:96%;height:85%;margin-top:6px;margin-left:7px;margin-right:10px;resize:none;"></textarea>
-				<button class="btn btn-default save-note-btn" type="submit" style="width:96%;margin-left:7px;" data-id="<%= order.order_number %>">Save</button>
-			</div>	
 			</div>
 		<% end %>
 		<% end %>
