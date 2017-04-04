@@ -30,8 +30,8 @@ class OrderController < ApplicationController
         end
       end #end of if else statement
       
-      render json: @orders
-    
+      redirect_back fallback_location: orders_path
+      
     else
       
         page = 1
