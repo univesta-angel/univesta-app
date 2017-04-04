@@ -147,6 +147,35 @@
       	display: inline-block;
       	float: right;
       }
+     .empty-orders {
+     	text-shadow:0px 1px 1px rgba(133,133,133,0.5);
+	font-weight:normal;
+	color:#191919;
+	letter-spacing:1pt;
+	word-spacing:2pt;
+	font-size:37px;
+	text-align:left;
+	font-family: impact, sans-serif;
+	line-height:1;
+      }
+      .empty-search {
+	text-shadow:0px 1px 1px rgba(133,133,133,0.5);
+	font-weight:normal;
+	color:#191919;
+	letter-spacing:1pt;
+	word-spacing:2pt;
+	font-size:27px;
+	text-align:left;
+	font-family: impact, sans-serif;
+	line-height:1;
+      }
+</style>
+</head>
+<body>
+<p class="mycss">Orders list is empty.</p>
+</body>
+</html>
+     }
   </style>
 
 </head>
@@ -214,7 +243,15 @@
 				  </li>
 				</ul>
 	    	</div>
-		    
+		
+		<% if @orders.length == 0 %>
+		   <div class="row">
+		     <div class="container order-detail">
+			<div><span class="empty-orders">Empty orders list.</span></div>
+			<div><span class="empty-search">No orders matched your criteria for searching.</span></div>
+		     </div>
+		   </div>
+		<% else %>    
 		<% @orders.each do |order| %>
 			<div class="row">
 		        <div class="container order-detail">
@@ -300,7 +337,7 @@
 			</div>	
 			</div>
 		<% end %>
-		
+		<% end %>
 	    </div>
 	    <!-- end of center column -->
 
