@@ -1,0 +1,95 @@
+		<% if @orders.length == 0 %>
+		   <div class="row">
+		     <div class="container">
+			<div><span class="empty-orders">Empty orders list.</span></div>
+			<div><span class="empty-search">No orders matched your criteria for searching.</span></div>
+		     </div>
+		   </div>
+		<% else %>    
+		<% @orders.each do |order| %>
+			<div class="row">
+		        <div class="container order-detail">
+		          <div class="Row">
+				  
+		    	<% ae_url = '' %>
+			<% pid = 0 %>
+			<% order.line_items.each do |item| %>
+				<% pid = item.product_id %>
+			<% end %>
+			<% product = ShopifyAPI::Product.find(pid) %>
+			<% metafield = product.metafields %>
+			<% metafield.each do |m| %>
+				<% ae_url = m.value %>
+			<% end %>
+		    	<% ae_link = 'https://www.aliexpress.com/item/'+ ae_url +'.html' %>
+			<%= hidden_field_tag :prd_link, ae_link, id: 'ae_link_'+order.order_number.to_s %>
+			<%= hidden_field_tag :country, order.shipping_address.country, id: 'country_'+order.order_number.to_s %>				  
+			<%= hidden_field_tag :province, order.shipping_address.province, id: 'province_'+order.order_number.to_s %>
+			<%= hidden_field_tag :address1, order.shipping_address.address1, id: 'address1_'+order.order_number.to_s %>
+			<%= hidden_field_tag :address2, order.shipping_address.address2, id: 'address2_'+order.order_number.to_s %>
+			<%= hidden_field_tag :city, order.shipping_address.city, id: 'city_'+order.order_number.to_s %>				  
+			<%= hidden_field_tag :zip, order.shipping_address.zip, id: 'zip_'+order.order_number.to_s %>				  
+			<%= hidden_field_tag :phone, order.shipping_address.phone, id: 'phone_'+order.order_number.to_s %>
+				  
+		            <div class="col-md-4">Order #<%= link_to order.order_number, "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin/orders/#{order.id}", method: "get", target: "_blank" %><span class="date"><%= order.created_at %></span></div>
+				  <div class="col-md-3">Customer: <%= link_to order.shipping_address.name, "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin/customers/#{order.customer.id}", method: "get", target: "_blank", id: "customername_#{order.order_number}", class: "customername" %></div>
+				  <div class="col-md-3"><button type="button" class="btn btn-sm add-note-btn" style="margin-left: 20px;" data-id="<%= order.order_number %>">Add Note</button></div>
+				  <div class="Column2"><button type="button" class="btn btn-default mark-ship-btn">Mark as Shipped</button></div>
+			</div>
+				
+				<div class="add-note" style="position:absolute;width:350px;height:300px;display:none;float:left;margin-left:470px;margin-top:110px;top:123px;background-color:white;border:1px solid grey;border-radius:5px;" data-id="<%= order.order_number %>">
+					<textarea type="text" name="note" class="form-control" id="note" data-id="<%= order.order_number %>" style="width:96%;height:85%;margin-top:6px;margin-left:7px;margin-right:10px;resize:none;"></textarea>
+					<button class="btn btn-default save-note-btn" type="submit" style="width:96%;margin-left:7px;" data-id="<%= order.order_number %>">Save</button>
+				</div>	
+		          <hr>
+		          <div class="Row">
+		            <div class="col-md-3"><span class="label label-warning" style="margin-right: 10px">To Order</span>Supplier: <a href="#">Warehouse #0001</a></div>
+		            <div class="col-md-3">Ali Order No:<button type="button" class="btn btn-sm add-order-btn" style="margin-left: 20px;">Add</button></div>
+		            <div class="col-md-3">Shipped:<b style="margin-left: 5px">0/1</b><button type="button" class="btn btn-sm mark-ship-btn" style="margin-left: 10px">Mark as Shipped</button></div>
+		            <div class="Column2"><%= button_tag "Order Product", id: 'order-btn', class: 'btn btn-default order-prd-btn', data_id: order.order_number %></div>
+		          </div>
+		            <div class="line-item-detail">
+		                    <!-- line items -->
+			    <% order.line_items.each do |item| %>
+		                <div class="row">
+
+			  	<div class="col-md-1">
+		                    <div>
+		                    	<img src="http://placehold.it/50x50" class="line-item-img">
+		                    </div>
+				</div>
+
+		                <div class="col-md-3">
+		                    <div class="line-item-title">
+		                    	<h6><a><%= item.title %></a></h6>
+	                    	</div>
+		                    <div class="line-item-sku">
+		                    	<h6 style="color: grey"><%= item.sku %></h6>
+		                    </div>
+	                      	</div>
+
+		                <div class="col-md-2">
+		                  	<div class="line-item-color">
+						<h5><p id="variant_option_<%= order.order_number %>"><%= item.variant_title %></p></h5>
+					</div>
+		                </div>
+
+		                  <div class="col-md-2">
+		                  	<div class="line-item-trackNo">
+		                  		<h5>No Tracking Number</h5>
+		                  	</div>
+                		  </div>
+
+		                  <div class="col-md-3">
+		                  	<div class="line-item-qtyprice">
+						<h5 id="quantity_<%= order.order_number %>"><%= item.quantity %></h5><span>&times;</span><h5><%= item.price %></h5>
+		                  	</div>
+		                  </div>
+	            		</div>
+				<% end %>
+	            		
+	              	</div>
+	        	</div>
+			</div>
+		<% end %>
+		<% end %>
