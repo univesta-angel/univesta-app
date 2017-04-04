@@ -26,7 +26,7 @@ $(document).ready(function(){
       window.location.href = window.location.pathname+"?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
     }
     else{
-      //window.location.href = window.location.href+"&start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
+      window.location.href = window.location.href+"&start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
     }
     //window.open("https://shopifyapp-sample.herokuapp.com/orders?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD')+"", "_self");
   });
