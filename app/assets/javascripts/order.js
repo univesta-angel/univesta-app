@@ -94,7 +94,7 @@ $(document).ready(function(){
     localStorage.removeItem('checkbox1')
     localStorage.setItem('checkbox1', checkbox[0].checked);
     $.ajax({
-      url: "/orders",
+      url: "/fetch_orders",
       type: "GET",
       data: data,
       success: function(){
