@@ -55,4 +55,11 @@ class OrderController < ApplicationController
     end
       
   end
+  
+  def from_category
+    @orders = ShopifyAPI::Order.find(:all, :params => { :financial_status => "paid" })
+    respond_to do |format|
+      format.js
+    end
+  end
 end
