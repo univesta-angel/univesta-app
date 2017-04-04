@@ -95,7 +95,7 @@ $(document).ready(function(){
     localStorage.setItem('checkbox1', checkbox[0].checked);
     $.ajax({
       url: "/orders",
-      type: "GET",
+      type: "POST",
       data: data,
       success: function(){
         alert('ok')
