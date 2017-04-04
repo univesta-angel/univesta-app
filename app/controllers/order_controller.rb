@@ -4,9 +4,9 @@ class OrderController < ApplicationController
     ShopifyAPI::Base.site = shop_url
     shop = ShopifyAPI::Shop.current
 
-    #@orders = ShopifyAPI::Order.find(:all, :params => {limit: 5, order: "created_at DESC"})    
-    if (params[:financial_status].present?) || (params[:fulfillment_status].present?) || (params[:order_status].present?) || (params[:start].present?) && (params[:end].present?)      
-        
+    #@orders = ShopifyAPI::Order.find(:all, :params => {limit: 5, order: "created_at DESC"})   
+    if request.xhr?
+      if (params[:financial_status].present?) || (params[:fulfillment_status].present?) || (params[:order_status].present?) || (params[:start].present?) && (params[:end].present?)      
         fls = params[:fulfillment_status]
         fns = params[:financial_status]
         os = params[:order_status]  
@@ -17,24 +17,32 @@ class OrderController < ApplicationController
         else
           @orders = ShopifyAPI::Order.find(:all, :params => { :financial_status => fns , :fulfillment_status => fls, :order_status => os })
         end
-      
+      else
+        page = 1
+        @orders = []
+        count = ShopifyAPI::Order.count
+        if count > 0
+          page += count.divmod(250).first
+          while page > 0
+            @orders += ShopifyAPI::Order.find(:all, :params => {limit: 250,  order: "created_at DESC", :page => page })
+            page -= 1
+          end
+        end
+      end #end of if else statement
+    
     else
       
-      page = 1
-      @orders = []
-      count = ShopifyAPI::Order.count
-      if count > 0
-        page += count.divmod(250).first
-        while page > 0
-          @orders += ShopifyAPI::Order.find(:all, :params => {limit: 250,  order: "created_at DESC", :page => page })
-          page -= 1
+        page = 1
+        @orders = []
+        count = ShopifyAPI::Order.count
+        if count > 0
+          page += count.divmod(250).first
+          while page > 0
+            @orders += ShopifyAPI::Order.find(:all, :params => {limit: 250,  order: "created_at DESC", :page => page })
+            page -= 1
+          end
         end
-      end
-       
-    end #end of if else statement
-    
-    if request.xhr?
-      redirect_to orders_path
+      
     end
       
   end
