@@ -6,6 +6,7 @@ class OrderController < ApplicationController
 
     #@orders = ShopifyAPI::Order.find(:all, :params => {limit: 5, order: "created_at DESC"})   
     if request.xhr?
+      
       if (params[:financial_status].present?) || (params[:fulfillment_status].present?) || (params[:order_status].present?) || (params[:start].present?) && (params[:end].present?)      
         fls = params[:fulfillment_status]
         fns = params[:financial_status]
@@ -16,6 +17,10 @@ class OrderController < ApplicationController
           @orders = ShopifyAPI::Order.find(:all, :params => { :financial_status => fns , :fulfillment_status => fls, :order_status => os, :created_at_min => start_, :created_at_max => end_ })
         else
           @orders = ShopifyAPI::Order.find(:all, :params => { :financial_status => fns , :fulfillment_status => fls, :order_status => os })
+        end
+        respond_to do |format|
+          format.html { redirect_to orders_path }
+          format.json { render json: @orders }
         end
       else
         page = 1
@@ -28,9 +33,11 @@ class OrderController < ApplicationController
             page -= 1
           end
         end
-      end #end of if else statement
-      
-      redirect_back fallback_location: orders_path
+        respond_to do |format|
+          format.html { redirect_to orders_path }
+          format.json { render json: @orders }
+        end
+      end #end of if else statement params
       
     else
       
