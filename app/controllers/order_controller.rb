@@ -13,7 +13,19 @@ class OrderController < ApplicationController
         os = params[:order_status]
         @orders = ShopifyAPI::Order.find(:all, :params => { :financial_status => fns , :fulfillment_status => fls, :order_status => os })
     else
-      @orders = ShopifyAPI::Order.find(:all, :params => { order: "created_at DESC" })
-    end
+      
+      page = 1
+      @orders = []
+      count = ShopifyAPI::Order.count
+      if count > 0
+        page += count.divmod(250).first
+        while page > 0
+          @orders += ShopifyAPI::Order.find(:all, :params => {limit: 250,  order: "created_at DESC", :page => page })
+          page -= 1
+        end
+      end
+       
+    end #end of if else statement
+      
   end
 end
