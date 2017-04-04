@@ -8,7 +8,7 @@ class OrderController < ApplicationController
     if params[:start].present? && params[:end].present?
       @orders = ShopifyAPI::Order.find(:all, :params => { :created_at_min => params[:start], :created_at_max => params[:end] })
     elsif params[:financial_status].present?
-      @order = []
+      @orders = []
       fin_s = params[:financial_status]
       fin_s.each do |fns|
         @orders << ShopifyAPI::Order.find(:all, :params => { :financial_status => fns })
