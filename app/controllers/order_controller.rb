@@ -4,14 +4,20 @@ class OrderController < ApplicationController
     ShopifyAPI::Base.site = shop_url
     shop = ShopifyAPI::Shop.current
 
-    #@orders = ShopifyAPI::Order.find(:all, :params => {limit: 5, order: "created_at DESC"})
-    if (params[:start].present?) && (params[:end].present?)
-      @orders = ShopifyAPI::Order.find(:all, :params => { :created_at_min => params[:start], :created_at_max => params[:end] })
-    elsif (params[:financial_status].present?) || (params[:fulfillment_status].present?) || (params[:order_status].present?)
+    #@orders = ShopifyAPI::Order.find(:all, :params => {limit: 5, order: "created_at DESC"})    
+    if (params[:financial_status].present?) || (params[:fulfillment_status].present?) || (params[:order_status].present?) || (params[:start].present?) && (params[:end].present?)      
+        
         fls = params[:fulfillment_status]
         fns = params[:financial_status]
-        os = params[:order_status]
-        @orders = ShopifyAPI::Order.find(:all, :params => { :financial_status => fns , :fulfillment_status => fls, :order_status => os })
+        os = params[:order_status]  
+        if (params.has_key?(:start) && params.has_key?(:end))
+          start_ = params[:start]
+          end_ = params[:end]
+          @orders = ShopifyAPI::Order.find(:all, :params => { :financial_status => fns , :fulfillment_status => fls, :order_status => os, :created_at_min => start_, :created_at_max => end_ })
+        else
+          @orders = ShopifyAPI::Order.find(:all, :params => { :financial_status => fns , :fulfillment_status => fls, :order_status => os })
+        end
+      
     else
       
       page = 1
