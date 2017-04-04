@@ -93,9 +93,16 @@ $(document).ready(function(){
     var checkbox = document.getElementsByClassName('fulfillment_status')
     localStorage.removeItem('checkbox1')
     localStorage.setItem('checkbox1', checkbox[0].checked);
+    $.ajax({
+      url: "/orders",
+      type: "GET",
+      data: data,
+      success: function(){
+        alert('ok')
+    }
+    });
     if(history.pushState){
         history.pushState(null, null, loc.pathname+'?'+data);
-        window.location.replace(loc.pathname+'?'+data);
     }
   });
   function setupBox(box) {
