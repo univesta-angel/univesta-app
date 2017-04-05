@@ -86,7 +86,10 @@ $(document).ready(function(){
     $.ajax({
       url: "/fetch_orders",
       type: "GET",
-      data: data
+      data: data,
+      success: function(){
+        //alert('ok')
+      }
     });
     if(history.pushState){
         history.pushState(null, null, loc.pathname+'?'+data);
@@ -127,6 +130,9 @@ function getOrders(data) {
     $.ajax({
       url: "/fetch_orders",
       type: "GET",
-      data: data
+      data: data,
+      success: function(){
+        //alert('ok')
+      }
     });
 }
