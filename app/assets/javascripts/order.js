@@ -135,7 +135,8 @@ function getOrders(data) {
     data: data,
     success: function() {
       //alert('ok');
-    });
+    }
+  });
 }
     
     
