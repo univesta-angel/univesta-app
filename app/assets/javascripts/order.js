@@ -17,8 +17,8 @@ $(document).ready(function(){
   }, function(start, end, label) {
     //alert(start.format('YYYY-MM-DD'))
     //history.replaceState(null, null, winLoc.pathname+"start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD'))
-    var data = { start: start.format('YYYY-MM-DD'), end: end.format('YYYY-MM-DD') };
-    getOrders(data);
+    var data1 = { start: start.format('YYYY-MM-DD'), end: end.format('YYYY-MM-DD') };
+    getOrders(data1);
   });
 
   $('#daterange').on('cancel.daterangepicker', function(ev, picker) {
