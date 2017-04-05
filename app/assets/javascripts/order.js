@@ -119,7 +119,7 @@ $(document).ready(function(){
   });
 });
   
-function getOrders() {
+function getOrders(data) {
     $.ajax({
       url: "/fetch_orders",
       type: "GET",
