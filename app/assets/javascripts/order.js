@@ -19,7 +19,7 @@ $(document).ready(function(){
     //history.replaceState(null, null, winLoc.pathname+"start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD'))
     //window.open("https://shopifyapp-sample.herokuapp.com/orders?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD')+"", "_self");
     var x = { from: start.format('YYYY-MM-DD'), to: end.format('YYYY-MM-DD') };
-    getOrders(data);
+    getOrders(x);
   });
 
   $('#daterange').on('cancel.daterangepicker', function(ev, picker) {
