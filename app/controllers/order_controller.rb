@@ -31,7 +31,7 @@ class OrderController < ApplicationController
 			@orders = ShopifyAPI::Order.where(:status => os, :fulfillment_status => fs)
 		end
 	else
-		@orders = ShopifyAPI::Order.all
+		@orders = ShopifyAPI::Order.find(:all, :params => {order: "created_at DESC"})
 	end
     respond_to do |format|
       format.js
