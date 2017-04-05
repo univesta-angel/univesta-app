@@ -14,7 +14,7 @@ class OrderController < ApplicationController
   end
   
   def from_category
-    if (params[:financial_status].present? || params[:fulfillment_status].present? || params[:order_status].present?)
+    	if (params[:financial_status].present? || params[:fulfillment_status].present? || params[:order_status].present?)
   		fs = params[:financial_status]
   		fls = params[:fulfillment_status]
   		os = params[:order_status]
@@ -37,7 +37,7 @@ class OrderController < ApplicationController
 		end
 	else
 		@orders = ShopifyAPI::Order.all
-  	end
+	end
     respond_to do |format|
       format.js
     end
