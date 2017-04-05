@@ -9,7 +9,7 @@ class OrderController < ApplicationController
   end
   
   def from_category
-    if (params[:financial_status].present? || params[:fulfillment_status].present? || params[:order_status].present?)
+    	if (params[:financial_status].present? || params[:fulfillment_status].present? || params[:order_status].present?)
   		fs = params[:financial_status]
   		fls = params[:fulfillment_status]
   		os = params[:order_status]
@@ -30,6 +30,10 @@ class OrderController < ApplicationController
 		elsif !fls.blank? && !os.blank? && fs.blank?
 			@orders = ShopifyAPI::Order.where(:status => os, :fulfillment_status => fs)
 		end
+    	elsif params[:from].present? && params[:to].present?
+		from = params[:from].to_date.beginning_of_day
+		to = params[:to].to_date.end_of_day
+		@orders = Order.where(:created_at => from..to)		
 	else
 		@orders = ShopifyAPI::Order.all
   	end
