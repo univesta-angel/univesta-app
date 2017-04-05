@@ -16,9 +16,19 @@ $(document).ready(function(){
       "endDate": end
   }, function(start, end, label) {
     //alert(start.format('YYYY-MM-DD'))
+    var winLoc = $('<a>', {href:window.location})[0];
     //history.replaceState(null, null, winLoc.pathname+"start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD'))
-    var data1 = { start: start.format('YYYY-MM-DD'), end: end.format('YYYY-MM-DD') };
-    getOrders(data1);
+    var currentURL = window.location.href
+    if(currentURL.endsWith("/orders")||currentURL.endsWith("/orders?")){
+      window.location.href = window.location.pathname+"?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
+    }
+    else if(currentURL.indexOf("start=") > -1 && currentURL.indexOf("end=") > -1){
+      window.location.href = window.location.pathname+"?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
+    }
+    else{
+      window.location.href = window.location.href+"&start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
+    }
+    //window.open("https://shopifyapp-sample.herokuapp.com/orders?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD')+"", "_self");
   });
 
   $('#daterange').on('cancel.daterangepicker', function(ev, picker) {
@@ -57,26 +67,26 @@ $(document).ready(function(){
         loc = $('<a>', {href:window.location})[0];
     $('input[class="fulfillment_status"]').each(function(i){
       if(this.checked){
-          data.push('fulfillment_status[]='+this.value);
+          data.push('fulfillment_status='+this.value);
       }
       else{
-        loc.pathname.slice(0, loc.pathname.indexOf('fulfillment_status[]='+this.value))
+        loc.pathname.slice(0, loc.pathname.indexOf('fulfillment_status='+this.value))
       }
     });
     $('input[class="financial_status"]').each(function(i){
       if(this.checked){
-          data.push('financial_status[]='+this.value);
+          data.push('financial_status='+this.value);
       }
       else{
-        loc.pathname.slice(0, loc.pathname.indexOf('financial_status[]='+this.value))
+        loc.pathname.slice(0, loc.pathname.indexOf('financial_status='+this.value))
       }
     });
     $('input[class="order_status"]').each(function(i){
       if(this.checked){
-          data.push('order_status[]='+this.value);
+          data.push('order_status='+this.value);
       }
       else{
-        loc.pathname.slice(0, loc.pathname.indexOf('order_status[]='+this.value))
+        loc.pathname.slice(0, loc.pathname.indexOf('order_status='+this.value))
       }
     });
     data = data.join('&');
@@ -88,7 +98,6 @@ $(document).ready(function(){
       type: "GET",
       data: data,
       success: function(){
-        //alert('ok')
       }
     });
     if(history.pushState){
@@ -125,14 +134,3 @@ $(document).ready(function(){
       window.open(product_link, "_self")
   });
 });
-  
-function getOrders(data) {
-    $.ajax({
-      url: "/fetch_orders",
-      type: "GET",
-      data: data,
-      success: function(){
-        //alert('ok')
-      }
-    });
-}
