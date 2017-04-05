@@ -33,7 +33,7 @@ class OrderController < ApplicationController
 	elsif params[:start].present? && params[:end].present?
 		start = params[:start]
 		end_ = params[:end]
-		@orders = ShopifyAPI::Order.find(:all, :params => { :created_at_min => start, :created_at_max => end_ })
+		@orders = ShopifyAPI::Order.find(:all, :params => { :created_at_min => start, :created_at_max => end_, :order => "created_at DESC" })
 	else
 		@orders = ShopifyAPI::Order.all
 	end
