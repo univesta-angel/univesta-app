@@ -33,8 +33,6 @@ class OrderController < ApplicationController
 	else
 		@orders = ShopifyAPI::Order.find(:all, :params => {order: "created_at DESC"})
 	end
-    respond_to do |format|
-      format.js
-    end
+
   end
 end
