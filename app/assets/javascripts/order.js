@@ -93,13 +93,7 @@ $(document).ready(function(){
     var checkbox = document.getElementsByClassName('fulfillment_status')
     localStorage.removeItem('checkbox1')
     localStorage.setItem('checkbox1', checkbox[0].checked);
-    $.ajax({
-      url: "/fetch_orders",
-      type: "GET",
-      data: data,
-      success: function(){
-      }
-    });
+    getOrders(data);
     if(history.pushState){
         history.pushState(null, null, loc.pathname+'?'+data);
         //window.location.replace(loc.pathname+'?'+data);
@@ -134,3 +128,14 @@ $(document).ready(function(){
       window.open(product_link, "_self")
   });
 });
+function getOrders(data) {
+  $.ajax({
+    url: "/fetch_orders",
+    type: "GET",
+    data: data,
+    success: function() {
+      //alert('ok');
+    }
+  });
+    
+    
