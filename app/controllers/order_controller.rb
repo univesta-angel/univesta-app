@@ -33,7 +33,7 @@ class OrderController < ApplicationController
     	elsif params[:from].present? && params[:to].present?
 		from = params[:from].to_date.beginning_of_day
 		to = params[:to].to_date.end_of_day
-		@orders = Order.where(:created_at => from..to)		
+		@orders = ShopifyAPI::Order.find(:all, :params => { :created_at_min => from, :created_at_max => to })		
 	else
 		@orders = ShopifyAPI::Order.all
   	end
