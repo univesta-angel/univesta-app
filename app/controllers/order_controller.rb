@@ -25,8 +25,6 @@ class OrderController < ApplicationController
   			@orders = ShopifyAPI::Order.where(:financial_status => fs, :fulfillment_status => fls)
   		elsif !fs.blank? && !os.blank? && fls.blank?
 			@orders = ShopifyAPI::Order.where(:financial_status => fs, :status => os)
-		elsif !os.blank? && !fls.blank? && fs.blank?
-			@orders = ShopifyAPI::Order.where(:status => os, :financial_status => fs)
 		elsif !fls.blank? && !os.blank? && fs.blank?
 			@orders = ShopifyAPI::Order.where(:status => os, :fulfillment_status => fs)
 		end
