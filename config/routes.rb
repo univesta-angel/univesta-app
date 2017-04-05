@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :products do
     post 'select_action'
   end
-  get "/fetch_orders" => "orders#from_category", as: :fetch_orders
+  get "/fetch_orders" => "order#from_category", as: :fetch_orders
   root :to => 'products#index'
   
   match 'create' => 'products#create', via: :post
