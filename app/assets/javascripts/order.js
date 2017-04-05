@@ -16,19 +16,10 @@ $(document).ready(function(){
       "endDate": end
   }, function(start, end, label) {
     //alert(start.format('YYYY-MM-DD'))
-    var winLoc = $('<a>', {href:window.location})[0];
     //history.replaceState(null, null, winLoc.pathname+"start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD'))
-    var currentURL = window.location.href
-    if(currentURL.endsWith("/orders")||currentURL.endsWith("/orders?")){
-      window.location.href = window.location.pathname+"?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
-    }
-    else if(currentURL.indexOf("start=") > -1 && currentURL.indexOf("end=") > -1){
-      window.location.href = window.location.pathname+"?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
-    }
-    else{
-      window.location.href = window.location.href+"&start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
-    }
     //window.open("https://shopifyapp-sample.herokuapp.com/orders?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD')+"", "_self");
+    var x = { from: start.format('YYYY-MM-DD'), to: end.format('YYYY-MM-DD') };
+    getOrders(data);
   });
 
   $('#daterange').on('cancel.daterangepicker', function(ev, picker) {
@@ -99,6 +90,7 @@ $(document).ready(function(){
         //window.location.replace(loc.pathname+'?'+data);
     }
   });
+  
   function setupBox(box) {
     var storageId = box.getAttribute("value");
     var oldVal    = localStorage.getItem(storageId);
