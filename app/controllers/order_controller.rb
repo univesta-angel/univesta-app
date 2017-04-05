@@ -4,13 +4,8 @@ class OrderController < ApplicationController
     ShopifyAPI::Base.site = shop_url
     shop = ShopifyAPI::Shop.current
 	
-    if params[:start].present? && params[:end].present?
-    	start = params[:start]
-    	end_ = params[:end]
-	@orders = ShopifyAPI.Order.find(:all, :params => { :created_at_min => start, :created_at_max => end_, :order => "created_at DESC" })
-    else
-	@orders = ShopifyAPI::Order.find(:all, :params => {order: "created_at DESC"})
-    end
+    @orders = ShopifyAPI::Order.find(:all, :params => {order: "created_at DESC"})
+
   end
   
   def from_category
@@ -35,6 +30,10 @@ class OrderController < ApplicationController
 		elsif !fls.blank? && !os.blank? && fs.blank?
 			@orders = ShopifyAPI::Order.where(:status => os, :fulfillment_status => fs)
 		end
+	elsif params[:start].present? && params[:end].present?
+		start = params[:start]
+		end_ = params[:end]
+		@orders = ShopifyAPI::Order.find(:all, :params => { :created_at_min => start, :created_at_max => end_ })
 	else
 		@orders = ShopifyAPI::Order.all
 	end
