@@ -9,7 +9,7 @@ class OrderController < ApplicationController
   end
   
   def from_category
-    	if (params[:financial_status].present? || params[:fulfillment_status].present? || params[:order_status].present?)
+    	if params[:financial_status].present? || params[:fulfillment_status].present? || params[:order_status].present? && !params[:start].present? && !params[:end].present?
   		fs = params[:financial_status]
   		fls = params[:fulfillment_status]
   		os = params[:order_status]
@@ -30,7 +30,7 @@ class OrderController < ApplicationController
 		elsif !fls.blank? && !os.blank? && fs.blank?
 			@orders = ShopifyAPI::Order.where(:status => os, :fulfillment_status => fs)
 		end
-	elsif params[:start].present? && params[:end].present?
+  elsif params[:start].present? && params[:end].present? && !params[:financial_status].present? && !params[:fulfillment_status].present? && !params[:order_status].present?
 		start = params[:start]
 		end_ = params[:end]
 		@orders = ShopifyAPI::Order.find(:all, :params => { :created_at_min => start, :created_at_max => end_, :order => "created_at DESC" })
