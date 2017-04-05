@@ -1,4 +1,11 @@
-  
+<% if @orders.length == 0 %>
+		   <div class="row">
+		     <div class="container">
+			<div><span class="empty-orders">Empty orders list.</span></div>
+			<div><span class="empty-search">No orders matched your criteria for searching.</span></div>
+		     </div>
+		   </div>
+		<% else %>    
 		<% @orders.each do |order| %>
 			<div class="row">
 		        <div class="container order-detail">
@@ -85,4 +92,4 @@
 	        	</div>
 			</div>
 		<% end %>
-
+		<% end %>
