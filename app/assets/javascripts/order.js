@@ -39,8 +39,11 @@ $(document).ready(function(){
         url: "/edit_note",
         type: "PUT",
         data: { note: note, order_id: order_id },
-        success: function () {
+        success: function() {
           toastr.success("Note was updated successfully!")
+        },
+        error: function() {
+          toastr.error("Failed to save note.")
         }
       });
   });
