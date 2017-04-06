@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require toastr
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
 //= require moment
