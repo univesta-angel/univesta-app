@@ -23,6 +23,7 @@
 			<% end %>
 		    	<% ae_link = 'https://www.aliexpress.com/item/'+ ae_url +'.html' %>
 			<%= hidden_field_tag :prd_link, ae_link, id: 'ae_link_'+order.order_number.to_s %>
+		  	<%= hidden_field_tag :email, order.email, id: 'email_'+order.order_number.to_s %>
 			<%= hidden_field_tag :country, order.shipping_address.country, id: 'country_'+order.order_number.to_s %>				  
 			<%= hidden_field_tag :province, order.shipping_address.province, id: 'province_'+order.order_number.to_s %>
 			<%= hidden_field_tag :address1, order.shipping_address.address1, id: 'address1_'+order.order_number.to_s %>
@@ -88,7 +89,7 @@
 				<div class="add-note" style="position:absolute;width:340px;height:186px;display:none;float:left;margin-left:470px;margin-top:-210px;background-color:white;border:1px solid grey;border-radius:5px;" data-id="<%= order.order_number %>">
 					<textarea type="text" name="note" class="form-control" id="note" data-id="<%= order.order_number %>" data-no="<%= order.id %>" style="width:96%;height:74%;margin-top:6px;margin-left:7px;margin-right:10px;resize:none;"><%= order.note %></textarea>
 				   <div>
-					<button class="btn btn-default save-note-btn" type="submit" style="width:96%;margin-left:7px;" data-id="<%= order.order_number %>">Save</button>
+					<button class="btn btn-success save-note-btn" type="submit" style="width:80%;margin-left:7px;" data-id="<%= order.order_number %>">Save</button>
 					<button class="btn btn-warning close-note-btn" type="submit" style="width:14%;margin-left:2px;display:inline-block;" data-id="<%= order.order_number %>">
 						<span class="glyphicon glyphicon-remove"></span>
 					</button>
