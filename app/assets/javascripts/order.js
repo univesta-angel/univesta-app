@@ -28,21 +28,26 @@ $(document).ready(function(){
   //--------------------------------------------------------------------------------------------------------  
   $(".add-note-btn").click(function(){
       var dataid = $(this).attr("data-id");
-      alert(dataid)
       $("div[data-id='"+dataid+"']").fadeToggle("slow","linear");
-      var noteid = "note_"+dataid;
-      var note = localStorage[noteid];
-      //console.log(note)
-      var note_ = document.querySelector("textarea[dataid='"+dataid+"']").value = note;
   });
 
   $('.save-note-btn').click(function(){
       var dataid = $(this).attr("data-id");
-      var note_ = document.querySelector("textarea[dataid='"+dataid+"']").value;
-      var noteid = "note_"+dataid;
-      localStorage[noteid] = note_;
-      console.log("note saved")
-      $("div[data-id='"+dataid+"']").fadeToggle("slow","linear"); 
+      var order_id = $('textarea[data-id="'+dataid+'"]').attr("data-no");
+      var note = document.querySelector('textarea[data-id="'+dataid+'"]').value;
+      $.ajax({
+        url: "/edit_note",
+        type: "PUT",
+        data: { note: note, order_id: order_id },
+        success: function () {
+          toastr.success("Note was updated successfully!")
+        }
+      });
+  });
+  $('.close-note-btn').click(function(e){
+    e.preventDefault();
+    var dataid = $(this).attr("data-id");
+    $("div[data-id='"+dataid+"']").fadeToggle("linear");
   });
   //--------------------------------------------------------------------------------------------------------
   var checked = localStorage.getItem('checkbox1');
@@ -99,6 +104,11 @@ $(document).ready(function(){
     box.addEventListener("change", function() {
         localStorage.setItem(storageId, this.checked); 
     });
+  }
+  function setupLink(link) {
+    var storageId = link.getAttribute("value")
+    var oldVal = localStorage.getItem(storageId);
+    link.text()
   }
   
   //--------------------------------------------------------------------------------------------------------
