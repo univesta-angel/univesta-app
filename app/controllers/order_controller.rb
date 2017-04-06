@@ -41,4 +41,13 @@ class OrderController < ApplicationController
       format.js
     end
   end
+	
+  def edit_note
+	if params[:note].present? && params[:order_id].present?
+  		order = ShopifyAPI::Order.find(params[:order_id])
+  		order.note = params[:note]
+  		order.save
+  	end
+  end
+	  
 end
