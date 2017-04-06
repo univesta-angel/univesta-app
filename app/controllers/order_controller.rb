@@ -43,6 +43,9 @@ class OrderController < ApplicationController
   end
 	
   def edit_note
+  shop_url = "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin"
+  ShopifyAPI::Base.site = shop_url
+  shop = ShopifyAPI::Shop.current
 	if params[:note].present? && params[:order_id].present?
   		order = ShopifyAPI::Order.find(params[:order_id])
   		order.note = params[:note]
