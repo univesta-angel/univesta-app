@@ -45,7 +45,7 @@ class OrderController < ApplicationController
   def edit_note
 	if params[:note].present? && params[:order_id].present?
 		note = params[:note]
-		orderid = params[:order_id].to_i
+		orderid = params[:order_id]
   		order = ShopifyAPI::Order.find(orderid)
   		order.note = note
   		order.save
@@ -64,7 +64,7 @@ class OrderController < ApplicationController
 	orderid = params[:order_id]
 	#tracking_no = params[:tracking_no]
 	
-  	order = ShopifyAPI::Order.find(orderid)
+  	order = ShopifyAPI::Order.find(4521770256)
 	#f = ShopifyAPI::Fulfillment.new(:order_id => orders.id, :notify_customer => false ,:tracking_number => nil, :line_items =>[ {"id" => orders.line_items.first.id} ] )
 	f = ShopifyAPI::Fulfillment.new(:order_id => order.id, :notify_customer => false, :tracking_number => nil, :line_items => [{ "id" => order.line_items[1].id}])
 	f.prefix_options = { :order_id => order.id }
