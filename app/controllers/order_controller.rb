@@ -63,11 +63,13 @@ class OrderController < ApplicationController
   	#order = ShopifyAPI::Order.find(:first, :params => { :id => 4521770256 })
   	order = ShopifyAPI::Order.find(orderid)
 	#f = ShopifyAPI::Fulfillment.new(:order_id => order.id, :notify_customer => false ,:tracking_number => nil, :line_items =>[ {"id" => order.line_items.first.id} ] )
-	f = ShopifyAPI::Fulfillment.new(order_id: order.id, line_items: [ { id: order.line_items.first.id} ] )
-	f.prefix_options = { :order_id => order.id }
-	f.save
-	#shipment_info = { order_id: order.id, notify_customer: false, line_items: [{id: order.line_items[1].id}] }
-	#ShopifyAPI::Fulfillment.create(shipment_info)
+	#f = ShopifyAPI::Fulfillment.new(order_id: order.id, line_items: [ { id: order.line_items.first.id} ] )
+	#f.prefix_options = { :order_id => order.id }
+	#f.save
+	shipment_info = { order_id: order.id, notify_customer: false, line_items: [{id: order.line_items.first.id}] }
+	f = ShopifyAPI::Fulfillment.create(shipment_info)
+	fs = ShopifyAPI::FulfillmentService.new
+	fs.event.status =   
 	respond_to do |format|
 		format.html { redirect_to orders_path }
 	end
