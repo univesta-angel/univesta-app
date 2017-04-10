@@ -142,8 +142,8 @@ $(document).ready(function(){
       type: "POST",
       data: { order_id: orderid },
       error: function(xhr, status, error) {
-        var err = eval("(" + xhr.response.Text + ")");
-        console.log(err.Message)
+        var err = JSON.parse(xhr.responseText);
+        console.log(err)
       }
     });
   });
