@@ -139,7 +139,7 @@ $(document).ready(function(){
     var orderid = $(this).attr("data-id");
     $.ajax({
       url: "/mark_shipped",
-      type: "POST",
+      type: "GET",
       data: { order_id: orderid },
       success: function() {
         toastr.success("Order has been marked as shipped.")
