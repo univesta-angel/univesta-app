@@ -140,7 +140,7 @@ $(document).ready(function(){
     $.ajax({
       url: "/mark_shipped",
       type: "POST",
-      data: { order_id: orderid },
+      data: { order_id: parseInt(orderid) },
       success: function() {
         console.log("worked!");
       },
