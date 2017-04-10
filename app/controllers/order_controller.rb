@@ -4,8 +4,8 @@ class OrderController < ApplicationController
     ShopifyAPI::Base.site = shop_url
     shop = ShopifyAPI::Shop.current
 
-    #@orders = ShopifyAPI::Order.find(:all, :params => { :order => "created_at DESC" })   
-    @orders = ShopifyAPI::Order.find(:first, :params => { :id => 4521770256 })
+    @orders = ShopifyAPI::Order.find(:all, :params => { :order => "created_at DESC" })   
+    
   end
   
   def from_category
@@ -60,11 +60,15 @@ class OrderController < ApplicationController
 	orderid = params[:order_id]
 	#tracking_no = params[:tracking_no]
 	
-  	order = ShopifyAPI::Order.find(:first, :params => { :id => orderid })
+  	order = ShopifyAPI::Order.find(:first, :params => { :id => 4521770256 })
 	#f = ShopifyAPI::Fulfillment.new(:order_id => order.id, :notify_customer => false ,:tracking_number => nil, :line_items =>[ {"id" => order.line_items.first.id} ] )
 	f = ShopifyAPI::Fulfillment.new(:order_id => order.id, :line_items =>[ { "id" => order.line_items.first.id} ] )
 	f.prefix_options = { :order_id => order.id }
 	f.save
+	respond_to do |format|
+		format.html { redirect_to orders_path, notice: 'Success.' }
+		format.json { head :no_content }
+	end
   end
 	  
 end
