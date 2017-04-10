@@ -35,7 +35,7 @@
 		            <div class="col-md-4">Order #<%= link_to order.order_number, "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin/orders/#{order.id}", method: "get", target: "_blank" %><span class="date"><%= order.created_at %></span></div>
 				  <div class="col-md-3">Customer: <%= link_to order.shipping_address.name, "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin/customers/#{order.customer.id}", method: "get", target: "_blank", id: "customername_#{order.order_number}", class: "customername" %></div>
 				  <div class="col-md-3"><button type="button" class="btn btn-sm add-note-btn" style="margin-left: 20px;" data-id="<%= order.order_number %>">Add / Edit Note</button></div>
-				  <div class="Column2"><button type="button" class="btn btn-default mark-ship-btn">Mark as Shipped</button></div>
+				  <div class="Column2"><button type="button" class="btn btn-default mark-ship-btn" data-id="<%= order.id %>">Mark as Shipped</button></div>
 			</div>
 					
 		          <hr>
