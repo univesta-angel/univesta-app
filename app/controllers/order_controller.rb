@@ -4,7 +4,7 @@ class OrderController < ApplicationController
     ShopifyAPI::Base.site = shop_url
     shop = ShopifyAPI::Shop.current
 
-    @orders = ShopifyAPI::Order.find(4521770256)   
+    @orders = ShopifyAPI::Order.find(:all, :params => { :order => "created_at DESC" })   
  
   end
   
