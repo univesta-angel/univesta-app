@@ -62,7 +62,7 @@ class OrderController < ApplicationController
 	
   	order = ShopifyAPI::Order.find(:first, :params => { :id => 4521770256 })
 	#f = ShopifyAPI::Fulfillment.new(:order_id => order.id, :notify_customer => false ,:tracking_number => nil, :line_items =>[ {"id" => order.line_items.first.id} ] )
-	f = ShopifyAPI::Fulfillment.new(:order_id => order.id, :line_items =>[ { "id" => order.line_items.first.id} ] )
+	f = ShopifyAPI::Fulfillment.new(:order_id => order.id, :line_items =>[ { "id" => order.line_items[1].id} ] )
 	f.prefix_options = { :order_id => order.id }
 	f.save
 	respond_to do |format|
