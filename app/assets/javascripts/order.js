@@ -138,11 +138,14 @@ $(document).ready(function(){
   $(".mark-ship-btn").click(function(){
     var orderid = $(this).attr("data-id");
     $.ajax({
-      url: "/mark_as_shipped",
+      url: "/mark_shipped",
       type: "POST",
       data: { order_id: orderid },
+      success: function() {
+        console.log("worked!");
+      },
       error: function(xhr, status, error) {
-        console.log(xhr.responseText)
+        console.log(xhr.responseText);
       }
     });
   });
