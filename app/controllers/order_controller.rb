@@ -71,13 +71,10 @@ class OrderController < ApplicationController
 	f.save
 	
 	respond_to do |format|
-		if f.save
-			format.html
-			format.json { head :no_content }
-		else
-			format.html
-			format.json { status: :unprocessable_entity }
-		end
+	  if f.save
+		format.html
+		format.json { head :no_content }
+	  end
 	end
   end
 	  
