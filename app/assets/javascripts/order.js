@@ -38,7 +38,7 @@ $(document).ready(function(){
       $.ajax({
         url: "/edit_note",
         type: "PUT",
-        data: { note: note, order_id: order_id },
+        data: { note: note, order_id: parseInt(order_id) },
         success: function() {
           toastr.success("Note was updated successfully!")
         },
@@ -137,15 +137,16 @@ $(document).ready(function(){
   
   $(".mark-ship-btn").click(function(){
     var orderid = $(this).attr("data-id");
+    var orderno = 
     $.ajax({
       url: "/mark_shipped",
       type: "POST",
       data: { order_id: parseInt(orderid) },
       success: function() {
-        console.log("worked!");
+        toastr.success("Order has been marked as shipped.")
       },
       error: function(xhr, status, error) {
-        console.log(error);
+        toastr.error("An error occured. Please contact the admin.")
       }
     });
   });
