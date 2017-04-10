@@ -66,7 +66,7 @@ class OrderController < ApplicationController
 	f = ShopifyAPI::Fulfillment.new
 	f.order_id = 4521770256
 	f.notify_customer = false
-	f.line_items = [{ "id" => order.line_items[1].id }]
+	f.line_items = [{ :id => order.line_items[1].id }]
 	f.prefix_options = { :order_id => 4521770256 }
 	f.save
   end
