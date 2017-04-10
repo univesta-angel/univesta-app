@@ -141,7 +141,7 @@ $(document).ready(function(){
     $.ajax({
       url: "/mark_shipped",
       type: "POST",
-      data: { order_id: parseInt(orderid) },
+      data: { order_id: orderid },
       success: function() {
         toastr.success("Order has been marked as shipped.")
       },
