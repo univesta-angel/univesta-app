@@ -143,9 +143,6 @@ $(document).ready(function(){
       data: { order_id: orderid },
       success: function() {
         toastr.success("Order has been marked as shipped.")
-      },
-      error: function() {
-        toastr.error("An error occured. Please contact the admin.")
       }
     });
   });
