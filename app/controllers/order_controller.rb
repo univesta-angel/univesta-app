@@ -45,7 +45,7 @@ class OrderController < ApplicationController
   def edit_note
 	if params[:note].present? && params[:order_id].present?
 		note = params[:note]
-		orderid = params[:order_id]
+		orderid = params[:order_id].to_i
   		order = ShopifyAPI::Order.find(orderid)
   		order.note = note
   		order.save
@@ -60,7 +60,7 @@ class OrderController < ApplicationController
     shop_url = "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin"
     ShopifyAPI::Base.site = shop_url
     shop = ShopifyAPI::Shop.current
-	orderid = params[:order_id]
+	orderid = params[:order_id].to_i
 	#tracking_no = params[:tracking_no]
 	
   	orders = ShopifyAPI::Order.find(orderid)
