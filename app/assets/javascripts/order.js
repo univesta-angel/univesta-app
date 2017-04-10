@@ -142,8 +142,7 @@ $(document).ready(function(){
       type: "POST",
       data: { order_id: orderid },
       error: function(xhr, status, error) {
-        var err = JSON.parse(xhr.responseText);
-        console.log(err)
+        console.log(xhr.responseText)
       }
     });
   });
