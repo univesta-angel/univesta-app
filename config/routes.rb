@@ -10,8 +10,8 @@ Rails.application.routes.draw do
 
   get 'orders' => 'order#index', as: :orders
   get "/fetch_orders" => "order#from_category", as: :fetch_orders
-  put "edit_note" => "order#edit_note", as: :edit_note
-  post "mark_shipped" => "order#mark_shipped", as: :mark_shipped
+  put "/edit_note" => "order#edit_note", as: :edit_note
+  post "/mark_shipped" => "order#mark_shipped", as: :mark_shipped
   
   root :to => 'products#index'
   match 'create' => 'products#create', via: :post
