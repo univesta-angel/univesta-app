@@ -137,7 +137,6 @@ $(document).ready(function(){
   
   $(".mark-ship-btn").click(function(){
     var orderid = $(this).attr("data-id");
-    var orderno = 
     $.ajax({
       url: "/mark_shipped",
       type: "POST",
@@ -145,7 +144,7 @@ $(document).ready(function(){
       success: function() {
         toastr.success("Order has been marked as shipped.")
       },
-      error: function(xhr, status, error) {
+      error: function() {
         toastr.error("An error occured. Please contact the admin.")
       }
     });
