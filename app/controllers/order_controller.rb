@@ -61,10 +61,10 @@ class OrderController < ApplicationController
 	ShopifyAPI::Base.site = shop_url
 	shop = ShopifyAPI::Shop.current
 	
-	orderid = params[:order_id].to_i
+	orderid = params[:order_id]
 	#tracking_no = params[:tracking_no]
 	
-  	orders = ShopifyAPI::Order.find(orderid)
+  	orders = ShopifyAPI::Order.find(orderid.to_i)
 	#f = ShopifyAPI::Fulfillment.new(:order_id => orders.id, :notify_customer => false ,:tracking_number => nil, :line_items =>[ {"id" => orders.line_items.first.id} ] )
 	f = ShopifyAPI::Fulfillment.new(:order_id => orders.id, :notify_customer => false, :line_items =>[ {"id" => orders.line_items.first.id} ] )
 	f.prefix_options = { :order_id => orders.id }
