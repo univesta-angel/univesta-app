@@ -57,9 +57,10 @@ class OrderController < ApplicationController
   end
 	
   def mark_shipped
-    shop_url = "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin"
-    ShopifyAPI::Base.site = shop_url
-    shop = ShopifyAPI::Shop.current
+	shop_url = "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin"
+	ShopifyAPI::Base.site = shop_url
+	shop = ShopifyAPI::Shop.current
+	
 	orderid = params[:order_id].to_i
 	#tracking_no = params[:tracking_no]
 	
@@ -68,6 +69,16 @@ class OrderController < ApplicationController
 	f = ShopifyAPI::Fulfillment.new(:order_id => orders.id, :notify_customer => false, :line_items =>[ {"id" => orders.line_items.first.id} ] )
 	f.prefix_options = { :order_id => orders.id }
 	f.save
+	
+	respond_to do |format|
+		if f.save
+			format.html
+			format.json { head :no_content }
+		else
+			format.html
+			format.json { status: :unprocessable_entity }
+		end
+	end
   end
 	  
 end
