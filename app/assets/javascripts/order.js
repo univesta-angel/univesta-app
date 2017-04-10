@@ -132,6 +132,21 @@ $(document).ready(function(){
       var product_link = document.getElementById('ae_link_'+data_id).value;
       window.open(product_link, "_self")
   });
+  
+  //--------------------------------------------------------------------------------------------------------
+  
+  $(".mark-ship-btn").click(function(){
+    var orderid = $(this).attr("data-id");
+    $.ajax({
+      url: "/mark_as_shipped",
+      type: "POST",
+      data: { order_id: orderid },
+      error: function(xhr, status, error) {
+        var err = eval("(" + xhr.response.Text + ")");
+        console.log(err.Message)
+      }
+    });
+  });
 });
 function getOrders(data) {
   $.ajax({
