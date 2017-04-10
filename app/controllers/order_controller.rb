@@ -43,14 +43,27 @@ class OrderController < ApplicationController
   end
 	
   def edit_note
-  shop_url = "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin"
-  ShopifyAPI::Base.site = shop_url
-  shop = ShopifyAPI::Shop.current
 	if params[:note].present? && params[:order_id].present?
-  		order = ShopifyAPI::Order.find(params[:order_id])
-  		order.note = params[:note]
+		note = params[:note]
+		orderid = params[:order_id]
+  		order = ShopifyAPI::Order.find(orderid)
+  		order.note = note
   		order.save
   	end
+  	respond_to do |format|
+		format.html
+		format.json { head :no_content }
+	end
+  end
+	
+  def mark_shipped
+	orderid = params[:order_id]
+	tracking_no = params[:tracking_no]
+	
+  	orders = ShopifyAPI::Order.find(orderid)
+	f = ShopifyAPI::Fulfillment.new(:order_id => orders.id, :notify_customer => false ,:tracking_number => nil, :line_items =>[ {"id" => orders.line_items.first.id } ] )
+	f.prefix_options = { :order_id => orders.id }
+	f.save
   end
 	  
 end
