@@ -35,7 +35,7 @@ class OrderController < ApplicationController
 		to = params[:to].to_date.end_of_day
 		@orders = ShopifyAPI::Order.find(:all, :params => { :created_at_min => from, :created_at_max => to })		
 	else
-		@orders = ShopifyAPI::Order.all
+		@orders = ShopifyAPI::Order.find(:all, :params => {order: "created_at DESC"})
   	end
     respond_to do |format|
       format.js
@@ -50,10 +50,6 @@ class OrderController < ApplicationController
   		order.note = note
   		order.save
   	end
-  	respond_to do |format|
-		format.html
-		format.json { head :no_content }
-	end
   end
 	
   def mark_shipped
@@ -69,11 +65,6 @@ class OrderController < ApplicationController
 	f = ShopifyAPI::Fulfillment.new(:order_id => order.id, :notify_customer => false, :tracking_number => nil, :line_items => [{ "id" => order.line_items[1].id}])
 	f.prefix_options = { :order_id => order.id }
 	f.save
-	
-	respond_to do |format|
-	  format.html
-	  format.json { head :no_content }
-	end
   end
 	  
 end
