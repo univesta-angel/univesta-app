@@ -145,11 +145,14 @@ $(document).ready(function(){
         console.log("worked!");
       },
       error: function(xhr, status, error) {
-        console.log(xhr.responseText);
+        console.log(error);
       }
     });
   });
-});
+  
+  
+}); // END OF DOCUMENT.READY
+
 function getOrders(data) {
   $.ajax({
     url: "/fetch_orders",
