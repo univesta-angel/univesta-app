@@ -4,7 +4,7 @@ class OrderController < ApplicationController
     ShopifyAPI::Base.site = shop_url
     shop = ShopifyAPI::Shop.current
 
-    @orders = ShopifyAPI::Order.find(:all, :params => {order: "created_at DESC"})   
+    @orders = ShopifyAPI::Order.find(4521770256)   
  
   end
   
@@ -62,7 +62,7 @@ class OrderController < ApplicationController
 	
   	order = ShopifyAPI::Order.find(orderid)
 	#f = ShopifyAPI::Fulfillment.new(:order_id => order.id, :notify_customer => false ,:tracking_number => nil, :line_items =>[ {"id" => order.line_items.first.id} ] )
-	f = ShopifyAPI::Fulfillment.new(:order_id => order.id, :line_items =>[ { :id => order.line_items.first.id} ] )
+	f = ShopifyAPI::Fulfillment.new(:order_id => order.id, :line_items =>[ { "id" => order.line_items.first.id} ] )
 	f.prefix_options = { :order_id => order.id }
 	f.save
   end
