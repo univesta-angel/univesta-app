@@ -33,7 +33,7 @@ class OrderController < ApplicationController
     	elsif params[:from].present? && params[:to].present?
 		from = params[:from].to_date.beginning_of_day
 		to = params[:to].to_date.end_of_day
-		@orders = ShopifyAPI::Order.find(:all, :params => { :created_at_min => from, :created_at_max => to })		
+		@orders = ShopifyAPI::Order.find(:all, :params => { :created_at_min => from, :created_at_max => to })	
 	else
 		@orders = ShopifyAPI::Order.find(:all, :params => {order: "created_at DESC"})
   	end
@@ -62,8 +62,8 @@ class OrderController < ApplicationController
 	
   	order = ShopifyAPI::Order.find(:first, :params => { :id => 4521770256 })
 	#f = ShopifyAPI::Fulfillment.new(:order_id => orders.id, :notify_customer => false ,:tracking_number => nil, :line_items =>[ {"id" => orders.line_items.first.id} ] )
-	f = ShopifyAPI::Fulfillment.new(:order_id => order.id, :notify_customer => false, :tracking_number => nil, :line_items => [{ "id" => order.line_items[1].id}])
-	f.prefix_options = { :order_id => order.id }
+	f = ShopifyAPI::Fulfillment.new(:order_id => 4521770256, :notify_customer => false, :tracking_number => nil, :line_items => [{ "id" => order.line_items[1].id}])
+	f.prefix_options = { :order_id => 4521770256 }
 	f.save
   end
 	  
