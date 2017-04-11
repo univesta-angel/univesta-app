@@ -69,7 +69,7 @@ class OrderController < ApplicationController
 		#shipment_info = { order_id: order.id, notify_customer: false, line_items: [{id: order.line_items.first.id}] }
 		#f = ShopifyAPI::Fulfillment.create(shipment_info)  
 		order.line_items.map(&:id).each do |li_id|
-		  attrs = { "notify_customer": false, "tracking_number": nil, "line_items": [{"id": li_id}], "status": "success", }
+		  attrs = { "notify_customer": false, "line_items": [{"id": li_id}], "status": "success", }
 		  api.post("/admin/orders/#{order.id}/fulfillments.json", { "fulfillment": attrs })
 		end
 		
