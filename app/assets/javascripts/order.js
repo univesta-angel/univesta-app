@@ -142,7 +142,10 @@ $(document).ready(function(){
       type: "POST",
       data: { order_id: orderid },
       success: function() {
-        toastr.success("Order has been marked as shipped.")
+        toastr.success("Order was marked as successfully fulfilled.")
+      },
+      error: function() {
+        toastr.error("Failed to mark as shipped.")
       }
     });
   });
