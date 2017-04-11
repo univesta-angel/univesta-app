@@ -53,7 +53,7 @@ class OrderController < ApplicationController
   end
 	
   def mark_shipped
-	if params[:note].present? && params[:order_id].present?
+	if params[:order_id].present?
 		shop_url = "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin"
 		ShopifyAPI::Base.site = shop_url
 		shop = ShopifyAPI::Shop.current
@@ -69,7 +69,7 @@ class OrderController < ApplicationController
 		#shipment_info = { order_id: order.id, notify_customer: false, line_items: [{id: order.line_items.first.id}] }
 		#f = ShopifyAPI::Fulfillment.create(shipment_info)  
 		order.line_items.map(&:id).each do |li_id|
-		  attrs = { "notify_customer": false, "line_items": [{"id": li_id}], "status": "success", }
+		  attrs = { "notify_customer": false, "tracking_number": nil, "line_items": [{"id": li_id}], "status": "success" }
 		  api.post("/admin/orders/#{order.id}/fulfillments.json", { "fulfillment": attrs })
 		end
 		
