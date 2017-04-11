@@ -53,27 +53,29 @@ class OrderController < ApplicationController
   end
 	
   def mark_shipped
-	shop_url = "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin"
-	ShopifyAPI::Base.site = shop_url
-	shop = ShopifyAPI::Shop.current
-	
-	orderid = params[:order_id]
-	#tracking_no = params[:tracking_no]
-	
-  	#order = ShopifyAPI::Order.find(:first, :params => { :id => 4521770256 })
-  	order = ShopifyAPI::Order.find(orderid)
-	#f = ShopifyAPI::Fulfillment.new(:order_id => order.id, :notify_customer => false ,:tracking_number => nil, :line_items =>[ {"id" => order.line_items.first.id} ] )
-	#f = ShopifyAPI::Fulfillment.new(order_id: order.id, line_items: [ { id: order.line_items.first.id} ] )
-	#f.prefix_options = { :order_id => order.id }
-	#f.save
-	#shipment_info = { order_id: order.id, notify_customer: false, line_items: [{id: order.line_items.first.id}] }
-	#f = ShopifyAPI::Fulfillment.create(shipment_info)  
-	order.line_items.map(&:id).each do |li_id|
-	  attrs = { line_items: [{id: li_id}], notify_customer: false, tracking_number: nil }
-	  api.post("orders/#{order.id}/fulfillments", fulfillment: attrs )
-	end
-  	respond_to do |format|
-		format.html { redirect_to orders_path, notice: 'Success.' }
+	if params[:note].present? && params[:order_id].present?
+		shop_url = "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin"
+		ShopifyAPI::Base.site = shop_url
+		shop = ShopifyAPI::Shop.current
+
+		orderid = params[:order_id]		
+		order = ShopifyAPI::Order.find(orderid)
+		#tracking_no = params[:tracking_no]
+		#order = ShopifyAPI::Order.find(:first, :params => { :id => 4537069840 })
+		#f = ShopifyAPI::Fulfillment.new(:order_id => order.id, :notify_customer => false ,:tracking_number => nil, :line_items =>[ {"id" => order.line_items.first.id} ])
+		#f = ShopifyAPI::Fulfillment.new(order_id: order.id, line_items: [ { id: order.line_items.first.id} ] )
+		#f.prefix_options = { :order_id => order.id }
+		#f.save
+		#shipment_info = { order_id: order.id, notify_customer: false, line_items: [{id: order.line_items.first.id}] }
+		#f = ShopifyAPI::Fulfillment.create(shipment_info)  
+		order.line_items.map(&:id).each do |li_id|
+		  attrs = { line_items: [{id: li_id}], notify_customer: false, tracking_number: nil }
+		  api.post("admin/orders/#{order.id}/fulfillments", fulfillment: attrs)
+		end
+		
+		respond_to do |format|
+		  format.html { redirect_to orders_path, notice: 'Success.' }
+		end
 	end
   end
 	  
