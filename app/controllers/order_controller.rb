@@ -66,12 +66,14 @@ class OrderController < ApplicationController
 	#f = ShopifyAPI::Fulfillment.new(order_id: order.id, line_items: [ { id: order.line_items.first.id} ] )
 	#f.prefix_options = { :order_id => order.id }
 	#f.save
-	shipment_info = { order_id: order.id, notify_customer: false, line_items: [{id: order.line_items.first.id}] }
-	f = ShopifyAPI::Fulfillment.create(shipment_info)
-	fs = ShopifyAPI::FulfillmentService.new
-	fs.event.status =   
-	respond_to do |format|
-		format.html { redirect_to orders_path }
+	#shipment_info = { order_id: order.id, notify_customer: false, line_items: [{id: order.line_items.first.id}] }
+	#f = ShopifyAPI::Fulfillment.create(shipment_info)  
+	order.line_items.map(&:id).each do |li_id|
+	  attrs = { line_items: [{id: li_id}], notify_customer: false, tracking_number: nil }
+	  api.post("orders/#{order.id}/fulfillments", fulfillment: attrs )
+	end
+  	respond_to do |format|
+		format.html { redirect_to orders_path, notice: 'Success.' }
 	end
   end
 	  
