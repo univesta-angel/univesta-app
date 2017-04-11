@@ -1,14 +1,18 @@
 class OrderController < ApplicationController
   def index
-    shop_url = "https://2d69dfd97a185d97d49cb4b85de5e76f:1cd78cc392fe8861b891a3f881b3c5d8@gels-store.myshopify.com/admin"
+    shop_url = "https://77d56bcf8d3ab9647b85d9030f2b1e1b:22c7a88a600583dea6c121fcb9eb1daf@gels-store.myshopify.com/admin"
     ShopifyAPI::Base.site = shop_url
     shop = ShopifyAPI::Shop.current
 
     @orders = ShopifyAPI::Order.find(:all, :params => { :order => "created_at DESC" })   
+    @shopsession = "77d56bcf8d3ab9647b85d9030f2b1e1b:22c7a88a600583dea6c121fcb9eb1daf@gels-store.myshopify.com"
     
   end
   
   def from_category
+  	shop_url = "https://77d56bcf8d3ab9647b85d9030f2b1e1b:22c7a88a600583dea6c121fcb9eb1daf@gels-store.myshopify.com/admin"
+	ShopifyAPI::Base.site = shop_url
+	shop = ShopifyAPI::Shop.current
     	if (params[:financial_status].present? || params[:fulfillment_status].present? || params[:order_status].present?)
   		fs = params[:financial_status]
   		fls = params[:fulfillment_status]
@@ -53,14 +57,21 @@ class OrderController < ApplicationController
   end
 	
   def mark_shipped
-	if params[:order_id].present?
+  	shop_url = "https://77d56bcf8d3ab9647b85d9030f2b1e1b:22c7a88a600583dea6c121fcb9eb1daf@gels-store.myshopify.com/admin"
+	ShopifyAPI::Base.site = shop_url
+    shop = ShopifyAPI::Shop.current
+    if params[:order_id].present?
 
-		orderid = params[:order_id]		
-		order = ShopifyAPI::Order.find(orderid)
-		order.line_items.map(&:id).each do |li_id|
-		  attrs = { "notify_customer": false, "tracking_number": nil, "line_items": [{"id": li_id}], "status": "success" }
-		  api.post("/admin/orders/#{order.id}/fulfillments.json", { "fulfillment": attrs })
-		end
+      	orderid = params[:order_id]   
+      	order = ShopifyAPI::Order.find(orderid)
+      
+	  	order.line_items.map(&:id).each do |li_id|
+	    #attrs = { "notify_customer": false, "tracking_number": nil, "line_items": [{"id": li_id}], "status": "success" }
+	    #api.post("/admin/orders/#{order.id}/fulfillments.json", { "fulfillment": attrs })
+	    f = ShopifyAPI::Fulfillment.new(:order_id => order.id, :notify_customer => false ,:tracking_number => nil, :line_items =>[ {"id" => li_id} ])
+	    f.prefix_options = { :order_id => order.id }
+	    f.save
+     end
 		
 		respond_to do |format|
 		  format.html { redirect_to orders_path, notice: 'Success.' }
