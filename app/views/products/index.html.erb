@@ -3,7 +3,7 @@
   <script type="text/javascript">
     ShopifyApp.ready(function(){
       ShopifyApp.Bar.initialize({
-        title: "Home",
+        title: "Imports List",
         icon: "<%= asset_path('favicon.ico') %>"
       });
     });
@@ -11,7 +11,7 @@
   
 <% end %>
 
-<body style="background-color: #f2f2f2;">
+<body id="imports">
 
   <div class="container-fluid text-center" id="page-content">    
     <div class="row content">
@@ -67,7 +67,7 @@
                   <li class="active"><a href="#products<%= @ctr %>" data-toggle="tab" aria-expanded="true">Product</a></li>
                   <li class=""><a href="#description<%= @ctr %>" data-toggle="tab" aria-expanded="false">Description</a></li>
                   <li class=""><a href="#variants<%= @ctr %>" data-toggle="tab" aria-expanded="false">Variants</a></li>
-                  <li class=""><a href="#images<%= @ctr %>" data-toggle="tab" aria-expanded="false">Images</a></li>
+                  <!--li class=""><a href="#images<%= @ctr %>" data-toggle="tab" aria-expanded="false">Images</a></li-->
                 </ul>
               </div>
 
@@ -226,7 +226,11 @@
                                   <td><%= text_field_tag "_size[]", size, class: 'form-control', size: 10 %></td>
                                   <td><%= label_tag "", number_to_currency(product.price[@ctr2]), class: "var-cost" %></td>
                                   <td><%= text_field_tag "_prc2[]", number_with_precision(product.price2[@ctr2].to_f, :precision => 2), class: 'form-control', size: 10 %></td>
-                                  <td><%= text_field_tag "_compAtPrice[]", number_with_precision(product.compare_at_price[@ctr2].to_f, :precision => 2), class: 'form-control', size: 10 %></td>
+                                  <% if @c_toggle == true %>
+                                    <td><%= text_field_tag "_compAtPrice[]", number_with_precision(product.compare_at_price[@ctr2].to_f.public_send(@cap_fm, @cap_markup), :precision => 2), class: 'form-control', size: 10 %></td>
+                                  <% else %>
+                                    <td><%= text_field_tag "_compAtPrice[]", number_with_precision(product.compare_at_price[@ctr2].to_f, :precision => 2), class: 'form-control', size: 10 %></td>
+                                  <% end %>
                                   <td><%= label_tag "", product.avail_qty[@ctr2], class: "inv-qty" %><%= hidden_field_tag "_qty[]", product.avail_qty[@ctr2] %></td>
                                 </tr>
                                 <% @ctr2 += 1 %>
@@ -240,7 +244,7 @@
                   <!--END OF VARIANTS TAB-->
 
                   <!--IMAGES TAB-->
-                  <div class="tab-pane" id="images<%= @ctr %>">
+                  <!--div class="tab-pane" id="images<%= @ctr %>">
                     <div id="gallery">
                         <select class="image-picker show-html" multiple="multiple">
                         <% hidden_field_tag @ctr3 = 1 %>
@@ -257,7 +261,7 @@
                         <% end %>
                         </select>
                     </div>
-                  </div>
+                  </div-->
                   <!--END OF IMAGES TAB-->
 
 

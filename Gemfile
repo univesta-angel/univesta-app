@@ -26,7 +26,9 @@ gem 'image-picker-rails'
 gem 'bootstrap-tagsinput-rails'
 gem "wysiwyg-rails"
 gem 'trix'
-
+gem 'chart-js-rails'
+gem 'groupdate'
+gem 'switchery-rails'
 gem 'activemerchant'
 
 gem 'shopify_api'

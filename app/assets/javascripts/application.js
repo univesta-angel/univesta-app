@@ -11,16 +11,19 @@
 // about supported directives.
 //
 //= require jquery
-//= require toastr
+//= require jquery_ujs
 //= require bootstrap-sprockets
+//= require toastr
+//= require switchery
+//= require Chart
+//= require Chart.bundle
+//= require chartkick
 //= require bootstrap-datepicker
 //= require moment
 //= require daterangepicker
 //= require image-picker
 //= require trix
-//= require froala_editor.min.js
 //= require bootstrap-tagsinput
-//= require jquery_ujs
 //= require turbolinks
 //= require_tree .
 

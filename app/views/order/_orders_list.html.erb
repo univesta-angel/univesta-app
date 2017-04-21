@@ -8,8 +8,7 @@
 		<% else %>    
 		<% @orders.each do |order| %>
 			<div class="row">
-		        <div class="container order-detail">
-		          <div class="Row">
+		        <!--div class="container order-detail"-->
 				  
 		    	<% ae_url = '' %>
 			<% pid = 0 %>
@@ -31,70 +30,76 @@
 			<%= hidden_field_tag :city, order.shipping_address.city, id: 'city_'+order.order_number.to_s %>				  
 			<%= hidden_field_tag :zip, order.shipping_address.zip, id: 'zip_'+order.order_number.to_s %>				  
 			<%= hidden_field_tag :phone, order.shipping_address.phone, id: 'phone_'+order.order_number.to_s %>
-				  
-		            <div class="col-md-4">Order #<%= link_to order.order_number, "https://#{@shopsession}/admin/orders/#{order.id}", method: "get", target: "_blank" %><span class="date"><%= order.created_at %></span></div>
-				  <div class="col-md-6">Customer: <%= link_to order.shipping_address.name, "https://#{@shopsession}/admin/customers/#{order.customer.id}", method: "get", target: "_blank", id: "customername_#{order.order_number}", class: "customername" %></div>
-				  <!--div class="col-md-3"><button type="button" class="btn btn-sm add-note-btn" style="margin-left: 20px;" data-id="<%= order.order_number %>">Add / Edit Note</button></div-->
-				  <div class="Column2"><button type="button" class="btn btn-default mark-ship-btn" data-id="<%= order.id %>" data-no="<%= order.order_number %>">Mark as Shipped</button></div>
-			    </div>
-					
-		          <hr>
+			<div class="panel-heading">
+				<div class="row">
+		            <div class="col-md-4">Order <%= link_to order.name, "https://#{@shopsession}/admin/orders/#{order.id}", method: "get", target: "_blank" %><span class="date"><%= order.created_at %></span></div>
+				  	<div class="col-md-3">Customer: <%= link_to order.shipping_address.name, "https://#{@shopsession}/admin/customers/#{order.customer.id}", method: "get", target: "_blank", id: "customername_#{order.order_number}", class: "customername" %></div>
+			  		<!--div class="col-md-3"><button type="button" class="btn btn-sm add-note-btn" style="margin-left: 20px;" data-id="<%= order.order_number %>">Add / Edit Note</button></div-->
+				  	<div class="Column2">
+				  		<button type="button" class="btn btn-sm mark-ship-btn" data-id="<%= order.id %>" data-no="<%= order.order_number %>"><span class="glyphicon glyphicon-ok"></span><span class="mark-ship">Mark As Shipped</span></button>
+			  		</div>
+			  	</div>
+		    </div>
+				
+			<div class="panel-body">
 		          <div class="Row">
 		            <div class="col-md-3"><span class="label label-warning" style="margin-right: 10px">To Order</span>Supplier: <a href="#">Warehouse #0001</a></div>
 		            <div class="col-md-3">Ali Order No:<button type="button" class="btn btn-sm add-order-btn" style="margin-left: 20px;">Add</button></div>
 		            <!--div class="col-md-3">Shipped:<b style="margin-left: 5px">0/1</b><button type="button" class="btn btn-sm mark-ship-btn" style="margin-left: 10px">Mark as Shipped</button></div-->
 				  	<div class="col-md-3"><button type="button" class="btn btn-sm add-note-btn" data-id="<%= order.order_number %>">Add / Edit Note</button></div>
-		            <div class="Column2"><%= button_tag "Order Product", id: 'order-btn', class: 'btn btn-default order-prd-btn', data_id: order.order_number %></div>
+		            <div class="Column2"><%= button_tag "Order Product", id: 'order-btn', class: "btn btn-default order-prd-btn", data_id: order.order_number %></div>
 		          </div>
-		            <div class="line-item-detail">
-		                    <!-- line items -->
+					<div class="add-note" style="position:absolute;width:340px;height:186px;display:none;float:left;margin-left:470px;background-color:white;border:1px solid grey;border-radius:5px;z-index: 99999;" data-id="<%= order.order_number %>">
+						<textarea type="text" name="note" class="form-control" id="note" data-id="<%= order.order_number %>" data-no="<%= order.id %>" style="width:96%;height:74%;margin-top:5px;margin-bottom:4px;margin-left:7px;margin-right:10px;resize:none;"><%= order.note %></textarea>
+					   	<div>
+						<button class="btn btn-success save-note-btn" type="submit" style="width:80%;margin-left:7px;" data-id="<%= order.order_number %>">Save</button>
+						<button class="btn btn-warning close-note-btn" type="submit" style="width:14%;margin-left:2px;display:inline-block;" data-id="<%= order.order_number %>">
+							<span class="glyphicon glyphicon-remove"></span>
+						</button>
+					   	</div>
+					</div>
+	            <div class="line-item-detail">
+                <!-- line items -->
 			    <% order.line_items.each do |item| %>
-		                <div class="row">
-			  			<div class="col-md-1">
-		                    <div>
-		                    	<img src="http://placehold.it/50x50" class="line-item-img">
-		                    </div>
-						</div>
-		                <div class="col-md-4">
-		                    <div class="line-item-title">
-		                    	<h6><%= link_to item.title, "https://#{@shopsession}/admin/products/#{item.product_id}/variants/#{item.variant_id}", target: "_blank" %></h6>
-	                    	</div>
-		                    <div class="line-item-sku">
-		                    	<h6 style="color: grey"><%= item.sku %></h6>
-		                    </div>
-                      	</div>
-		                <div class="col-md-2">
-	                  	<div class="line-item-color">
-							<h5><p id="variant_option_<%= order.order_number %>"><%= item.variant_title %></p></h5>
-						</div>
-		                </div>
+	                <div class="row" style="margin-bottom: 10px;">
+		  			<div class="col-md-1">
+	                    <div>
+	                    	<% item_img = ShopifyAPI::Image.find(:first, :params=>{:product_id => item.product_id, :variant_id => item.variant_id}) %>
+	                    	<img src="<%= item_img.src %>" width="50" height="50" class="line-item-img">
+	                    </div>
+					</div>
+	                <div class="col-md-4">
+	                    <div class="line-item-title">
+	                    	<h6><%= link_to item.title, "https://#{@shopsession}/admin/products/#{item.product_id}/variants/#{item.variant_id}", target: "_blank" %></h6>
+                    	</div>
+	                    <div class="line-item-sku">
+	                    	<h6 style="color: grey"><%= item.sku %></h6>
+	                    </div>
+                  	</div>
+	                <div class="col-md-2">
+                  	<div class="line-item-color">
+						<h5><p id="variant_option_<%= order.order_number %>"><%= item.variant_title %></p></h5>
+					</div>
+	                </div>
 
-		                  <div class="col-md-2">
-		                  	<div class="line-item-trackNo">
-		                  		<h5>No Tracking Number</h5>
-		                  	</div>
-                		  </div>
+	                  <div class="col-md-2">
+	                  	<div class="line-item-trackNo">
+	                  		<h5>No Tracking Number</h5>
+	                  	</div>
+            		  </div>
 
-		                  <div class="col-md-3">
-		                  	<div class="line-item-qtyprice">
-						<h5 id="quantity_<%= order.order_number %>"><%= item.quantity %></h5><span>&times;</span><h5><%= item.price %></h5>
-		                  	</div>
-		                  </div>
-	            		</div>
-	            		<br>
+	                  <div class="col-md-3">
+	                  	<div class="line-item-qtyprice">
+					<h5 id="quantity_<%= order.order_number %>"><%= item.quantity %></h5><span>&times;</span><h5><%= item.price %></h5>
+	                  	</div>
+	                  </div>
+            		</div>
 				<% end %>
 	            		
-	              	</div>
-				<div class="add-note" style="position:absolute;width:340px;height:186px;display:none;float:left;margin-left:470px;margin-top:-210px;background-color:white;border:1px solid grey;border-radius:5px;" data-id="<%= order.order_number %>">
-					<textarea type="text" name="note" class="form-control" id="note" data-id="<%= order.order_number %>" data-no="<%= order.id %>" style="width:96%;height:74%;margin-top:5px;margin-bottom:4px;margin-left:7px;margin-right:10px;resize:none;"><%= order.note %></textarea>
-				   <div>
-					<button class="btn btn-success save-note-btn" type="submit" style="width:80%;margin-left:7px;" data-id="<%= order.order_number %>">Save</button>
-					<button class="btn btn-warning close-note-btn" type="submit" style="width:14%;margin-left:2px;display:inline-block;" data-id="<%= order.order_number %>">
-						<span class="glyphicon glyphicon-remove"></span>
-					</button>
-				   </div>
-				</div>
-	        	</div>
-			</div>
+              	</div> <!-- end of line items -->
+          	</div> <!-- end of panel body -->
+			<!--/div-->
+		</div>
+		<br/><br/>
 		<% end %>
 		<% end %>

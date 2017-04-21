@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function(e){
   var start = moment().subtract(29, 'days');
   var end = moment();
 
@@ -15,20 +15,18 @@ $(document).ready(function(){
       "startDate": start,
       "endDate": end
   }, function(start, end, label) {
-    //alert(start.format('YYYY-MM-DD'))
-    //history.replaceState(null, null, winLoc.pathname+"start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD'))
-    //window.open("https://shopifyapp-sample.herokuapp.com/orders?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD')+"", "_self");
-    var x = { from: start.format('YYYY-MM-DD'), to: end.format('YYYY-MM-DD') };
-    getOrders(x);
+        var data = {from: start.format('YYYY-MM-DD'), to: end.format('YYYY-MM-DD')};
+        getOrders(data);
   });
 
   $('#daterange').on('cancel.daterangepicker', function(ev, picker) {
     $(this).val('');
   });
-  //--------------------------------------------------------------------------------------------------------  
-  $(".add-note-btn").click(function(){
+  
+
+  $(".add-note-btn").click(function(e){
       var dataid = $(this).attr("data-id");
-      $("div[data-id='"+dataid+"']").fadeToggle("slow","linear");
+      $("div[data-id='"+dataid+"']").fadeToggle("linear");
   });
 
   $('.save-note-btn').click(function(){
@@ -38,67 +36,88 @@ $(document).ready(function(){
       $.ajax({
         url: "/edit_note",
         type: "PUT",
-        data: { note: note, order_id: parseInt(order_id) },
-        success: function() {
+        data: { note: note, order_id: order_id },
+        success: function () {
           toastr.success("Note was updated successfully!")
         },
         error: function() {
-          toastr.error("Failed to save note.")
+          toastr.error("Failed to save the note.")
         }
       });
   });
+
   $('.close-note-btn').click(function(e){
-    e.preventDefault();
-    var dataid = $(this).attr("data-id");
-    $("div[data-id='"+dataid+"']").fadeToggle("linear");
-  });
+      e.preventDefault();
+      var dataid = $(this).attr("data-id");
+      $("div[data-id='"+dataid+"']").fadeToggle("linear");
+  })
+
+  /*document.getElementById("save").addEventListener("click", function ()
+    {
+      var user = document.getElementById("note").value;
+      //localStorage["user"] = user ;
+      localStorage.note = user;
+      console.log("note saved")
+      $("#div1").fadeToggle("slow","linear");
+  } , false);*/
+
   //--------------------------------------------------------------------------------------------------------
-  var checked = localStorage.getItem('checkbox1');
+
+  //var checked = localStorage.getItem('checkbox1');
+  var filterLinks = document.querySelectorAll('a[class="dropdown-toggle"]')
   var checkboxes = document.querySelectorAll('input[type="checkbox"]')
   for (var i = 0; i < checkboxes.length; i++) {
     var box = checkboxes[i];
     if (box.hasAttribute("value")) {
-        setupBox(box);
+      setupBox(box);
     }
   }
-  $('input[type="checkbox"]').on('change', function(e){
+  for ( var i=0; i < filterLinks.length; i++ ) {
+    var link = filterLinks[i];
+    if (link.hasAttribute("data-toggle")) {
+      setupBox(link);
+    }
+  }
+  //$('a.fulfillment').text(localStorage.getItem("fulfillment_link"))
+  $('input[type="checkbox"][class="order-filter"]').on('change', function(e){
     var data = [],
         loc = $('<a>', {href:window.location})[0];
     $('input[class="fulfillment_status"]').each(function(i){
       if(this.checked){
-          data.push('fulfillment_status='+this.value);
+        data.push('fulfillment_status[]='+this.value);
+        /*localStorage.setItem("fulfillment_link", this.name)
+        $('a.fulfillment').text(this.name)*/
       }
       else{
-        loc.pathname.slice(0, loc.pathname.indexOf('fulfillment_status='+this.value))
+        loc.pathname.slice(0, loc.pathname.indexOf('fulfillment_status[]='+this.value))
       }
     });
     $('input[class="financial_status"]').each(function(i){
       if(this.checked){
-          data.push('financial_status='+this.value);
+        data.push('financial_status[]='+this.value);
       }
       else{
-        loc.pathname.slice(0, loc.pathname.indexOf('financial_status='+this.value))
+        loc.pathname.slice(0, loc.pathname.indexOf('financial_status[]='+this.value))
       }
     });
     $('input[class="order_status"]').each(function(i){
       if(this.checked){
-          data.push('order_status='+this.value);
+        data.push('order_status[]='+this.value);
       }
       else{
-        loc.pathname.slice(0, loc.pathname.indexOf('order_status='+this.value))
+        loc.pathname.slice(0, loc.pathname.indexOf('order_status[]='+this.value))
       }
     });
     data = data.join('&');
     var checkbox = document.getElementsByClassName('fulfillment_status')
     localStorage.removeItem('checkbox1')
     localStorage.setItem('checkbox1', checkbox[0].checked);
-    getOrders(data);
+    getOrders(data)
     if(history.pushState){
         history.pushState(null, null, loc.pathname+'?'+data);
         //window.location.replace(loc.pathname+'?'+data);
     }
   });
-  
   function setupBox(box) {
     var storageId = box.getAttribute("value");
     var oldVal    = localStorage.getItem(storageId);

@@ -14,6 +14,7 @@
  *= require bootstrap-datepicker3
  *= require daterangepicker-bs3
  *= require trix
+ *= require switchery
  *= require toastr
  *= require image-picker
  *= require_tree .
@@ -36,12 +37,35 @@ body {
     background-color: #f7f7f7;
     vertical-align: middle;
     min-width: 1024px;
-    margin-bottom: 20px;
 }
 .nav .open > a, 
 .nav .open > a:hover, 
 .nav .open > a:focus {background-color: transparent;}
 
+body#imports {
+  background: url('imports-bg.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100vh;
+}
+body#orders {
+  background: url('orders-bg.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100vh;
+}
+body#myproducts {
+  background: url('myproducts-bg.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100vh;
+}
 /*-------------------------------*/
 /*           Wrappers            */
 /*-------------------------------*/
@@ -55,7 +79,7 @@ body {
 }
 
 #wrapper.toggled {
-    padding-left: 220px;
+    padding-left: 110px;
 }
 
 #sidebar-wrapper {
@@ -124,7 +148,6 @@ body {
       -moz-transition:  width .2s ease-in;
        -ms-transition:  width .2s ease-in;
             transition: width .2s ease-in;
-
 }
 .sidebar-nav li:first-child:before {
     background-color: #E07A5F;
@@ -136,7 +159,7 @@ body {
     background-color: #81B29A;   
 }
 .sidebar-nav li:nth-child(4):before {
-    background-color: #314190;   
+    background-color: #3D405B;   
 }
 .sidebar-nav li:nth-child(5):before {
     background-color: #279636;   
@@ -168,7 +191,7 @@ body {
     color: #ddd;
     text-decoration: none;
     padding: 10px 15px 10px 30px;   
-	float: center; 
+  float: center; 
 }
 
 .sidebar-nav li a:hover,
@@ -329,13 +352,3 @@ body {
     background-color: rgba(250,250,250,.8);
     z-index: 1;
 }
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  background-color: #f5f5f5;
-}
-

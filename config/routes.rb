@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'settings/index'
+
+  get 'settings/edit_markup'
+
   resources :products do
     post 'select_action'
   end

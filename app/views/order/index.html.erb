@@ -13,6 +13,12 @@
 
 <head>
   <style type="text/css">
+    * {
+      border-radius: 0 !important;
+      -webkit-box-shadow: 0 !important;
+      -moz-box-shadow: 0 !important;
+      box-shadow: 0 !important;
+    }
     #page-content{
       width: 1024px;
       margin: 0 auto;
@@ -32,117 +38,139 @@
       display: table-cell;
       float: right;
     }
-      .aaa{
-            width: 190px;
-      }
-      .navbar-nav{
-            width: 1000px;
-            background-color: #2d2d2d;
-            border: 1px;
-            border-radius: 3px;
-            -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.36);
-            -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.36);
-            box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.36);
-      }
-      ul.nav.navbar-nav > li > a {
-            color: white;
-      }
-      .search-orders {
-            margin-top: 10px;
-            margin-bottom: 20px;
-            margin-left: -15px;
-            /*margin-left: 25%;*/
-      }
-      #search-key {
-            float: left;
-      }
-      .date-range{
-            float: right;
-      }
-      .order-option {
-            margin-top: 10px;
-            margin-bottom: 10px;
-            /*margin-left: 26.8%;*/
-      }
-      .order-detail{
-            margin-top: 20px;
-            margin-left: -1px;
-            color: #000;
-            background-color: #ffffff;
-            width: 1000px;
-            border: 1px;
-            border-radius: 3px;
-            -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
-            -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
-            box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
-      }
-      .order-detail > div > div > span.date {
-            margin-left: 5px;
-      }
-      .order-detail > div > div > a {
-            margin-left: 5px;
-            color: #76A28C;
-      }
-      .line-item-detail{
-            overflow:hidden;
-            border:1px;
-            display:inline-block;
-            background-color: #F4F1DE;
-            width: 100%;
-            min-height: 100px;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            border: 1px solid grey;
-            border-radius: 3px;
-            padding: 20px;
-      }
-      .line-item-img{
-            padding: 5px;
-            border: 1px solid grey;
-      }
-      .line-item-title, .line-item-color, .line-item-trackNo, .line-item-sku {
-            margin-left: 30px;
-            margin-top: -8px;
-      }
-      .line-item-title > h6 > a {
-            color: #76A28C;
-      }
-      div.line-item-color > h5, div.line-item-trackNo > h5 {
-            color: grey;
-      }
-      .line-item-qtyprice{
-            display: inline-block;
-            color: grey;
-            margin-left: 30px;
-            text-align: right;
-      }
-      .line-item-qtyprice > h5 {
-            display: inline-block;
-      }
-      .line-item-qtyprice > span {
-            margin-left: 15px;
-            margin-right: 15px;
-      }
-      .order-prd-btn{
-            background-color: #E07A5F;
-            color: white;
-      }
-      .add-order-btn, .mark-ship-btn {
-            background-color: white;
-            border: 1px solid grey;
-      }
-      .filter-btn{
-            background-color: #F2CC8F;
-      }
-      #daterange {
-            display: inline-block;
-            width: 240px;
-      }
-      #date {
-            display: inline-block;
-            float: right;
-      }
-     .empty-orders {
+    .aaa{
+          width: 190px;
+    }
+    .navbar-nav{
+      margin-bottom: 20px;
+      width: 1024px;
+      background-color: #2d2d2d;
+      border: 1px;
+      border-radius: 3px;
+      -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.2);
+      -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.2);
+      box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.2);
+    }
+    ul.nav.navbar-nav > li > a {
+      color: white;
+    }
+    .search-orders {
+      margin-top: 10px;
+      margin-bottom: 20px;
+      margin-left: -16px;
+      /*margin-left: 25%;*/
+    }
+    #search-key {
+      float: left;
+    }
+    .date-range{
+      float: right;
+    }
+    .order-option {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      /*margin-left: 26.8%;*/
+    }
+    #items_grid {
+      margin-top: 30px;
+    }
+    .order-detail {
+      margin-top: 20px;
+      margin-left: -1px;
+      width: 1024px;
+    }
+    .panel-heading {
+      background-color: #FFFFFF;
+      width: 1024px;
+      color: #2D2D2D;
+    }
+    .panel-heading > div > div > span.date {
+      margin-left: 5px;
+      border: none;
+    }
+    .panel-heading > div > div > a {
+      color: #39c3da;
+        margin-left: 5px;
+    }
+    .panel-body{
+      background-color: #FFFFFF;
+      border: none;
+      width: 1024px;
+      color: #2D2D2D;
+    }
+    .panel-body > div > div >a {
+      color: #39c3da;
+    }
+    .line-item-detail{
+      overflow:hidden;
+      border:1px solid;
+      border-color: #d1d1d1;
+      display:inline-block;
+      background-color: #FFFFFF;
+      width: 100%;
+      min-height: 100px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      padding: 20px;
+    }
+    .line-item-img{
+      padding: 5px;
+      border: 1px solid grey;
+    }
+    .line-item-title {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+    }
+    .line-item-sku {
+      color: #3c3c3c;
+    }
+    .line-item-title, .line-item-color, .line-item-trackNo, .line-item-sku {
+      margin-left: 30px;
+      margin-top: -8px;
+    }
+    .line-item-title > h6 > a {
+      color: grey;
+    }
+    div.line-item-color > h5, div.line-item-trackNo > h5 {
+      color: grey;
+    }
+    .line-item-qtyprice{
+      display: inline-block;
+      color: grey;
+      margin-left: 30px;
+      text-align: right;
+    }
+    .line-item-qtyprice > h5 {
+      display: inline-block;
+    }
+    .line-item-qtyprice > span {
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+    .add-order-btn, .add-note-btn {
+      background-color: #39c3da;
+      color: white;
+    }
+    .add-order-btn:hover, .add-note-btn:hover {
+      background-color: white;
+      color: #39c3da;
+      border: 1px solid;
+      border-color: #39c3da;
+    }
+    .filter-btn {
+      background-color: #F2CC8F;
+    }
+    #daterange {
+      display: inline-block;
+      width: 240px;
+    }
+    #date {
+      display: inline-block;
+      float: right;
+    }
+   .empty-orders {
       font-weight:normal;
       color:#8A8A8A;
       letter-spacing:1pt;
@@ -150,8 +178,8 @@
       font-size:40px;
       text-align:center;
       font-family:verdana, sans-serif;
-      }
-      .empty-search {
+    }
+    .empty-search {
       font-weight:normal;
       color:#8A8A8A;
       letter-spacing:1pt;
@@ -159,33 +187,57 @@
       font-size:17px;
       text-align:center;
       font-family:verdana, sans-serif;
-      }
-</style>
+    }
+    .order-prd-btn {
+      background-color: #29c75f;
+      color: #fff;
+      border: none;
+    }
+    .order-prd-btn:hover {
+      background-color: #fff;
+      color: #29c75f;
+      border: 1px solid;
+      border-color: #29c75f;
+    }
+    .mark-ship-btn {
+      background-color:#3c3c3c;
+      color:white;
+      width:150px;
+    }
+    .mark-ship-btn:hover {
+      background-color: white;
+      color:#3c3c3c;
+      border-top: 1px solid;
+      border-left: 1px solid;
+      border-bottom: 1px solid;
+      border-right: none;
+      border-color: #3c3c3c;
+    }
+    .mark-ship-btn > span.mark-ship {
+      margin-left: 10px;
+    }
+  </style>
 </head>
 
-<body style="background-color: #f2f2f2">
+<body id="orders">
 
       <div class="container-fluid text-center" id="page-content">
         <div class="row content">
 
           <!-- start of center colum -->
           <div class="col-sm-12 text-left">
-                  <div><p id="notice"><%= notice %></p></div>     
-                  <br/>
+            <div><p id="notice"><%= notice %></p></div>     
+            <br/>
 
-                  <div class="row">
-                      <div class="col-md-12">
-                        <div class="search-orders">
-                            <%= form_tag(my_products_path, method: :get) do %>
-                              <%= text_field_tag "searchprd", params[:searchprd], class: "form-control", placeholder: "Enter Keywords", style: "width: 390px;" %>
-                              <button type="submit" class="btn btn-default filter-btn" style="margin-left: 10px;  margin-right: 10px; width: 70px">Filter</button>
-                              <div class="form-group has-feedback" id="date">
-                                    <input type="text" name="datefilter" value="" class="form-control" id="daterange" placeholder="Select Date Range" />
-                                    <i class="glyphicon glyphicon-calendar form-control-feedback"></i>
-                              </div>
-                            <% end %>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="search-orders">
+                        <div class="form-group has-feedback" id="date">
+                          <input type="text" name="datefilter" class="form-control" id="daterange" placeholder="Select Date Range" />
+                          <i class="glyphicon glyphicon-calendar form-control-feedback"></i>
                         </div>
-                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 <div class="row order-option">
@@ -195,10 +247,10 @@
                               Fulfillment Status: All <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                            <li><input type="checkbox" name="Unknown" class="fulfillment_status" value="any">Unknown</li>
-                              <li><input type="checkbox" name="Fulfilled" class="fulfillment_status" value="shipped">Fulfilled</li>
-                              <li><input type="checkbox" name="Unfulfilled" class="fulfillment_status" value="unshipped">Unfulfilled</li>
-                              <li><input type="checkbox" name="Partial" class="fulfillment_status" value="partial">Partial</li>
+                            <li><input type="checkbox" name="Unknown" class="order-filter fulfillment_status" value="any">Unknown</li>
+                              <li><input type="checkbox" name="Fulfilled" class="order-filter fulfillment_status" value="shipped">Fulfilled</li>
+                              <li><input type="checkbox" name="Unfulfilled" class="order-filter fulfillment_status" value="unshipped">Unfulfilled</li>
+                              <li><input type="checkbox" name="Partial" class="order-filter fulfillment_status" value="partial">Partial</li>
                             </ul>
                           </li>
                           <li role="presentation" class="dropdown">
@@ -206,10 +258,10 @@
                               Financial Status: All <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                            <li><input type="checkbox" name="Partially Paid" class="financial_status" value="partially_paid">Partially Paid</li>
-                              <li><input type="checkbox" name="Paid" class="financial_status" value="paid">Paid</li>
-                              <li><input type="checkbox" name="Partially refunded" class="financial_status" value="partially_refunded">Partially refunded</li>
-                              <li><input type="checkbox" name="Refunded" class="financial_status" value="refunded">Refunded</li>
+                            <li><input type="checkbox" name="Partially Paid" class="order-filter financial_status" value="partially_paid">Partially Paid</li>
+                              <li><input type="checkbox" name="Paid" class="order-filter financial_status" value="paid">Paid</li>
+                              <li><input type="checkbox" name="Partially refunded" class="order-filter financial_status" value="partially_refunded">Partially refunded</li>
+                              <li><input type="checkbox" name="Refunded" class="order-filter financial_status" value="refunded">Refunded</li>
                             </ul>
                           </li>
                           <li role="presentation" class="dropdown">
@@ -217,8 +269,8 @@
                               Order Status: All <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                              <li><input type="checkbox" name="Open Orders" class="order_status" value="open">Open Orders</li>
-                              <li><input type="checkbox" name="Closer Orders" class="order_status" value="closed">Closed Orders</li>
+                              <li><input type="checkbox" name="Open Orders" class="order-filter order_status" value="open">Open Orders</li>
+                              <li><input type="checkbox" name="Closer Orders" class="order-filter order_status" value="closed">Closed Orders</li>
                             </ul>
                           </li>
                         </ul>
