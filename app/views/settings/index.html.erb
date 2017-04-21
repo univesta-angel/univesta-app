@@ -1,2 +1,200 @@
-<h1>Settings#index</h1>
-<p>Find me in app/views/settings/index.html.erb</p>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Global Pricing Rules</title>
+	<style type="text/css">
+		/* make sidebar nav vertical */ 
+		@media (min-width: 768px) {
+			.sidebar-nav-2 {
+				width: 250px;
+			}
+			.sidebar-nav-2 .navbar .navbar-collapse {
+				padding: 0;
+				max-height: none;
+			}
+			.sidebar-nav-2 .navbar ul {
+				float: none;
+				display: block;
+			}
+			.sidebar-nav-2 .navbar li {
+				float: none;
+				display: block;
+			}
+			.sidebar-nav-2 .navbar li a {
+				padding-top: 12px;
+				padding-bottom: 12px;
+			}
+		}
+		.product-cost-lbl {
+			margin-left: 25px;
+		}
+		.plus{
+			margin-left: 25px;
+			margin-right: 25px;
+		}
+		.markup-lbl, .price-tag {
+			margin-left: 25px;
+		}
+		.Container, .price-tag, .product-cost-lbl,
+		.group, .plus, .cap-toggle, .markup-lbl, .select-opt,
+		.markup-type, .markup-type-2, #prd-markup-lbl, .col-md-1,
+		.col-md-7, .compare-at-price-mu {
+			display: inline-block;
+		}
+		.input-group-btn select {
+			border-color: #ccc;
+			margin-top: 0px;
+		    margin-bottom: 0px;
+		    padding-top: 7px;
+		    padding-bottom: 7px;
+		}
+		.select-opt {
+			width: 105px;
+		}
+		.price-markup, .cap-markup {
+			display: inline-block;
+			width: 80px;
+		}
+		.containerPanel {
+			position: relative;
+			width: 1000px;
+			padding: 20px;
+		}
+		#settings-save-btn {
+			right: 10px;
+			top: 10px;
+			position: absolute;
+			background-color: #64bd63;
+			color:#fff;
+		}
+
+		.flex-container {
+		    display: -webkit-flex;
+		    display: flex;  
+		    -webkit-flex-flow: row wrap;
+		    flex-flow: row wrap;
+		    text-align: center;
+		}
+		.flex-container > * {
+		    padding: 15px;
+		    -webkit-flex: 1 100%;
+		    flex: 1 100%;
+		}
+		.right-column {
+		    text-align: left;
+		}
+		header {background: white;color:black;}
+		footer {background: #aaa;color:white;}
+		.left-column {background:#eee;}
+		@media all and (min-width: 768px) {
+		    .left-column {text-align:left;-webkit-flex: 1 auto;flex:1 auto;-webkit-order:1;order:1;}
+		    .right-column {-webkit-flex:5 0px;flex:5 0px;-webkit-order:2;order:2;}
+		    footer {-webkit-order:3;order:3;}
+		}
+	</style>
+	<script type="text/javascript">
+		$(document).on('ready page:change', function(){
+			var elem = document.querySelector('.js-switch');
+			var init = new Switchery(elem, { size: 'small' });
+		});
+	</script>
+</head>
+<body id="gbp">
+
+	<div class="flex-container">
+		<header>
+		  <h1>Settings</h1>
+		</header>
+		<!--div class="left-column">
+			<div class="sidebar-nav-2">
+				<div class="navbar navbar-default" role="navigation">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<span class="visible-xs navbar-brand">Sidebar menu</span>
+					</div>
+					<div class="navbar-collapse collapse sidebar-navbar-collapse">
+						<ul class="nav navbar-nav">
+						<li class="active"><a href="#" data-turbolinks=false >Global Pricing Rules</a></li>
+						<li><a href="#" data-turbolinks=false >Menu Item 2</a></li>
+						<li><a href="#" data-turbolinks=false >Menu Item 3</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="right-column">		  
+		</div-->
+	</div>
+
+
+	<div class="container-fluid text-center" id="page-content"> 
+		<div class="row content" style="margin-top: 20px;">
+
+			<div class="col-sm-8 text-left">
+			<div class="panel-heading containerPanel" style="height:50px;background-color:#fff;border-bottom:1px solid grey;">
+				<span><strong>Global Pricing Rules</strong></span>
+				<button class="btn btn-sm" id="settings-save-btn">Save Settings</button>
+			</div>
+			<div class="panel-body containerPanel" style="background-color:#fff;">
+				<div class="row">
+					<div class="col-md-7">
+						<label id="prd-markup-lbl">Product Markup</label>
+					</div>
+				</div>
+				<hr/>
+				<div class="row">
+					<div class="col-md-1"></div>
+					<div class="col-md-9">
+				    	<span class="product-cost-lbl"><strong>Product Cost</strong></span>
+					    <%= text_field_tag :price_markup, @markup.price.to_i, type: 'number', class: "form-control price-markup" %>
+						<div class="dropdown markup-type">
+							<button class="btn btn-default dropdown-toggle" type="button" id="price_markup_toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							<%= @price_fm %>
+							</button>
+							<ul class="dropdown-menu" id="price_fm" aria-labelledby="dropdownMenu1">
+								<li><a href="#" data-turbolinks=false>Fixed</a></li>
+								<li><a href="#" data-turbolinks=false>Multiplier</a></li>
+							</ul>
+							<span class="glyphicon glyphicon-arrow-right"></span>
+							<span><strong>Your product price</strong></span>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-1">
+						<% if @captoggle == true %>
+							<input type="checkbox" id="cap-toggle" class="js-switch" checked />
+						<% else %>
+							<input type="checkbox" id="cap-toggle" class="js-switch" />
+						<% end %>
+					</div>
+					<div class="col-md-11">
+						<div class="compare-at-price-mu">
+					    	<span class="product-cost-lbl"><strong>Product Cost</strong></span>
+							<%= text_field_tag :cap_markup, @markup.compare_at_price.to_i, type: 'number', class: "form-control cap-markup"%>				
+							<div class="dropdown markup-type-2">
+								<button class="btn btn-default dropdown-toggle" type="button" id="cap_markup_toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								<%= @cap_fm %>
+								</button>
+								<ul class="dropdown-menu" id="cap_fm" aria-labelledby="dropdownMenu1">
+									<li><a href="#" data-turbolinks=false>Fixed</a></li>
+									<li><a href="#" data-turbolinks=false>Multiplier</a></li>
+								</ul>
+								<span class="glyphicon glyphicon-arrow-right"></span>
+								<span><strong>Your product compare at price</strong></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>

@@ -13,7 +13,7 @@ class SettingsController < ApplicationController
   end
 
   def edit_markup
-	  	markup = Markup.find(1)
+	  	markup = Markup.find(1) 
 	  	markup.price = params[:pmu].to_f
 	  	markup.compare_at_price = params[:capmu].to_f
 	  	markup.operator = params[:p_operator]
