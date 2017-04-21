@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   get 'my_products' => 'my_products#index', as: :my_products
   delete 'my_products/:id' => 'my_products#destroy', as: :destroy_product
 
+  get '/settings' => 'settings#index'
+  put '/settings/edit_markup' => 'settings#edit_markup'
+
   get 'orders' => 'order#index', as: :orders
   get "/fetch_orders" => "order#from_category", as: :fetch_orders
   put "/edit_note" => "order#edit_note", as: :edit_note
