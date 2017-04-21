@@ -16,7 +16,6 @@
 //= require toastr
 //= require switchery
 //= require Chart
-//= require Chart.bundle
 //= require chartkick
 //= require bootstrap-datepicker
 //= require moment
