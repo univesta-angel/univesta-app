@@ -226,11 +226,7 @@
                                   <td><%= text_field_tag "_size[]", size, class: 'form-control', size: 10 %></td>
                                   <td><%= label_tag "", number_to_currency(product.price[@ctr2]), class: "var-cost" %></td>
                                   <td><%= text_field_tag "_prc2[]", number_with_precision(product.price2[@ctr2].to_f, :precision => 2), class: 'form-control', size: 10 %></td>
-                                  <% if @c_toggle == true %>
-                                    <td><%= text_field_tag "_compAtPrice[]", number_with_precision(product.compared_at_price[@ctr2].to_f.public_send(@cap_fm, @cap_markup), :precision => 2), class: 'form-control', size: 10 %></td>
-                                  <% else %>
                                     <td><%= text_field_tag "_compAtPrice[]", number_with_precision(product.compared_at_price[@ctr2].to_f, :precision => 2), class: 'form-control', size: 10 %></td>
-                                  <% end %>
                                   <td><%= label_tag "", product.avail_qty[@ctr2], class: "inv-qty" %><%= hidden_field_tag "_qty[]", product.avail_qty[@ctr2] %></td>
                                 </tr>
                                 <% @ctr2 += 1 %>
