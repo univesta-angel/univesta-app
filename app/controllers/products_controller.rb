@@ -21,12 +21,12 @@ class ProductsController < ApplicationController
     @cc.each do |c|
       @collections << c
     end
-    markup = Markup.find(1)
-    @price_markup = markup.price
-    @price_fm = markup.operator.to_sym
-    @cap_markup = markup.compare_at_price
-    @cap_fm = markup.operator2.to_sym
-    @capToggle = markup.capToggle
+    #markup = Markup.find(1)
+    #@price_markup = markup.price
+    #@price_fm = markup.operator.to_sym
+    #@cap_markup = markup.compare_at_price
+    #@cap_fm = markup.operator2.to_sym
+    #@capToggle = markup.capToggle
   end
 
   # GET /products/1
