@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  price: 
-  compare_at_price: 
-  operator1: 
-  operator2: 
+  price: 1.5
+  compare_at_price: 1.5
+  operator1: MyString
+  operator2: MyString
   capToggle: false
 
 two:
-  price: 
-  compare_at_price: 
-  operator1: 
-  operator2: 
+  price: 1.5
+  compare_at_price: 1.5
+  operator1: MyString
+  operator2: MyString
   capToggle: false
