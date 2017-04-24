@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
     @price_fm = markup.operator.to_sym
     @cap_markup = markup.compare_at_price
     @cap_fm = markup.operator2.to_sym
-    @capToggle = markup.capToggle
+    @capToggle = markup.cap_toggle
   end
 
   # GET /products/1
