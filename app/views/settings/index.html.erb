@@ -151,7 +151,7 @@
 					<div class="col-md-1"></div>
 					<div class="col-md-9">
 				    	<span class="product-cost-lbl"><strong>Product Cost</strong></span>
-					    <%= text_field_tag :price_markup, @markup.price.to_i, type: 'number', class: "form-control price-markup" %>
+					    <%= text_field_tag :price_markup, @markup.price.to_i, type: 'number', min: '1', class: "form-control price-markup" %>
 						<div class="dropdown markup-type">
 							<button class="btn btn-default dropdown-toggle" type="button" id="price_markup_toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 							<%= @price_fm %>
@@ -176,7 +176,7 @@
 					<div class="col-md-11">
 						<div class="compare-at-price-mu">
 					    	<span class="product-cost-lbl"><strong>Product Cost</strong></span>
-							<%= text_field_tag :cap_markup, @markup.compare_at_price.to_i, type: 'number', class: "form-control cap-markup"%>				
+							<%= text_field_tag :cap_markup, @markup.compare_at_price.to_i, type: 'number', min: '1', class: "form-control cap-markup"%>				
 							<div class="dropdown markup-type-2">
 								<button class="btn btn-default dropdown-toggle" type="button" id="cap_markup_toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 								<%= @cap_fm %>
