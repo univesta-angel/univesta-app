@@ -25,8 +25,8 @@ $(document).ready(function(){
 	$("#settings-save-btn").click(function(){
 		var price_markup = $("#price_markup").val(),
 		cap_markup = $("#cap_markup").val(),
-		price_operator = $("#price_markup_toggle").val(),
-		cap_operator = $("#cap_markup_toggle").val();
+		price_operator = $("#price_markup_toggle").text().replace(/ /g,'').replace(/\s/g,''),
+		cap_operator = $("#cap_markup_toggle").text().replace(/ /g,'').replace(/\s/g,'');
 
 		if($("#cap-toggle").prop("checked") == true){
 			var cap_toggle = true;
@@ -35,12 +35,13 @@ $(document).ready(function(){
 			var cap_toggle = false;
 		}
 
-		alert(price_markup+"---"+cap_markup+"---"+price_operator+"---"+cap_operator+"---"+cap_toggle);
+		//alert(price_markup+"---"+cap_markup+"---"+price_operator+"---"+cap_operator+"---"+cap_toggle);
+
+		//alert(price_operator + "---" + cap_operator)
 
 		var priceOp = valChecker(price_operator);
 		var capOp = valChecker(cap_operator);
-
-		alert(priceOp+"---"+capOp);
+		//alert(priceOp+"---"+capOp);
 		$.ajax({
 			url: '/settings/edit_markup',
 			type: 'PUT',
