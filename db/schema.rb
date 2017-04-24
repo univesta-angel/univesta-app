@@ -27,16 +27,6 @@ ActiveRecord::Schema.define(version: 20170421084540) do
     t.string   "price"
   end
 
-  create_table "markups", force: :cascade do |t|
-    t.float    "price"
-    t.float    "compare_at_price"
-    t.string   "operator1"
-    t.string   "operator2"
-    t.boolean  "capToggle"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-  end
-
   create_table "products", force: :cascade do |t|
     t.string   "title"
     t.text     "body_html"
