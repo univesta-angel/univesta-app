@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
     @cc.each do |c|
       @collections << c
     end
-    markup = Markup.find(1)
+    markup = Markup.find(2)
     @price_markup = markup.price
     @price_fm = markup.operator.to_sym
     @cap_markup = markup.compare_at_price
