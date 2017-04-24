@@ -3,7 +3,7 @@ class SettingsController < ApplicationController
   def index
   	@markup = Markup.find(2)
   	@captoggle = @markup.cap_toggle
-  	@price_fm = string_checker(@markup.operator)
+  	@price_fm = string_checker(@markup.operator1)
   	@cap_fm = string_checker(@markup.operator2)
 
   end
@@ -18,7 +18,7 @@ class SettingsController < ApplicationController
 	  	markup.compare_at_price = params[:capmu].to_f
 	  	markup.operator1 = params[:p_operator]
 	  	markup.operator2 = params[:c_operator]
-	  	markup.capToggle = params[:c_toggle].to_s
+	  	markup.cap_toggle = params[:c_toggle].to_s
 	  	markup.save
 
   		render js: 'window.location.reload'

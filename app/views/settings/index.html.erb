@@ -102,7 +102,99 @@
 <body id="gbp">
 
 	<div class="flex-container">
-	<h1>HELLO</h1>
+		<header>
+		  <h1>Settings</h1>
+		</header>
+		<!--div class="left-column">
+			<div class="sidebar-nav-2">
+				<div class="navbar navbar-default" role="navigation">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<span class="visible-xs navbar-brand">Sidebar menu</span>
+					</div>
+					<div class="navbar-collapse collapse sidebar-navbar-collapse">
+						<ul class="nav navbar-nav">
+						<li class="active"><a href="#" data-turbolinks=false >Global Pricing Rules</a></li>
+						<li><a href="#" data-turbolinks=false >Menu Item 2</a></li>
+						<li><a href="#" data-turbolinks=false >Menu Item 3</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="right-column">		  
+		</div-->
+	</div>
+
+
+	<div class="container-fluid text-center" id="page-content"> 
+		<div class="row content" style="margin-top: 20px;">
+
+			<div class="col-sm-8 text-left">
+			<div class="panel-heading containerPanel" style="height:50px;background-color:#fff;border-bottom:1px solid grey;">
+				<span><strong>Global Pricing Rules</strong></span>
+				<button class="btn btn-sm" id="settings-save-btn">Save Settings</button>
+			</div>
+			<div class="panel-body containerPanel" style="background-color:#fff;">
+				<div class="row">
+					<div class="col-md-7">
+						<label id="prd-markup-lbl">Product Markup</label>
+					</div>
+				</div>
+				<hr/>
+				<div class="row">
+					<div class="col-md-1"></div>
+					<div class="col-md-9">
+				    	<span class="product-cost-lbl"><strong>Product Cost</strong></span>
+					    <%= text_field_tag :price_markup, @markup.price.to_i, type: 'number', class: "form-control price-markup" %>
+						<div class="dropdown markup-type">
+							<button class="btn btn-default dropdown-toggle" type="button" id="price_markup_toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							<%= @price_fm %>
+							</button>
+							<ul class="dropdown-menu" id="price_fm" aria-labelledby="dropdownMenu1">
+								<li><a href="#" data-turbolinks=false>Fixed</a></li>
+								<li><a href="#" data-turbolinks=false>Multiplier</a></li>
+							</ul>
+							<span class="glyphicon glyphicon-arrow-right"></span>
+							<span><strong>Your product price</strong></span>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-1">
+						<% if @captoggle == true %>
+							<input type="checkbox" id="cap-toggle" class="js-switch" checked />
+						<% else %>
+							<input type="checkbox" id="cap-toggle" class="js-switch" />
+						<% end %>
+					</div>
+					<div class="col-md-11">
+						<div class="compare-at-price-mu">
+					    	<span class="product-cost-lbl"><strong>Product Cost</strong></span>
+							<%= text_field_tag :cap_markup, @markup.compare_at_price.to_i, type: 'number', class: "form-control cap-markup"%>				
+							<div class="dropdown markup-type-2">
+								<button class="btn btn-default dropdown-toggle" type="button" id="cap_markup_toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								<%= @cap_fm %>
+								</button>
+								<ul class="dropdown-menu" id="cap_fm" aria-labelledby="dropdownMenu1">
+									<li><a href="#" data-turbolinks=false>Fixed</a></li>
+									<li><a href="#" data-turbolinks=false>Multiplier</a></li>
+								</ul>
+								<span class="glyphicon glyphicon-arrow-right"></span>
+								<span><strong>Your product compare at price</strong></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+
+		</div>
 	</div>
 </body>
 </html>
