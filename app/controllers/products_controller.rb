@@ -23,7 +23,7 @@ class ProductsController < ApplicationController
     end
     markup = Markup.find(2)
     @price_markup = markup.price
-    @price_fm = markup.operator.to_sym
+    @price_fm = markup.operator1.to_sym
     @cap_markup = markup.compare_at_price
     @cap_fm = markup.operator2.to_sym
     @capToggle = markup.cap_toggle

@@ -16,7 +16,7 @@ class SettingsController < ApplicationController
 	  	markup = Markup.find(2) 
 	  	markup.price = params[:pmu].to_f
 	  	markup.compare_at_price = params[:capmu].to_f
-	  	markup.operator = params[:p_operator]
+	  	markup.operator1 = params[:p_operator]
 	  	markup.operator2 = params[:c_operator]
 	  	markup.capToggle = params[:c_toggle].to_s
 	  	markup.save
