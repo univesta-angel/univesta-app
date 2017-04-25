@@ -210,44 +210,7 @@ class ProductsController < ApplicationController
     new_product.variants = variants
     #new_product.metafields = [{:key => params[:mf_key],:value => params[:ae_url],:value_type => "string",:namespace => params[:mf_key] }]
     
-    pao = []
-    color2 =[]     #tempo storage
-    aaa = 0 
-    ctr = 0 
-    
-    _varimg = params[:_varimg]
-    
-    if _color.size==0
-      variantsid.each do |row|
-        color2 = []
-        color2 << new_product.variants[ctr].id
-        ctr = ctr + 1
-      end
-      pao << { id: nil, variant_ids: color2, src: default_img[0] }
-    else
-      gel = ''
-      color2 = []
-      lastvarimg = ''
-      variantsid.each do |row|
-        if gel==''
-          gel = _varimg[row.to_i]
-          color2 << new_product.variants[ctr].id
-             
-        elsif gel!=_varimg[row.to_i]
-          pao << { id: nil, variant_ids: color2, src: lastvarimg }
-          gel = _varimg[row.to_i]
-          color2 = []
-          color2 << new_product.variants[ctr].id
-        else
-          color2 << new_product.variants[ctr].id
-       end
-        lastvarimg =  _varimg[row.to_i]
-        ctr = ctr+1
-      end
-      pao << { id: nil, variant_ids: color2, src: lastvarimg }      
-    end
-    
-    new_product.images = pao
+
     new_product.save 
     
   end # end of push action
