@@ -208,7 +208,7 @@ class ProductsController < ApplicationController
     new_product.tags = params[:_tags]
     new_product.options = options
     new_product.variants = variants
-    new_product.metafields = [{:key => params[:mf_key],:value => params[:ae_url],:value_type => "string",:namespace => params[:mf_key] }]
+    new_product.metafields = [{:key => params[:mf_key],:value => params[:ae_url],:value_type => "string",:namespace => params[:mf_key], :description => "imported-item" }]
     
     pao = []
     color2 =[]     #tempo storage
