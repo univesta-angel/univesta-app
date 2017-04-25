@@ -25,7 +25,7 @@ class NotificationController < ApplicationController
   def update_price
   end
 
-  def delete_notif
+  def destroy
   	@notif.destroy
   end
 
