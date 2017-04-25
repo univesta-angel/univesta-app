@@ -14,11 +14,11 @@ class NotificationController < ApplicationController
   end
 
   def create_notif
-    @notif = Notification.create(product_title: params[:title],
-								product_salePrice: params[:body_html],
-								product_originalPrice: params[:product_type],
-								ae_productid: params[:images],
-								shopify_productid: params[:vendor])
+    @notif = Notification.create(product_title: params[:product_title],
+								product_salePrice: params[:product_salePrice],
+								product_originalPrice: params[:product_originalPrice],
+								ae_productid: params[:ae_productid],
+								shopify_productid: params[:shopify_productid])
   end
 
   def update_price
