@@ -186,19 +186,19 @@ class ProductsController < ApplicationController
     _cap = params[:_compAtPrice]
     _qty = params[:_qty]
     
-    #variants = []
-    #variantsid.each do |variant|
-    #  zzz = ShopifyAPI::Variant.new( 
-    #    :price                => _prc[variant.to_i],
-    #    :option1              => _color[variant.to_i].gsub('_', ' '),
-    #    :option2              => _size[variant.to_i].gsub('_', ' '),   
-    #    :compare_at_price     => _cap[variant.to_i],
-    #    :sku                  => _sku[variant.to_i],
-    #    :inventory_management => "shopify",
-    #    :inventory_quantity   => _qty[variant.to_i]
-    #  )
-    #  variants << zzz
-    #end
+    variants = []
+    variantsid.each do |variant|
+      zzz = ShopifyAPI::Variant.new( 
+        :price                => _prc[variant.to_i],
+        :option1              => _color[variant.to_i].gsub('_', ' '),
+        :option2              => _size[variant.to_i].gsub('_', ' '),   
+        :compare_at_price     => _cap[variant.to_i],
+        :sku                  => _sku[variant.to_i],
+        :inventory_management => "shopify",
+        :inventory_quantity   => _qty[variant.to_i]
+      )
+      variants << zzz
+    end
     
     new_product = ShopifyAPI::Product.new
     new_product.title = params[:_title]
@@ -206,9 +206,9 @@ class ProductsController < ApplicationController
     new_product.product_type = params[:_type]
     new_product.vendor = params[:_vendor]
     new_product.tags = params[:_tags]
-    #new_product.options = options
-    #new_product.variants = variants
-    #new_product.metafields = [{:key => params[:mf_key],:value => params[:ae_url],:value_type => "string",:namespace => params[:mf_key] }]
+    new_product.options = options
+    new_product.variants = variants
+    #new_product.metafields = [{:key => params[:mf_key],:value => params[:ae_url],:value_type => "string",:namespace => params[:mf_key],:description => "imported-item" }]
     
 
     new_product.save 
