@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   get '/notifications' => 'notification#index', as: :notifications
   match '/notifications/create_notif' => 'notification#create_notif', via: :post
   delete '/notifications/:id' => 'notification#destroy'
+  put '/notifications/update_price' => 'notification#update_price', as: :update_price
   
   mount ShopifyApp::Engine, at: '/'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
