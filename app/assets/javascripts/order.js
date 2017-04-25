@@ -65,7 +65,7 @@ $(document).ready(function(e){
 
   //var checked = localStorage.getItem('checkbox1');
   var filterLinks = document.querySelectorAll('a[class="dropdown-toggle"]')
-  var checkboxes = document.querySelectorAll('input[type="checkbox"]')
+  var checkboxes = document.querySelectorAll('input[type="checkbox"][class="order-filter"]')
   for (var i = 0; i < checkboxes.length; i++) {
     var box = checkboxes[i];
     if (box.hasAttribute("value")) {
