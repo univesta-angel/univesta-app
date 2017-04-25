@@ -27,13 +27,20 @@ class NotificationController < ApplicationController
 	ShopifyAPI::Base.site = shop_url
 	shop = ShopifyAPI::Shop.current
 
-	variants = []
+	price = params[:price]
+	cap = params[:compare_at_price]
+	i = 0
+	product = ShopifyAPI::Product.find(params[:shopify_productid])
+	variants = product.variants
 	variants.each do |v|
-		
+		v.price = price[i]
+		v.compare_at_price = cap[i]
+		i = i + 1
 	end
 
-	product = ShopifyAPI::Product.find(params[:shopify_productid])
 	product.variants = variants
+	product.save
+
   end
 
   def destroy
