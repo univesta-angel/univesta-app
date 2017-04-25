@@ -19,15 +19,6 @@ class NotificationController < ApplicationController
 								product_originalPrice: params[:product_type],
 								ae_productid: params[:images],
 								shopify_productid: params[:vendor])
-    respond_to do |format|
-      if @notif.save
-        format.html { redirect_to @notif, notice: 'Product was successfully imported.' }
-        format.json { render :show, status: :created, location: @notif }
-      else
-        format.html { render :new }
-        format.json { render json: @notif.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   def update_price
