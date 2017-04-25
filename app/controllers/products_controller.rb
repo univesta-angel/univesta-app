@@ -250,12 +250,7 @@ class ProductsController < ApplicationController
     new_product.images = pao
     new_product.save 
     
-      collection = params[:collection]
-      custom = ShopifyAPI::CustomCollection.find(:all, :params => { :title => collection })
-      coll_id = custom[0].id
-      new_product.add_to_collection(ShopifyAPI::CustomCollection.find(coll_id))
-    
-  end
+  end # end of push action
   
   def remove_all
     Product.delete_all
