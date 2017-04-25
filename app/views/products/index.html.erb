@@ -257,9 +257,7 @@
                     <%= link_to product, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default all" do %>
                       <span class="glyphicon glyphicon-minus" style="margin-right: 10px;"></span> Remove Product
                     <% end %>
-                    <%= button_tag(type: "submit", class: "btn btn-success push-btn") do %>
-                      <span class="glyphicon glyphicon-plus" style="margin-right: 10px;"></span>Push to Store
-                    <% end %>
+                    <%= submit_tag "Push to Store", push_path, class: "btn btn-success push-btn") %>
                   </div>
                 </div>
                 <br/>
