@@ -86,7 +86,83 @@
 					</div>
 					<br/>
 									<!-- ***MODAL*** -->
-					<%= render partial: 'price_dialog' %>
+					<div id="change-price-modal-<%= notif.id %>" class="modal">
+						<div class="modal-dialog">
+							<div class="modal-content" style="width:1100px;">
+							<% form_tag update_price_path, method: 'put', remote: true do %>
+								<div class="modal-header">
+								<!--button type="button" class="close" data-dismiss="modal">&times;</button-->
+								<%= link_to "&times;", notif, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default remove-notif" %>
+									<h4 class="modal-title">Change product price</h4>
+								</div>
+								<div class="modal-body">
+									<div class="data-product-title">
+										<span>Product price has changed: </span>
+										<a href=""><%= notif.product_title %></a>
+									</div>
+									<div class="data-table-product-prices">
+										<table class="table table-condensed">
+											<thead>
+												<tr>
+													<th>SKU</th>
+													<th>Cost Change</th>
+													<th>Price Change</th>
+													<th>Compare At Price Change</th>
+												</tr>
+											</thead>
+											<tbody>
+												<%	variants = ShopifyAPI::Variant.find(:all, :params => { :product_id => notif.shopify_productid })
+													ctr = 0
+													salePrice = notif.product_salePrice.to_f
+													origPrice = notif.product_originalPrice.to_f	%>
+												<% variants.each do |item| %>
+													<tr>
+														<td>
+															<div class="data-sku">
+																1234ABC-SAMPLESKU-<%= ctr %>
+															</div>
+														</td>
+														<td>
+															<div class="data-cost">
+																$<%= number_with_precision(item.price.to_f - @pmu, :precision => 2) %>
+																<span class="glyphicon glyphicon-arrow-right price-to"></span>
+																<strong>$<%= notif.product_originalPrice %></strong>
+																<% if origPrice > salePrice %>
+																	<span class="data-price-diff">(+$<%= number_with_precision(origPrice - salePrice, :precision => 2) %>)</span>
+																<% elsif origPrice < item.price %>
+																	<span class="data-price-diff-2">(-$<%= number_with_precision(salePrice - origPrice, :precision => 2) %>)</span>
+																<% end %>
+															</div>
+														</td>
+														<td>
+															<div class="data-price">
+																$<%= item.price %>
+																<span class="glyphicon glyphicon-arrow-right price-to"></span>
+																<%= text_field_tag "price[]", notif.product_originalPrice, class: 'form-control price' %>
+															</div>
+														</td>
+														<td>
+															<div class="data-compare-at-price">
+																$<%= item.compare_at_price %>
+																<span class="glyphicon glyphicon-arrow-right price-to"></span>
+																<%= text_field_tag "compare_at_price[]", notif.product_originalPrice, class: 'form-control price' %>
+															</div>
+														</td>
+													</tr>
+													<% ctr += 1 %>
+												<% end %>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default close-modal" data-dismiss="modal">Don't Update</button>
+									<button type="button" class="btn btn-success close-modal" data-dismiss="modal">Update</button>
+								</div>
+							<% end %>
+							</div>
+						</div>
+					</div> <!-- *** end of modal ** -->
 					<% end %>
 				</div>
 			</div>
