@@ -225,29 +225,6 @@
                     </div>
                   <!--END OF VARIANTS TAB-->
 
-                  <!--IMAGES TAB-->
-                  <!--div class="tab-pane" id="images<%= @ctr %>">
-                    <div id="gallery">
-                        <select class="image-picker show-html" multiple="multiple">
-                        <% hidden_field_tag @ctr3 = 1 %>
-                        <% imgarr = [] %>
-                        <% product.images.each do |image| %>
-                        <% imgarr << image %>
-                        <% end %>
-                        <% product.variant_images.each do |image| %>
-                        <% imgarr << image %>
-                        <% end %>
-                        <% imgarr.each do |image| %>
-                          <option data-img-src="<%= image %>" value="<%= @ctr3 %>">Cute Kitten <%= @ctr3 %></option>
-                        <% @ctr3 += 1 %>
-                        <% end %>
-                        </select>
-                    </div>
-                  </div-->
-                  <!--END OF IMAGES TAB-->
-
-
-
                   </div> 
                 </div> <!-- END OF PANEL BODY -->
 
