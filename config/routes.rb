@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-
-  resources :products do
-    post 'select_action'
-  end
   
   root :to => 'products#index'
   match 'create' => 'products#create', via: :post
@@ -29,6 +25,7 @@ Rails.application.routes.draw do
 
   get '/notifications' => 'notification#index', as: :notifications
   match '/notifications/create_notif' => 'notification#create_notif', via: :post
+  #delete 'notification#delete_notif'
   
   mount ShopifyApp::Engine, at: '/'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

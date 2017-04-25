@@ -1,4 +1,5 @@
 class NotificationController < ApplicationController
+  before_action :set_product, only: [:destroy]
   wrap_parameters format: [:json]
 
   def index
@@ -22,5 +23,14 @@ class NotificationController < ApplicationController
   end
 
   def update_price
+  end
+
+  def delete_notif
+  	@notif.destroy
+  end
+
+  private 
+  def set_notification
+  	@notif = Notification.find(params[:id])
   end
 end
