@@ -254,6 +254,10 @@ class ProductsController < ApplicationController
     custom = ShopifyAPI::CustomCollection.find(:all, :params => { :title => collection })
     coll_id = custom[0].id
     new_product.add_to_collection(ShopifyAPI::CustomCollection.find(coll_id))
+
+    respond_to do |format|
+      format.html {redirect_to root_path, notice: 'Product was successfully pushed.'}
+    end
     
   end
   
