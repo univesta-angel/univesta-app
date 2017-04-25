@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   post "/mark_shipped" => "order#mark_shipped", as: :mark_shipped
 
   get '/notifications' => 'notification#index', as: :notifications
-  match '/notifications/create_notif' => 'notication#create_notif', via: :post
+  match '/notifications/create_notif' => 'notification#create_notif', via: :post
   
   mount ShopifyApp::Engine, at: '/'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
