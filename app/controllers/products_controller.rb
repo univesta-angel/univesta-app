@@ -250,10 +250,12 @@ class ProductsController < ApplicationController
     new_product.images = pao
     new_product.save 
     
-    collection = params[:collection]
-    custom = ShopifyAPI::CustomCollection.find(:all, :params => { :title => collection })
-    coll_id = custom[0].id
-    new_product.add_to_collection(ShopifyAPI::CustomCollection.find(coll_id))
+    if !params[:collection].blank?
+      collection = params[:collection]
+      custom = ShopifyAPI::CustomCollection.find(:all, :params => { :title => collection })
+      coll_id = custom[0].id
+      new_product.add_to_collection(ShopifyAPI::CustomCollection.find(coll_id))
+    end
 
     respond_to do |format|
       format.html {redirect_to root_path, notice: 'Product was successfully pushed.'}
