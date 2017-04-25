@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   put "/edit_note" => "order#edit_note", as: :edit_note
   post "/mark_shipped" => "order#mark_shipped", as: :mark_shipped
 
-  get '/notifications' => 'notification#index'
+  get '/notifications' => 'notification#index', as: :notifications
   
   mount ShopifyApp::Engine, at: '/'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
