@@ -156,10 +156,12 @@
 									</div>
 								</div>
 								<div class="modal-footer">
-									<button type="button" class="btn btn-default close-modal" data-dismiss="modal">Don't Update</button>
-									<button type="button" class="btn btn-success close-modal" data-dismiss="modal">Update</button>
+									<button type="button" class="btn btn-default close-modal close-modal" data-dismiss="modal">Don't Update</button>
+									<!--button type="button" class="btn btn-success close-modal" data-dismiss="modal">Update</button-->
+									<%= submit_tag "Update", class: "btn btn-success close-modal" %>
 								</div>
 							<% end %>
+
 							</div>
 						</div>
 					</div> <!-- *** end of modal ** -->
