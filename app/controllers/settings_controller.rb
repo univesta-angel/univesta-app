@@ -24,6 +24,11 @@ class SettingsController < ApplicationController
   		render js: 'window.location.reload'
   end
 
+  def markup
+    markup = Markup.find(1).price
+    return { :markup => markup.price }
+  end
+
   def string_checker(strvar)
   	markup = ''
   	if strvar == '+'
