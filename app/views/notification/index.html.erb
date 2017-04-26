@@ -95,6 +95,7 @@
 									<h4 class="modal-title">Change product price</h4>
 								</div>
 								<div class="modal-body">
+								<% form_tag update_price_path, method: 'put', remote: true do %>
 									<div class="data-product-title">
 										<span>Product price has changed: </span>
 										<a href=""><%= notif.product_title %></a>
@@ -119,6 +120,7 @@
 														<td>
 															<div class="data-sku">
 																1234ABC-SAMPLESKU-<%= ctr %>
+																<% hidden_field_tag :shopify_productid, notif.shopify_productid %>
 															</div>
 														</td>
 														<td>
@@ -153,6 +155,7 @@
 											</tbody>
 										</table>
 									</div>
+									<% end %>
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default close-modal" data-dismiss="modal">Don't Update</button>
