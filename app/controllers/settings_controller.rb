@@ -26,7 +26,10 @@ class SettingsController < ApplicationController
 
   def markup
     markup = Markup.find(2)
-    return { :markup => markup.price }
+    data = { :markup => markup.price }.to_json
+    respond_to do |format|
+      format.json { render :json => data }
+    end
   end
 
   def string_checker(strvar)
