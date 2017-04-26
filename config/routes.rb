@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   get '/settings' => 'settings#index'
   put '/settings/edit_markup' => 'settings#edit_markup'
-  match '/settings/markup' => 'settings#markup', via: :get
+  get '/settings/markup' => 'settings#markup'
 
   get 'orders' => 'order#index', as: :orders
   get "/fetch_orders" => "order#from_category", as: :fetch_orders
