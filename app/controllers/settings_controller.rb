@@ -25,7 +25,7 @@ class SettingsController < ApplicationController
   end
 
   def markup
-    markup = Markup.find(1)
+    markup = Markup.find(2)
     return { :markup => markup.price }
   end
 
