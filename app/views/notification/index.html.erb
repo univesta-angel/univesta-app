@@ -98,6 +98,8 @@
 								</div>
 								<div class="modal-body">
 									<%= form_tag update_price_path, method: 'put', remote: true do %>
+									<%= hidden_field_tag :shopify_productid, notif.shopify_productid %>
+									<%= hidden_field_tag :notif_id, notif.id %>
 									<div class="data-product-title">
 										<span>Product price has changed: </span>
 										<a href=""><%= notif.product_title %></a>
@@ -122,7 +124,6 @@
 														<td>
 															<div class="data-sku">
 																1234ABC-SAMPLESKU-<%= ctr %>
-																<%= hidden_field_tag :shopify_productid, notif.shopify_productid %>
 															</div>
 														</td>
 														<td>

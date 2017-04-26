@@ -40,6 +40,14 @@ class NotificationController < ApplicationController
 
 	product.variants = variants
 	product.save
+	
+	if product.save
+		render js: 'toastr.success("Updated successfully")'
+	else
+		render js: 'toastr.error("Something went wrong.")'
+	end
+
+	@notif.destroy
 
   end
 
