@@ -98,8 +98,6 @@
 								</div>
 								<div class="modal-body">
 									<%= form_tag update_price_path, method: 'put', remote: true do %>
-									<%= hidden_field_tag :shopify_productid, notif.shopify_productid %>
-									<%= hidden_field_tag :notif_id, notif.id %>
 									<div class="data-product-title">
 										<span>Product price has changed: </span>
 										<a href=""><%= notif.product_title %></a>
@@ -124,30 +122,31 @@
 														<td>
 															<div class="data-sku">
 																1234ABC-SAMPLESKU-<%= ctr %>
+																<%= hidden_field_tag :shopify_productid, notif.shopify_productid %>
 															</div>
 														</td>
 														<td>
 															<div class="data-cost">
-																$<%= number_with_precision(item.price.to_f - @pmu, :precision => 2) %>
+																$<%= number_with_precision(salePrice.to_f, :precision => 2) %>
 																<span class="glyphicon glyphicon-arrow-right price-to"></span>
-																<strong>$<%= notif.product_originalPrice %></strong>
+																<strong>$<%= origPrice %></strong>
 																<% if origPrice > salePrice %>
 																	<span class="data-price-diff">(+$<%= number_with_precision(origPrice - salePrice, :precision => 2) %>)</span>
-																<% elsif origPrice < item.price %>
+																<% elsif origPrice < salePrice %>
 																	<span class="data-price-diff-2">(-$<%= number_with_precision(salePrice - origPrice, :precision => 2) %>)</span>
 																<% end %>
 															</div>
 														</td>
 														<td>
 															<div class="data-price">
-																$<%= item.price %>
+																<%= number_to_currency(item.price) %>
 																<span class="glyphicon glyphicon-arrow-right price-to"></span>
 																<%= text_field_tag "price[]", notif.product_originalPrice, class: 'form-control price' %>
 															</div>
 														</td>
 														<td>
 															<div class="data-compare-at-price">
-																$<%= item.compare_at_price %>
+																<%= number_to_currency(item.compare_at_price) %>
 																<span class="glyphicon glyphicon-arrow-right price-to"></span>
 																<%= text_field_tag "compare_at_price[]", notif.product_originalPrice, class: 'form-control price' %>
 															</div>
@@ -160,9 +159,15 @@
 									</div>
 									<div class="data-price-update-option">
 										<button type="button" class="btn btn-default close-modal" data-dismiss="modal">Don't Update</button>
-										<%= submit_tag "Update", class: "btn btn-success close-modal" %>
+										<!--button type="button" class="btn btn-success close-modal" data-dismiss="modal">Update</button-->
+										<%= submit_tag "Update", class: "btn btn-success" %>
 									</div>
 									<% end %>
+								</div>
+							</div>
+						</div>
+					</div>
+					<% end %>
 								</div>
 							</div>
 						</div>
