@@ -51,6 +51,9 @@
 		.data-product-title {
 			height: 50px;
 		}
+		.data-price-update-option {
+			display: inline-block;
+		}
 	</style>
 </head>
 <body id="notifs">
@@ -120,7 +123,7 @@
 														<td>
 															<div class="data-sku">
 																1234ABC-SAMPLESKU-<%= ctr %>
-																<% hidden_field_tag :shopify_productid, notif.shopify_productid %>
+																<%= hidden_field_tag :shopify_productid, notif.shopify_productid %>
 															</div>
 														</td>
 														<td>
@@ -155,11 +158,11 @@
 											</tbody>
 										</table>
 									</div>
+									<div class="data-price-update-option">
+										<button type="button" class="btn btn-default close-modal" data-dismiss="modal">Don't Update</button>
+										<%= submit_tag "Update", class: "btn btn-success" %>
+									</div>
 									<% end %>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-default close-modal" data-dismiss="modal">Don't Update</button>
-									<button type="button" class="btn btn-success close-modal" data-dismiss="modal">Update</button>
 								</div>
 							</div>
 						</div>
