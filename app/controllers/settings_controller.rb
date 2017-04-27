@@ -21,11 +21,21 @@ class SettingsController < ApplicationController
 	  	markup.cap_toggle = params[:c_toggle].to_s
 	  	markup.save
 
+      products = ShopifyAPI::Product.all
+
+      variants = ShopifyAPP::Variant.all
+      variants.each do |v|
+        v.price = v.price + markup.price.to_f
+        v.compare_at_price + markup.compare_at_price.to_f
+      end
+      variants.save
+
   		render js: 'window.location.reload'
   end
 
   def markup
     markup = Markup.find(2)
+
     data = { :markup => markup.price }.to_json
     respond_to do |format|
       format.json { render :json => data }

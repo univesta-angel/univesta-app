@@ -116,7 +116,8 @@
 												<%	variants = ShopifyAPI::Variant.find(:all, :params => { :product_id => notif.shopify_productid })
 													ctr = 0
 													salePrice = notif.product_salePrice.to_f
-													origPrice = notif.product_originalPrice.to_f	%>
+													origPrice = notif.product_originalPrice.to_f
+													cost = notif.cost.to_f	%>
 												<% variants.each do |item| %>
 													<tr>
 														<td>
@@ -127,7 +128,7 @@
 														</td>
 														<td>
 															<div class="data-cost">
-																$<%= number_with_precision(salePrice.to_f, :precision => 2) %>
+																$<%= number_with_precision(cost, :precision => 2) %>
 																<span class="glyphicon glyphicon-arrow-right price-to"></span>
 																<strong>$<%= origPrice %></strong>
 																<% if origPrice > salePrice %>
