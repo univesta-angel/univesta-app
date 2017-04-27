@@ -33,11 +33,11 @@ class SettingsController < ApplicationController
             product.variants.each do |v|
               v.price = v.price.to_f + markup.price
               v.compare_at_price = v.compare_at_price.to_f + markup.compare_at_price
-              product.save
             end
           end
         end
       end
+      product.save
     end
 
 
