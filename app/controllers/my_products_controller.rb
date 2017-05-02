@@ -1,7 +1,16 @@
 class MyProductsController < ApplicationController
   before_action :set_my_product, only: [:destroy]
   def index
-    @myproducts = ShopifyAPI::Product.find(:all)
+    products = ShopifyAPI::Product.find(:all)
+    @myproducts = []
+    products.each do |product|
+      product.metafields.each do |metafield|
+        m_namespace = metafield.namespace
+      end
+      if m_namespace == 'imported-item'
+        @myproducts << product
+      end
+    end
   end
   
   def destroy
