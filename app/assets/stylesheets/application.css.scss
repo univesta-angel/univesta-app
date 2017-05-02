@@ -43,7 +43,7 @@ body {
 .nav .open > a:focus {background-color: transparent;}
 
 body#imports {
-  background: url('imports-bg.png');
+  background-image: image_url('imports-bg.png');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
