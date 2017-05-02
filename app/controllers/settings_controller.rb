@@ -41,8 +41,7 @@ class SettingsController < ApplicationController
       end
       product.save
     end
-
-
+    
 		render js: 'window.location.reload'
   end
 
