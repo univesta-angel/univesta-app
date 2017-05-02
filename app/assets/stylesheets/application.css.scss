@@ -43,7 +43,7 @@ body {
 .nav .open > a:focus {background-color: transparent;}
 
 body#imports {
-  background-image: image_url('imports-bg.png');
+  background: url('imports-bg.png');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -51,7 +51,7 @@ body#imports {
   height: 100vh;
 }
 body#orders {
-  background-image: image_url('orders-bg.png');
+  background: url('orders-bg.png');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -59,7 +59,7 @@ body#orders {
   height: 100vh;
 }
 body#myproducts {
-  background-image: image_url('myproducts-bg.png');
+  background: url('myproducts-bg.png');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
