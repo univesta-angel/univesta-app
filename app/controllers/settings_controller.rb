@@ -17,6 +17,8 @@ class SettingsController < ApplicationController
     ShopifyAPI::Base.site = shop_url
     shop = ShopifyAPI::Shop.current
   	markup = Markup.find(2) 
+    markup.old_price = markup.price
+    markup.old_cap = markup.compare_at_price
   	markup.price = params[:pmu].to_f
   	markup.compare_at_price = params[:capmu].to_f
   	markup.operator1 = params[:p_operator]
@@ -31,8 +33,8 @@ class SettingsController < ApplicationController
           namespace = metafield.namespace
           if namespace == "imported-item"
             product.variants.each do |v|
-              v.price = v.price.to_f + markup.price
-              v.compare_at_price = v.compare_at_price.to_f + markup.compare_at_price
+              v.price = v.price.to_f + (markup.price - markup.old_price)
+              v.compare_at_price = v.compare_at_price.to_f + (markup.compare_at_price - markup.old_cap)
             end
           end
         end
@@ -47,7 +49,7 @@ class SettingsController < ApplicationController
   def markup
     markup = Markup.find(2)
 
-    data = { :markup => markup.price }.to_json
+    data = { :new_pmu => markup.price, :old_pmu => markup.old_price }.to_json
     respond_to do |format|
       format.json { render :json => data }
     end

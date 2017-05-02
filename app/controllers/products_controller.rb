@@ -188,11 +188,6 @@ class ProductsController < ApplicationController
 
     markup = Markup.find(2)
     price_markup = markup.price
-
-    old_cost = []
-    _prc.each do |price|
-      old_cost << price.to_f - price_markup
-    end
     
     variants = []
     variantsid.each do |variant|
@@ -216,7 +211,7 @@ class ProductsController < ApplicationController
     new_product.tags = params[:_tags]
     new_product.options = options
     new_product.variants = variants
-    new_product.metafields = [{:key => params[:mf_key],:value => params[:ae_url],:value_type => "string",:namespace => "imported-item",:description => "#{old_cost}" }]
+    new_product.metafields = [{:key => params[:mf_key],:value => params[:ae_url],:value_type => "string",:namespace => "imported-item" }]
     
     pao = []
     color2 =[]     #tempo storage

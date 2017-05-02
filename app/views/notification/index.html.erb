@@ -113,11 +113,12 @@
 												</tr>
 											</thead>
 											<tbody>
-												<%	variants = ShopifyAPI::Variant.find(:all, :params => { :product_id => notif.shopify_productid })
+												<%
+													variants = ShopifyAPI::Variant.find(:all, :params => { :product_id => notif.shopify_productid })
 													ctr = 0
-													salePrice = notif.product_salePrice.to_f
-													origPrice = notif.product_originalPrice.to_f
-													cost = notif.cost.to_f	%>
+													newPrice = notif.new_prices.to_f
+													newCap = notif.new_cap.to_f	
+												%>
 												<% variants.each do |item| %>
 													<tr>
 														<td>
