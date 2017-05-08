@@ -37,9 +37,9 @@
 			  		<!--div class="col-md-3"><button type="button" class="btn btn-sm add-note-btn" style="margin-left: 20px;" data-id="<%= order.order_number %>">Add / Edit Note</button></div-->
 				  	<div class="Column2">
 				  		<% if order.fulfillment_status == 'fulfilled' %>
-			  				<a type="button" class="btn btn-sm fulfilled-itm" data-id="<%= order.id %>" data-no="<%= order.order_number %>"><span class="glyphicon glyphicon-ok"></span><span class="mark-ship">Mark As Shipped</span></a>
+			  				<a type="button" class="btn btn-sm fulfilled-itm" data-id="<%= order.id %>" data-no="<%= order.order_number %>"><span class="glyphicon glyphicon-ok"></span><span class="mark-ship">Fulfilled</span></a>
 				  		<% else %>
-			  				<button type="button" class="btn btn-sm mark-ship-btn" data-id="<%= order.id %>" data-no="<%= order.order_number %>"><span class="mark-ship">Fulfilled</span></button>
+			  				<button type="button" class="btn btn-sm mark-ship-btn" data-id="<%= order.id %>" data-no="<%= order.order_number %>"><span class="mark-ship">Mark As Shipped</span></button>
 				  		<% end %>
 			  		</div>
 			  	</div>
