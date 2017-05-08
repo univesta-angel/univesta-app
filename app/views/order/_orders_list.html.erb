@@ -36,7 +36,11 @@
 				  	<div class="col-md-3">Customer: <%= link_to order.shipping_address.name, "https://#{@shopsession}/admin/customers/#{order.customer.id}", method: "get", target: "_blank", id: "customername_#{order.order_number}", class: "customername" %></div>
 			  		<!--div class="col-md-3"><button type="button" class="btn btn-sm add-note-btn" style="margin-left: 20px;" data-id="<%= order.order_number %>">Add / Edit Note</button></div-->
 				  	<div class="Column2">
-				  		<button type="button" class="btn btn-sm mark-ship-btn" data-id="<%= order.id %>" data-no="<%= order.order_number %>"><span class="glyphicon glyphicon-ok"></span><span class="mark-ship">Mark As Shipped</span></button>
+				  		<% if order.fulfillment_status == 'fulfilled' %>
+			  				<a type="button" class="btn btn-sm fulfilled-itm" data-id="<%= order.id %>" data-no="<%= order.order_number %>"><span class="glyphicon glyphicon-ok"></span><span class="mark-ship">Mark As Shipped</span></a>
+				  		<% else %>
+			  				<button type="button" class="btn btn-sm mark-ship-btn" data-id="<%= order.id %>" data-no="<%= order.order_number %>"><span class="mark-ship">Fulfilled</span></button>
+				  		<% end %>
 			  		</div>
 			  	</div>
 		    </div>
