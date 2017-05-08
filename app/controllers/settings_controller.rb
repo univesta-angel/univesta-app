@@ -48,7 +48,7 @@ class SettingsController < ApplicationController
   def markup
     markup = Markup.find(2)
 
-    data = { :new_pmu => markup.price, :old_pmu => markup.old_price }.to_json
+    data = { :new_pmu => markup.price, :old_pmu => markup.old_price, :dt_pmu => markup.updated_at }.to_json
     respond_to do |format|
       format.json { render :json => data }
     end
