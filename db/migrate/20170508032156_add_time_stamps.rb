@@ -1,6 +1,6 @@
 class AddTimeStamps < ActiveRecord::Migration[5.0]
-  def change
-  	change_table :users do |t|
+  def self.up
+  	change_table :markups do |t|
         t.timestamps
     end
   end
